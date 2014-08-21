@@ -1,0 +1,67 @@
+.pagination {
+	display: inline-block;
+	text-align: center;
+	width: 100%;
+	margin: 20px 0;
+}
+.pagination span, .pagination em, .pagination a {
+	display: inline-block;
+	margin-right: 6px;
+	vertical-align: text-bottom;
+	background: none repeat scroll 0% 0% #2E2E2C;
+	color: #7D7979;
+	padding: 5px 2%;
+	font-size: 18px;
+	font-weight: 300;
+	line-height: 24px;
+}
+.pagination a {
+	color: #FFA51B;
+}
+.post-content {
+	margin: 30px 0;
+}
+.post-content h1 {
+	text-indent: inherit;
+	margin:20px 0 20px 0;
+    font-size:34px;
+    line-height:40px;
+}
+.post-content h2 {
+	margin:20px 0 20px 0;
+    font-size:26px;
+    line-height:30px;
+}
+.post-content h3 {
+    margin:20px 0 20px 0;
+    font-size:18px;
+    line-height:24px;
+}
+.post-content h4 {
+    margin:20px 0 20px 0;
+    font-size:16px;
+    line-height:22px;
+}
+.post-content code {
+	margin: 20px 0 10px 0;
+	display: block;
+	padding: 10px 20px;
+	background-color: rgba(24, 24, 24, 0.1);
+}
+.arian {
+	display: block;
+	width: 100%;
+	margin: 0px 0px 20px;
+}
+.arian a {
+	font-size: 16px;
+	font-weight: 300;
+}
+.meta, .meta a {
+	color: #747070;
+}
+.banner {
+	width: 80%;
+	margin: auto;
+	margin-bottom: 50px;
+}

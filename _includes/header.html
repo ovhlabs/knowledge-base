@@ -1,0 +1,67 @@
+<div class="full" style="height : 60px"><br></div>
+<header id="header">
+  <div class="wrapper">
+    <a  id="logo"
+        style="border:0;height:60px;"
+        title="Runabove: Extremely Performant Cloud Computing &amp; Object Storage"
+        href="https://runabove.com/">
+      <img  src="{{ "https://runabove.com/images/new/logo-top.png" }}"
+            alt="Run Above"
+            style="height : 60px;">
+    </a>
+    <a  aria-hidden="true"
+        class="nav-toggle"
+        href="#">
+      Menu
+    </a>
+    <nav  aria-hidden="false"
+          style="transition: max-height 284ms ease 0s; position: relative;"
+          class="nav-collapse fr nav-collapse-0 closed">
+      <ul class="topmenu">
+        <li>
+          <a title="" href="https://runabove.com/#compute">Compute</a>
+        </li>
+        <li>
+          <a title="" href="https://runabove.com/#storage">Object Storage</a>
+        </li>
+        <li>
+          <a title="" href="https://runabove.com/specs">How it's different</a>
+        </li>
+        <li class="selected">
+          <a title="Runabove community" href="/">Community</a>
+        </li>
+        <li>
+          <a title="The RunAbove Team" href="https://runabove.com/about/about-us.xml">About</a>
+        </li>
+        <li>
+          <a title="Log in" href="https://cloud.runabove.com/login/">Log in</a>
+        </li>
+        <li>
+          <a title="Sign up" href="https://cloud.runabove.com/signup/">Sign up</a>
+        </li>
+        <!--
+        <li><a href="{{ site.baseurl }}/{{ page.lang }}/{{ site.t.nav[page.lang].contributing | downcase }}.html">{{ site.t.nav[page.lang].contributing }}</a></li>
+        -->
+      </ul>
+    </nav>
+
+    <script type="text/javascript" src="{{ "/js/responsive-nav.js" | prepend: site.baseurl }}"></script>
+    <script type="text/javascript">
+      var navigation = responsiveNav(".nav-collapse", {
+          animate: true,
+          transition: 284,
+          label: "Menu",
+          insert: "after",
+          customToggle: "",
+          closeOnNavClick: false,
+          openPos: "relative",
+          navClass: "nav-collapse",
+          navActiveClass: "js-nav-active",
+          jsClass: "js",
+          init: function(){},
+          open: function(){},
+          close: function(){}
+      });
+    </script>
+  </div>
+</header>

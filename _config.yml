@@ -1,0 +1,39 @@
+# Website  settings
+title: RunAbove knowledge base
+email: developers@runabove.com
+description: "Public knowledge base for RunAbove users."
+baseurl: "/kb"
+url: "https://community.runabove.com"
+twitter_username: runabovecom
+github_username:  runabove
+
+# Build settings
+markdown: redcarpet
+highlighter: pygments
+permalink: none
+
+# Pagination
+paginate: 5
+paginate_path: "/page:num"
+
+# Categories plugin settings
+category_dir: category
+category_title_prefix: ""
+
+# Languages
+languages: [en]
+
+# Translations
+t:
+  home:
+    en:
+      categories: "Categories"
+      latest_articles: "Latest tutorials"
+  nav:
+    en:
+      contributing: "Contributing"
+      read_in: "Read in English"
+      subscribe: "Subscribe via"
+  category:
+    en:
+      filed_under: "Filed under"

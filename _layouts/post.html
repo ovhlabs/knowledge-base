@@ -1,0 +1,44 @@
+---
+layout: root
+---
+  <p class="arian">
+    <a href="https://community.runabove.com">Community</a> > <a href="{{ site.baseurl }}/">{{ site.t.home[page.lang].latest_articles }}</a>
+  </p>
+
+    <h2>{{ page.title }}</h2>
+    <p class="meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.meta %} • {{ page.meta }}{% endif %}{% if page.author %} • <a href="https://github.com/{{ page.author }}">{{ page.author }}</a>{% endif %}</p>
+    <p class="meta">
+      {% if page.trans %}
+        {% for trans in page.trans %}
+          {% assign p = trans[1] | prepend: '/_posts/' | prepend: trans[0] %}
+          {% for post in site.posts %}
+      	    {% if post.path == p %}
+            {% assign lang = trans[0] %}
+              <a href="{{post.url}}">{{ site.t.nav[lang].read_in }}</a>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      {% endif %}
+    </p>
+
+    <div class="post-content">
+    {{ content }}
+    </div>
+
+    <div class="banner" style="background-color:#FFA60E">
+      <p class="bannerText">
+        Write awesome tutorials,<br><strong>Be a Hero</strong> for the community</p>
+        <a class="bannerLink" href="https://github.com/runabove/knowledge-base#how-to-write-a-how-to-guide-and-get-100-in-runabove-credit">Learn more</a>
+    </div>
+
+    <!--<script data-isso="/isso/"
+            data-isso-lang="{{ page.lang }}"
+            data-isso-avatar="false"
+            data-isso-auth="true"
+            data-isso-auth-sign-in-url="/isso/auth/signin/github"
+            data-isso-auth-sign-out-url="/isso/auth/signout"
+            src="/js/embed.min.js">
+    </script>
+
+    <section id="isso-thread"></section>-->
+
