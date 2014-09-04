@@ -23,9 +23,10 @@
 }
 .post-content h1 {
 	text-indent: inherit;
-	margin:20px 0 20px 0;
+	margin:30px 0 10px 0;
     font-size:34px;
     line-height:40px;
+    font-weight: 200;
 }
 .post-content h2 {
 	margin:20px 0 20px 0;
@@ -64,4 +65,15 @@
 	width: 80%;
 	margin: auto;
 	margin-bottom: 50px;
+}
+code, .highlight pre code, .highlight pre code span {
+    overflow: auto;
+    font-family: "Courier" !important;
+}
+.highlight .bp {
+    font-size: 15px !important;
+}
+.github_icon {
+	width: 14px;
+	height: 14px;
 }
