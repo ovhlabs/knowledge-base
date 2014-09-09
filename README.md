@@ -84,9 +84,10 @@ With markdown syntax.
 ## Test your tutorial
 
 To deploy tutorials on runabove, we use a python tool called
-[Jekyll](http://jekyllrb.com/). You can have more informations about Jekyll
-installation inside [http://jekyllrb.com/docs/installation/](official
-documentation). For example on Debian 7, installation instructions are:
+[Jekyll](http://jekyllrb.com/). You can find more informations about Jekyll
+installation inside the [official
+documentation](http://jekyllrb.com/docs/installation/). For example on Debian
+7, installation instructions are:
 
 ```bash
 apt-get install ruby1.9.3 rubygems nodejs

@@ -13,7 +13,7 @@ Internet. The distribution used in this guide is Ubuntu 12.04.
 
 This schema presents the structure of the network:
 
-![Network schema](/kb/images/2014-08-22-create-local-network/schema.png)
+![Network schema](/kb/images/2014-09-09-create-local-network/schema.png)
 
 In this example we will use 192.168.0.0/24 as the network, and 192.168.0.2 as the gateway.
 
@@ -52,7 +52,7 @@ your networks.
 It's time to create your first dedicated network. Click on __Create Network__
 button, and specify your __network name__, enter it and click next.
 
-![Net Name](/kb/images/2014-08-22-create-local-network/network_name.png)
+![Net Name](/kb/images/2014-09-09-create-local-network/network_name.png)
 
 
 <h3 id="sub">1.2 Subnet</h3>
@@ -68,7 +68,7 @@ specify a few parameters:
     local network will use to connect to the Internet. For this example we use
     192.168.0.2 as the gateway address.
 
-![Subnet](/kb/images/2014-08-22-create-local-network/subnet.png)
+![Subnet](/kb/images/2014-09-09-create-local-network/subnet.png)
 
 <h3 id="sub_details">1.3 Subnet details</h3>
 In the last tab, you need to specify subnet details:
@@ -87,12 +87,12 @@ In the last tab, you need to specify subnet details:
 After providing information about subnet, just click __Create__.
 
 ![Subnet
-details](/kb/images/2014-08-22-create-local-network/subnet_details.png)
+details](/kb/images/2014-09-09-create-local-network/subnet_details.png)
 
 After that your local network is created and you will be able to see your new
 local network in Horizon.
 
-![Net list](/kb/images/2014-08-22-create-local-network/net_list.png)
+![Net list](/kb/images/2014-09-09-create-local-network/net_list.png)
 
 
 <h3 id="local_net_api">2. Create local network using command line and API</h3>
@@ -178,7 +178,7 @@ nova list
 ```
 
 As you can see, the virtual machine that is router for your network now has two
-IP address one is public and the other ones is private. Now you must configure
+IP address one is public and the other one is private. Now you must configure
 the interface on your virtual machine.
 
 Check that your virtual machine has a new interface:
@@ -186,7 +186,7 @@ Check that your virtual machine has a new interface:
     ip addr list
 
 This command shows two eth interfaces. First eth0 is configured to
-use public IP address. Then eth1 is the new interface that we attached needs to
+use public IP address. Then eth1 is the new interface, it needs to
 be configured:
 
     sudo ip addr add 192.168.0.2/24 dev eth1
