@@ -39,6 +39,7 @@ First, get epoch time (or get the number of seconds that you need, if using X-De
 Then, post the header on your object.
 
 With curl :
+
 ```bash
 curl -X POST \
      -H 'X-Delete-After: 3600'\
@@ -52,22 +53,26 @@ curl -X POST\
 ```
 
 With swift client :
+
 ```bash
 swift -v -V 2.0 -A https://auth.runabove.io/v2.0 -U tenant:login -K pass post --header "X-Delete-After: 3600" container object
 swift -v -V 2.0 -A https://auth.runabove.io/v2.0 -U tenant:login -K pass post --header "X-Delete-At: 1401268563" container object
 ```
 
 You can check if the header is correctly applied using swift client :
+
 ```bash
 swift -v -V 2.0 -A https://auth.runabove.io/v2.0 -U tenant:login -K pass stat container object
 ```
 
 Or with curl :
+
 ```bash
 curl -X HEAD -H 'X-Auth-Token: 123' https://storage.bhs-1.runabove.io/default/image.jpg
 ```
 
 You should see something like :
+
 ```
 X-Delete-At: 1402647646
 ```

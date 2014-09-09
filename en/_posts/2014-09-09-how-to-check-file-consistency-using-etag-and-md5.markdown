@@ -29,6 +29,7 @@ b6d81b360a5672d80c27430f39153e2c  file
 ```
 
 Add the special header "Etag" to your post request which contain the md5:
+
 ```bash
 curl -X PUT\
      -T file \
@@ -96,6 +97,7 @@ Etag: b6d81b360a5672d80c27430f39153e2c
 ```
 
 Then, using md5sum on Linux, or other md5 command on other operating system, you can manually check if the md5 is the same between your local file and remote object.
+
 ```bash
 md5sum file
 b6d81b360a5672d80c27430f39153e2c  file
