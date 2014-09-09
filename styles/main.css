@@ -30,7 +30,7 @@ h1 { font-size : 4em; line-height : 1.2em; color : #1F1F1F;}
 h2 { 
     font-size : 2em; 
 }
-a:not(.ico-twitter) , a.staff-photo img{ text-decoration : none; outline : none;
+a:not(.ico-twitter):not(.ico-github) , a.staff-photo img{ text-decoration : none; outline : none;
     -webkit-transition: all 0.15s ease;
     -moz-transition: all 0.15s ease;
     -ms-transition: all 0.15s ease;
@@ -186,12 +186,23 @@ footer ul li a:hover {
 }
 
 a.ico-twitter {
-    background: url("/images/twitter.png") no-repeat scroll 0 0 / 100% auto rgba(0, 0, 0, 0);
+    background: url("../images/twitter.png") no-repeat scroll 0 0 / 100% auto rgba(0, 0, 0, 0);
     display: block;
     float: right;
     height: 27px;
     margin: -3px 0 0 7px;
     width: 31px;
+}
+a.ico-github {
+    background: url("../images/github.png") no-repeat scroll 0px 0px / 100% auto transparent;
+    display: block;
+    float: right;
+    height: 27px;
+    margin: -3px 0px 0px 7px;
+    width: 31px;
+}
+a.ico-github:hover {
+    background-position: 0px 100%;
 }
 
 a.ico-twitter:hover {

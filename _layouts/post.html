@@ -6,7 +6,12 @@ layout: root
   </p>
 
     <h2>{{ page.title }}</h2>
-    <p class="meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.meta %} • {{ page.meta }}{% endif %}{% if page.author %} • <a href="https://github.com/{{ page.author }}">{{ page.author }}</a>{% endif %}</p>
+    <p class="meta">{{ page.date | date: "%b %-d, %Y" }}
+    {% if page.meta %} • {{ page.meta }}{% endif %}
+    {% if page.author %} •
+      <img class="github_icon" src="{{ site.baseurl }}/images/author-github.png" alt="Github account" />
+      <a href="https://github.com/{{ page.author }}">{{ page.author }}</a>
+    {% endif %}</p>
     <p class="meta">
       {% if page.trans %}
         {% for trans in page.trans %}
