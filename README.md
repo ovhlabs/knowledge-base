@@ -22,7 +22,7 @@ would be a perfect angle.
 ## How can you do it?
 
 Simply fork the runabove/knowledge-base project on our GitHub page. Create a
-new page under [/en/posts](en/posts) and using markdown to write your how-to
+new page under [/en/_posts](en/_posts) and using markdown to write your how-to
 guide. Please refer to the metadata in existing guides so that you add adequate
 metadata at the beginning of your guide. Feel free to create a folder for your
 images in [/images](images).
@@ -85,9 +85,8 @@ With markdown syntax.
 
 To deploy tutorials on runabove, we use a python tool called
 [Jekyll](http://jekyllrb.com/). You can have more informations about Jekyll
-installation inside (official
-documentation)[http://jekyllrb.com/docs/installation/]. For example on Debian
-7, installation instructions are:
+installation inside [http://jekyllrb.com/docs/installation/](official
+documentation). For example on Debian 7, installation instructions are:
 
 ```bash
 apt-get install ruby1.9.3 rubygems nodejs
@@ -106,7 +105,7 @@ You website is now inside `_site` directory.
 When your tutorial is ready, create a pull request on GitHub. Then we will
 review your tutorial. If that's your first tutorial, to benefit of your
 RunAbove credit, we need to get
-[TOS]((https://community.runabove.com/kb/en/contracts_tutorials_EN-GB.pdf)
+[TOS](https://community.runabove.com/kb/en/contracts_tutorials_EN-GB.pdf)
 signed by your hand (picture of the document). After, we merge it and the
 website is automatically updated.
 
