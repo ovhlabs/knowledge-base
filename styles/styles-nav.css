@@ -13,7 +13,7 @@
 }
 
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 767px) {
     .nav-collapse { width : 100%; }
 
     .nav-collapse ul.topmenu li {
