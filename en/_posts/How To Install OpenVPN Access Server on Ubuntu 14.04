@@ -20,7 +20,7 @@ Step 1: Download and Install Latest Version
     $ wget http://swupdate.openvpn.org/as/openvpn-as-2.0.10-Ubuntu14.i386.deb
     $ sudo dpkg -i openvpn-as-2.0.10-Ubuntu14.i386.deb
    
-   **64bit OS**
+  **64bit OS**
 
     $ wget http://swupdate.openvpn.org/as/openvpn-as-2.0.10-Ubuntu14.amd_64.deb
     $ sudo dpkg -i openvpn-as-2.0.10-Ubuntu14.amd_64.deb
