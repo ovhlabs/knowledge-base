@@ -66,3 +66,9 @@ Step 5: Connect to OpenVPN
     https://"server ip":943/
 
 Users have the option to either Connect to the VPN or Login to the Connect Client. When connecting the user will be connected to the VPN directly through their web browser. When the user decides to login to the Connect Client they can downoad their user configuration files (client.ovpn) and use them to connect to the VPN with other OpenVPN Clients.
+
+
+----------
+
+
+**If you require a more in depth explanation of certain features of the overall operations of the OpenVPN Access Server please refer to the OpenVPN Access Server Systems Administrator Guide which can be found on the following page: http://openvpn.net/index.php/access-server/docs.html**
