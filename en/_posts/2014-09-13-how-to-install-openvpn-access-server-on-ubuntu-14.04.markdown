@@ -39,4 +39,4 @@ Note: Make sure to open the correct ports in the instance ***Security Group*** v
 
  - Enter username and password (See Screenshot Below):
 
-![enter image description here](http://www.serveridol.com/wp-content/uploads/2013/01/openvpn_login.jpg)
+![Login Page](http://i.imgur.com/6Jbt5ce.jpg)
