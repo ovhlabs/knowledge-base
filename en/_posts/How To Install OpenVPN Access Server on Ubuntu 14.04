@@ -36,3 +36,4 @@ Step 3: Log into OpenVPN Access Server Admin Page
     https://"server ip":943/admin
 
 Note: Make sure to open the correct ports in the instance ***Security Group*** via ***Access & Security***.
+
