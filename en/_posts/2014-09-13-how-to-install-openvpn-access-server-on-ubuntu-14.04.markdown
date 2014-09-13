@@ -40,3 +40,29 @@ Note: Make sure to open the correct ports in the instance ***Security Group*** v
  - Enter username and password (See Screenshot Below):
 
 ![Login Page](http://i.imgur.com/6Jbt5ce.jpg)
+
+Step 4: Configuring OpenVPN-AS Settings
+-------------------------------------------
+
+If you want the OpenVPN Access Server to be reachable from the internet you will need to set the Hostname or IP address to a hostname or IP that is facing the public internet. Please refer to the screenshot below:
+
+![Server Network Settings](http://i.imgur.com/GO30szy.jpg)
+
+**VPN Settings:**
+The VPN Settings page allows you to configure options like the Dynamic IP Address Network which is OpenVPN Access Server's internal DHCP system. By default the subnet is set to "5.5.0.0/20" this can be changed to a subnet that might work better for your current network.
+
+The routing section gives the option to push certain routes to networks the OpenVPN Access Server is sitting on to remote clients.
+There is also an option that allows client internet traffic the ability to be forwarded through the OpenVPN Access Server.
+
+**User Permissions:**
+The User Permissions page allows settings per client to be changed. The auto-login profile can be enabled if desired. When you click "show" next to the username you will see more options that can be configured, this is the area where you would define settings for a gateway client: 
+
+![User Permissions](http://i.imgur.com/fL4Tnc5.jpg)
+
+Step 5: Connect to OpenVPN
+---------------------------------
+**Access the URL:**
+
+    https://"server ip":943/
+
+Users have the option to either Connect to the VPN or Login to the Connect Client. When connecting the user will be connected to the VPN directly through their web browser. When the user decides to login to the Connect Client they can downoad their user configuration files (client.ovpn) and use them to connect to the VPN with other OpenVPN Clients.
