@@ -37,3 +37,6 @@ Step 3: Log into OpenVPN Access Server Admin Page
 
 Note: Make sure to open the correct ports in the instance ***Security Group*** via ***Access & Security***.
 
+ - Enter username and password (See Screenshot Below):
+
+![enter image description here](http://www.serveridol.com/wp-content/uploads/2013/01/openvpn_login.jpg)
