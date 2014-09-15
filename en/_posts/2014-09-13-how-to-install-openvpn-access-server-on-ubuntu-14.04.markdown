@@ -71,7 +71,6 @@ FAQ
 ---
 
  1. Pricing
-
 	- All OpenVPN Access Server downloads come with 2 free client connections for testing purposes.
 For more information about pricing visit: [Pricing](https://openvpn.net/index.php/access-server/pricing.html)
 
