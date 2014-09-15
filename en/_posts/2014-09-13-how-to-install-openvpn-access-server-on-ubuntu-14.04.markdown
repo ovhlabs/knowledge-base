@@ -67,6 +67,18 @@ Step 5: Connect to OpenVPN
 
 Users have the option to either Connect to the VPN or Login to the Connect Client. When connecting the user will be connected to the VPN directly through their web browser. When the user decides to login to the Connect Client they can downoad their user configuration files (client.ovpn) and use them to connect to the VPN with other OpenVPN Clients.
 
+FAQ
+---
+
+ 1. Pricing
+
+	- All OpenVPN Access Server downloads come with 2 free client connections for testing purposes.
+For more information about pricing visit: [Pricing](https://openvpn.net/index.php/access-server/pricing.html)
+
+ 2. OpenVPN Community Edition vs OpenVPN Access Server
+![OpenVPN Comparison](http://i.imgur.com/THQaYNm.png)
+
+ 3. To Install SSL Certificates please see: [CA](https://openvpn.net/index.php/access-server/docs/admin-guides/175-how-to-replace-the-access-server-private-key-and-certificate.html)
 
 ----------
 
