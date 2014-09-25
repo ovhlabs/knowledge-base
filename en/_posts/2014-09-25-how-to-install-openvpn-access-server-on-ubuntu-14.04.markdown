@@ -39,14 +39,14 @@ Note: Make sure to open the correct ports in the instance ***Security Group*** v
 
  - Enter username and password (See Screenshot Below):
 
-![Login Page](http://i.imgur.com/6Jbt5ce.jpg)
+![Login Page](/kb/images/2014-09-25-how-to-install-openvpn-access-server-on-ubuntu-14.04/openvpn1.jpg)
 
 Step 4: Configuring OpenVPN-AS Settings
 -------------------------------------------
 
 If you want the OpenVPN Access Server to be reachable from the internet you will need to set the Hostname or IP address to a hostname or IP that is facing the public internet. Please refer to the screenshot below:
 
-![Server Network Settings](http://i.imgur.com/GO30szy.jpg)
+![Server Network Settings](/kb/images/2014-09-25-how-to-install-openvpn-access-server-on-ubuntu-14.04/openvpn2.jpg)
 
 **VPN Settings:**
 The VPN Settings page allows you to configure options like the Dynamic IP Address Network which is OpenVPN Access Server's internal DHCP system. By default the subnet is set to "5.5.0.0/20" this can be changed to a subnet that might work better for your current network.
@@ -57,7 +57,7 @@ There is also an option that allows client internet traffic the ability to be fo
 **User Permissions:**
 The User Permissions page allows settings per client to be changed. The auto-login profile can be enabled if desired. When you click "show" next to the username you will see more options that can be configured, this is the area where you would define settings for a gateway client: 
 
-![User Permissions](http://i.imgur.com/fL4Tnc5.jpg)
+![User Permissions](/kb/images/2014-09-25-how-to-install-openvpn-access-server-on-ubuntu-14.04/openvpn3.jpg)
 
 Step 5: Connect to OpenVPN
 ---------------------------------
@@ -75,7 +75,7 @@ FAQ
 For more information about pricing visit: [Pricing](https://openvpn.net/index.php/access-server/pricing.html)
 
  2. OpenVPN Community Edition vs OpenVPN Access Server
-![OpenVPN Comparison](http://i.imgur.com/THQaYNm.png)
+![OpenVPN Comparison](/kb/images/2014-09-25-how-to-install-openvpn-access-server-on-ubuntu-14.04/openvpn4.png)
 
  3. To Install SSL Certificates please see: [CA](https://openvpn.net/index.php/access-server/docs/admin-guides/175-how-to-replace-the-access-server-private-key-and-certificate.html)
 
