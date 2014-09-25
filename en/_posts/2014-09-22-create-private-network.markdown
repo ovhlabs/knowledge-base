@@ -15,6 +15,7 @@ This schema presents the structure of the network:
 
 ![Network schema](/kb/images/2014-09-09-create-local-network/schema.png)
 
+
 In this example we will use 192.168.0.0/24 as the network, and 192.168.0.2 as the gateway.
 
 
@@ -40,6 +41,7 @@ instance](https://community.runabove.com/kb/en/instances/how-to-create-a-compute
 <h2 id="local_net">2. Create local network</h2>
 
 To create a local network you have two options:
+
 * Using the expert mode in Horizon (OpenStack dashboard)
 * Using the command line tools and the API
 
@@ -58,6 +60,7 @@ button, and specify your __network name__, enter it and click next.
 <h3 id="sub">1.2 Subnet</h3>
 Next you need to specify the subnet for your network. To do that, you need to
 specify a few parameters:
+
 -   __Subnet Name__, an optional name for your subnet
 -   __Network Address__, contains the size of your network and must be
     specified in CIDR format (e.g 192.168.0.0/24).
