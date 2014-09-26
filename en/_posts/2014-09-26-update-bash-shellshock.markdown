@@ -39,3 +39,17 @@ On Fedora and CentOS you can update your system with `yum`:
 
     sudo yum update
 
+Other systems
+-------------
+
+If you feel like compiling the latest version of `bash` from sources you can
+fetch the tarball and run the build with:
+
+    wget http://ftp.gnu.org/gnu/bash/bash-4.3.tar.gz
+    tar -xf bash-4.3.tar.gz
+    cd bash-4.3
+    make
+
+You can then install it:
+
+    make install
