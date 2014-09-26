@@ -4,22 +4,20 @@ title: "How To Install OpenVPN Access Server on Ubuntu 14.04"
 categories: Instances
 author: neoark
 ---
-----------
-Introduction
-------------
-
-OpenVPN is a Virtual Private Networking (VPN) solution provided in the Ubuntu Repositories. It is flexible, reliable and secure. It belongs to the family of SSL/TLS VPN stacks (different from IPSec VPNs).
+OpenVPN is a Virtual Private Networking (VPN) solution provided in the Ubuntu 
+Repositories. It is flexible, reliable and secure. It belongs to the family of 
+SSL/TLS VPN stacks (different from IPSec VPNs).
 
 OpenVPN Access Server as described on Official website – is a full featured SSL VPN software solution that integrates OpenVPN server capabilities, enterprise management capabilities, simplified OpenVPN Connect UI, and OpenVPN Client software packages that accommodate Windows, MAC, and Linux OS environments.  OpenVPN Access Server supports  a wide range of configurations, including secure and granular remote access to internal network and/ or private cloud network resources and applications with fine-grained access control.
 
 Step 1: Download and Install Latest Version
 -------------------------------------------
 
-**32bit OS**
+  **32bit OS**
 
     $ wget http://swupdate.openvpn.org/as/openvpn-as-2.0.10-Ubuntu14.i386.deb
     $ sudo dpkg -i openvpn-as-2.0.10-Ubuntu14.i386.deb
-   
+
   **64bit OS**
 
     $ wget http://swupdate.openvpn.org/as/openvpn-as-2.0.10-Ubuntu14.amd_64.deb
