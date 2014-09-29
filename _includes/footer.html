@@ -101,20 +101,24 @@
         </div>
         <br><br>
         <script language="javascript" type="text/javascript" src="https://webanalytics2.ovh.net/piwik.js"></script>
-        <script language="javascript" type="text/javascript">
+
+        <script type="text/javascript">
+        <!-- Piwik -->
             var _paq = _paq || [];
+            _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+            _paq.push(["setCookieDomain", "*.runabove.com"]);
+            _paq.push(["trackPageView"]);
+            _paq.push(["enableLinkTracking"]);
+
             (function() {
-                 var u=(("https:" == document.location.protocol) ? "https" : "http") + "://webanalytics2.ovh.net/";
-                 _paq.push(["setTrackerUrl", u+"piwik.php"]);
-                 _paq.push(["setSiteId", "30"]);
-                 _paq.push(["setCookieDomain", "*.runabove.com/"]);
-                 _paq.push(["trackPageView"]);
-
-                 _paq.push(["enableLinkTracking"]);
-
-                 var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
-                 g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
-             })();
+                var u=(("https:" == document.location.protocol) ? "https" : "http") + "://webanalytics2.ovh.net/";
+                _paq.push(["setTrackerUrl", u+"piwik.php"]);
+                _paq.push(["setSiteId", "30"]);
+                var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+                g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+            })();
+        </script>
+        <!-- End Piwik Code -->
 
         </script>
         <noscript><p><img src="https://webanalytics2.ovh.net/piwik.php?idsite=30&amp;rec=1" style="border:0" alt=""></p></noscript>
