@@ -4,8 +4,8 @@ email: developers@runabove.com
 description: "Public knowledge base for RunAbove users."
 baseurl: "/kb"
 url: "https://community.runabove.com"
-twitter_username: runabovecom
-github_username:  runabove
+twitter_username: runabove
+github_username: runabove
 
 # Build settings
 markdown: redcarpet
@@ -13,7 +13,7 @@ highlighter: pygments
 permalink: none
 
 # Pagination
-paginate: 5
+paginate: 7
 paginate_path: "/page:num"
 
 # Categories plugin settings
