@@ -55,3 +55,12 @@ If you have configured everything correctly, following command should generate a
 
     $ echo "Test mail from postfix" | mail -s "Test Postfix" you@example.com
 
+Other Notes:
+------------
+This will work with any mail server that provides SMTP relaying. 
+
+Troubleshooting:
+---------------
+Monitor postfix mail log in a separate session with the following command:
+
+    $ tail -f /var/log/maillog
