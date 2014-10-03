@@ -1,3 +1,9 @@
+---
+layout: post
+title: "Introduction to Swap and how to add Swap on Ubuntu 14.04"
+categories: Instances
+author: neoark
+---
 **Introduction**
 ------------
 Linux divides its physical RAM (random access memory) into chucks of memory called pages. Swapping is the process whereby a page of memory is copied to the preconfigured space on the hard disk, called swap space, to free up that page of physical memory. The combined sizes of the physical memory and the swap space is the amount of virtual memory available.
