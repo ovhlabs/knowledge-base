@@ -2,7 +2,9 @@
 layout: root
 ---
   <p class="arian">
-    <a href="https://community.runabove.com">Community</a> > <a href="{{ site.baseurl }}/">{{ site.t.home[page.lang].latest_articles }}</a>
+    <a href="https://community.runabove.com">Community</a> &gt;
+    <a href="{{ site.baseurl }}">Knowledge base</a> &gt;
+    <a href="{{ site.baseurl }}/en/{{ page.categories[1] }}">{{ page.categories[1] }}</a> &gt;
   </p>
 
     <h2>{{ page.title }}</h2>
@@ -35,15 +37,4 @@ layout: root
         Write awesome tutorials,<br><strong>Be a Hero</strong> for the community</p>
         <a class="bannerLink" href="https://github.com/runabove/knowledge-base#how-to-write-a-how-to-guide-and-get-100-in-runabove-credit">Learn more</a>
     </div>
-
-    <!--<script data-isso="/isso/"
-            data-isso-lang="{{ page.lang }}"
-            data-isso-avatar="false"
-            data-isso-auth="true"
-            data-isso-auth-sign-in-url="/isso/auth/signin/github"
-            data-isso-auth-sign-out-url="/isso/auth/signout"
-            src="/js/embed.min.js">
-    </script>
-
-    <section id="isso-thread"></section>-->
 

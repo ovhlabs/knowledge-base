@@ -1,7 +1,7 @@
 This repository contains tutorials of [RunAbove Knowledge
-base](https://community.runabove.com/knowledge-base).
+base](https://community.runabove.com/kb).
 
-# How to write a how-to guide and get $100 in RunAbove credit!
+# How to write a how-to guide and get $100 in RunAbove credit?
 
 Help the community benefit from all of RunAbove’s power, and earn RunAbove
 credit to take your own project even further! The process is quick, easy, and

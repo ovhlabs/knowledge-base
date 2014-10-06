@@ -2,11 +2,40 @@
 layout: default
 ---
 
-<h1 class="category">{{ page.title }}</h1>
-<ul class="posts">
-{% for post in site.categories[page.category] %}
-    <div>{{ post.date | date_to_html_string }}</div>
-    <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-    <div class="categories">{{ site.t.category[page.lang].filed_under }} {{ post.categories | category_links: page.lang }}</div>
-{% endfor %}
-</ul>
+<div class="home">
+
+  <p class="arian">
+    <a href="https://community.runabove.com">Community</a> &gt;
+    <a href="{{ site.baseurl }}">Knowledge base</a> &gt;
+  </p>
+
+  <h2>{{ page.title }}</h2>
+
+  <div class="tutorials" id="tutorials">
+    <div>
+			{% for post in site.categories[page.category] %}
+        <div class="tutorial">
+          <h4><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h4>
+          <p class="author">
+            {% if post.author %}
+              by <a href="https://github.com/{{ post.author }}">
+                {{ post.author }}
+              </a>
+            {% endif %}
+            <span class="date">
+              {{ post.date | date: "%b %-d, %Y" }}
+            </span>
+          </p>
+          <p class="content">
+            {{ post.excerpt | strip_html }}
+          </p>
+          <a href="{{ post.url | prepend: site.baseurl }}" class="link">
+            read the tutorial
+          </a>
+          <br>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>

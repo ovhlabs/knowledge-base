@@ -1,0 +1,11 @@
+---
+layout: nil
+---
+[
+  {% for post in site.categories[page.category] limit: 10 %}
+    {
+        "title": "{{ post.title }}",
+        "url": "{{site.url}}{{ site.baseurl }}{{ post.url }}"
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]

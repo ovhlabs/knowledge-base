@@ -71,7 +71,9 @@ module Jekyll
 
       self.process(name)
 
-      if File.exist?(template_path)
+			if category == lang
+				@perform_render = false
+      elsif File.exist?(template_path)
         @perform_render = true
         template_dir    = File.dirname(template_path)
         template        = File.basename(template_path)
@@ -123,10 +125,29 @@ module Jekyll
     #  +category+     is the category currently being processed.
     def initialize(site, base, category_dir, category, lang)
       template_path = File.join(base, '_includes', 'custom', 'category_feed.xml')
-      super(template_path, 'atom.xml', site, base, category_dir, category, lang)
+      super(template_path, 'feed.xml', site, base, category_dir, category, lang)
 
       # Set the correct feed URL.
-      self.data['feed_url'] = "#{category_dir}/#{name}" if render?
+      self.data['feed_url'] = "#{name}" if render?
+    end
+
+  end
+  
+  # The CategoryJson class creates an JSON for the specified category.
+  class CategoryJson < CategoryPage
+
+    # Initializes a new CategoryJson.
+    #
+    #  +site+         is the Jekyll Site instance.
+    #  +base+         is the String path to the <source>.
+    #  +category_dir+ is the String path between <source> and the category folder.
+    #  +category+     is the category currently being processed.
+    def initialize(site, base, category_dir, category, lang)
+      template_path = File.join(base, '_includes', 'custom', 'category_json.json')
+      super(template_path, 'latest.json', site, base, category_dir, category, lang)
+
+      # Set the correct feed URL.
+      self.data['feed_url'] = "#{name}" if render?
     end
 
   end
@@ -140,7 +161,7 @@ module Jekyll
     #  +category+ is the category currently being processed.
     def write_category_index(category)
 			for lang in Jekyll.configuration({})['languages']
-				target_dir = GenerateCategories.category_dir(lang + "/" + self.config['category_dir'], category)
+				target_dir = GenerateCategories.category_dir(lang, category)
 				index      = CategoryIndex.new(self, self.source, target_dir, category, lang)
 				if index.render?
 					index.render(self.layouts, site_payload)
@@ -156,6 +177,15 @@ module Jekyll
 					feed.write(self.dest)
 					# Record the fact that this pages has been added, otherwise Site::cleanup will remove it.
 					self.pages << feed
+				end
+
+				# Create a JSON-feed for each index.
+				json = CategoryJson.new(self, self.source, target_dir, category, lang)
+				if json.render?
+					json.render(self.layouts, site_payload)
+					json.write(self.dest)
+					# Record the fact that this pages has been added, otherwise Site::cleanup will remove it.
+					self.pages << json
 				end
 			end
     end
@@ -212,7 +242,7 @@ module Jekyll
       categories = categories.sort!.map do |category|
         category_dir = GenerateCategories.category_dir(base_dir, category)
         # Make sure the category directory begins with a slash.
-        category_dir = "/#{lang}/#{category_dir}" unless category_dir =~ /^\//
+        category_dir = "/#{lang}" unless category_dir =~ /^\//
         "<a class='category' href='#{category_dir}/'>#{category}</a>"
       end
 
