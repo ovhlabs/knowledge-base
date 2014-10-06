@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How To Relay Postfix mails via smtp.gmail.com on Ubuntu 14.04"
+title: "How To Relay Postfix mails via smtp.gmail.com on Ubuntu 14.04.1"
 categories: Instances
 author: neoark
 ---
