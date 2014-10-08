@@ -25,12 +25,12 @@ If you want to develop an application with RunAbove API, you have to use a token
 curl    -X POST \
         -H 'X-Ra-Application: z5czlUfqJL6HsYKj' \
         -H 'Content-Type: application/json' \
-        -d '{ \
-            "accessRules": \
-                [ \
-                    { "method":"GET","path":"/me"} \
-                ], \
-                "redirection":"http://runabove.com" \
+        -d '{
+            "accessRules":
+                [
+                    { "method":"GET","path":"/me"}
+                ],
+                "redirection":"http://runabove.com"
             }' \
         "https://api.runabove.com/1.0/auth/credential"
 ```
