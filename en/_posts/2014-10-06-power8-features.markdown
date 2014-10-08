@@ -48,6 +48,4 @@ You can disable cores on the go:
 Do not forget to buy a second monitor dedicated to htop, otherwise you will not 
 see any process:
 
-![](https://storage.bhs-1.runabove.io/v1/AUTH_3eca649cc7f44d91b67131374db4afb3/public/coreos_screenshot1.jpg)
-
 ![Power8 htop](/kb/images/2014-10-06-power8/htop.png)
