@@ -45,7 +45,7 @@ gem 'sinatra', '1.4.5'
 2. Dockerize it
 ===============
 
-Ruby is a Docker first class citizen. It has its [own dedicated official image](https://registry.hub.docker.com/u/library/ruby/) supporting Ruby 4.9, 2.0 and 2.1. For this example, we'll use Ruby 2.1.
+Ruby is a Docker first class citizen. It has its [own dedicated official image](https://registry.hub.docker.com/u/library/ruby/) supporting Ruby 1.9, 2.0 and 2.1. For this example, we'll use Ruby 2.1.
 
 Here is our ``Dockerfile``:
 
