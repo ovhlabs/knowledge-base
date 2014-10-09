@@ -61,6 +61,13 @@ This will work with any mail server that provides SMTP relaying.
 
 Troubleshooting:
 ---------------
-Monitor postfix mail log in a separate session with the following command:
+
+ - Monitor postfix mail log in a separate session with the following command:
 
     $ tail -f /var/log/maillog
+
+ - If you receive following error in your log file:
+
+		postfix/smtp[3191]: AAC325FA46: SASL authentication failed; server smtp.gmail.com[64.233.166.108] said: 534-5.7.14 <https://accounts.google.com/ContinueSignIn?someverylongurl> Please log in via your web browser and then try again.?534-5.7.14 Learn more at?534 5.7.14 https://support.google.com/mail/bin/answer.py?answer=78754 c214wjb.23 - gsmtp
+
+Follow steps on [Allowing less secure apps to access your account](https://support.google.com/accounts/answer/6010255) and [Sign in using App Passwords](https://support.google.com/accounts/answer/185833?hl=en).
