@@ -20,7 +20,7 @@ Advantages
 Browser Support
 ===============
 
-![SPDY Networking Protocol Support](Test)
+![SPDY Networking Protocol Support](/kb/images/2014-10-14-mod_spdy-with-ubuntu-14.04-x64-and-apache 2.4.7/image1.png)
 
 Installation
 ============
