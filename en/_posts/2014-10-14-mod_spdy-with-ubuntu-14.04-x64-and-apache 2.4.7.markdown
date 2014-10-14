@@ -4,7 +4,6 @@ title: "Mod_SPDY with Ubuntu 14.04 x64 and Apache 2.4.7"
 categories: Instances
 author: neoark
 ---
-
 Introduction
 ============
 
@@ -22,11 +21,9 @@ Browser Supporting SPDY
 
 ![SPDY Networking Protocol Support](/kb/images/2014-10-14-mod_spdy-with-ubuntu-14.04-x64-and-apache 2.4.7/image1.png)
 
-Installation
-============
+Compile and Install mod_spdy
+============================
 
-Step 1: Compile and Install mod_spdy
-------------------------
     $ cd /tmp
     $ sudo apt-get -y install git g++ libapr1-dev libaprutil1-dev curl patch binutils make devscripts
     $ git clone -b apache-2.4.7 https://github.com/eousphoros/mod-spdy.git
@@ -48,7 +45,48 @@ Step 1: Compile and Install mod_spdy
     $ sudo a2enmod spdy
     $ service apache2 restart
 
-Testing mod_spdy:
------------------
+Testing mod_spdy
+================
+
 Visit **[http://spdycheck.org/](http://spdycheck.org/)** and enter the hostname for the website you want to check.
 
+Using mod_spdy with PHP
+=======================
+
+ 1. Enable the **Multiverse** repository in **/etc/apt/sources.list** for libapache2-mod-fastcgi. Then follow:
+
+    $ apt-get install apache2-mpm-worker libapache2-mod-fastcgi php5-fpm php-apc
+    $ a2dismod php5 mpm-prefork
+    $ a2enmod actions alias fastcgi rewrite mpm-worker
+
+Modify **apache2.conf** file:
+
+    nano /etc/apache2/apache2.conf
+
+Add the following lines to the very bottom of the file.
+
+    <IfModule mod_fastcgi.c>
+    FastCgiExternalServer /var/www/php5.external -socket /var/run/php5-fpm.sock
+    AddHandler php5-fcgi .php
+    Action php5-fcgi /usr/lib/cgi-bin/php5.external
+    Alias /usr/lib/cgi-bin/ /var/www/
+    </IfModule>
+
+   Restart **Apache** and **PHP-FPM** services:
+
+    service php5-fpm restart
+    service apache2 restart
+
+Testing you Install
+===================
+
+ 1. Create the PHP file:
+
+	    $ echo "<?php phpinfo(); ?>" | sudo tee /var/www/test.php > /dev/null && sudo chgrp www-data /var/www/test.php
+
+ 2. Test it in your browser! Visit **http://localhost/test.php** and check the output for ***Server API	FPM/FastCGI***
+Additional Notes
+==========
+For apache 2.2 follow this [**guide**](https://developers.google.com/speed/spdy/mod_spdy/).
+
+For additional apache performance tuning install  **[Google PageSpeed Module](https://developers.google.com/speed/pagespeed/module/download)**.
