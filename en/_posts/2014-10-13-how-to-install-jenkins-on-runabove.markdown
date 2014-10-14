@@ -51,7 +51,7 @@ Once any tools that will be necessary to build your project have been installed,
 The next page is the Job configuration page, which is where you will configure how your Job is built. Under "Source Code Management", select Git. When the repository URL box appears, enter the HTTPS clone URL of your Github repository. Scroll down to "Build Triggers" and select "Poll SCM". In the "Schedule" box that appears, you can define how often you'd like to poll Github for changes in [cron format](https://en.wikipedia.org/wiki/Cron#Format). Here's a schedule that will cause Jenkins to poll for changes every five minutes:
 `H/5 * * * *`
 
-Now that SCM polling is configured, it's time to tell Jenkins how to build your project. In the case of my [hello-jenkins] repository, I need it to install the dependencies with NPM, start the project, run the tests, and stop it again. To accomplish this, I go to "Build", click on "Add build step", and select "Execute Shell". In the box that appears, I enter the shell commands to build my repository:
+Now that SCM polling is configured, it's time to tell Jenkins how to build your project. In the case of my [hello-jenkins](https://github.com/DrOfAwesomeness/hello-jenkins) repository, I need it to install the dependencies with NPM, start the project, run the tests, and stop it again. To accomplish this, I go to "Build", click on "Add build step", and select "Execute Shell". In the box that appears, I enter the shell commands to build my repository:
 
 ```bash
 npm install
