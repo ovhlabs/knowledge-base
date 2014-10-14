@@ -30,6 +30,7 @@ package main
 import (
     "net/http"
     "fmt"
+    "log"
 )
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
@@ -39,7 +40,7 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
     http.HandleFunc("/hello/", helloHandler)
-    http.ListenAndServe("0.0.0.0:80", nil)
+    log.Fatal(http.ListenAndServe("0.0.0.0:80", nil))
 }
 ```
 
@@ -53,7 +54,7 @@ Go is a Docker first class citizen. It has its [own dedicated official image](ht
 Here is our ``Dockerfile``:
 
 ```
-FROM go:1.3-onbuild
+FROM golang:1.3-onbuild
 EXPOSE 80
 CMD [ "/go/bin/app" ]
 ```
