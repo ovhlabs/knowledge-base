@@ -87,6 +87,6 @@ Testing you Install
  2. Test it in your browser! Visit **http://localhost/test.php** and check the output for ***Server API	FPM/FastCGI***
 Additional Notes
 ==========
-For apache 2.2 follow this [**guide**](https://developers.google.com/speed/spdy/mod_spdy/).
 
-For additional apache performance tuning install **[Google PageSpeed Module](https://developers.google.com/speed/pagespeed/module/download)**.
+ - For apache 2.2 follow this [**guide**](https://developers.google.com/speed/spdy/mod_spdy/).
+ - For additional apache performance tuning install  **[Google PageSpeed Module](https://developers.google.com/speed/pagespeed/module/download)**.
