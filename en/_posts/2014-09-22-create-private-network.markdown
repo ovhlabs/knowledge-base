@@ -36,7 +36,7 @@ In this example we will use 192.168.0.0/24 as the network, and 192.168.0.2 as th
 To have access to the Internet from the local network you need an instance that
 will act as a gateway for this network. This router will be an instance with
 public and private IP addresses, connected to both networks. [How to launch an
-instance](https://community.runabove.com/kb/en/instances/how-to-create-a-compute-instance-in-few-seconds.html).
+instance](/kb/en/instances/how-to-create-a-compute-instance-in-few-seconds.html).
 
 <h2 id="local_net">2. Create local network</h2>
 
@@ -124,14 +124,15 @@ machine using ssh. First you must install some packages:
     sudo pip install python-novaclient
     sudo pip install python-neutronclient
 
-Before you add an interface, you need to load kernel modules that allow add
-network interfaces without switching off the machine:
+Before you add an interface, on some systems, you need to load kernel modules
+that allow to add network interfaces without switching off the machine. This
+step is optional as it depends on the modules built in your kernel.
 
     sudo modprobe acpiphp
     sudo modprobe pci_hotplug
 
 To use nova and neutron client you need to [load OpenStack RC
-File](/kb/en/instances/use-openstack-services.html).
+File](/kb/en/instances/use-openstack-command-line-tools.html).
 
 Now you need to attach a new interface to your router. To do that use neutron
 and nova client. First list our network list:
