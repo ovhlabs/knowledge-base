@@ -17,7 +17,7 @@ Advantages
  - Compared to HTTP, SPDY requests consume less memory but a bit more CPU. This may be good, bad, or irrelevant depending on which resource (if either) is currently limiting your server.
  - Compared to HTTP/S, SPDY requires fewer Apache worker threads, which increases server capacity. As a result, the server may attract more SPDY traffic.
 
-Browser Support
+Browser Supporting SPDY
 ===============
 
 ![SPDY Networking Protocol Support](/kb/images/2014-10-14-mod_spdy-with-ubuntu-14.04-x64-and-apache 2.4.7/image1.png)
