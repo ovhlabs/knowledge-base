@@ -2,12 +2,27 @@
 layout: root
 ---
   <p class="arian">
-    <a href="https://community.runabove.com">Community</a> &gt;
-    <a href="{{ site.baseurl }}">Knowledge base</a> &gt;
-    <a href="{{ site.baseurl }}/en/{{ page.categories[1] }}">{{ page.categories[1] }}</a> &gt;
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a  itemprop="url"
+          href="https://community.runabove.com">
+        <span itemprop="title">Community</span>
+      </a>
+    </span> &gt;
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a  href="{{ site.baseurl }}"
+          itemprop="url">
+        <span itemprop="title">Knowledge base</span>
+      </a>
+    </span>&gt;
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a  href="{{ site.baseurl }}/en/{{ page.categories[1] }}"
+          itemprop="url">
+        <span itemprop="title">{{ page.categories[1] }}</span>
+      </a>
+    </span> &gt;
   </p>
 
-    <h2>{{ page.title }}</h2>
+    <h1>{{ page.title }}</h1>
     <p class="meta">{{ page.date | date: "%b %-d, %Y" }}
     {% if page.meta %} • {{ page.meta }}{% endif %}
     {% if page.author %} •

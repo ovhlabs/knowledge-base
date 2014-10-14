@@ -5,11 +5,21 @@ layout: default
 <div class="home">
 
   <p class="arian">
-    <a href="https://community.runabove.com">Community</a> &gt;
-    <a href="{{ site.baseurl }}">Knowledge base</a> &gt;
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a  itemprop="url"
+          href="https://community.runabove.com">
+        <span itemprop="title">Community</span>
+      </a>
+    </span> &gt;
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a  href="{{ site.baseurl }}"
+          itemprop="url">
+        <span itemprop="title">Knowledge base</span>
+      </a>
+    </span>&gt;
   </p>
 
-  <h2>{{ site.t.home[page.lang].latest_articles }}</h2>
+  <h1>{{ site.t.home[page.lang].latest_articles }}</h1>
 
   <div class="tutorials" id="tutorials">
     <div>

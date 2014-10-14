@@ -31,12 +31,16 @@
     background:#FFF;
 }
 .community h1 {
-    text-indent:-9999px;
+    margin:0 0 10px 0;
+    padding:0;
+    font-size:42px;
+    font-weight:300;
+    line-height:46px;
 }
 .community h2 {
     margin:0 0 10px 0;
     padding:0;
-    font-size:42px;
+    font-size:34px;
     font-weight:300;
     line-height:46px;
 }
