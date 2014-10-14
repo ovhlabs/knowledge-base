@@ -55,9 +55,10 @@ Using mod_spdy with PHP
 
  1. Enable the **Multiverse** repository in **/etc/apt/sources.list** for libapache2-mod-fastcgi. Then follow:
 
-    $ apt-get install apache2-mpm-worker libapache2-mod-fastcgi php5-fpm php-apc
-    $ a2dismod php5 mpm-prefork
-    $ a2enmod actions alias fastcgi rewrite mpm-worker
+	    $ apt-get install apache2-mpm-worker libapache2-mod-fastcgi php5-fpm php-apc
+	    $ a2dismod php5 mpm-prefork
+	    $ a2enmod actions alias fastcgi rewrite mpm-worker
+
 
 Modify **apache2.conf** file:
 
