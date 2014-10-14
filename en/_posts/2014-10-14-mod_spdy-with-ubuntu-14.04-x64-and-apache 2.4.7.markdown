@@ -78,8 +78,8 @@ Add the following lines to the very bottom of the file.
     service php5-fpm restart
     service apache2 restart
 
-Testing you Install
-===================
+Testing PHP
+===========
 
  1. Create the PHP file:
 
