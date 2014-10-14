@@ -1,4 +1,9 @@
-Mod_SPDY with Ubuntu 14.04 x64 and Apache 2.4.7
+---
+layout: post
+title: "Mod_SPDY with Ubuntu 14.04 x64 and Apache 2.4.7"
+categories: Instances
+author: neoark
+---
 
 Introduction
 ============
