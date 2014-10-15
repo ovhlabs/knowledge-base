@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How to Mount Runabove Object Storage in Linux using cloud fuse"
+title:  "How to Mount Runabove Object Storage in Linux using cloudfuse"
 categories: Instances
 author: neoark
 ---
