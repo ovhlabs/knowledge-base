@@ -24,7 +24,7 @@ Browser Supporting SPDY
 Compile and Install mod_spdy
 ============================
 
-    $ cd /tmp
+    $ cd ~
     $ sudo apt-get -y install git g++ libapr1-dev libaprutil1-dev curl patch binutils make devscripts
     $ git clone -b apache-2.4.7 https://github.com/eousphoros/mod-spdy.git
     $ cd mod-spdy/src
@@ -34,7 +34,7 @@ Compile and Install mod_spdy
     $ service apache2 stop
     $ cd /usr/lib/apache2/modules
     $ mv mod_ssl.so mod_ssl.so.bak
-    $ cd /tmp/mod-spdy/src
+    $ cd ~/mod-spdy/src
     $ sudo cp mod_ssl.so /usr/lib/apache2/modules
     $ service apache2 start
     $ sudo a2enmod ssl
