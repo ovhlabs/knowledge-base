@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How to install Jenkins on RunAbove?
-catagories: instances
+categories: instances
 tags: guide
 author: DrOfAwesomeness
 lang: en
