@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to install Gitlab CE on RunAbove"
+title: "How to install Gitlab on Ubuntu 14.04"
 categories: Instances
 author: DrOfAwesomeness
 lang: en
