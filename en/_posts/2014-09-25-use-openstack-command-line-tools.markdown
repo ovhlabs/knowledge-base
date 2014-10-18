@@ -63,15 +63,15 @@ Just enter the command bellow with the name of the client, for example:
 ### Using the clients
 
 In RunAbove there are two region, `BHS-1` and `SBG-1`. If you want get data
-from only one of them, you need to add the parameter `--os-region <region>` for
-example:
+from only one of them, you need to add the parameter `--os-region-name
+<region>` for example:
 
-    nova --os-region BHS-1 list
-    glance --os-region SBG-1 image-list
+    nova --os-region-name BHS-1 list
+    glance --os-region-name SBG-1 image-list
 
 It is also possible to define the region in an environment variable, just do:
 
-    export OS_REGION=BHS-1
+    export OS_REGION_NAME=BHS-1
 
 OpenStack clients have a useful help accessible with `help`, for example for
 nova:

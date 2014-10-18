@@ -102,8 +102,8 @@ local network in Horizon.
 
 To start using command line tools and API to create local networks, you need to
 [download the openrc file and install neutron
-client](/kb/en/instances/use-openstack-services.html). Only two commands are
-needed to create a local network:
+client](/kb/en/instances/use-openstack-command-line-tools.html). Only two
+commands are needed to create a local network:
 
 First you need to create a network. To do that use __neutron net-create__:
 
