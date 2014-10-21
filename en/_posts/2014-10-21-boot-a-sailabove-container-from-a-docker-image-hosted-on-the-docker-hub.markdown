@@ -33,7 +33,7 @@ Here is an example using a [memcached image created by Fedora](https://registry.
 Let's add a bookmark named "memcached" to the image we want to boot:
 
 ```bash
-sail repositories add external <application>/memcached --source registry.hub.docker.com/fedora/memcached
+sail repositories add external <application>/memcached --source https://registry.hub.docker.com/u/fedora/memcached/
 ```
 
 The bookmark is now available next to your private hosted repositories:
