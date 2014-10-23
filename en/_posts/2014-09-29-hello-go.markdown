@@ -59,7 +59,7 @@ EXPOSE 80
 CMD [ "/go/bin/app" ]
 ```
 
-It first instructs Docker to get Go ``1.3`` base image with automatic build support (``-onbuild``). To use Go 1.2 base image instead, you may choose to use ``FROM python:1.2-onbuild`` for instance.
+It first instructs Docker to get Go ``1.3`` base image with automatic build support (``-onbuild``). To use Go 1.2 base image instead, you may choose to use ``FROM go:1.2-onbuild`` for instance.
 
 We then declare the ``PORT`` our application will listen on. In our case, standard HTTP port.
 
