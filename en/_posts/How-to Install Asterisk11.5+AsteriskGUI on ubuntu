@@ -1,89 +1,154 @@
-I will show you how to install Asterisk server + AsteriskGUI on Ubuntu 12.04 with very easy steps
-1- First step
-After login as Admin I created a root password with this command(or you can add sudo before all commands):
-admin@asterisk:~$ sudo passwd root
-Now login as root
-admin@asterisk:~$ su
-Enter password you created for root then
-root@asterisk:/home/admin# cd
-root@asterisk:~# apt-get update && apt-get upgrade
-root@asterisk:~# apt-get install build-essential wget libssl-dev libncurses5-dev libnewt-dev libxml2-dev linux-headers-$(uname -r) libsqlite3-dev uuid-dev
+<p><strong>I will show you how to install Asterisk server + AsteriskGUI on Ubuntu 12.04 with very easy steps</strong></p>
 
-2- install Asterisk
-root@asterisk:~# cd /usr/src/
-root@asterisk:/usr/src# wget http://downloads.asterisk.org/pub/telephony/libpri/libpri-1.4.14.tar.gz
-root@asterisk:/usr/src# wget http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-11.5.0-rc1.tar.gz
-root@asterisk:/usr/src# wget http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-sounds-1.2.1.tar.gz
-root@asterisk:/usr/src# wget http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-addons-1.6.2.4.tar.gz
+<hr />
 
-root@asterisk:/usr/src# tar -xzf libpri-1.4.14.tar.gz
-root@asterisk:/usr/src# tar -xzf asterisk-11.5.0-rc1.tar.gz
-root@asterisk:/usr/src# tar -xzf asterisk-sounds-1.2.1.tar.gz
-root@asterisk:/usr/src# tar -xzf asterisk-addons-1.6.2.4.tar.gz
+<p><strong>1- First step</strong></p>
 
-root@asterisk:/usr/src# cd libpri-1.4.14
-root@asterisk:/usr/src/libpri-1.4.14# make
-root@asterisk:/usr/src/libpri-1.4.14# make install
-root@asterisk:/usr/src/libpri-1.4.14# cd ..
+<p>After login as Admin I created a root password with this command(or you can add sudo before all commands):</p>
 
-root@asterisk:/usr/src# cd asterisk-11.5.0-rc1
-root@asterisk:/usr/src/asterisk-11.5.0-rc1# ./configure
-root@asterisk:/usr/src/asterisk-11.5.0-rc1# make menuconfig
-root@asterisk:/usr/src/asterisk-11.5.0-rc1# make
-root@asterisk:/usr/src/asterisk-11.5.0-rc1# make install
-root@asterisk:/usr/src/asterisk-11.5.0-rc1# make samples
-root@asterisk:/usr/src/asterisk-11.5.0-rc1# make config
-root@asterisk:/usr/src/asterisk-11.5.0-rc1# cd ..
+<p>admin@asterisk:~$ sudo passwd root</p>
 
-root@asterisk:/usr/src# cd asterisk-sounds-1.2.1
-root@asterisk:/usr/src/asterisk-sounds-1.2.1# make install
-root@asterisk:/usr/src/asterisk-sounds-1.2.1# cd ..
+<p>Now login as root</p>
 
-root@asterisk:/usr/src# cd asterisk-addons-1.6.2.4
-root@asterisk:/usr/src/asterisk-addons-1.6.2.4# ./configure
-root@asterisk:/usr/src/asterisk-addons-1.6.2.4# make
-root@asterisk:/usr/src/asterisk-addons-1.6.2.4# make install
-root@asterisk:/usr/src/asterisk-addons-1.6.2.4# cd ..
+<p>admin@asterisk:~$ su</p>
 
-root@asterisk:/usr/src# service asterisk start
+<p>Enter password you created for root then</p>
 
-3- Install AsteriskGUI
-root@asterisk:/usr/src# wget http://downloads.asterisk.org/pub/telephony/asterisk-gui/asterisk-gui-2.1.0-rc1.tar.gz
-root@asterisk:/usr/src# tar -xzf asterisk-gui-2.1.0-rc1.tar.gz
-root@asterisk:/usr/src# cd asterisk-gui-2.1.0-rc1
-root@asterisk:/usr/src/asterisk-gui-2.1.0-rc1# ./configure
-root@asterisk:/usr/src/asterisk-gui-2.1.0-rc1# make
-root@asterisk:/usr/src/asterisk-gui-2.1.0-rc1# make install
+<p>root@asterisk:/home/admin# cd</p>
 
-root@asterisk:/usr/src/asterisk-gui-2.1.0-rc1# nano /etc/asterisk/manager.conf
+<p>root@asterisk:~# apt-get update &amp;&amp; apt-get upgrade</p>
 
-change it to look like this (remove any ";" )
-[general]
-enabled = yes
-webenabled = yes
-port = 5038
-bindaddr = 0.0.0.0
-[admin]
-secret = (the password that you will use in login)
-read = system,call,log,verbose,command,agent,user,config
-write = system,call,log,verbose,command,agent,user,config
+<p>root@asterisk:~# apt-get install build-essential wget libssl-dev libncurses5-dev libnewt-dev libxml2-dev linux-headers-$(uname -r) libsqlite3-dev uuid-dev</p>
 
-root@asterisk:/usr/src/asterisk-gui-2.1.0-rc1# nano /etc/asterisk/http.conf
+<hr />
 
-change it to look like this (remove any ";" )
-[general]
-enabled=yes
-bindaddr=0.0.0.0
-enablestatic=yes
+<p><strong>2- install Asterisk</strong>  </p>
 
-root@asterisk:/usr/src/asterisk-gui-2.1.0-rc1# make checkconfig
-root@asterisk:/usr/src/asterisk-gui-2.1.0-rc1# /etc/init.d/asterisk restart
+<p>root@asterisk:~# cd /usr/src/</p>
 
-Now in Runabove control panel you'll need to switch into Expert Mode and edit your Security Group to allow ports TCP 8088, 5060 & 5038, UDP 5060 & 10000:10100
+<p>root@asterisk:/usr/src# wget http://downloads.asterisk.org/pub/telephony/libpri/libpri-1.4.14.tar.gz</p>
 
-Paste this in your browser (replace x.x.x.x with your instance IP):
-http://x.x.x.x:8088/static/config/cfgbasic.html
-user=admin & password= (secret that you choose in manager.conf)
+<p>root@asterisk:/usr/src# wget http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-11.5.0-rc1.tar.gz</p>
 
-Now all is done and you can configure your Asterisk server
-Have fun
+<p>root@asterisk:/usr/src# wget http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-sounds-1.2.1.tar.gz</p>
+
+<p>root@asterisk:/usr/src# wget http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-addons-1.6.2.4.tar.gz</p>
+
+<p>root@asterisk:/usr/src# tar -xzf libpri-1.4.14.tar.gz</p>
+
+<p>root@asterisk:/usr/src# tar -xzf asterisk-11.5.0-rc1.tar.gz</p>
+
+<p>root@asterisk:/usr/src# tar -xzf asterisk-sounds-1.2.1.tar.gz</p>
+
+<p>root@asterisk:/usr/src# tar -xzf asterisk-addons-1.6.2.4.tar.gz</p>
+
+<hr />
+
+<p>root@asterisk:/usr/src# cd libpri-1.4.14</p>
+
+<p>root@asterisk:/usr/src/libpri-1.4.14# make</p>
+
+<p>root@asterisk:/usr/src/libpri-1.4.14# make install</p>
+
+<p>root@asterisk:/usr/src/libpri-1.4.14# cd ..</p>
+
+<p>root@asterisk:/usr/src# cd asterisk-11.5.0-rc1</p>
+
+<p>root@asterisk:/usr/src/asterisk-11.5.0-rc1# ./configure</p>
+
+<p>root@asterisk:/usr/src/asterisk-11.5.0-rc1# make menuconfig</p>
+
+<p>root@asterisk:/usr/src/asterisk-11.5.0-rc1# make</p>
+
+<p>root@asterisk:/usr/src/asterisk-11.5.0-rc1# make install</p>
+
+<p>root@asterisk:/usr/src/asterisk-11.5.0-rc1# make samples</p>
+
+<p>root@asterisk:/usr/src/asterisk-11.5.0-rc1# make config</p>
+
+<p>root@asterisk:/usr/src/asterisk-11.5.0-rc1# cd ..</p>
+
+<p>root@asterisk:/usr/src# cd asterisk-sounds-1.2.1</p>
+
+<p>root@asterisk:/usr/src/asterisk-sounds-1.2.1# make install</p>
+
+<p>root@asterisk:/usr/src/asterisk-sounds-1.2.1# cd ..</p>
+
+<p>root@asterisk:/usr/src# cd asterisk-addons-1.6.2.4</p>
+
+<p>root@asterisk:/usr/src/asterisk-addons-1.6.2.4# ./configure</p>
+
+<p>root@asterisk:/usr/src/asterisk-addons-1.6.2.4# make</p>
+
+<p>root@asterisk:/usr/src/asterisk-addons-1.6.2.4# make install</p>
+
+<p>root@asterisk:/usr/src/asterisk-addons-1.6.2.4# cd ..</p>
+
+<p>root@asterisk:/usr/src# service asterisk start</p>
+
+<hr />
+
+<p><strong>3- Install AsteriskGUI</strong></p>
+
+<p>root@asterisk:/usr/src# wget http://downloads.asterisk.org/pub/telephony/asterisk-gui/asterisk-gui-2.1.0-rc1.tar.gz</p>
+
+<p>root@asterisk:/usr/src# tar -xzf asterisk-gui-2.1.0-rc1.tar.gz</p>
+
+<p>root@asterisk:/usr/src# cd asterisk-gui-2.1.0-rc1</p>
+
+<p>root@asterisk:/usr/src/asterisk-gui-2.1.0-rc1# ./configure</p>
+
+<p>root@asterisk:/usr/src/asterisk-gui-2.1.0-rc1# make</p>
+
+<p>root@asterisk:/usr/src/asterisk-gui-2.1.0-rc1# make install</p>
+
+<p>root@asterisk:/usr/src/asterisk-gui-2.1.0-rc1# nano /etc/asterisk/manager.conf</p>
+
+<p><em>change it to look like this (remove any ";" )</em></p>
+
+<p>[general]</p>
+
+<p>enabled = yes</p>
+
+<p>webenabled = yes</p>
+
+<p>port = 5038</p>
+
+<p>bindaddr = 0.0.0.0</p>
+
+<p>[admin]</p>
+
+<p>secret = (the password that you will use in login)</p>
+
+<p>read = system,call,log,verbose,command,agent,user,config</p>
+
+<p>write = system,call,log,verbose,command,agent,user,config</p>
+
+<p>root@asterisk:/usr/src/asterisk-gui-2.1.0-rc1# nano /etc/asterisk/http.conf</p>
+
+<p><em>change it to look like this (remove any ";" )</em></p>
+
+<p>[general]</p>
+
+<p>enabled=yes</p>
+
+<p>bindaddr=0.0.0.0</p>
+
+<p>enablestatic=yes</p>
+
+<p>root@asterisk:/usr/src/asterisk-gui-2.1.0-rc1# make checkconfig</p>
+
+<p>root@asterisk:/usr/src/asterisk-gui-2.1.0-rc1# /etc/init.d/asterisk restart</p>
+
+<p><strong>Now in Runabove control panel you'll need to switch into Expert Mode and edit your Security 
+Group to allow ports TCP 8088, 5060 &amp; 5038, UDP 5060 &amp; 10000:10100</strong></p>
+
+<p>Paste this in your browser (replace x.x.x.x with your instance IP):</p>
+
+<p>http://x.x.x.x:8088/static/config/cfgbasic.html</p>
+
+<p>user=admin &amp; password= (secret that you choose in manager.conf)</p>
+
+<p><strong>Now all is done and you can configure your Asterisk server</strong></p>
+
+<p><strong>Have fun</strong></p>
