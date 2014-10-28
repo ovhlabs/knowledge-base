@@ -126,38 +126,38 @@ root@asterisk:/usr/src/asterisk-gui-2.1.0-rc1# make install
 
 root@asterisk:/usr/src/asterisk-gui-2.1.0-rc1# nano /etc/asterisk/manager.conf
 
-###*change it to look like this (remove any ";" )*
+####*change it to look like this (remove any ";" )*
 
-####[general]
+#####[general]
 
-####enabled = yes
+#####enabled = yes
 
-####webenabled = yes
+#####webenabled = yes
 
-####port = 5038
+#####port = 5038
 
-####bindaddr = 0.0.0.0
+#####bindaddr = 0.0.0.0
 
 ####[admin]
 
-####secret = (the password that you will use in login)
+#####secret = (the password that you will use in login)
 
-####read = system,call,log,verbose,command,agent,user,config
+#####read = system,call,log,verbose,command,agent,user,config
 
-####write = system,call,log,verbose,command,agent,user,config
+#####write = system,call,log,verbose,command,agent,user,config
 
 
 root@asterisk:/usr/src/asterisk-gui-2.1.0-rc1# nano /etc/asterisk/http.conf
 
-###*change it to look like this (remove any ";" )*
+####*change it to look like this (remove any ";" )*
 
-####[general]
+#####[general]
 
-####enabled=yes
+#####enabled=yes
 
-####bindaddr=0.0.0.0
+#####bindaddr=0.0.0.0
 
-####enablestatic=yes
+#####enablestatic=yes
 
 
 root@asterisk:/usr/src/asterisk-gui-2.1.0-rc1# make checkconfig
