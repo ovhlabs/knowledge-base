@@ -13,10 +13,8 @@ lang: en
 
 ##1- First step
 
- ```
 After login as Admin I created a root password with this command(or you can add sudo before all commands):
- ```
-
+ 
 admin@asterisk:~$ sudo passwd root
 
 Now login as root
