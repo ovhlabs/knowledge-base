@@ -6,12 +6,17 @@ author: rami84
 lang: en
 ---
 
+[Asterisk](http://www.asterisk.org/get-started) is an open source VOIP(Voice over IP protocol) system and it is one of the best and easiest VOIP systems you can use, It can turns an ordinary computer or VPS into a communications server, Asterisk is used for building multi-protocol such as SIP and IAX2
 
-#I will show you how to install Asterisk server + AsteriskGUI on Ubuntu 12.04 with very easy steps
+P.S: You'll have some DAHDI errors you can simply ignore it.
+
+###Now I will show you how to install Asterisk server + AsteriskGUI on Ubuntu 12.04 with very easy steps
 
 --------
 
 ##1- First step
+
+I'll first update the system and install some requirements
 
 After login as Admin I created a root password with this command(or you can add sudo before all commands):
  
@@ -25,9 +30,7 @@ Enter password you created for root then
 
 ```
 root@asterisk:/home/admin# cd
-
 root@asterisk:~# apt-get update && apt-get upgrade
-
 root@asterisk:~# apt-get install build-essential wget libssl-dev libncurses5-dev libnewt-dev libxml2-dev linux-headers-$(uname -r) libsqlite3-dev uuid-dev
 ```
 
@@ -35,40 +38,34 @@ root@asterisk:~# apt-get install build-essential wget libssl-dev libncurses5-dev
 
 ##2- install Asterisk 
 
+Now we download the packages and untar it
+
 ```
 root@asterisk:~# cd /usr/src/
-
 root@asterisk:/usr/src# wget http://downloads.asterisk.org/pub/telephony/libpri/libpri-1.4.14.tar.gz
-
 root@asterisk:/usr/src# wget http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-11.5.0-rc1.tar.gz
-
 root@asterisk:/usr/src# wget http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-sounds-1.2.1.tar.gz
-
 root@asterisk:/usr/src# wget http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-addons-1.6.2.4.tar.gz
 ```
 ####Now untar
 
 ```
 root@asterisk:/usr/src# tar -xzf libpri-1.4.14.tar.gz
-
 root@asterisk:/usr/src# tar -xzf asterisk-11.5.0-rc1.tar.gz
-
 root@asterisk:/usr/src# tar -xzf asterisk-sounds-1.2.1.tar.gz
-
 root@asterisk:/usr/src# tar -xzf asterisk-addons-1.6.2.4.tar.gz
 ```
 
 --------
 
+Now we'll install the packages one by one
+
 ###libpri
 
 ```
 root@asterisk:/usr/src# cd libpri-1.4.14
-
 root@asterisk:/usr/src/libpri-1.4.14# make
-
 root@asterisk:/usr/src/libpri-1.4.14# make install
-
 root@asterisk:/usr/src/libpri-1.4.14# cd ..
 ```
 
@@ -76,19 +73,13 @@ root@asterisk:/usr/src/libpri-1.4.14# cd ..
 
 ```
 root@asterisk:/usr/src# cd asterisk-11.5.0-rc1
-
 root@asterisk:/usr/src/asterisk-11.5.0-rc1# ./configure
-
 root@asterisk:/usr/src/asterisk-11.5.0-rc1# make menuconfig
-
+(now you'll be entered to "Asterisk Module and Build Option Selection" you can configure that as you want and then choose "Save & Exit" and you can go back at any time to change the configuration or just leave it without any change if you are not sure)
 root@asterisk:/usr/src/asterisk-11.5.0-rc1# make
-
 root@asterisk:/usr/src/asterisk-11.5.0-rc1# make install
-
 root@asterisk:/usr/src/asterisk-11.5.0-rc1# make samples
-
 root@asterisk:/usr/src/asterisk-11.5.0-rc1# make config
-
 root@asterisk:/usr/src/asterisk-11.5.0-rc1# cd ..
 ```
 
@@ -96,9 +87,7 @@ root@asterisk:/usr/src/asterisk-11.5.0-rc1# cd ..
 
 ```
 root@asterisk:/usr/src# cd asterisk-sounds-1.2.1
-
 root@asterisk:/usr/src/asterisk-sounds-1.2.1# make install
-
 root@asterisk:/usr/src/asterisk-sounds-1.2.1# cd ..
 ```
 
@@ -106,13 +95,9 @@ root@asterisk:/usr/src/asterisk-sounds-1.2.1# cd ..
 
 ```
 root@asterisk:/usr/src# cd asterisk-addons-1.6.2.4
-
 root@asterisk:/usr/src/asterisk-addons-1.6.2.4# ./configure
-
 root@asterisk:/usr/src/asterisk-addons-1.6.2.4# make
-
 root@asterisk:/usr/src/asterisk-addons-1.6.2.4# make install
-
 root@asterisk:/usr/src/asterisk-addons-1.6.2.4# cd ..
 ```
 
@@ -126,17 +111,16 @@ root@asterisk:/usr/src# service asterisk start
 
 ##3- Install AsteriskGUI
 
+Now it is the time to download and untar AsteriskGUI then installing it
+
+There is a lot of GUIs you can use with Asterisk here I'll install AsteriskGUI it will help you configuring Asterisk from your browser
+
 ```
 root@asterisk:/usr/src# wget http://downloads.asterisk.org/pub/telephony/asterisk-gui/asterisk-gui-2.1.0-rc1.tar.gz
-
 root@asterisk:/usr/src# tar -xzf asterisk-gui-2.1.0-rc1.tar.gz
-
 root@asterisk:/usr/src# cd asterisk-gui-2.1.0-rc1
-
 root@asterisk:/usr/src/asterisk-gui-2.1.0-rc1# ./configure
-
 root@asterisk:/usr/src/asterisk-gui-2.1.0-rc1# make
-
 root@asterisk:/usr/src/asterisk-gui-2.1.0-rc1# make install
 ```
 ####Edit manager.conf
@@ -148,21 +132,14 @@ root@asterisk:/usr/src/asterisk-gui-2.1.0-rc1# make install
 
 ```
 [general]
-
 enabled = yes
-
 webenabled = yes
-
 port = 5038
-
 bindaddr = 0.0.0.0
 
 [admin]
-
 secret = (the password that you will use in login)
-
 read = system,call,log,verbose,command,agent,user,config
-
 write = system,call,log,verbose,command,agent,user,config
 ```
 
@@ -174,11 +151,8 @@ write = system,call,log,verbose,command,agent,user,config
 
 ```
 [general]
-
 enabled=yes
-
 bindaddr=0.0.0.0
-
 enablestatic=yes
 ```
 
