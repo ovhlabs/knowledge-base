@@ -6,12 +6,9 @@ author: vchanakoski
 lang: en
 ---
 
-#LEMP STACK - Centos7
-
-Lets begin..
-
-**INSTALL NGINX**
-*important! this is a package for the stable version, not the mainline version.*
+1. Install Nginx
+------
+*important! this is a package from the stable branch, not the mainline branch.*
 ```
 sudo rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
 sudo yum install nginx
@@ -28,7 +25,8 @@ systemctl status nginx
 Head on to your server ip and you should be able to see the nginx welcome page.
 
 ----
-**INSTALL MARIADB (mysql drop-in replacement)**
+2. Install  MariaDB (mysql drop-in replacement)
+------
 ```
 sudo yum install mariadb-server mariadb
 ```
@@ -65,7 +63,8 @@ Remove test database and access to it? [Y/n] y
 All done.
 
 ----
-**INSTALL PHP FPM**
+3. Install php/php-fpm
+------
 ```
 sudo yum install php php-mysql php-fpm
 ```
@@ -104,7 +103,8 @@ sudo systemctl start php-fpm
 ```
 
 ----
-**NGINX TEMPLATE**
+4. Nginx Template
+------
 After setting up php we need to edit the nginx config so that we can process php files trough nginx
 ```
 etc/nginx/conf.d/default.conf
@@ -145,7 +145,8 @@ sudo systemctl restart nginx
 ```
 
 ----
-**AUTOSTART**
+5. Autostart
+------
 The final step is to set auto-start on reboot for everything that we have installed so far
 ```
 sudo systemctl enable nginx.service
