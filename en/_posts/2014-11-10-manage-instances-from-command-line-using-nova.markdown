@@ -20,8 +20,6 @@ The important one is `--os-region-name`. This is how you choose whether you want
 
 ### Adding the ssh key
 
-Technically, you don't need to use an ssh key. On boot, nova will return an admin password. It is, however, both more secure and more convenient to rely on keys for authentication. 
-
 If you already added a key through the panel, you can use it without any further configuration.
 
     nova --os-region-name SBG-1 keypair-list
@@ -34,7 +32,7 @@ I did.
     | soynet | 30:60:a8:4c:15:cf:3b:c5:c1:9d:a6:98:cf:84:6a:5c |
     +--------+-------------------------------------------------+
 
-If you haven't, this is a good time to do it. Generate the key
+If you haven't, this is a good time to do it. Generate the key ([see instructions for non-unix systems](/kb/en/instances/create-ssh-keys.html))
 
     ssh-keygen -t rsa -b 4096 -f ~/.ssh/runabove -C yourname@runabove
 
