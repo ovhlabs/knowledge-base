@@ -28,7 +28,7 @@ You can add it to the OpenRC file and have it set every time you `source` it.
 
 If you already added a key through the panel, you can use it without any further configuration.
 
-    nova --os-region-name SBG-1 keypair-list
+    nova keypair-list
 
 I did. 
     
@@ -44,11 +44,11 @@ If you haven't, this is a good time to do it. Generate the key ([see instruction
 
 add it to RunAbove
 
-    nova --os-region-name SBG-1 keypair-add --pub-key ~/.ssh/runabove.pub demokey
+    nova keypair-add --pub-key ~/.ssh/runabove.pub demokey
 
 and make sure it's there
 
-    $ nova --os-region-name SBG-1 keypair-list          
+    $ nova keypair-list          
     +---------+-------------------------------------------------+
     | Name    | Fingerprint                                     |
     +---------+-------------------------------------------------+
@@ -62,7 +62,7 @@ Done.
 
 Flavor is the type of instance in OpenStack parlance. You can list flavors with the command 
 
-    nova --os-region-name SBG-1 flavor-list                  
+    nova flavor-list                  
 
 which will return available choices
     
@@ -92,7 +92,7 @@ RunAbove provides many images from which you can create your instance. You can e
 
 To see what's in store, issue
 
-    nova --os-region-name SBG-1 image-list
+    nova image-list
 
 which will return a list of images with their unique IDs
 
@@ -121,13 +121,13 @@ Booting a new instance
 
 Now that we have configured the ssh keypair, chose a flavor and image, we can boot a new instance. The command is a bit long but straightforward
 
-    nova --os-region-name SBG-1 boot --flavor ra.intel.sb.m --image d0e8d240-0bfa-4415-88d2-9c5ee77c7e9f --key-name demokey --security-groups default demoinstance
+    nova boot --flavor ra.intel.sb.m --image d0e8d240-0bfa-4415-88d2-9c5ee77c7e9f --key-name demokey --security-groups default demoinstance
 
 The important part is the `boot` subcommand, and the the name of the instance at the end (demoinstance). Not to complicate things, we will run this server in the default security group. 
 
 If successful, it will return a table with basic information about the instance, including adminPass. It will not tell us the IP address. For that we need to wait a minute and issue
 
-    nova --os-region-name SBG-1 list
+    nova list
 
 which gives all the information about running servers
 
@@ -161,7 +161,7 @@ First, create a file with the following contents
 
 Second, issue a slightly modified boot command 
 
-    nova --os-region-name SBG-1 boot --flavor ra.intel.sb.m --image d0e8d240-0bfa-4415-88d2-9c5ee77c7e9f --key-name demokey --security-groups default --user-data ./cloud-init-reminder reminderinstance
+    nova boot --flavor ra.intel.sb.m --image d0e8d240-0bfa-4415-88d2-9c5ee77c7e9f --key-name demokey --security-groups default --user-data ./cloud-init-reminder reminderinstance
 
 where `./cloud-init-reminder` is the path to the file created in the first step. 
 
@@ -177,7 +177,7 @@ Deleting an instance
 
 When you don't need your instance anymore, simply delete it. 
 
-    nova --os-region-name SBG-1 delete demoinstance
+    nova delete demoinstance
 
 It will be removed shortly. 
 
