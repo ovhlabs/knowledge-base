@@ -18,6 +18,12 @@ which will spam your terminal with all the options.
 
 The important one is `--os-region-name`. This is how you choose whether you want to work in Canada (BHS-1), or Europe (SBG-1). I will use the European data center in this tutorial but you may substitute BHS-1. Choose the region with lower latency (closer to you) and remember that they are independent so they have their own separate ssh keys, instances lists, etc. Make sure you are looking at the right region when something unexpectedly does not show up. 
 
+To avoid explicitly specifying the region every time, pick a default one by setting the environment variable `OS_REGION_NAME`
+
+    export OS_REGION_NAME=SBG-1 
+
+You can add it to the OpenRC file and have it set every time you `source` it. 
+
 ### Adding the ssh key
 
 If you already added a key through the panel, you can use it without any further configuration.
