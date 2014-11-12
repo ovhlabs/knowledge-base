@@ -16,7 +16,7 @@ This schema presents the structure of the network:
 ![Network schema](/kb/images/2014-09-09-create-local-network/schema.png)
 
 
-In this example we will use 192.168.0.0/24 as the network, and 192.168.0.2 as the gateway.
+In this example we will use 192.168.0.0/24 as the network, and 192.168.0.3 as the gateway.
 
 
 1. [Create routing instance](#routing_instance)
@@ -69,7 +69,7 @@ specify a few parameters:
 -   For local networks with access to the internet you need to specify a
     __Gateway address__. It is the address that each virtual machine from the
     local network will use to connect to the Internet. For this example we use
-    192.168.0.2 as the gateway address.
+    192.168.0.3 as the gateway address.
 
 ![Subnet](/kb/images/2014-09-09-create-local-network/subnet.png)
 
@@ -112,7 +112,7 @@ First you need to create a network. To do that use __neutron net-create__:
 After performing this command you will be able to get information about the
 network that you created. Next you need to create a subnet for your network :
 
-    neutron subnet-create my-local-network 192.168.0.0/24 --enable-dhcp --no-gateway
+    neutron subnet-create my-local-network 192.168.0.0/24 --gateway 192.168.0.3 --enable-dhcp
 
 <h2 id="config_routing_instance">3. Configure routing instance</h2>
 
@@ -162,10 +162,11 @@ nova list
 ```
 
 This command shows all virtual machines. Now when you have all the information
-you need it is time to attach a new interface:
+you need it is time to attach a new interface (our gateway of our local network
+using the IP 192.168.0.3):
 
 ```
-nova interface-attach --net-id <your network id> <your machine id>
+nova interface-attach --net-id <your network id> --fixed-ip 192.168.0.3 <your machine id>
 ```
 
 If your local network has a gateway address, you must not use dhclient. Check
@@ -182,7 +183,7 @@ nova list
 ```
 
 As you can see, the virtual machine that is router for your network now has two
-IP address one is public and the other one is private. Now you must configure
+IP addresses, one is public and the other one is private. Now you must configure
 the interface on your virtual machine.
 
 Check that your virtual machine has a new interface:
@@ -193,7 +194,7 @@ This command shows two eth interfaces. First eth0 is configured to
 use public IP address. Then eth1 is the new interface, it needs to
 be configured:
 
-    sudo ip addr add 192.168.0.2/24 dev eth1
+    sudo ip addr add 192.168.0.3/24 dev eth1
     sudo ip link set eth1 up
 
 This virtual machine will be gateway for your network. That iss why eth1 must
