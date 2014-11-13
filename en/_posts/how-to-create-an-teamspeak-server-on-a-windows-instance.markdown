@@ -35,7 +35,7 @@ Step 3: Downloading the TeamSpeak server.
 --------------------------
 Alright, we landed on the TeamSpeak homepage; let's begin with the most important part, which is; you guessed it! Downloading the files!
 
-Simply click on Downloads on the top of the page:
+Simply click on Downloads on the top of the page:<br>
 ![alt text](http://puu.sh/cP4VB/9d25656172.png "windows desktop")
 
 Or if you're feeling a bit lazy click [here](http://www.teamspeak.com/?page=downloads).
