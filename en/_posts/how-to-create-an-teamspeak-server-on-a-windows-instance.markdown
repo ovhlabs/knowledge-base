@@ -6,7 +6,6 @@ lang: en
 author: vladreinis
 ---
 
-Creating an
-
-Create a new local network
+Creating an TeamSpeak server is actually very simple, and if you follow this guide correctly
+you'll be on your way to chatting with your fellow friends in no time!
 --------------------------
