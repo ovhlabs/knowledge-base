@@ -61,6 +61,8 @@ coreos:
 
 # Launch... And voilà !
 
+Don't forget to login with the user `core` instead of `admin` or `root`!
+
 ![](https://storage.bhs-1.runabove.io/v1/AUTH_3eca649cc7f44d91b67131374db4afb3/public/coreos_nodes.jpg)
 
 You can find more information: https://coreos.com/docs/running-coreos/platforms/openstack/
