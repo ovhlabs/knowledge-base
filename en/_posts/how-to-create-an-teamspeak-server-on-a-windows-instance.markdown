@@ -13,7 +13,7 @@ you'll be on your way to chatting with your fellow friends in no time!
 
 First Step: Connecting to a windows server!
 --------------------------
-If you didn't guess already you'll need to connect to your RunAbove windows instance, simply remote desktop to it, if you don't how to follow this guide [here](https://github.com/runabove/knowledge-base/blob/master/en/_posts/2014-05-16-how-to-create-a-windows-instance.markdown) and you'll also want to remotely connect to it so click [here](https://github.com/vladreinis/knowledge-base/blob/master/en/_posts/2014-05-20-how-to-configure-remote-desktop-on-windows-server.markdown) afterwords; don't forget to thank VincentCasse for creating those wonderful articles.
+If you didn't guess already you'll need to connect to your RunAbove windows instance, simply remote desktop to it, if you don't know how to follow this guide [here](https://github.com/runabove/knowledge-base/blob/master/en/_posts/2014-05-16-how-to-create-a-windows-instance.markdown) and you'll also want to remotely connect to it so click [here](https://github.com/vladreinis/knowledge-base/blob/master/en/_posts/2014-05-20-how-to-configure-remote-desktop-on-windows-server.markdown) to find out afterwords; don't forget to thank VincentCasse for creating those wonderful articles.
 
 Assuming you've connected already, you'll see probably and most likely Windows Desktop appear:
 ![alt text](http://puu.sh/cOEqz/b103b35d59.png "windows desktop")
