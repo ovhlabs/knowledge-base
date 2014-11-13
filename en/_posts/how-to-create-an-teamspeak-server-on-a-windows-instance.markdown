@@ -11,24 +11,40 @@ you'll be on your way to chatting with your fellow friends in no time!
 
 --------------------------
 
-First Step: Connecting to a windows server!
+Step 1: Connecting to a windows server!
 --------------------------
-If you didn't guess already you'll need to connect to your RunAbove windows instance, simply remote desktop to it, if you don't know how to follow this guide [here](https://github.com/runabove/knowledge-base/blob/master/en/_posts/2014-05-16-how-to-create-a-windows-instance.markdown) and you'll also want to remotely connect to it so click [here](https://github.com/vladreinis/knowledge-base/blob/master/en/_posts/2014-05-20-how-to-configure-remote-desktop-on-windows-server.markdown) to find out afterwards; don't forget to thank VincentCasse for creating those wonderful articles.
+If you didn't guess already you'll need to connect to your RunAbove windows instance, simply remote desktop to it, if you don't know how to follow this guide [here](https://github.com/vladreinis/knowledge-base/blob/master/en/_posts/2014-05-20-how-to-configure-remote-desktop-on-windows-server.markdown) and you'll also want to remotely connect to it so click [here](https://github.com/runabove/knowledge-base/blob/master/en/_posts/2014-05-16-how-to-create-a-windows-instance.markdown) to find out afterwards; don't forget to thank VincentCasse for creating those wonderful articles.
 
-Assuming you've connected already, you'll see probably and most likely Windows Desktop would appear:
+Assuming you've connected already, you'll probably see Windows Desktop would appear:
 
 ![alt text](http://puu.sh/cOEqz/b103b35d59.png "windows desktop")
 
-Second Step: Downloading the TeamSpeak server.
+Step 2: Open up your preferred browser.
 --------------------------
-Alright, we're logged; let's begin with the most important part, which is; you guessed it! Downloading the files.
-You can download the files by clicking [here](http://www.teamspeak.com/?page=downloads).
+For this guide I'd be using Firefox, just for the simplicity but you can use whatever you wish, such as: Chrome, Firefox, Internet Explorer, Opera, etc.
+
+Alrighty, you should see a search bar and the usual web browser UI.
+
+![alt text](http://puu.sh/cP4JV/287231abfc.png "windows desktop")
+
+Simply type in the address bar: http://teamspeak.com/ or www.teamspeak.com would work too! 
+
+![alt text](http://puu.sh/cP4Pe/008f9c4340.png "windows desktop")
+
+Step 3: Downloading the TeamSpeak server. 
+--------------------------
+Alright, we landed on the TeamSpeak homepage; let's begin with the most important part, which is; you guessed it! Downloading the files!
+
+Simply click on Downloads on the top of the page:
+![alt text](http://puu.sh/cP4VB/9d25656172.png "windows desktop")
+
+Or if you're feeling a bit lazy click [here](http://www.teamspeak.com/?page=downloads).
 
 Since this is a windows server you'll click Windows 64-bit or 32-bit if your system is 32-bit based.
 
 ![alt text](http://puu.sh/cOECz/b2bf52506c.png "windows desktop")
 
-Third Step: Extracting the files.
+Step 4: Extracting the files.
 --------------------------
 Okay, go to your downloads folder, and you should see a zip file named something like, "teamspeak3-server_winxx-x.x.xx.x.zip", let x = whatever number.
 
