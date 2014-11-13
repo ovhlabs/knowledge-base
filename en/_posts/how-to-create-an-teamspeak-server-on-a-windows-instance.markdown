@@ -25,3 +25,24 @@ You can download the files by clicking [here](http://www.teamspeak.com/?page=dow
 
 Since this is a windows server you'll click Windows 64-bit or 32-bit if your system is 32-bit based.
 ![alt text](http://puu.sh/cOECz/b2bf52506c.png "windows desktop")
+
+Third Step: Extracting the files.
+--------------------------
+Okay, goto you're downloads folder, and you should see a zip file named something like, "teamspeak3-server_winxx-x.x.xx.x.zip", let x = whatever number.
+
+![alt text](http://puu.sh/cOEKw/46457dc5bb.png "windows desktop")
+
+Okay double click on it, and open it as explorer, you should see a folder and inside of it a bunch of files.
+Simply drag and drop the folder inside somewhere you like, for example I put it in my Documents folder.
+
+![alt text](http://puu.sh/cOEXv/8173c9f8e8.png "windows desktop")
+
+Last Step: Launching you're wonderful new server.
+--------------------------
+
+Now just go inside the main folder, and just simply double click on the 'ts3server_winXX.exe'
+you'll be prompted a window with some codes, copy them somewhere safe!
+
+Okay now you can connect to you server using the server IP address!
+
+![alt text](http://puu.sh/cOF8l/9e7a621d29.png "windows desktop")
