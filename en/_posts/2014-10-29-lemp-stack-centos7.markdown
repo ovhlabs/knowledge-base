@@ -6,6 +6,8 @@ author: vchanakoski
 lang: en
 ---
 
+LEMP stands for LINUX + NGINX + MARIADB(MYSQL) + PHP web stack, in the following steps we are going to install and secure a basic lemp stack on Centos 7.
+
 1. Install Nginx
 ------
 *important! this is a package from the stable branch, not the mainline branch.*
