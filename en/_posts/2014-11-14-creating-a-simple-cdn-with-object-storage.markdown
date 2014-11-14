@@ -5,7 +5,7 @@ categories: Object-Storage
 author: Ammar Bandukwala
 lang: en
 ---
-While this tutorial does address the scaling, redundant, and swiftness qualities of a CDN, it does not address the globalization aspect.
+While this tutorial does address the scaling, redundant, and swiftness qualities of a CDN, it does not address globalization.
 
 *Technologies We'll be using*
 + Nginx - A high performance web server
