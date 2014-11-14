@@ -10,6 +10,8 @@ A common network layout is to have a gateway handling all the traffic between
 the inside of a network and the outside. This guide will show the simple steps 
 on how to reproduce this layout on RunAbove.
 
+![Layout NAT](/kb/images/2014-11-07-private-network-nat/layout.png)
+
 Create a new local network
 --------------------------
 
@@ -25,15 +27,13 @@ Give a name to your network (ie. Local) and set the admin state.
 ### Subnet
 
 Create a subnet with a name (ie. Local), select and IP network. Here we use 
-`192.168.0.0/24` in IPv4. Finally activate a gateway at `192.168.0.4`
+`192.168.0.0/24` in IPv4. Finally activate a gateway at `192.168.0.4`.
 
 ![Subnet](/kb/images/2014-11-07-private-network-nat/network-step2.png)
 
 ### Subnet Detail
 
-Enable DHCP and add a host route with:
-
-    169.254.169.254/32,0.0.0.0
+Enable DHCP and create the network.
 
 ![Sub detail](/kb/images/2014-11-07-private-network-nat/network-step3.png)
 
