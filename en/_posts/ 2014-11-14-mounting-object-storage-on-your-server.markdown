@@ -9,17 +9,17 @@ lang: en
 + CentOS 7 - A stable  and fun linux distribution
 + Cloudfuse - An application that allows you to mount OpenStack Swift Object-Storage as a file-system
 
-*I recommend using a RunAbove compute instance for our server. Outsourcing may result in increased latency and less consistency.*
+*I recommend using a RunAbove compute instance for your server. External providers may result in increased latency and less consistency.*
 # 1. Create our object container
 > 1. Click Add on the sidebar
 > 2. Click "a storage container"
 > 3. Enter container's name
 > 4. Click add
 
-![Gif of Process](https://sk.gy/raw/PosterEel)
+![Gif of Process](http://genesec.net/static/runabove-com/tuts/add_container.gif)
 *Whether your container is private or public won't affect how you use this tutorial*
 # 2. Setup Cloudfuse
-*I'm assumining you have shell access to a CentOS 7 server as well as admin privelleges on your user beyond this point*
+*The tutorial is assumining you have shell access to a CentOS 7 server as well as admin privelleges on your user beyond this point*
 
 Before installing Cloudfuse, we'll need some prerequisite software and libraries.
 ```
@@ -38,7 +38,7 @@ cd ~
 ```
 
 You will need your tenant ID/project ID for the next part of the tutorial. You can get your tenant ID by switching to expert mode and locating the 8 digit number within the top left corner.
-![Image Help](https://sk.gy/raw/ReloadSaluki)
+![Image Help](https://genesec.net/static/runabove-com/tuts/tenant_id.png)
 
 Cloudfuse's configuration file is located at "~/.cloudfuse." The following is a layout for your configuration file.
 ```
