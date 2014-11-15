@@ -7,9 +7,9 @@ lang: en
 ---
 ##### Technologies We'll be using
 + CentOS 7 - A stable  and fun linux distribution
-+ Cloudfuse - An application that allows you to mount object-storage as a file-system
++ Cloudfuse - An application that allows you to mount OpenStack Swift Object-Storage as a file-system
 
-*I recommend using a RunAbove instances for our server. Outsourcing may result in increased latency and less consistency.*
+*I recommend using a RunAbove compute instance for our server. Outsourcing may result in increased latency and less consistency.*
 # 1. Create our object container
 > 1. Click Add on the sidebar
 > 2. Click "a storage container"
@@ -46,7 +46,7 @@ username=<RunAbove Email>
 tenant=<RunAbove Tenant ID>
 password=<RunAbove Password>
 authurl=https://auth.runabove.io/v2.0
-#You may leave region blank if you wish to use SBG-1
+#You may remove the region line if you wish to use SBG-1
 region=BHS-1
 # security vs. performance
 verify_ssl=True
