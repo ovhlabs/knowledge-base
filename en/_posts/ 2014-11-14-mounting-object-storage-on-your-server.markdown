@@ -11,10 +11,10 @@ lang: en
 
 *I recommend using a RunAbove instances for our server. Outsourcing may result in increased latency and less consistency.*
 # 1. Create our object container
-> 1. Click Add
+> 1. Click Add on the sidebar
 > 2. Click "a storage container"
 > 3. Enter container's name
-> 4. Hit add (this tutorial will assume you've selected BHS-1) for your region
+> 4. Click add
 
 ![Gif of Process](https://sk.gy/raw/PosterEel)
 *Whether your container is private or public won't affect how you use this tutorial*
@@ -35,11 +35,6 @@ cd cloudfuse
 make
 sudo make install
 cd ~
-sudo ln -s /usr/local/bin/cloudfuse /usr/bin/cloudfuse
-```
-We'll need to use cloudfuse as root
-```
-sudo su
 ```
 
 You will need your tenant ID/project ID for the next part of the tutorial. You can get your tenant ID by switching to expert mode and locating the 8 digit number within the top left corner.
@@ -51,6 +46,7 @@ username=<RunAbove Email>
 tenant=<RunAbove Tenant ID>
 password=<RunAbove Password>
 authurl=https://auth.runabove.io/v2.0
+#You may leave region blank if you wish to use SBG-1
 region=BHS-1
 # security vs. performance
 verify_ssl=True
@@ -59,9 +55,17 @@ verify_ssl=True
 Now we're ready to mount our object storage.
 
 ```
-mkdir /mnt/cloud
-cloudfuse /mnt/cloud
+mkdir ~/cloud
+cloudfuse ~/cloud
 ```
 
 You may now browse your objects at /mnt/cloud/
+---
+
+When finished accessing your object storage, you may unmount the file-system with the following command
+
+```
+fusermount -u ~/cloud
+```
+
 
