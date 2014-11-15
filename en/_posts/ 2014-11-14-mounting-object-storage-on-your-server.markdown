@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Mounting Object Storage on Your Server"
-categories: Object-Storage
+categories: Object Storage, Instances
 author: Ammar Bandukwala
 lang: en
 ---
