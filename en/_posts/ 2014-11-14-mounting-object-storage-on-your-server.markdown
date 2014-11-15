@@ -16,7 +16,7 @@ lang: en
 > 3. Enter container's name
 > 4. Click add
 
-![Gif of Process](http://genesec.net/static/runabove-com/tuts/add_container.gif)
+![Gif of Process](https://genesec.net/static/runabove-com/tuts/add_container.gif)
 *Whether your container is private or public won't affect how you use this tutorial*
 # 2. Setup Cloudfuse
 *The tutorial is assumining you have shell access to a CentOS 7 server as well as admin privelleges on your user beyond this point*
