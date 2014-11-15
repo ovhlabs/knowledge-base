@@ -9,7 +9,7 @@ lang: en
 + CentOS 7 - A stable  and fun linux distribution
 + Cloudfuse - An application that allows you to mount OpenStack Swift's object storage as a filesystem
 
-*I recommend using a RunAbove compute instance for production implementations of this tutorial. External providers may result in increased latency and less consistency.*
+*I recommend using a RunAbove compute instance for production implementations of this tutorial. The use of external providers may result in higher latency, lower consistency, and lower speeds.*
 # 1. Create our object container
 > 1. Click Add on the sidebar
 > 2. Click "a storage container"
