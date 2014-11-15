@@ -19,7 +19,7 @@ lang: en
 ![Gif of Process](https://genesec.net/static/runabove-com/tuts/add_container.gif)
 *Whether your container is private or public won't affect how you use this tutorial*
 # 2. Setup Cloudfuse
-*The tutorial is assumining you have shell access to a CentOS 7 server as well as admin privelleges on your user beyond this point*
+*The tutorial assumes you have shell access to a CentOS 7 server as well as admin privelleges on your user beyond this point*
 
 Before installing Cloudfuse, we'll need some prerequisite software and libraries.
 ```
