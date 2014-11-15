@@ -59,7 +59,7 @@ mkdir ~/cloud
 cloudfuse ~/cloud
 ```
 
-__You may now browse your objects at /mnt/cloud/__
+__You may now browse your objects at ~/cloud/__
 
 
 When finished accessing your object storage, you may safely unmount the filesystem with the following command
