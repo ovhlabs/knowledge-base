@@ -9,7 +9,7 @@ lang: en
 + CentOS 7 - A stable  and fun linux distribution
 + Cloudfuse - An application that allows you to mount object-storage as a file-system
 
-** I recommend using a RunAbove instances for our server. Outsourcing may result in increased latency and less consistency. **
+*I recommend using a RunAbove instances for our server. Outsourcing may result in increased latency and less consistency.*
 # 1. Create our object container
 > 1. Click Add
 > 2. Click "a storage container"
