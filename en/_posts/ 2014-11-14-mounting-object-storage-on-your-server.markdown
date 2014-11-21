@@ -16,7 +16,7 @@ lang: en
 > 3. Enter container's name
 > 4. Click add
 
-![Gif of Process](https://genesec.net/static/runabove-com/tuts/add_container.gif)
+![Gif of Process](https://raw.githubusercontent.com/ammario/knowledge-base/master/images/2014-11-14-mounting-object-storage-on-your-server/add_container.gif)
 *Whether your container is private or public won't affect how you use this tutorial*
 # 2. Setup Cloudfuse
 *The tutorial assumes you have shell access to a CentOS 7 server as well as admin privelleges on your user beyond this point*
@@ -38,7 +38,7 @@ cd ~
 ```
 
 You will need your tenant ID/project ID for the next part of the tutorial. You may view your tenant ID by switching to expert mode in the RunAbove dashboard and locating the 8 digit number at the top left corner.
-![Image Help](https://genesec.net/static/runabove-com/tuts/tenant_id.png)
+![Image Help](https://raw.githubusercontent.com/ammario/knowledge-base/master/images/2014-11-14-mounting-object-storage-on-your-server/project_id.png)
 
 Cloudfuse's configuration file is located at "~/.cloudfuse." The following is a useable layout for your configuration file.
 ```
