@@ -1,0 +1,162 @@
+Setup-VNC-for-Ubuntu-12-
+========================
+
+VNC stands for Virtual Network Computing, which allows you to connect to your server remotely, and be able to use your keyboard, mouse, and monitor to interface with that server.
+
+Let's go setup VNC on your RunAbove Linux VPS
+
+ Step 1 - Install VNC server and XFCE 4 desktop.
+
+To get started, we will install a VNC server on Ubuntu 12. Login as root and install packages:
+```
+apt-get -y install ubuntu-desktop tightvncserver xfce4 xfce4-goodies
+```
+Step 2 - Add a VNC user and set its password.
+
+adduser vnc
+passwd vnc
+
+If you would like to get root as user vnc you would have to add it to sudoers file. Make sure you are logged in as root:
+```
+echo "vnc ALL=(ALL)       ALL" >> /etc/sudoers
+
+Set user vnc's VNC Server password:
+
+su - vnc
+vncpasswd
+exit
+```
+This step sets the VNC password for user ‘vnc’. It will be used later when you connect to your VNC server with a VNC client:
+
+![](http://j.acoxi.com/img/Ubuntu-VNC1.png)
+
+Now you can login as user ‘vnc’ and obtain root by running ‘sudo su -‘ and entering your password:
+Step 4 - Install VNC As A Service
+
+![](http://j.acoxi.com/img/Ubuntu-VNC2.png)
+
+Login as root and edit /etc/init.d/vncserver and add the following lines:
+```
+#!/bin/bash
+PATH="$PATH:/usr/bin/"
+export USER="vnc"
+DISPLAY="1"
+DEPTH="16"
+GEOMETRY="1024x768"
+OPTIONS="-depth ${DEPTH} -geometry ${GEOMETRY} :${DISPLAY}"
+. /lib/lsb/init-functions
+
+case "$1" in
+start)
+log_action_begin_msg "Starting vncserver for user '${USER}' on localhost:${DISPLAY}"
+su ${USER} -c "/usr/bin/vncserver ${OPTIONS}"
+;;
+
+stop)
+log_action_begin_msg "Stoping vncserver for user '${USER}' on localhost:${DISPLAY}"
+su ${USER} -c "/usr/bin/vncserver -kill :${DISPLAY}"
+;;
+
+restart)
+$0 stop
+$0 start
+;;
+esac
+exit 0
+
+Edit /home/vnc/.vnc/xstartup and replace with:
+
+#!/bin/sh
+xrdb $HOME/.Xresources
+xsetroot -solid grey
+startxfce4 &
+```
+Update file permissions and allow any user to start X Server:
+```
+chown -R vnc. /home/vnc/.vnc && chmod +x /home/vnc/.vnc/xstartup
+sed -i 's/allowed_users.*/allowed_users=anybody/g' /etc/X11/Xwrapper.config
+```
+Make /etc/init.d/vncserver executable and start VNC server:
+```
+chmod +x /etc/init.d/vncserver && service vncserver start
+```
+Add your VNC server to automatically start on reboot:
+
+update-rc.d vncserver defaults
+
+Step 5 - Connect to your droplet with TightVNC
+
+TightVNC is a great VNC client that allows SSH tunnel. It can be downloaded from http://www.tightvnc.com/download.php
+
+Make sure to use IP::port as your remote host, where IP is your droplet’s IP and port is 5901:
+
+![](http://j.acoxi.com/img/Ubuntu-VNC3.png)
+
+You will be asked for VNC password that you specified in step 2 with vncpasswd:
+
+![](http://j.acoxi.com/img/Ubuntu-VNC4.png)
+
+And now you are connected
+
+![](http://j.acoxi.com/img/Ubuntu-VNC5.png)
+
+Recommended Step - Secure your VNC server session with encryption.
+
+A basic VNC server setup has no encryption, which makes it vulnerable to snooping.
+
+We will create an SSH tunnel with Putty and connect to VNC via this tunnel.
+
+First, we need to make sure VNC server only listens on localhost.
+
+Edit /etc/init.d/vncserver and add -localhost to OPTIONS:
+```
+OPTIONS="-depth ${DEPTH} -geometry ${GEOMETRY} :${DISPLAY} -localhost"
+```
+
+![](http://j.acoxi.com/img/Ubuntu-VNC6.png)
+
+Restart VNC server:
+```
+/etc/init.d/vncserver restart
+```
+Make sure VNC server is only listening on localhost IP:
+```
+netstat -alpn | grep :5901
+```
+
+![](http://j.acoxi.com/img/Ubuntu-VNC7.png)
+
+Download Putty from http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
+
+For Windows: http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe
+
+Start Putty and enter your droplet IP under Session:
+
+![](http://j.acoxi.com/img/Ubuntu-VNC8.png)
+
+Don’t connect just yet.
+
+Scroll down to Connection -> SSH -> Tunnels and Add New Forwarded Port and click Add:
+
+![](http://j.acoxi.com/img/Ubuntu-VNC9.png)
+
+Now you can connect by clicking Open. You can login as user vmc:
+
+![](http://j.acoxi.com/img/Ubuntu-VNC10.png)
+
+Make sure you don’t close this SSH session, as it creates a tunnel between your PC (localhost) and your droplet, mapping ports 5901 on both ends.
+
+Connect with TightVNC to localhost::5901
+
+![](http://j.acoxi.com/img/Ubuntu-VNC11.png)
+
+Enter your VNC password from Step 3 above:
+
+![](http://j.acoxi.com/img/Ubuntu-VNC12.png)
+
+
+And you are now connected via a secure connection:
+
+![](http://j.acoxi.com/img/Ubuntu-VNC13.png)
+
+And you are all done!
