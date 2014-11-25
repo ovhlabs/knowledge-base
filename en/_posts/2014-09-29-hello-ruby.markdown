@@ -11,7 +11,7 @@ author: yadutaf
 
 Ruby comes with a [huge library of "Gems"](https://rubygems.org/) installable using ``gem install``.
 
-But Ruby would have probably never gotten so famous without [Ruby on Rails](http://rubyonrails.org/), a full featured web framework that inspired many others. And that's not the only one. There is also [Sinatra](http://www.sinatrarb.com/), a lightweith micro-framework. Ruby is also the foundation of [Gitlab](https://about.gitlab.com/), the leading OpenSource GitHub alternative.
+But Ruby would have probably never gotten so famous without [Ruby on Rails](http://rubyonrails.org/), a full featured web framework that inspired many others. And that's not the only one. There is also [Sinatra](http://www.sinatrarb.com/), a lightweight micro-framework. Ruby is also the foundation of [Gitlab](https://about.gitlab.com/), the leading OpenSource GitHub alternative.
 
 Before diving in, make sure to read the [Getting Started](getting-started-with-sailabove-docker.html) guide.
 
@@ -69,7 +69,7 @@ docker build -t hello-ruby .
 docker run -it --publish 8080:80 --rm -t hello-ruby
 ```
 
-Check if all works fine, visit http://localhost:8080/hello/Docker-Fan. You should see womething like "Hello Docker-Fan!".
+Check if all works fine, visit http://localhost:8080/hello/Docker-Fan. You should see something like "Hello Docker-Fan!".
 
 It works on your dev machine. It will work on production.
 
@@ -90,11 +90,11 @@ Push your application on Sailabove's *private* Docker registry:
 docker push sailabove.io/demo/hello-ruby
 ```
 
-Launch it using previously installed ``sail`` command line and instruct Sailabove to run it with unpriviledged user ``nobody`` for increased security. Please note that, even when running as regular unprivileged user, your application can freely listen on *any* port, ``80`` in this case.
+Launch it using previously installed ``sail`` command line and instruct Sailabove to run it with unprivileged user ``nobody`` for increased security. Please note that, even when running as regular unprivileged user, your application can freely listen on *any* port, ``80`` in this case.
 
 ```bash
 # sail services add <user name>/<app name> <service name>
-sail services add demo/hello-ruby hello-ruby --user nobody
+sail services add demo/hello-ruby hello-ruby
 ```
 
 Eager to see the result? Wait a few seconds. It is now running live on http://hello-ruby.demo.app.sailabove.io/hello/Docker-Fan. This is ``http://<service name>.<user name>.app.sailabove.io``.

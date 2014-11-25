@@ -7,11 +7,11 @@ lang: en
 author: yadutaf
 ---
 
-[Go](http://golang.org/) is quite recent, modern, high performance langage developped by Google. It emphases on security, performance and concurrent execution. It first ficused on system development like C and C++ while bringing a leaner and richer syntax. In became a prominent technology in just a few months. Before Docker, it was the first langage to bring a solution to the dependency hell as it links statically all its dependencies by default.
+[Go](http://golang.org/) is quite recent, modern, high performance language developed by Google. It emphases on security, performance and concurrent execution. It first focused on system development like C and C++ while bringing a leaner and richer syntax. In became a prominent technology in just a few months. Before Docker, it was the first language to bring a solution to the dependency hell as it links statically all its dependencies by default.
 
 To just give a taste of how powerful it is: this is the technology behind Docker itself!
 
-Even though it is still a young project, it already have a [huge standard and contributed library](http://golang.org/pkg/) thanks to its huge community of enthousiast. Moreover, any project, from any standard versioning system (Git, Mercurial, SVN) can be installed as a package, directly from the repo.
+Even though it is still a young project, it already have a [huge standard and contributed library](http://golang.org/pkg/) thanks to its huge community of enthusiast. Moreover, any project, from any standard versioning system (Git, Mercurial, SVN) can be installed as a package, directly from the repository.
 
 Before diving in, make sure to read the [Getting Started](getting-started-with-sailabove-docker.html) guide.
 
@@ -73,9 +73,9 @@ docker build -t hello-go .
 docker run -it --publish 8080:80 --rm -t hello-go
 ```
 
-Check if all works fine, visit http://localhost:8080/hello/Docker-Fan. You should see womething like "Hello Docker-Fan!".
+Check if all works fine, visit http://localhost:8080/hello/Docker-Fan. You should see something like "Hello Docker-Fan!".
 
-It works on your dev machine. It will work on production.
+It works on your development machine. It will work on production.
 
 3. Go live!
 ===========
@@ -94,11 +94,11 @@ Push your application on Sailabove's *private* Docker registry:
 docker push sailabove.io/demo/hello-go
 ```
 
-Launch it using previously installed ``sail`` command line and instruct Sailabove to run it with unpriviledged user ``nobody`` for increased security. Please note that, even when running as regular unprivileged user, your application can freely listen on *any* port, ``80`` in this case.
+Launch it using previously installed ``sail`` command line and instruct Sailabove to run it with unprivileged user ``nobody`` for increased security. Please note that, even when running as regular unprivileged user, your application can freely listen on *any* port, ``80`` in this case.
 
 ```bash
 # sail services add <user name>/<app name> <service name>
-sail services add demo/hello-go hello-go --user nobody
+sail services add demo/hello-go hello-go
 ```
 
 Eager to see the result? Wait a few seconds. It is now running live on http://hello-go.demo.app.sailabove.io/hello/Docker-Fan. This is ``http://<service name>.<user name>.app.sailabove.io``.
