@@ -7,7 +7,7 @@ lang: en
 author: yadutaf
 ---
 
-[Node.js](http://nodejs.org/) is modern event-based asynchronous langage built on the foundations of the lighning fast ``V8`` javascript engine powering Google Chrome. Its event based approach contributed a lot to its popularity. It helps a lot to built fast, scalable and efficient IO bound applications.
+[Node.js](http://nodejs.org/) is modern event-based asynchronous language built on the foundations of the lighting fast ``V8`` javascript engine powering Google Chrome. Its event based approach contributed a lot to its popularity. It helps a lot to built fast, scalable and efficient IO bound applications.
 
 Node.js comes with a [large library of packages](https://www.npmjs.org/) installable using ``npm install``.
 
@@ -74,7 +74,7 @@ FROM node:0.10-onbuild
 EXPOSE 80
 ```
 
-It first instructs Docker to get Node.js ``0.10`` base image with automatic build support (``-onbuild``). To use another Node.js runtime version like the beeding edge one, you may choose to use ``FROM node:0.11-onbuild`` for instance.
+It first instructs Docker to get Node.js ``0.10`` base image with automatic build support (``-onbuild``). To use another Node.js runtime version like the bleeding edge one, you may choose to use ``FROM node:0.11-onbuild`` for instance.
 
 We then declare the ``PORT`` our application will listen on. In our case, standard HTTP port.
 
@@ -86,7 +86,7 @@ docker build -t hello-node .
 docker run -it --publish 8080:80 --rm -t hello-node
 ```
 
-Check if all works fine, visit http://localhost:8080/hello/Docker-Fan. You should see womething like "Hello Docker-Fan!".
+Check if all works fine, visit http://localhost:8080/hello/Docker-Fan. You should see something like "Hello Docker-Fan!".
 
 It works on your dev machine. It will work on production.
 
@@ -107,11 +107,11 @@ Push your application on Sailabove's *private* Docker registry:
 docker push sailabove.io/demo/hello-node
 ```
 
-Launch it using previously installed ``sail`` command line and instruct Sailabove to run it with unpriviledged user ``nobody`` for increased security. Please note that, even when running as regular unprivileged user, your application can freely listen on *any* port, ``80`` in this case.
+Launch it using previously installed ``sail`` command line and instruct Sailabove to run it with unprivileged user ``nobody`` for increased security. Please note that, even when running as regular unprivileged user, your application can freely listen on *any* port, ``80`` in this case.
 
 ```bash
 # sail services add <user name>/<app name> <service name>
-sail services add demo/hello-node hello-node --user nobody
+sail services add demo/hello-node hello-node
 ```
 
 Eager to see the result? Wait a few seconds. It is now running live on http://hello-node.demo.app.sailabove.io/hello/Docker-Fan. This is ``http://<service name>.<user name>.app.sailabove.io``.

@@ -7,7 +7,7 @@ lang: en
 author: yadutaf
 ---
 
-[Python](https://www.python.org/) is a very popular and well established interpreted language. It emphases on code read readability and brings all the features one would expect from a modern langage like dynamic typing, object programming, automatic memory managment, ...
+[Python](https://www.python.org/) is a very popular and well established interpreted language. It emphases on code read readability and brings all the features one would expect from a modern language like dynamic typing, object programming, automatic memory management, ...
 
 Python comes with a [huge library of packages](https://pypi.python.org/pypi) installable using ``pip install``.
 
@@ -68,7 +68,7 @@ docker build -t hello-python .
 docker run -it --publish 8080:80 --rm -t hello-python
 ```
 
-Check if all works fine, visit http://localhost:8080/hello/Docker-Fan. You should see womething like "Hello Docker-Fan!".
+Check if all works fine, visit http://localhost:8080/hello/Docker-Fan. You should see something like "Hello Docker-Fan!".
 
 It works on your dev machine. It will work on production.
 
@@ -89,11 +89,11 @@ Push your application on Sailabove's *private* Docker registry:
 docker push sailabove.io/demo/hello-python
 ```
 
-Launch it using previously installed ``sail`` command line and instruct Sailabove to run it with unpriviledged user ``nobody`` for increased security. Please note that, even when running as regular unprivileged user, your application can freely listen on *any* port, ``80`` in this case.
+Launch it using previously installed ``sail`` command line and instruct Sailabove to run it with unprivileged user ``nobody`` for increased security. Please note that, even when running as regular unprivileged user, your application can freely listen on *any* port, ``80`` in this case.
 
 ```bash
 # sail services add <user name>/<app name> <service name>
-sail services add demo/hello-python hello-python --user nobody
+sail services add demo/hello-python hello-python
 ```
 
 Eager to see the result? Wait a few seconds. It is now running live on http://hello-python.demo.app.sailabove.io/hello/Docker-Fan. This is ``http://<service name>.<user name>.app.sailabove.io``.
