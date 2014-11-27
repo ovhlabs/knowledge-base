@@ -49,6 +49,8 @@ parameters:
     relayhost = [in-v3.mailjet.com]:587
     smtp_sasl_auth_enable = yes
     smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+    smtp_sasl_security_options = noanonymous
+    smtp_tls_security_level = encrypt
 
 In ```/etc/postfix/sasl_passwd```, add your Mailjet SMTP credentials:
 
