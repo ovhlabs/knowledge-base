@@ -15,6 +15,7 @@ permalink: none
 # Pagination
 paginate: 7
 paginate_path: "/page:num"
+paginate_categories: true
 
 # Categories plugin settings
 category_dir: category

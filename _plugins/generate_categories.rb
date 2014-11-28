@@ -51,6 +51,9 @@
 # - category_dir:          The subfolder to build category pages in (default is 'categories').
 # - category_title_prefix: The string used before the category name in the page title (default is
 #                          'Category: ').
+
+require "jekyll-paginate/pager"
+
 module Jekyll
 
   # The CategoryIndex class creates a single category page for the specified category.
@@ -61,12 +64,13 @@ module Jekyll
     #  +template_path+ is the path to the layout template to use.
     #  +site+          is the Jekyll Site instance.
     #  +base+          is the String path to the <source>.
-    #  +category_dir+  is the String path between <source> and the category folder.
+    #  +category_dir+	 is the category folder that does not includes the potential pagination directory.
+    #  +page_dir+  		 is the String path between <source> and the page name.
     #  +category+      is the category currently being processed.
-    def initialize(template_path, name, site, base, category_dir, category, lang)
+    def initialize(template_path, name, site, base, category_dir, category, lang, page_dir=nil)
       @site  = site
       @base  = base
-      @dir   = category_dir
+      @dir   = page_dir || category_dir
       @name  = name
 
       self.process(name)
@@ -80,6 +84,7 @@ module Jekyll
         # Read the YAML data from the layout page.
         self.read_yaml(template_dir, template)
         self.data['category']    = category
+        self.data['category_dir']= File.join(site.baseurl, category_dir)
         # Set the title for this page.
         title_prefix             = site.config['category_title_prefix'] || 'Category: '
         self.data['title']       = "#{title_prefix}#{category}"
@@ -105,11 +110,12 @@ module Jekyll
     #
     #  +site+         is the Jekyll Site instance.
     #  +base+         is the String path to the <source>.
-    #  +category_dir+ is the String path between <source> and the category folder.
+    #  +category_dir+	is the category folder that does not includes the potential pagination directory.
+    #  +page_dir+  		is the String path between <source> and the page name.
     #  +category+     is the category currently being processed.
-    def initialize(site, base, category_dir, category, lang)
+    def initialize(site, base, page_dir, category, lang, category_dir=nil)
       template_path = File.join(base, '_layouts', 'category_index.html')
-      super(template_path, '', site, base, category_dir, category, lang)
+      super(template_path, '', site, base, page_dir, category, lang, category_dir)
     end
 
   end
@@ -162,12 +168,34 @@ module Jekyll
     def write_category_index(category)
 			for lang in Jekyll.configuration({})['languages']
 				target_dir = GenerateCategories.category_dir(lang, category)
-				index      = CategoryIndex.new(self, self.source, target_dir, category, lang)
-				if index.render?
-					index.render(self.layouts, site_payload)
-					index.write(self.dest)
-					# Record the fact that this pages has been added, otherwise Site::cleanup will remove it.
-					self.pages << index
+				if not self.config['paginate_categories']
+					index = CategoryIndex.new(self, self.source, target_dir, category, lang)
+					if index.render?
+						index.render(self.layouts, site_payload)
+						index.write(self.dest)
+						# Record the fact that this pages has been added, otherwise Site::cleanup will remove it.
+						self.pages << index
+					end
+				else
+					all_posts = self.categories[category]
+					pages = Paginate::Pager.calculate_pages(all_posts, self.config['paginate'].to_i)
+					(1..pages).each do |num_page|
+						if num_page == 1
+							category_path = target_dir
+						else
+							category_path = File.join(target_dir, Paginate::Pager.paginate_path(self, num_page))
+						end
+
+						index = CategoryIndex.new(self, self.source, target_dir, category, lang, category_path)
+						index.pager = Paginate::Pager.new(self, num_page, all_posts, pages)
+
+						if index.render?
+							index.render(self.layouts, site_payload)
+							index.write(self.dest)
+							# Record the fact that this pages has been added, otherwise Site::cleanup will remove it.
+							self.pages << index
+						end
+					end
 				end
 
 				# Create an Atom-feed for each index.

@@ -23,7 +23,7 @@ layout: default
 
   <div class="tutorials" id="tutorials">
     <div>
-			{% for post in site.categories[page.category] %}
+			{% for post in paginator.posts %}
         <div class="tutorial">
           <h4><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h4>
           <p class="author">
@@ -47,5 +47,31 @@ layout: default
       {% endfor %}
     </div>
   </div>
+
+  {% if paginator.total_pages > 1 %}
+    <div class="pagination">
+  {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path | prepend: page.category_dir | replace: '//', '/' }}">&laquo; Prev</a>
+  {% else %}
+    <span>&laquo; Prev</span>
+  {% endif %}
+
+  {% for p in (1..paginator.total_pages) %}
+    {% if p == paginator.page %}
+      <em>{{ p }}</em>
+    {% elsif p == 1 %}
+      <a href="{{ '/index.html' | prepend: page.category_dir | replace: '//', '/' }}">{{ p }}</a>
+    {% else %}
+      <a href="{{ site.paginate_path | prepend: page.category_dir | replace: '//', '/' | replace: ':num', p }}">{{ p }}</a>
+    {% endif %}
+  {% endfor %}
+
+  {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path | prepend: page.category_dir | replace: '//', '/' }}">Next &raquo;</a>
+    {% else %}
+        <span>Next &raquo;</span>
+  {% endif %}
+    </div>
+  {% endif %}
 
 </div>
