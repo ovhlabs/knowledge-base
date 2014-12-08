@@ -5,7 +5,7 @@ categories: Instances
 author: DrOfAwesomeness
 lang: en
 ---
-**[Shipyard](http://shipyard-project.com/)** is a [Docker](https://docker.io) cluster administration tool. It provides a Web UI to simplify managing Docker containers across multiple nodes and a simple orchestration system to help control where a container will land when you create it. In this tutorial, you'll learn how to set up a Shipyard controller and a single Docker node, or "engine" in Shipyard terminology, linked over an internal network.
+**[Shipyard](http://shipyard-project.com/)** is a [Docker](https://docker.com) cluster administration tool. It provides a Web UI to simplify managing Docker containers across multiple nodes and a simple orchestration system to help control where a container will land when you create it. In this tutorial, you'll learn how to set up a Shipyard controller and a single Docker node, or "engine" in Shipyard terminology, linked over an internal network.
 
 ## Prerequisites
 * An understanding of the linux command-line
@@ -39,16 +39,13 @@ Using your favorite command-line editor, such as nano or vim, open /etc/network/
 ```
 auto eth1
 iface eth1 inet static
-    address <internal IP as shown on your dashboard>
+    address <controller internal IP as shown on your dashboard>
 ```
 Then bring up the eth1 interface with `sudo ifup eth1.`
 After you've configured the network, you'll need to set up the database. Shipyard uses RethinkDB, which you can deploy with the following commands:
 
 ```bash
-# First we deploy a data container in case we ever need to update the RethinkDB container
-sudo docker run -d --name rethinkdb-data --entrypoint /bin/bash shipyard/rethinkdb
-# Next we deploy the actual RethinkDB container
-sudo docker run -d --name rethinkdb --volumes-from rethinkdb-data shipyard/rethinkdb
+sudo docker run -d --name rethinkdb -v /var/lib/rethinkdb:/data shipyard/rethinkdb
 ```
 Once you've deployed RethinkDB, you can deploy the Shipyard controller with the following command:
 
@@ -61,7 +58,7 @@ Now browse to `http://your-controller-ip:8080` in your web browser, replacing `y
 The default username is **admin** and the default password is **shipyard**. To change the admin password, you'll need to start a Shipyard CLI container and use the Shipyard command-line client to login and update your password as shown below:
 
  ```
- sudo docker run -ti --link shipyard:shipyard shipyard/shipyard-cli
+ sudo docker run -ti --rm --link shipyard:shipyard shipyard/shipyard-cli
  shipyard cli> shipyard login
  URL: http://shipyard:8080
  Username: admin
@@ -85,12 +82,12 @@ Next, as with the controller, we need to set up the internal network on this ins
 ```
 auto eth1
 iface eth1 inet static
-    address <internal IP as shown on your dashboard>
+    address <engine internal IP as shown on your dashboard>
 ```
 Once you've added these lines to the end of /etc/network/interfaces, run `sudo ifup eth1`. Now that the internal network is configured on the instance, open /etc/default/docker as root in your favorite editor and append the following line:
 
 ```
-DOCKER_OPTS="-H tcp://<internal IP as shown on your dashboard>:8888"
+DOCKER_OPTS="-H tcp://<engine internal IP as shown on your dashboard>:8888"
 ```
 This will tell Docker to listen on the instance's internal IP address so that the controller can connect to it. Once you've made this change, you'll need to restart Docker by running `sudo service docker restart`
 
