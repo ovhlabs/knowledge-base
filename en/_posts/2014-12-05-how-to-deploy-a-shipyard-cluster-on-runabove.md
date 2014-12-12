@@ -53,7 +53,8 @@ Once you've deployed RethinkDB, you can deploy the Shipyard controller with the 
 sudo docker run -d --name shipyard --link rethinkdb:rethinkdb -p 8080:8080 shipyard/shipyard
 ```
 Now browse to `http://your-controller-ip:8080` in your web browser, replacing `your-instance-ip` as necessary. If everything worked, you should see something like this:
- ![Shipyard Login](/images/2014-12-05-how-to-deploy-a-shipyard-cluster-on-runabove/shipyard-login.png)
+ ![Shipyard 
+ Login](/kb/images/2014-12-05-how-to-deploy-a-shipyard-cluster-on-runabove/shipyard-login.png)
 
 The default username is **admin** and the default password is **shipyard**. To change the admin password, you'll need to start a Shipyard CLI container and use the Shipyard command-line client to login and update your password as shown below:
 
