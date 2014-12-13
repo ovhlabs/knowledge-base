@@ -98,7 +98,9 @@ your fresh installed Docker daemon on your RunAbove instance:
 $ export DOCKER_HOST=$(machine url) DOCKER_AUTH=identity
 ```
 
-That's all, you can now use your Docker Machine with your local Docker client:
+Your Docker client and the server will establish a TCP connection on port 2276.
+Do not forget to add a rule for that on your security group. That's all, you
+can now use your Docker Machine with your local Docker client:
 
 ```bash
 $ docker info
