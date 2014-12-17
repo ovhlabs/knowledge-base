@@ -88,8 +88,9 @@ $ machine create \
 ```
 
 In the example above, we use [a Steadfast Resources S instance](https://www.runabove.com)
-as flavor and an Ubuntu 14.04 as image. All the flavor and image available are
-listed in your [Expert dashboard](https://cloud.runabove.com/horizon/).
+as flavor and an Ubuntu 14.04 as image (For now, Docker Machine only supports
+Ubuntu as Host OS). All the flavor and image available are listed in your
+[Expert dashboard](https://cloud.runabove.com/horizon/).
 
 Once deployed, you just need to declare to your Docker client that you'll use
 your fresh installed Docker daemon on your RunAbove instance:
