@@ -3,7 +3,7 @@ layout: post
 title: "How to configure Owncloud 7 with Openstack Swift?"
 categories: Object-Storage
 lang: en
-author: arnaud-runabove
+author: ArnaudJost
 ---
 
 Owncloud is a software application which allows you to host, sync and share files, hosted on your own dedicated or virtual server.

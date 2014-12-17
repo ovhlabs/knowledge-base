@@ -3,7 +3,7 @@ layout: post
 title: "How to schedule deletion of objects"
 categories: Object-Storage
 lang: en
-author: arnaud-runabove
+author: ArnaudJost
 ---
 
 Sometimes, you need to delete one ore more object at a specific time.

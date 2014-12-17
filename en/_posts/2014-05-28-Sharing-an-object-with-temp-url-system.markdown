@@ -3,7 +3,7 @@ layout: post
 title: "Sharing an object with temp url system"
 categories: Object-Storage
 lang: en
-author: arnaud-runabove
+author: ArnaudJost
 ---
 
 Openstack Swift can store a large amount of files. To manage a file (read, write..) you need to be authenticated with a token, for each api request. This is used to confirm your permissions on Swift. This token comes from the authentication system, with your login and password.
