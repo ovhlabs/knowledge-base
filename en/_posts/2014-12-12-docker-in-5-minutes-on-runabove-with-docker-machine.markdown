@@ -13,8 +13,9 @@ and use them with your local Docker client.
 
 In this guide you'll discover how to use Docker Machine on RunAbove. This is **an
 experiment**: Docker machine uses a [development branch](https://github.com/docker/docker/pull/8265)
-of Docker implementing a TLS encryption and a identity-based authentication and
-the OpenStack driver is [still in development](https://github.com/docker/machine/pull/73).
+of Docker implementing a TLS encryption and a identity-based authentication
+(planned for Docker 1.5) and the OpenStack driver is
+[still in development](https://github.com/docker/machine/pull/73).
 
 This guide will be updated following the evolutions of [Docker Machine](https://github.com/docker/machine)
 and its [OpenStack driver](https://github.com/docker/machine/pull/73).
@@ -88,8 +89,9 @@ $ machine create \
 ```
 
 In the example above, we use [a Steadfast Resources S instance](https://www.runabove.com)
-as flavor and an Ubuntu 14.04 as image. All the flavor and image available are
-listed in your [Expert dashboard](https://cloud.runabove.com/horizon/).
+as flavor and an Ubuntu 14.04 as image (For now, Docker Machine only supports
+Ubuntu as Host OS). All the flavor and image available are listed in your
+[Expert dashboard](https://cloud.runabove.com/horizon/).
 
 Once deployed, you just need to declare to your Docker client that you'll use
 your fresh installed Docker daemon on your RunAbove instance:
