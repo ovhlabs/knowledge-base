@@ -53,7 +53,7 @@ Using swift client :
 Using curl :
 
 ```curl -i  -X POST \
-            -H "X-Account-Meta-Temp-URL: 12345" \
+            -H "X-Account-Meta-Temp-URL-Key: 12345" \
             -H "X-Auth-Token: abcdef12345" \
             https://storage.bhs-1.runabove.io/v1/AUTH_tenant/
 ```
