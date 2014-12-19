@@ -43,15 +43,15 @@ Choose a subdomain (like 'static.mydomain.com', choose type 'CNAME', then add th
 
 The `CNAME` must match some rules to be understood by RunAbove Object Storage. You must change `{VARIABLE}` to the corresponding value:
 
-```{CONTAINER_NAME}.{ACCOUNT_NAME}.storage.{SBG1|BHS1..}.runabove.io```
+    {CONTAINER_NAME}.{ACCOUNT_NAME}.storage.{SBG1|BHS1..}.runabove.io
 
 For example, if I want to set a CNAME for a container named `web` on my account `AUTH_1337` to be used at BHS-1, it will be:
 
-```web.auth-1337.storage.bhs-1.runabove.io```
+    web.auth-1337.storage.bhs-1.runabove.io
 
 Your DNS provider will now have a new entry for your domain, like:
 
-```static IN CNAME web.auth-1337.storage.bhs-1.runabove.io```
+    static IN CNAME web.auth-1337.storage.bhs-1.runabove.io
 
 Configure the TXT on your DNS provider:
 ----------------------------------------------
@@ -59,23 +59,24 @@ Configure the TXT on your DNS provider:
 Choose type `TXT`, then add the target following the rule explained below.
 
 The `TXT` entry must match some rules to be found by Runabove Object Storage.
-``` '_swift-remap.' + subdomain ````
+
+    '_swift-remap.' + subdomain
 
 For example, if I want to use 'static.mydomain.com', it will be:
 
-``` _swift-remap.static ```
+    _swift-remap.static
 
 The TXT content must match some rules to be understood by RunAbove Object Storage. You must change `{VARIABLE}` to the corresponding value:
 
-```{CONTAINER_NAME}.{ACCOUNT_NAME}.storage.{SBG1|BHS1..}.runabove.io```
+    {CONTAINER_NAME}.{ACCOUNT_NAME}.storage.{SBG1|BHS1..}.runabove.io
 
 For example, if I want to set a TXT for a container named `web` on my account `AUTH_1337` to be used at BHS-1, it will be:
 
-```web.auth-1337.storage.bhs-1.runabove.io```
+    web.auth-1337.storage.bhs-1.runabove.io
 
 Your DNS provider will now have a new entry for your domain, like :
 
-```_swift-remap.static IN TXT web.auth-1337.storage.bhs-1.runabove.io```
+    _swift-remap.static IN TXT web.auth-1337.storage.bhs-1.runabove.io
 
 
 Note
