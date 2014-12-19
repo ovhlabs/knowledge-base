@@ -3,7 +3,7 @@ layout: post
 title: "How to check file consistency using ETag and md5"
 categories: Object-Storage
 lang: en
-author: arnaud-runabove
+author: ArnaudJost
 ---
 
 When you store lot of objects on Object Storage, it can be very useful to compare local files and remote objects. Sometimes, just to ensure that the object is up to date, but also to check data consistency. Object Storage use md5 as internal control method, but also expose md5 to users, allowing them to control their objects themselves.
