@@ -15,7 +15,7 @@ You'll first need to get a instance running on mostly any flavour of Linux, and 
 
 For this guide I'll be using Debian 7.
 
-## Step 1: Updating Packages and Repositories. ##
+# Step 1: Updating Packages and Repositories. #
 
 You'll first need to run the following commands:
 
@@ -25,7 +25,7 @@ You'll first need to run the following commands:
 ##### CentOS 
 `` yum update ``
 
-## Step 2: Installing Apache 2, MySQL, and PHP. ##
+# Step 2: Installing Apache 2, MySQL, and PHP. #
 You'll first needa install the required applications that make up LAMP.
 
 ##### Debian & Ubuntu 
@@ -45,7 +45,7 @@ Now we have to install MySQL part of this.
 ##### CentOS 
 `` sudo yum install php php-mysql ``
 
-## Step 3: Starting up and configuring the platforms. ##
+# Step 3: Starting up and configuring the platforms. #
 
 Alright, we've got everything installed, now let launch and configure this baby! 
 
