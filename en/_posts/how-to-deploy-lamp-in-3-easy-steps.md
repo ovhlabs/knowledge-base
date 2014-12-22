@@ -46,3 +46,16 @@ Now we have to install MySQL part of this.
 `` sudo yum install php php-mysql ``
 
 ## Step 3: Starting up and configuring the platforms. ##
+
+Alright, we've got everything installed, now let launch and configure this baby! 
+
+We'll need to start up MySQL if it hasn't already.
+`` sudo service mysqld start ``
+
+Alright we'll need to activate it and set up the root password and some other things that might you might want to change or not.
+`` sudo mysql_install_db ``
+
+`` sudo /usr/bin/mysql_secure_installation ``
+
+That wasn't so hard, was it? I hope not. Because you're now ready to rule the world and have bragging rights that you've now got website setup, now go youngster, develop!
+
