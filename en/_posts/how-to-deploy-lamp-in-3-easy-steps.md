@@ -39,7 +39,7 @@ Now we have to install MySQL part of this.
 ##### CentOS 
 `` yum install mysql-server ``
 <hr>
-
+Oh yeah, we'll also need the PHP side of things. So you know we can take care of the serverside of things! 
 ##### Debian & Ubuntu 
 `` sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt ``
 ##### CentOS 
