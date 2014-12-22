@@ -52,7 +52,7 @@ Alright, we've got everything installed, now let launch and configure this baby!
 We'll need to start up MySQL if it hasn't already.
 `` sudo service mysqld start ``
 
-Alright we'll need to activate it and set up the root password and some other things that might you might want to change or not.
+Alright we'll need to activate it and set up the root password and some other things that you might want to change or not.
 `` sudo mysql_install_db ``
 
 `` sudo /usr/bin/mysql_secure_installation ``
