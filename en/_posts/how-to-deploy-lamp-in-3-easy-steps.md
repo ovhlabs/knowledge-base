@@ -7,7 +7,7 @@ lang: en
 ---
 
 # Introduction #
-RunAbove provides powerful resouces, why not use em'? Start a website with LAMP and begin developing. As simple as three steps.
+RunAbove provides powerful resouces, so why not use em'? Start a website with LAMP and begin developing. As simple as three steps.
 
 # Getting Started #
 In this guide you'll learn on how to start up a LAMP server in under 5 minutes.
