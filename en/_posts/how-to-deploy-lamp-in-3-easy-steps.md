@@ -59,5 +59,10 @@ Alright we'll need to activate it and set up the root password and some other th
 
 `` sudo /usr/bin/mysql_secure_installation ``
 
+After finishing all that you can connect to your LAMP website by typing in your instance ip address, and you should see something like this:
+
+![Alt text](http://puu.sh/dEHAa/566711f49e.png)
+
+
 That wasn't so hard, was it? I hope not. Because you're now ready to rule the world and have bragging rights that you've now got website setup, now go youngster, develop!
 
