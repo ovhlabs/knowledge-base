@@ -50,7 +50,7 @@ For example, if I want to set a CNAME for a container named `web` on my account 
 
 Your DNS provider will now have a new entry for your domain, like:
 
-    static IN CNAME web.auth-1337.storage.bhs-1.runabove.io
+    static IN CNAME web.auth-1337.storage.bhs-1.runabove.io.
 
 Configure the TXT on your DNS provider
 --------------------------------------
