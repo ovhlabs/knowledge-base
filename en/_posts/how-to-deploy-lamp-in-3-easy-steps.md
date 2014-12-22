@@ -19,8 +19,30 @@ For this guide I'll be using Debian 7.
 
 You'll first need to run the following commands:
 
-##### Debian & Ubuntu #####
-<pre><code>apt-get update</code></pre>
+##### Debian & Ubuntu
+`` apt-get update ``
 
-##### CentOS #####
-<pre><code>yum update</code></pre>.
+##### CentOS 
+`` yum update ``
+
+## Step 2: Installing Apache 2, MySQL, and PHP. ##
+You'll first needa install the required applications that make up LAMP.
+
+##### Debian & Ubuntu 
+`` apt-get install apache2 ``
+##### CentOS 
+`` yum install apache2 ``
+<hr>
+Now we have to install MySQL part of this.
+##### Debian & Ubuntu 
+`` sudo apt-get install mysql-server libapache2-mod-auth-mysql php5-mysql ``
+##### CentOS 
+`` yum install mysql-server ``
+<hr>
+
+##### Debian & Ubuntu 
+`` sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt ``
+##### CentOS 
+`` sudo yum install php php-mysql ``
+
+## Step 3: Starting up and configuring the platforms. ##
