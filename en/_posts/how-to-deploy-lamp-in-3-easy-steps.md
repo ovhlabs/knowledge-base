@@ -21,5 +21,8 @@ You'll first need to run the following commands:
 
 ##### CentOS
 <pre><code>yum update</code></pre>.
+# Step 2: Installing Apache, MySQL, and PHP.
+Install line for apache 2:
+<pre><code>sudo apt-get install apache2</code></pre>
 
-# Step 2: Updating Packages and Repositories.
+
