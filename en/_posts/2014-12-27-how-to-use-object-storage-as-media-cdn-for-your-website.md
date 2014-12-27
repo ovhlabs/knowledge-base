@@ -6,9 +6,11 @@ author: Tobiaqs
 lang: en
 ---
 
+# How to use Object Storage as media server for your website #
+
 Regular cheap web hosts normally don't offer a lot of space and more often limit data traffic. When you do need to serve large video files to your visitors, an external *Content Delivery Network* can come in handy. RunAbove is well-suited for this job.
 
-# Part 1: Uploading your files #
+## Part 1: Uploading your files ##
 Before integrating RunAbove in your website, you'll need to upload some files to the cloud. You can do this using the RunAbove control panel (Expert Mode). Once you're in, go to containers.
 
 ![Control panel screenshot](http://i.imgur.com/ZAIobgM.png)
@@ -27,7 +29,7 @@ We can now access our file *video.mp4* in our container *test*:
 
 Keep the Object Storage endpoint handy somewhere. You'll need it in the next part.
 
-# Part 2: Expiring URLs #
+## Part 2: Expiring URLs ##
 When uploading videos to your website, it's desirable that people actually watch that video on your website. There are multiple legitimate reasons for this, e.g. displaying advertisements, tracking user sessions and allowing the user to select a video resolution. How can we prevent people from sharing direct links to your video files? OpenStack provides support for temporary URLs. These URLs expire after a while. I'll explain how you can generate these URLs in PHP - the most commonly supported scripting language on web hosts - and how to set up your container.
 
 Head off to the containers page. To the right of the *test* container, click *Make Private*:
@@ -53,7 +55,7 @@ Here comes the actual coding. To create a temporary signature, we'll need the fo
 
 Seems easy, right? $url now contains a signed URL, which will no longer be usable after 60 seconds. You can use this URL in your HTML.
 
-# Part 3: Using your own domain #
+## Part 3: Using your own domain ##
 RunAbove allows you to bind a subdomain of your own domain name to a container. Here's how it works:
 
 
@@ -77,3 +79,5 @@ So when creating a temporary signature for this file, I'd use the path... /video
 
 	$hash = hash_hmac('sha1', sprintf("%s\n%d\n%s", "GET", $expireAt, $path));
 	$url = "http://files.mydomain.com/{$file}?temp_url_sig={$hash}&temp_url_expires={$expireAt}";
+
+P.S.: http and https are bold-printed because https is supported when you use the standard Object Storage endpoint for accessing files, but not when you use the container's subdomain or your own subdomain.
