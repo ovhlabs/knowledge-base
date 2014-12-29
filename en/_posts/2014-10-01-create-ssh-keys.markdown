@@ -10,6 +10,19 @@ to a remote server. Sysadmins tend to love them because they allow to
 administrate servers without remembering thousands of passwords. This guide 
 will explain how to generate and use them.
 
+Root access and admin user
+--------------------------
+
+On RunAbove your SSH key allows you to connect as the user `admin`. This user 
+has sudo capacities, which means that you can use root privileges with it. You 
+can for instance install software with:
+
+    sudo apt-get install nginx
+
+You can also directly have a root shell with:
+
+    sudo su -
+
 What are SSH keys?
 -------------------
 
