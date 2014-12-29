@@ -75,6 +75,12 @@ $ echo -n "your_application_key+GET+https://api.runabove.com/1.0/instance/++1400
 d33fced42c337a8dfc15d6b7a8e0c588d3a0f62f
 ```
 
+Prepend `$1$` to the signature so it becomes:
+
+```
+$1$d33fced42c337a8dfc15d6b7a8e0c588d3a0f62f
+```
+
 # Congratulations!
 
 You have your first request on RunAbove API! Now you can create applications on object storage or automate your infrastructure with some creation of new instances!
