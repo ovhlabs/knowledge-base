@@ -81,8 +81,8 @@ If you want don't want to use a subdomain it will look like:
 
     _swift-remap IN TXT web.auth-1337.storage.bhs-1.runabove.io.
 
-Last step to use TXT records it adding a A record that matches RunAbove IP, you 
-can get them with:
+Last step to use TXT records is adding a A record for your (sub)domain that 
+matches RunAbove Object Storage IP, you can get them with:
 
     dig storage.sbg-1.runabove.io
     dig storage.bhs-1.runabove.io
