@@ -73,10 +73,19 @@ For example, if I want to set a TXT for a container named `web` on my account `A
 
     web.auth-1337.storage.bhs-1.runabove.io
 
-Your DNS provider will now have a new entry for your domain, like :
+Your DNS provider will now have a new entry for your domain, like:
 
-    _swift-remap.static IN TXT web.auth-1337.storage.bhs-1.runabove.io
+    _swift-remap.static IN TXT web.auth-1337.storage.bhs-1.runabove.io.
 
+If you want don't want to use a subdomain it will look like:
+
+    _swift-remap IN TXT web.auth-1337.storage.bhs-1.runabove.io.
+
+Last step to use TXT records it adding a A record that matches RunAbove IP, you 
+can get them with:
+
+    dig storage.sbg-1.runabove.io
+    dig storage.bhs-1.runabove.io
 
 Note
 ----
