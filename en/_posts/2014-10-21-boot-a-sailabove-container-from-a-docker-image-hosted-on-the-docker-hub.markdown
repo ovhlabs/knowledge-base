@@ -26,11 +26,15 @@ pip install -U sail
 
 ## Example
 
-Here is an example using a [memcached image created by Fedora](https://registry.hub.docker.com/u/fedora/memcached/) and hosted on the [Docker Hub](https://registry.hub.docker.com).
+Here is an example using a [memcached image created by Fedora](https://registry.hub.docker.com/u/fedora/memcached/)
+and hosted on the [Docker Hub](https://registry.hub.docker.com).
 
 ### Create a repository bookmark
 
-Let's add a bookmark named "memcached" to the image we want to boot:
+Let's add a bookmark named "memcached" to the image we want to boot (you must
+replace ```<application>``` with your application name, e.g. if your
+application is named "example", you should have ```example/memcached``` in the
+example below):
 
 ```bash
 sail repositories add external <application>/memcached --source https://registry.hub.docker.com/u/fedora/memcached/
