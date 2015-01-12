@@ -18,7 +18,7 @@ Download Duplicity with version 0.6.22 or later. Packaged versions are available
 
 ## Get missing information
 
-To connect to your RunAbove object storage, you will need to have your login, password and tenant name. This information can be found in __expert mode__ manager below __current project__
+To connect to your RunAbove object storage, you will need to have your login, password and tenant name. This information can be found in __Openstack Horizon__ manager below __current project__
 
 ![](https://lb1049.pcs.ovh.net/v1/AUTH_e17900908d244c4bb80525f0c0d3a227/public/access-to-your-object-storage-with-cyberduck.html/tenant_name.png)
 
@@ -37,7 +37,7 @@ The last step before starting your backup is to define your account information 
  * SWIFT_AUTHURL: https://auth.runabove.io:443/v2.0
  * SWIFT_AUTHVERSION: 2
  * SWIFT_TENANTNAME: your tenant name
- * SWIFT_REGION: (optional) region where you want to store backup (BHS-1, SBG-1...)
+ * SWIFT_REGIONNAME: (optional) region where you want to store backup (BHS-1, SBG-1...) (Available in duplicity>=0.7.02)
 
 Finally, you can back up the __configuration__ folder in your __backup__ container.
 
