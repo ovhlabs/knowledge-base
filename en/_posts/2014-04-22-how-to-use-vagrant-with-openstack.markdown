@@ -15,7 +15,7 @@ Get started, practice spining up local machine and get enlightened! Once you are
 
 First, setup an ssh key via the runabove control panel. We will need that to connect into the instance once it's setup.
 
-In expert mode, under __Access & Security__, then under __Key Pairs__ and finally clicking the import Key Pair button gives instruction on how to generate and import a key.
+In OpenStack Horizon, under __Access & Security__, then under __Key Pairs__ and finally clicking the import Key Pair button gives instruction on how to generate and import a key.
 
 ![](http://getoutofthecube.com/public/runabove-vagrant/1.PNG)
 

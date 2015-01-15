@@ -16,7 +16,7 @@ To use any command line client, you need to load the `openrc` file. This file
 contains special environments variables which are used by command line clients
 to authenticate to the server where the service is running.
 
-Let's start! To begin, go to the [expert control
+Let's start! To begin, go to the [OpenStack Horizon
 panel](https://cloud.runabove.com/horizon/project/access_and_security/), go to
 __Access & Security__ and switch tab to __API Access__. Finally __Download
 OpenStack RC File__ will allow you to retrieve the credentials needed to

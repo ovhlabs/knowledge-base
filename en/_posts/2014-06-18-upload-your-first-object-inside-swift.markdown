@@ -26,7 +26,7 @@ Now you can begin to store your data!
 
 To be authenticated inside your Object Storage, you need to define some environment variables with your account credentials.
 
-The simpliest way is to download a script to do it. You can find it in your control panel, in expert mode.
+The simpliest way is to download a script to do it. You can find it in your control panel, in OpenStack Horizon.
 Then go into _Access & Security_ panel, then into _API Access_ tab. Finally, click on _Download OpenStack RC File_.
 
 ![](http://community.runabove.com/public/files/JvEL9P7dJKRRpPDFEPRK.png)

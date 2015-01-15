@@ -30,7 +30,7 @@ sudo apt-get update && sudo apt-get install juju-core
 
 # Juju configuration with Openstack credentials:
 
-Now you need to tell Juju how to launch instances on your RunAbove account using the OpenStack API. To do so, retrieve your OpenStack credentials. They can be found in RunAbove expert manager under the "__Access & Security__"/"__API Access__" tab, download the RC file.
+Now you need to tell Juju how to launch instances on your RunAbove account using the OpenStack API. To do so, retrieve your OpenStack credentials. They can be found in OpenStack Horizon under "__Access & Security__"/"__API Access__" tab, download the RC file.
 
 ![](https://community.runabove.com/public/files/7eZ83Lg6GnPPP0ccKIUM.png)
 
@@ -66,7 +66,7 @@ environments:
 # Importing Ubuntu Cloud to your RunAbove account:
 Now that your configuration is set, you are almost ready. You just need to upload to RunAbove the _Ubuntu Cloud Image_ that will be the base of all instances running your infrastructure. You should choose between Ubuntu 12.04 LTS (_precise_) and Ubuntu 14.04 LTS (_trusty_). As many charms are still written and tested for Ubuntu 12.04 it is the version you should use until Ubuntu 14.04 gets more supported charms.
 
-To upload the image, go to RunAbove expert manager and in the "__Image__" tab click on "__Create Image__". You will be prompted for information about the image you want to upload. Just give it a name, select "__Raw__" as the format and add this URL as Image Location: https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.img
+To upload the image, go to OpenStack Horizon and in the "__Image__" tab click on "__Create Image__". You will be prompted for information about the image you want to upload. Just give it a name, select "__Raw__" as the format and add this URL as Image Location: https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.img
 You can leave the other parameters blank. Validate by clicking on "__Create image__" and wait a few seconds.
 
 ![](https://community.runabove.com/public/files/N3ZEuPNtiosfVVaUzDnh.png)

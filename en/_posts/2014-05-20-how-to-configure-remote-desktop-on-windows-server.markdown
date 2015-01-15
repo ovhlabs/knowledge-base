@@ -12,7 +12,7 @@ If you don't have a Windows instance, you should read "[how to create a Windows 
 
 # Open RDP port in firewall
 
-Your instance is protected by an external firewall. By default, only ports 80 (HTTP) and 443 (HTTPS) are open and you need to open port 3389 to authorize the RDP protocol. The firewall rules can be edited in expert mode, using the manager, under the _Access & Security_ tab.
+Your instance is protected by an external firewall. By default, only ports 80 (HTTP) and 443 (HTTPS) are open and you need to open port 3389 to authorize the RDP protocol. The firewall rules can be edited in OpenStack Horizon, using the manager, under the _Access & Security_ tab.
 
 If you haven't replaced your security group since your instance was launched, your security group will be _default_.
 

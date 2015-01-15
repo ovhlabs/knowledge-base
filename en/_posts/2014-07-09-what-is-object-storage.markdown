@@ -38,9 +38,9 @@ There are tons of examples like that, and there is no limit !
 
 RunAbove runs Openstack Swift, and makes it simple to use:
 
-## Use the expert [control panel](https://cloud.runabove.com/horizon/).
+## Use OpenStack Horizon
 
-Some screenshots to guide you through (from simple mode to expert mode)
+Some screenshots to guide you through (from simple mode to Horizon)
 ![](https://community.runabove.com/public/files/irKoAPPu6y6JZfRoEZc5.png)
 ![](https://community.runabove.com/public/files/FJksBNU8geDPNs0kRHiy.png)
 ![](https://community.runabove.com/public/files/MUigXnPlL4xR4sH3SsCy.png)

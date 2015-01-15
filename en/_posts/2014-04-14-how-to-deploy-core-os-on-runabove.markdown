@@ -13,7 +13,7 @@ And deploying it on Runabove is a breeze.
 
 # 1. Create a custom VM template
 
-Go the [expert mode control panel](https://cloud.runabove.com/horizon/), then go to _Images_ panel and then on the _create image_ button to install the new image.
+Go the [OpenStack Horizon](https://cloud.runabove.com/horizon/), then go to _Images_ panel and then on the _create image_ button to install the new image.
 
 ![](https://storage.bhs-1.runabove.io/v1/AUTH_3eca649cc7f44d91b67131374db4afb3/public/coreos_screenshot1.jpg)
 

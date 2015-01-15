@@ -48,7 +48,7 @@ Everything that's wrapped in "#" needs to be configured for your account, here i
 sudo pip install python-novaclient.
 ```
 
-Once that's done, go in the manager, in expert mode, under __Access & Security__ and finally under __API Access__. Download the __OpenStack RC file__. Save it on your box, source it and enter your password. It's safe it comes from runabove.
+Once that's done, go in the manager, in OpenStack Horizon, under __Access & Security__ and finally under __API Access__. Download the __OpenStack RC file__. Save it on your box, source it and enter your password. It's safe it comes from runabove.
 
 ```
 source /home/jsb/openstackrc

@@ -52,8 +52,7 @@ Your IDE is now available at `http://your-instance-ip:8000`. If you are using
 the default RunAbove firewall settings, you'll need to allow traffic on port 
 8000.
 
-Open your RunAbove control panel, click your name in the upper-right corner, 
-click on "Expert Mode", click on "Access & Security", and add a rule to the 
+From OpenStack Horizon, click on "Access & Security", and add a rule to the 
 default security group allowing ingress traffic to port 8000. Note that your 
 instance is currently open to the public. If you want to password-protect your 
 IDE, you can specify usernames and passwords as shown below.

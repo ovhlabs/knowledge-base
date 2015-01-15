@@ -42,13 +42,13 @@ instance](/kb/en/instances/how-to-create-a-compute-instance-in-few-seconds.html)
 
 To create a local network you have two options:
 
-* Using the expert mode in Horizon (OpenStack dashboard)
-* Using the command line tools and the API
+* Using OpenStack Horizon dashboard
+* Using command line tools and the API
 
 <h3 id="local_net_hor">1. Create local network using Horizon</h3>
 <h3 id="create_net">1.1 Network name</h3>
 To create the local network using Horizon you need to login to your RunAbove
-account. In expert mode click on __Networks__ from the menu, there you can see
+account. In Horizon click on __Networks__ from the menu, there you can see
 your networks.
 
 It's time to create your first dedicated network. Click on __Create Network__
@@ -208,7 +208,7 @@ That's it. Your network is working, and it has access to the Internet.
 <h2 id="add_vm_net">4. Adding more virtual machine to local network</h2>
 
 Local network is working and has access to the Internet, now you can add more
-virtual machine to your network. Go to Horizon in expert mode, then go to
+virtual machine to your network. Go to Horizon in Horizon, then go to
 instances and click __Launch Instance__. Select your distribution and complete
 the configuration like you want. Under the networking tab add a network to your
 virtual machine. Add your local network and click  __Launch__.

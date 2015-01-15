@@ -12,7 +12,7 @@ As RunAbove supports cloud-init post-installation, we can take advantage of this
 
 # Launch host instance:
 
-Launch control panel in [expert mode](https://cloud.runabove.com/horizon/), click on _Instances_ panel and then on _Launch instance_ button. This guide is tested on Ubuntu, Debian and CoreOS, but you can test other operating system.
+From [OpenStack Horizon](https://cloud.runabove.com/horizon/), click on _Instances_ panel and then on _Launch instance_ button. This guide is tested on Ubuntu, Debian and CoreOS, but you can test other operating system.
 
 ![Control panel screenshot](http://community.runabove.com/public/files/LzBsy2lfpeVYuJv03ii5.png)
 

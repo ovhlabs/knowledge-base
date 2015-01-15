@@ -15,7 +15,7 @@ on how to reproduce this layout on RunAbove.
 Create a new local network
 --------------------------
 
-Go to the Expert dashboard (Horizon) and in the `Network Topology` tab click on 
+Go to OpenStack Horizon and in the `Network Topology` tab click on 
 `Create Network`.
 
 ### Network

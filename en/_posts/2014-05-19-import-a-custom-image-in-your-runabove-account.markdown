@@ -9,7 +9,7 @@ By default, RunAbove proposes different operating systems. If you need to launch
 
 # How do you add a custom operation system?
 
-You just need to go to the expert manager, in the "__Image__" tab and then, click on "__Create Image__". A pop-up will ask you for a few details about the system that you want to create and where to find the image itself.
+You just need to go to [OpenStack Horizon](https://cloud.runabove.com/horizon), in the "__Image__" tab and then, click on "__Create Image__". A pop-up will ask you for a few details about the system that you want to create and where to find the image itself.
 
 ![Control panel screenshot](https://community.runabove.com/public/files/r84vLoKPpLjvd9uHnjBp.png)
 

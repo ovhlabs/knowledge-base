@@ -18,7 +18,7 @@ Cyberduck is compatible with RunAbove from version 4.4.4. If you have version 4.
 
 ## Get missing information
 
-To connect to your RunAbove object storage, you will need to have your login, password and tenant name. This last information can be found in __expert mode__ manager below __current project__
+To connect to your RunAbove object storage, you will need to have your login, password and tenant name. This last information can be found in __OpenStack Horizon__ below __current project__
 
 ![](https://lb1049.pcs.ovh.net/v1/AUTH_e17900908d244c4bb80525f0c0d3a227/public/access-to-your-object-storage-with-cyberduck.html/tenant_name.png)
 

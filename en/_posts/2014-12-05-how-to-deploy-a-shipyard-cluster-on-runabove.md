@@ -9,12 +9,12 @@ lang: en
 
 ## Prerequisites
 * An understanding of the linux command-line
-* A basic grasp of how to use the Expert Mode control panel (this tutorial will assume you're using it)
+* A basic grasp of how to use OpenStack Horizon control panel (this tutorial will assume you're using it)
 * A basic grasp of what Docker does and how to use it
 * A security rule allowing ingress traffic from everywhere on port 8080
 
 ## Private Network
-In this tutorial, we'll be using a private network for the traffic between the controller and the engine. Go ahead and create a private network from the Expert Mode control panel with the settings below.
+In this tutorial, we'll be using a private network for the traffic between the controller and the engine. Go ahead and create a private network from OpenStack Horizon with the settings below.
 
 * Name: (Whatever you want, I used "Int-Net")
 * Create Subnet: Yes

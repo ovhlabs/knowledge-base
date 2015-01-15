@@ -10,7 +10,7 @@ In this guide, I'll show you how to set up IPv6 on RunAbove instances using the 
 1. Preparing the tunnel
 ===
 
-The first thing you'll need to do is create an account on the [Tunnelbroker Site](https://www.tunnelbroker.net/). After you have registered an account, click the "Create Regular Tunnel" button on the left side of the Tunnelbroker portal. Put the IP address of your RunAbove instance in the IPv4 Endpoint field and select a tunnel server from the list (I used the Toronto, ON, CA tunnel server when writing this tutorial.) Next, from your RunAbove control panel, edit your [Security Groups](https://cloud.runabove.com/horizon/project/access_and_security/?tab=access_security_tabs__security_groups_tab) (in Expert Mode under "Access & Security") and allow all TCP traffic from the Tunnel Server IPv4 address (as displayed on the Tunnelbroker "Tunnel Details" page).
+The first thing you'll need to do is create an account on the [Tunnelbroker Site](https://www.tunnelbroker.net/). After you have registered an account, click the "Create Regular Tunnel" button on the left side of the Tunnelbroker portal. Put the IP address of your RunAbove instance in the IPv4 Endpoint field and select a tunnel server from the list (I used the Toronto, ON, CA tunnel server when writing this tutorial.) Next, from your RunAbove control panel, edit your [Security Groups](https://cloud.runabove.com/horizon/project/access_and_security/?tab=access_security_tabs__security_groups_tab) (in OpenStack Horizon under "Access & Security") and allow all TCP traffic from the Tunnel Server IPv4 address (as displayed on the Tunnelbroker "Tunnel Details" page).
 
 2. Connecting to the tunnel
 ===

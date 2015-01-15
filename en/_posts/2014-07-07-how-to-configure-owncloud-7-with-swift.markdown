@@ -16,7 +16,7 @@ With Owncloud 7, you can now use Openstack swift as [u]main storage[/u], and ben
 # Prerequistes :
 
  * Working Owncloud instance, freshly installed on your server (you can donwload and find help about Owncloud here : [https://owncloud.org/install/](https://owncloud.org/install/)
- * Your tenant name is your project number. You can found it inside expert [control panel](https://cloud.runabove.com/horizon/).
+ * Your tenant name is your project number. You can find it in [OpenStack Horizon](https://cloud.runabove.com/horizon/).
 
 # Configure Owncloud 7 to use Runabove storage:
 
