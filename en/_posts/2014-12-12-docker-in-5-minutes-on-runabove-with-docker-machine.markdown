@@ -14,11 +14,7 @@ and use them with your local Docker client.
 In this guide you'll discover how to use Docker Machine on RunAbove. This is **an
 experiment**: Docker machine uses a [development branch](https://github.com/docker/docker/pull/8265)
 of Docker implementing a TLS encryption and a identity-based authentication
-(planned for Docker 1.5) and the OpenStack driver is
-[still in development](https://github.com/docker/machine/pull/73).
-
-This guide will be updated following the evolutions of [Docker Machine](https://github.com/docker/machine)
-and its [OpenStack driver](https://github.com/docker/machine/pull/73).
+(planned for Docker 1.5).
 
 # Install Docker Machine command line
 
@@ -28,9 +24,9 @@ and its [OpenStack driver](https://github.com/docker/machine/pull/73).
 	</a>
 </div>
 
-We provide you built binaries of [Docker Machine](https://github.com/docker/machine)
-with the [OpenStack driver](https://github.com/docker/machine/pull/73) at its
-current development state:
+Since the OpenStack driver will only be included in the next release of Docker
+Machine, we provide you built binaries of [Docker Machine](https://github.com/docker/machine)
+including the [OpenStack Driver (commit a2268491)](https://github.com/docker/machine/commit/a226849168af8b04f0fcb6488af77c1eb110dd8b).
 
 * [Linux amd64](https://storage.sbg-1.runabove.io/v1/AUTH_d186206b24cd46b1a842bbd76ee11f8e/docker-machine/machine_linux_amd64)
 * [Linux i386](https://storage.sbg-1.runabove.io/v1/AUTH_d186206b24cd46b1a842bbd76ee11f8e/docker-machine/machine_linux_386)
@@ -47,10 +43,10 @@ by yourself, the details are available in the [README of the project](https://gi
 
 Your Docker client will use an identity-based authentication to communicate with
 the Docker daemon that will be installed on your instance. Builds by
-[Ben Firshman](https://github.com/bfirsh) of Docker Inc. are available here:
+[Evan Hazlett](https://github.com/ehazlett) of Docker Inc. are available here:
 
-* [Mac OS X](https://bfirsh.s3.amazonaws.com/docker/darwin/docker-1.3.1-dev-identity-auth) 
-* [Linux](https://bfirsh.s3.amazonaws.com/docker/linux/docker-1.3.1-dev-identity-auth)
+* [Mac OS X](https://ejhazlett.s3.amazonaws.com/public/docker/darwin/docker-1.4.1-136b351e-identity)
+* [Linux](https://ejhazlett.s3.amazonaws.com/public/docker/linux/docker-1.4.1-136b351e-identity)
 
 If you want to build Docker on this branch, the build instructions are available
 [here](https://docs.docker.com/contributing/devenvironment/) and the
@@ -62,7 +58,7 @@ If you want to build Docker on this branch, the build instructions are available
 
 Set your credentials in your environment using the [Open RC
 file](https://manager.runabove.com/horizon/project/access_and_security/api_access/openrc/)
-that you can download using the horizon dashboard.
+that you can download using the OpenStack Horizon dashboard.
 
 ```bash
 $ source XXXXXXX-openrc.sh
@@ -91,7 +87,7 @@ $ machine create \
 In the example above, we use [a Steadfast Resources S instance](https://www.runabove.com)
 as flavor and an Ubuntu 14.04 as image (For now, Docker Machine only supports
 Ubuntu as Host OS). All the flavors and images available are listed in your
-[OpenStack Horizon](https://cloud.runabove.com/horizon/).
+[OpenStack Horizon dashboard](https://cloud.runabove.com/horizon/).
 
 Once deployed, you just need to declare to your Docker client that you'll use
 your fresh installed Docker daemon on your RunAbove instance:
@@ -145,7 +141,6 @@ For more examples and ideas, visit:
  http://docs.docker.com/userguide/
 ```
 
-Feel free to join the discussion about this OpenStack driver on the ongoing
-[pull request](https://github.com/docker/machine/pull/73), and to post on [RunAbove
-Community](https://community.runabove.com/share/) if you have any question or
-comment about using [Docker](http://www.docker.com) on RunAbove.
+Feel free to post on [RunAbove Community](https://community.runabove.com/share/)
+if you have any question or comment about using [Docker](http://www.docker.com)
+on RunAbove.
