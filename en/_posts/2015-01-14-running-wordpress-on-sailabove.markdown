@@ -20,7 +20,7 @@ for more information.
 # 1. Application architecture
 
 The application that we'll deploy here will be structured as two services: the
-*Wordpress* application and a *MySQL* database, we'll use the two existing
+*Wordpress* application and a *MySQL* database. We'll use the two existing
 official images [Wordpress](https://registry.hub.docker.com/_/wordpress/) and
 [MySQL](https://registry.hub.docker.com/_/mysql/) provided and maintained by
 Docker Inc.
@@ -33,7 +33,7 @@ for our two containers.
 To safely deploy our application, both services will be exposed on a dedicated
 private network provided by RunAbove (in blue on the schema below), and only the
 Wordpress web application will be available on a public IP. The Wordpress
-application will communicate with its database using a class
+application will communicate with its database using a
 [Docker link](https://docs.docker.com/userguide/dockerlinks/) within its private
 network.
 
@@ -74,7 +74,7 @@ Service wordpress-mysql changed state to init
 We can now add the Wordpress application linked to our database with the name
 "mysql", as [required by the Docker image](https://registry.hub.docker.com/_/wordpress/).
 
-This service will launch on our application private network and SailAbove
+This service will be launched on our application private network and SailAbove
 reverse proxy network called "predictor" where its HTTP port (80) will be
 published.
 
