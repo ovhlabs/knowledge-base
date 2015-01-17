@@ -59,9 +59,14 @@ iptables -A INPUT -p <protocol> --dport <port> -j ACCEPT
 
 `<protocol>` can be tcp, udp or icmp. `<port>` can be a number within range 1-65535.
 
-In BSD-like environments, use this command:
+In BSD-like environments, add this line to /etc/pf.conf:
 ```
 pass in inet proto <protocol> on vtnet0 from any to vtnet0:network port <port> keep state
+```
+
+and use this command to reload pf:
+```
+service pf reload
 ```
 
 ## Windows ##
