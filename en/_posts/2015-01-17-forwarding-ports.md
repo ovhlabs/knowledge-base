@@ -12,13 +12,13 @@ This guide will show you how to open up ports to your instance.
 
 Open up OpenStack Horizon. On the left, click *Access & Security*. Select the tab *Security Groups*, and click *Create Security Group*. Give it a name (the name of your instance for example), and a description. As soon as the group pops up in the list, click Edit Rules. You'll see something like this:
 
-![](http://i.imgur.com/DSNXSMX.png)
+![](/kb/images/2015-01-17-forwarding-ports/security-group-rules.png)
 
 These rules allow all sorts of outgoing (Egress) IPv6 and IPv4 traffic to any remote address. What you'll want to do next, is click the *Add Rule* button. Now you can configure a new rule.
 
 This picture shows how to set up a rule that opens port 8080.
 
-![](http://i.imgur.com/bDtWLye.png)
+![](/kb/images/2015-01-17-forwarding-ports/rule-configuration.png)
 
 Do you require a port range to be opened?
 Select *Port Range* in the *Open Port* dropdown menu.
@@ -34,11 +34,11 @@ Ultimately, click *Add* to create the new rule.
 
 Click *Instances* on the left. You'll see a list of your instances. Find the instance you want to apply the new set of rules to, and click More -> Edit Security Groups.
 
-![](http://i.imgur.com/Hd5Ev6U.png)
+![](/kb/images/2015-01-17-forwarding-ports/open-edit-security-groups.png)
 
 Go to the tab *Security Groups* in the window that pops up. It will probably look like this:
 
-![](http://i.imgur.com/em1uUJq.png)
+![](/kb/images/2015-01-17-forwarding-ports/adding-security-group.png)
 
 Since we're only adding rules, we can just add our newly created group to the instance's *Security Groups*. Do this by clicking the + button of the group (the one on the left).
 
@@ -62,7 +62,7 @@ iptables -A INPUT -p <protocol> --dport <port> -j ACCEPT
 ## Windows ##
 Go to the following component of the *Control Panel*:
 
-![](http://i.imgur.com/eUAD2no.png)
+![](/kb/images/2015-01-17-forwarding-ports/windows-firewall.png)
 
 Click *Advanced Settings* on the left. A window will pop up.
 
