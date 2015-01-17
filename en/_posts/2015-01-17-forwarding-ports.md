@@ -59,6 +59,11 @@ iptables -A INPUT -p <protocol> --dport <port> -j ACCEPT
 
 `<protocol>` can be tcp, udp or icmp. `<port>` can be a number within range 1-65535.
 
+In BSD-like environments, use this command:
+```
+pass in inet proto <protocol> on vtnet0 from any to vtnet0:network port <port> keep state
+```
+
 ## Windows ##
 Go to the following component of the *Control Panel*:
 
