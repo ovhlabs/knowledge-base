@@ -46,7 +46,7 @@ If you're not interested in the default rules (port 80, 443 and 22 are forwarded
 
 ----------
 
-If you wish to change these rules for all of your instances, and save yourself the hassle of creating a new *Security Group*, just add your rules to the *default* group and they'll be applied to all instances (unless you've removed the *default* group an instance).
+If you wish to change these rules for all of your instances, and save yourself the hassle of creating a new *Security Group*, just add your rules to the *default* group and they'll be applied to all instances (unless you've removed the *default* group from an instance).
 
 3. Forwarding ports on the server
 ===
