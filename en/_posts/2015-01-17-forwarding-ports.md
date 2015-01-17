@@ -57,7 +57,7 @@ In Linux, ports don't always have to be forwarded in the OS. But if they do, you
 iptables -A INPUT -p <protocol> --dport <port> -j ACCEPT
 ```
 
-<protocol> can be tcp, udp or icmp. <port> can be a number within range 1-65535.
+`<protocol>` can be tcp, udp or icmp. `<port>` can be a number within range 1-65535.
 
 ## Windows ##
 Go to the following component of the *Control Panel*:
