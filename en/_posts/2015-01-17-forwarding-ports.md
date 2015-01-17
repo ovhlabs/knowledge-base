@@ -2,7 +2,7 @@
 layout: post
 title:  "Forwarding ports to your instance"
 categories: Instances
-author: Tobiqas
+author: Tobiaqs
 lang: en
 ---
 This guide will show you how to open up ports to your instance.
@@ -70,6 +70,8 @@ On the left of that window, select Inbound Rules. On the right, you will see som
 
 Set up the new rule in accordance to these values:
 
-Rule Type: Port
-Action: Allow the connection
-Profile: make sure *Public* is checked
+| Step      | Value                         |
+|:---------:|:-----------------------------:|
+| Rule Type | Port                          |
+| Action    | Allow the connection          |
+| Profile   | Make sure *Public* is checked |
