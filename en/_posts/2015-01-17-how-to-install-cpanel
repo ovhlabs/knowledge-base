@@ -9,7 +9,7 @@ To run cPanel on RunAbove need a new security group permissions.
 
 # 1. Create a custom Security Group 
 
-Go the [OpenStack Horizon](https://cloud.runabove.com/horizon/), then go to _Access and Security_ panel and then click on _Create Security Group_ and fill the _Name_ and _Description_ fields.
+Go to the [OpenStack Horizon](https://cloud.runabove.com/horizon/), then go to _Access and Security_ panel and then click on _Create Security Group_ and fill the _Name_ and _Description_ fields.
 
 ![](https://www.m8t.ovh/cpanel_pic1.jpg)
 
@@ -27,7 +27,7 @@ What means ``TCP / I-E `` ?
 After you added the rules to security group, you must assign the security group to instance.
 
 # 4. Enable root access
-To install cPanel, need _root_ access, so if the instance already exist and was created with ssh key, login to instance using the ssh key and run the next commands:
+To install cPanel, need _root_ access, so if the instance already exist and was created with ssh key, login into instance using the ssh key and run the next commands:
 
 ```
 sudo su
