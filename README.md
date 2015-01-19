@@ -83,7 +83,7 @@ With markdown syntax.
 
 ## Test your tutorial
 
-To deploy tutorials on runabove, we use a python tool called
+To deploy tutorials on runabove, we use a ruby tool called
 [Jekyll](http://jekyllrb.com/). You can find more informations about Jekyll
 installation inside the [official
 documentation](http://jekyllrb.com/docs/installation/). For example on Debian
