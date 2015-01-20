@@ -26,11 +26,13 @@ Here is the full ``server.rb`` source code:
 
 ```ruby
 require 'sinatra'
+require 'cgi'
 
 set :port, 80
 set :bind, '0.0.0.0'
 
 get '/hello/:name' do |name|
+    name = CGI::escapeHTML(name)
     "Hello <b>#{name}</b>!"
 end
 ```
