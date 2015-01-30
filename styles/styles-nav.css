@@ -13,19 +13,26 @@
 }
 
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 770px) {
     .nav-collapse { width : 100%; }
 
     .nav-collapse ul.topmenu li {
         width : 100%;
+        text-align: center;
+        background: #000;
         border-bottom : 1px solid #FFFFFF;
+    }
+
+    #header .wrapper ul.topmenu li span {
+        display : block;
+        width: 100%;
     }
 
     #header .wrapper ul.topmenu li a {
         display : block;
         height : 100%;
         padding : 0.7em  1em;
-        background-color : #181818;
+        width: 100%;
     }
 
     #header .wrapper ul.topmenu li a:hover { background-color : #333; color:#fff;}
@@ -66,13 +73,13 @@
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
-  font-size: 28px;
+  font-size: 65px;
   text-transform: none;
   position: absolute;
   content: "≡";
   text-indent: 0;
   text-align: center;
-  line-height: 55px;
+  line-height: 70px;
   speak: none;
   width: 100%;
   top: 0;
@@ -80,7 +87,16 @@
 }
 
 .nav-toggle.active::before {
-  font-size: 24px;
+  font-size: 40px;
   content:"x";
+}
+
+@media screen and (max-width: 390px) {
+    .nav-toggle:before {
+        font-size: 40px;
+    }
+    .nav-toggle.active::before {
+        font-size: 30px;
+    }
 }
 
