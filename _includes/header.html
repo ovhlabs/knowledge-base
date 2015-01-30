@@ -1,5 +1,59 @@
 <div class="full" style="height : 60px"><br></div>
 <header id="header">
+	<div class="wrapper">
+		<a id="logo" style="border:0;" title="Runabove: Extremely Performant Cloud Computing &amp; Object Storage" href="https://runabove.com">
+			<img src="https://runabove.com/images/new/logo-top.png" alt="Run Above" style="padding: 16px 0;">
+		</a>
+		<nav aria-hidden="false" style="transition: max-height 284ms ease 0s; position: relative;" class="menu nav-collapse nav-collapse nav-collapse-0 closed">
+		<ul class="topmenu dropdown">
+			<li id="top">
+				<span class="top-heading">
+					<a title="" class="" href="https://runabove.com/instances/intel-steadfast.xml">Instances</a>
+				</span>
+			</li>
+			<li id="top">
+				<span class="top-heading">
+					<a title="" class="" href="https://runabove.com/storage/object-storage.xml">Storage</a>
+				</span>
+			</li>
+			<li id="top">
+				<span class="top-heading">
+					<a title="" href="https://runabove.com/apps">Apps</a>
+				</span>
+			</li>
+			<li id="top">
+				<span class="top-heading">
+					<a title="Log In / Sign Up" class="" href="https://cloud.runabove.com/login/">Log In / Sign Up</a>
+				</span>
+			</li>
+			<li id="top">
+				<span class="top-heading">
+					<a title="Runabove community" class="selected" href="https://community.runabove.com">Community</a>
+				</span>
+			</li>
+		</ul>
+	</nav>
+	<script type="text/javascript" src="https://runabove.com/scripts/responsive-nav.js"></script><script type="text/javascript">
+                    var navigation = responsiveNav(".nav-collapse", {
+                        animate: true,
+                        transition: 284,
+                        label: "Menu",
+                        insert: "after",
+                        customToggle: "",
+                        closeOnNavClick: false,
+                        openPos: "relative",
+                        navClass: "nav-collapse",
+                        navActiveClass: "js-nav-active",
+                        jsClass: "js",
+                        init: function(){},
+                        open: function(){},
+                        close: function(){}
+                    });
+        </script>
+	</div>
+</header>
+<!--
+<header id="header">
   <div class="wrapper">
     <a  id="logo"
         style="border:0;height:60px;"
@@ -34,9 +88,6 @@
         <li>
           <a title="Sign up" href="https://cloud.runabove.com/signup/">Sign up</a>
         </li>
-        <!--
-        <li><a href="{{ site.baseurl }}/{{ page.lang }}/{{ site.t.nav[page.lang].contributing | downcase }}.html">{{ site.t.nav[page.lang].contributing }}</a></li>
-        -->
       </ul>
     </nav>
 
@@ -59,4 +110,4 @@
       });
     </script>
   </div>
-</header>
+</header> -->

@@ -866,6 +866,118 @@ div.cutHalf:nth-of-type(even) div:first-child {
 }
 /*pour que ca remette une marge sur le 1er element de la 2e div.cuthalf vu qu il n y a pas de margin-right sur un section:last-child, avoir si ca pete pas pour certains cas */
 
+.Appssection3 {
+    padding: 2%;
+    margin-right: 2%;
+    width: 32%;
+    float: left;
+}
+
+.Appssection3:last-child,
+.Appssection3:nth-of-type(3n) {
+    margin-right: 0;
+}
+
+
+.BiProduct{
+    margin: 0 auto;
+    width: 55%;
+}
+
+.BiStorageProduct{
+    margin: 0 auto;
+    width: 48%;
+    float: left;
+}
+
+.BiStorageProduct:last-child {
+    margin-left: 4%;
+    float: right;
+}
+
+
+.td6 {
+    float:left;
+    width: 16%;
+}
+
+.td5 {
+    float:left;
+    width: 20%;
+}
+
+.td4 {
+    float:left;
+    width: 25%;
+}
+
+.td3 {
+    float:left;
+    width: 33%;
+}
+
+.td2 {
+    float:left;
+    width: 50%;
+}
+
+@media screen and (max-width: 880px) {
+.Appssection3 {
+    width: 49%;
+    margin: 0;
+    padding: 4% 2%;
+}
+
+.Appssection3:nth-of-type(odd) {
+    clear: left;
+}
+
+.Appssection3 .txtApps {
+    line-height: 23px;
+}
+
+
+.BiProduct {
+    width: 100%;
+}
+
+.td6 {
+    float:left;
+    width: 33%;
+}
+
+.td5 {
+    float:left;
+    width: 33%;
+}
+
+.td5:nth-of-type(n+4) {
+    clear: left;
+    margin-left: 17%;
+    margin-top: 50px;
+}
+
+.td5:last-child {
+    clear: none !important;
+    margin-left: 0;
+}
+
+
+.td4 {
+    float:left;
+    width: 50%;
+}
+
+}
+
+
+
+
+
+
+
+
+
 
 .nmSection0,
 .section0 {
@@ -1434,6 +1546,7 @@ img {
     #header .header_wrapper,
     div.wrapper {
         width: 100%;
+        padding: 0 1%;
     }
     .hiddenTablets {
         display: none !important;
@@ -1743,6 +1856,8 @@ img {
         height: auto;
     }
 
+    
+
 }
  
 @media screen and (max-width: 380px) {
@@ -1759,6 +1874,8 @@ img {
             text-shadow: 1px 1px 3px #000000;
             font-size: 15px;
             margin-left: 5px;
+
+            
         }
 
         footer div.half25 {
@@ -1773,6 +1890,7 @@ img {
    /* #header .half33 {width: 100%; clear: both;}*/
 
 }
+
 
 
 
