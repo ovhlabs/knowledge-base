@@ -22,11 +22,11 @@ The required credentials are your login (email), password and tenant name, which
 
 ## A container to hold the file system
 
-S3QL assumes you already has a working container. You can follow tutorials on Runabove Knowledge Base to create new container, e.g. [this one](https://community.runabove.com/kb/en/object-storage/upload-your-first-object-inside-swift.html).
+S3QL assumes you already have a working container. You can follow tutorials on Runabove Knowledge Base to create new container, e.g. [this one](https://community.runabove.com/kb/en/object-storage/upload-your-first-object-inside-swift.html).
 
 # 2. Usage
 
-Initialize the file system and associate it with your chosen container using keystore (v2) authentication
+Initialize the file system and associate it with your chosen container using keystone (v2) authentication
 
 ```
 mkfs.s3ql swiftks://auth.runabove.io/<region name>:<container name>
@@ -48,7 +48,7 @@ mount.s3ql swiftks://auth.runabove.io/BHS-1:myContainer /path/to/mount/point
 
 Now the mounted directory will behave like a normal directory on your hard drive, e.g. copy, rename, move files. Do whatever you want with it.
 
-After finishing your stuffs, you has to unmount the file system to make sure everything will be committed to your Runabove container.
+After finishing your stuffs, you have to unmount the file system to make sure everything will be committed to your Runabove container.
 
 ```
 umount.s3ql /path/to/mount/point
