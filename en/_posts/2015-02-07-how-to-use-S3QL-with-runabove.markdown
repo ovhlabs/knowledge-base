@@ -56,7 +56,7 @@ umount.s3ql /path/to/mount/point
 
 # 3. Advanced usage
 
-`mount.s3ql` needs your credentials on every time it is called. An authentication file can facilitate the process. Create a text file `mycred` 
+`mount.s3ql` needs your credentials on every time it is called. An authentication file can ease the process. Create a text file `mycred` 
 
 ```
 [myContainer]
