@@ -71,7 +71,7 @@ With this information, you can calculate the difference between timestamps and a
 Signature is a sha1, in hexadecimal format, composed by a string with some information separated by _+_ character: your application secret, the consumer key, HTTP verb, query, body of the request and timestamp.
 
 ```bash
-$ echo -n "your_application_key+GET+https://api.runabove.com/1.0/instance/++1400000000" | openssl dgst -sha1
+$ echo -n "your_application_secret_key+application_consumer_key+GET+https://api.runabove.com/1.0/instance/++1400000000" | openssl dgst -sha1
 d33fced42c337a8dfc15d6b7a8e0c588d3a0f62f
 ```
 
