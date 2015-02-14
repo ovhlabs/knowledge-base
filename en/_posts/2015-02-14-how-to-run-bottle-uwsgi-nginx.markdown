@@ -12,12 +12,12 @@ author: thoorium
 1. Installing Python, Bottle, uWSGI and Nginx
 ===============================
 
-In this guide we will be using _Debian Wheezy_ as our OS. Getting everything installed is easy thanks to the wondeful package manager.
+In this guide we will be using _Debian Wheezy_ as our host OS. Getting everything installed is easy thanks to the wondeful package manager.
 
 Everything can be installed in a single ``apt-get`` which is available below:
 
 ```bash
-sudo apt-get install python2.7 python-pip uwsgi uwsgi-plugin-python nginx
+sudo apt-get install python2.7 python-bottle uwsgi uwsgi-plugin-python nginx
 ```
 
 
@@ -27,9 +27,23 @@ sudo apt-get install python2.7 python-pip uwsgi uwsgi-plugin-python nginx
 For this exemple we will create a basic _Hello Runabove_ bottle application that goes like this:
 
 ```python
-FROM python:2-onbuild
-EXPOSE 80
-CMD [ "python", "./server.py" ]
+import bottle
+import os
+import sys
+
+from bottle import route, template
+
+app = application = bottle.default_app()
+
+@route('/')
+def index():
+    return template('<h1>{{message}}</h1>', message='Hello Runabove')
+```
+
+Name the file ``app.py`` and save it at the following destination
+
+```bash
+/usr/share/nginx/www/hello-runabove
 ```
 
 You can clone the full _Hello Runabove_ at the following address: [https://github.com/Thoorium/hello-runabove](https://github.com/Thoorium/hello-runabove)
@@ -76,3 +90,52 @@ sudo service uwsgi start
 ===========
 
 Now that _uWSGI_ is running and created a socket for us to use, let's configure _Nginx_ to listen to this socket.
+
+_Nginx_ needs a configuration file for you application in the ``conf.d`` directory. Let's create it.
+
+```bash
+cd /etc/nginx/conf.d
+sudo nano hello-runabove.conf
+```
+
+Our _Hello Runabove_ _Nginx_ configuration file will look like this:
+
+```
+upstream _hello-runabove {
+    server unix:/run/uwsgi/app/hello-runabove/socket;
+}
+
+server {
+    listen 80;
+    server_name ServerAddressOrDomainHere;
+
+    location / {
+        try_files $uri @uwsgi;
+    }
+
+    location @uwsgi {
+        include uwsgi_params;
+        uwsgi_pass _hello-runabove;
+    }
+}
+```
+
+Now that we have created the configuration file, let's start _Nginx_
+
+```bash
+sudo service nginx start
+```
+
+5. Test it
+===========
+
+Congratulations! Your bottle application is now running live. Navigate to the address you have configured during step 4 and see it by yourself.
+
+Troubleshooting
+===========
+
+If you are having trouble installing the packages via ``apt-get``, you might need to update your package list. Do so using the following command:
+
+```bash
+apt-get update
+```
