@@ -102,21 +102,21 @@ Our _Hello Runabove_ _Nginx_ configuration file will look like this:
 
 ```
 upstream _hello-runabove {
-    server unix:/run/uwsgi/app/hello-runabove/socket;
+    server unix:/run/uwsgi/app/hello-runabove/socket;
 }
 
 server {
-    listen 80;
-    server_name ServerAddressOrDomainHere;
+    listen 80;
+    server_name ServerAddressOrDomainHere;
 
-    location / {
-        try_files $uri @uwsgi;
-    }
+    location / {
+        try_files $uri @uwsgi;
+    }
 
-    location @uwsgi {
-        include uwsgi_params;
-        uwsgi_pass _hello-runabove;
-    }
+    location @uwsgi {
+        include uwsgi_params;
+        uwsgi_pass _hello-runabove;
+    }
 }
 ```
 
