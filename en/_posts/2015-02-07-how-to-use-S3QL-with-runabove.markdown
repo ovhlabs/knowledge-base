@@ -6,7 +6,7 @@ lang: en
 author: pbtrung
 ---
 
-S3QL is a file system that can be mounted locally and stores its data using cloud storage providers like Google Storage, Amazon S3, or OpenStack Swift. Some nice features are transparent compression, encryption, data de-duplication, and snapshotting, which makes it particularly appropriate for backup purposes. More information on the file system can be found on its author' [website](http://www.rath.org/s3ql-docs).
+S3QL is a file system that can be mounted locally and stores its data using cloud storage providers like Google Storage, Amazon S3, or OpenStack Swift. Some nice features are transparent compression, encryption, data de-duplication, and snapshotting, which makes it particularly appropriate for backup purposes. More information on the file system can be found on its author's [website](http://www.rath.org/s3ql-docs).
 
 Since Openstack Swift is one of available backends of S3QL, we can use S3QL to save your data on Runabove object storage.
 
@@ -14,7 +14,33 @@ Since Openstack Swift is one of available backends of S3QL, we can use S3QL to s
 
 ## Install S3QL 
 
-The recommended version is 2.x or newer. Guides to install precompiled packages for popular Linux distributions are available on [S3QL wiki](https://bitbucket.org/nikratio/s3ql/wiki/Installation).
+The recommended version is 2.x or newer.
+
+For Debian-based distributions, S3QL can be installed from official repositories with
+
+```
+sudo aptitude install s3ql
+```
+
+The lastest version is usually in `jessie (testing)` or `sid (unstable)` branch of Debian repositories.
+
+For Ubuntu-based distributions, because the versions in Ubuntu repositories are outdated, it is recommended to install from the S3QL PPA as follows
+
+Install dependencies and add the S3QL repository
+
+```
+sudo aptitude install software-properties-common
+sudo add-apt-repository ppa:nikratio/s3ql
+```
+
+Refresh package database and install S3QL
+
+```
+sudo aptitude update
+sudo aptitude install s3ql
+```
+
+Guides to install precompiled packages for other Linux distributions are available on [S3QL wiki](https://bitbucket.org/nikratio/s3ql/wiki/Installation).
 
 ## Get account information
 
