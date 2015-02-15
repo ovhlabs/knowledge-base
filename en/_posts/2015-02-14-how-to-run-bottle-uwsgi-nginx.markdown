@@ -83,11 +83,11 @@ sudo ln -s /etc/uwsgi/apps-available/hello-runabove.ini /etc/uwsgi/apps-enabled/
 
 Finish by starting the _uWSGI_ service.
 
-You can read more about _uWSGI_ configuration at [https://uwsgi-docs.readthedocs.org/en/latest/Configuration.html](https://uwsgi-docs.readthedocs.org/en/latest/Configuration.html)
-
 ```bash
 sudo service uwsgi start
 ```
+
+You can read more about _uWSGI_ configuration at [https://uwsgi-docs.readthedocs.org/en/latest/Configuration.html](https://uwsgi-docs.readthedocs.org/en/latest/Configuration.html)
 
 4. Configure Nginx
 ===========
