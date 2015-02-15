@@ -83,6 +83,8 @@ sudo ln -s /etc/uwsgi/apps-available/hello-runabove.ini /etc/uwsgi/apps-enabled/
 
 Finish by starting the _uWSGI_ service.
 
+You can read more about _uWSGI_ configuration at [https://uwsgi-docs.readthedocs.org/en/latest/Configuration.html](https://uwsgi-docs.readthedocs.org/en/latest/Configuration.html)
+
 ```bash
 sudo service uwsgi start
 ```
@@ -92,7 +94,7 @@ sudo service uwsgi start
 
 Now that _uWSGI_ is running and created a socket for us to use, let's configure _Nginx_ to listen to this socket.
 
-_Nginx_ needs a configuration file for you application in the ``conf.d`` directory. The ``conf.d`` directory is located under ``/etc/nginx/`` Let's create it.
+_Nginx_ needs a configuration file for you application in the ``conf.d`` directory. The ``conf.d`` directory is located under ``/etc/nginx/``. Now let's create our configuration file.
 
 ```bash
 cd /etc/nginx/conf.d
