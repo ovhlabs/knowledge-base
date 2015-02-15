@@ -9,10 +9,12 @@ author: thoorium
 
 [Bottle](http://bottlepy.org/) is a fast, simple and lightweight WSGI micro web-framework for [Python](https://www.python.org/). Coupled with [uWSGI](https://uwsgi-docs.readthedocs.org/en/latest/) and [Nginx](http://nginx.org/) bottle will reach high performances to serve and distribute your content.
 
+This setup will make use of _uWSGI_ as the application server because the built-in Bottle web server is __very slow__ and should only be used for __development__. _uWSGI_ is capable of spawning new process of you application and will scale your application when needed.
+
 1. Installing Python, Bottle, uWSGI and Nginx
 ===============================
 
-In this guide we will be using _Debian Wheezy_ as our host OS. Getting everything installed is easy thanks to the wondeful package manager.
+In this guide we will be using _Debian Wheezy_ as our host OS. Getting everything installed is easy thanks to the wonderful package manager.
 
 Everything can be installed in a single ``apt-get`` which is available below:
 
@@ -20,7 +22,7 @@ Everything can be installed in a single ``apt-get`` which is available below:
 sudo apt-get install python2.7 python-bottle uwsgi uwsgi-plugin-python nginx
 ```
 
-This will install Python, Bottle, uWSGI, the plugin uWSGI need to run Python applications and Nginx. If you plan to run your application using a Python virtual environnement, do not install ``python-bottle``.
+This will install Python, Bottle, uWSGI, the uWSGI Python plugin and Nginx. _uWSGI_ does not know how to handle Python applications by default and requires the Python plugin in order to function for our needs.
 
 2. Hello Runabove
 ===============
@@ -30,11 +32,16 @@ For this exemple we will create a basic _Hello Runabove_ bottle application that
 ```python
 import bottle
 
-from bottle import route, template
+from bottle import template
 
-app = application = bottle.default_app()
+# Run bottle internal test server when invoked directly ie: non-uxsgi mode
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8080
+# Run bottle in application mode. Required in order to get the application working with uWSGI!
+else:
+    app = application = bottle.default_app()
 
-@route('/')
+@app.route('/')
 def index():
     return template('<h1>{{message}}</h1>', message='Hello Runabove')
 ```
