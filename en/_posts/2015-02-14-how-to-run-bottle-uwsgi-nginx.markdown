@@ -19,10 +19,10 @@ In this guide we will be using _Debian Wheezy_ as our host OS. Getting everythin
 Everything can be installed in a single ``apt-get`` which is available below:
 
 ```bash
-sudo apt-get install python2.7 python-bottle uwsgi uwsgi-plugin-python nginx
+sudo apt-get install python2.7 python-pip uwsgi uwsgi-plugin-python nginx
 ```
 
-This will install Python, Bottle, uWSGI, the uWSGI Python plugin and Nginx. _uWSGI_ does not know how to handle Python applications by default and requires the Python plugin in order to function for our needs.
+This will install Python, pip (Python package manager), uWSGI, the uWSGI Python plugin and Nginx. _uWSGI_ does not know how to handle Python applications by default and requires the Python plugin in order to function for our needs.
 
 2. Hello Runabove
 ===============
@@ -56,7 +56,28 @@ This application will return a simple "Hello Runabove!" when visited from the we
 
 You can clone the full _Hello Runabove_ at the following address: [https://github.com/Thoorium/hello-runabove](https://github.com/Thoorium/hello-runabove)
 
-3. Configure uWSGI
+3. Setting up Bottle and the virtual environment
+===============
+
+Thanks to the python package manager, _pip_, installing Bottle in a virtual environment is a very simple task that requires very few commands.
+
+Let's start by installing the [virtualenv]() package:
+
+```bash
+sudo pip install virtualenv
+```
+
+Now with the virtual environment package is installed, we can create a virtual environment for our application:
+
+```bash
+cd /usr/share/nginx/www/hello-runabove
+sudo virtualenv venv-bottle
+sudo venv-bottle/bin/pip install bottle
+```
+
+This will create a directory will all the dependencies your python application need to run. By doing so you will prevent any sort of conflicts between python applications if different versions of the same package are used!
+
+4. Configure uWSGI
 ===========
 
 In order to get _uWSGI_ to run your bottle application, you will first need to create a configuration file for your application. The configuration file is stored in ``apps-available`` and must be copied over to ``apps-enabled`` to work. Both directories are located under ``/etc/uwsgi/``.
@@ -77,6 +98,7 @@ chdir = /usr/share/nginx/www/hello-runabove
 master = true
 plugins = python
 file = app.py
+virtualenv = venv-bottle
 uid = www-data
 gid = www-data
 vacuum = true
@@ -96,7 +118,7 @@ sudo service uwsgi start
 
 You can read more about _uWSGI_ configuration at [https://uwsgi-docs.readthedocs.org/en/latest/Configuration.html](https://uwsgi-docs.readthedocs.org/en/latest/Configuration.html)
 
-4. Configure Nginx
+5. Configure Nginx
 ===========
 
 Now that _uWSGI_ is running and created a socket for us to use, let's configure _Nginx_ to listen to this socket.
@@ -136,7 +158,7 @@ Now that we have created the configuration file, let's start _Nginx_
 sudo service nginx start
 ```
 
-5. Test it
+6. Test it
 ===========
 
 Congratulations! Your bottle application is now running live. Navigate to the address you have configured during step 4 and see it by yourself.
@@ -147,5 +169,5 @@ Troubleshooting
 If you are having trouble installing the packages via ``apt-get``, you might need to update your package list. Do so using the following command:
 
 ```bash
-apt-get update
+sudo apt-get update
 ```
