@@ -59,6 +59,8 @@ You can clone the full _Hello Runabove_ at the following address: [https://githu
 3. Setting up Bottle and the virtual environment
 ===============
 
+A good practice with Python is to contain all project's dependencies in a "virtualenv". A virtualenv is lightweight space where a project can have its own dependencies without interfering with system wide python packages. As a second benefit, you won't need to be root anymore to install from __pip__.
+
 Thanks to the python package manager, _pip_, installing Bottle in a virtual environment is a very simple task that requires very few commands.
 
 Let's start by installing the [virtualenv]() package:
@@ -67,7 +69,7 @@ Let's start by installing the [virtualenv]() package:
 sudo pip install virtualenv
 ```
 
-Now with the virtual environment package is installed, we can create a virtual environment for our application:
+Now with the virtual environment package installed, we can create a virtual environment for our application:
 
 ```bash
 cd /usr/share/nginx/www/hello-runabove
