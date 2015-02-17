@@ -63,7 +63,7 @@ A good practice with Python is to contain all project's dependencies in a "virtu
 
 Thanks to the python package manager, _pip_, installing Bottle in a virtual environment is a very simple task that requires very few commands.
 
-Let's start by installing the [virtualenv]() package:
+Let's start by installing the [virtualenv](https://virtualenv.pypa.io/) package:
 
 ```bash
 sudo pip install virtualenv
