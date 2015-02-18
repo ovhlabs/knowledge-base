@@ -37,6 +37,12 @@ Launch this script and enter your RunAbove password:
 source 13370042-openrc.sh
 ```
 
+Select the region you want to work in:
+
+```
+export OS_REGION_NAME="SBG-1"
+```
+
 To verify if you are authenticated, you can launch the next request and you will get some account metadata.
 
 ```
