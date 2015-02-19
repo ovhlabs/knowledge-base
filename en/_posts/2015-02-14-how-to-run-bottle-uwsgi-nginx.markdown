@@ -130,7 +130,6 @@ _Nginx_ needs a configuration file for you application in the ``sites-available`
 ```bash
 cd /etc/nginx/sites-available
 sudo nano hello-runabove
-sudo ln -s /etc/nginx/sites-available/hello-runabove /etc/nginx/sites-enabled/hello-runabove
 ```
 
 Our _Hello Runabove_ _Nginx_ configuration file will look like this:
@@ -153,6 +152,12 @@ server {
         uwsgi_pass _hello-runabove;
     }
 }
+```
+
+Finally, we copy the config to ``sites-enabled`` using a symlink:
+
+```bash
+sudo ln -s /etc/nginx/sites-available/hello-runabove /etc/nginx/sites-enabled/hello-runabove
 ```
 
 Now that we have created the configuration file, let's start _Nginx_
