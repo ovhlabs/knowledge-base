@@ -125,11 +125,12 @@ You can read more about _uWSGI_ configuration at [https://uwsgi-docs.readthedocs
 
 Now that _uWSGI_ is running and created a socket for us to use, let's configure _Nginx_ to listen to this socket.
 
-_Nginx_ needs a configuration file for you application in the ``conf.d`` directory. The ``conf.d`` directory is located under ``/etc/nginx/``. Now let's create our configuration file.
+_Nginx_ needs a configuration file for you application in the ``sites-available`` directory and a copy of it in the ``sites-enabled`` directory. Both directories are located under ``/etc/nginx/``. Now let's create our configuration file.
 
 ```bash
-cd /etc/nginx/conf.d
-sudo nano hello-runabove.conf
+cd /etc/nginx/sites-available
+sudo nano hello-runabove
+sudo ln -s /etc/nginx/sites-available/hello-runabove /etc/nginx/sites-enabled/hello-runabove
 ```
 
 Our _Hello Runabove_ _Nginx_ configuration file will look like this:
