@@ -12,14 +12,14 @@ author: ageng
 Installation
 -----
 
-You need installed [fabric](http://www.fabfile.org/) and [fabtools](https://pypi.python.org/pypi/fabtools/0.19.0) on your server and Install with [pip](https://pypi.python.org/pypi/pip).
+You need installed [fabric](http://www.fabfile.org/) and [fabtools](https://pypi.python.org/pypi/fabtools/0.19.0) on your server and Install with [pip](https://pypi.python.org/pypi/pip):
 
 ```bash
 $ sudo apt-get install python python-pip python-dev software-properties-common 
 $ sudo pip install fabric fabtools
 ```
 
-Download Fabric file from Cozy [github repo](https://github.com/cozy/cozy-setup) :
+Download Fabric file from Cozy [github repo](https://github.com/cozy/cozy-setup):
 
 ```bash
 $ wget https://raw.githubusercontent.com/cozy/cozy-setup/master/fabfile.py
@@ -31,6 +31,14 @@ Use the Fabric script from your local machine to launch the Cozy installation :
 $ fab -H user@ip install
 ```
 
-"User" is a sudo user and "ip" your server IP. Enter your settings (such as domain name) when prompted by the installer. Be patient, some commands or app deployments can take some time. It depends on your network and hardware. Once the installation is done, you can access with ```https://IP``` to create your Cozy main account.
+"User" is a sudo user and "ip" your server IP. Enter your settings (such as domain name) when prompted by the installer. Be patient, some commands or app deployments can take some time, depends on your network and hardware because need to compile software. Once the installation is done, you can access with ```https://IP``` to create your Cozy main account.
 
+If you get message 
+
+```bash
+Stack restarted successfully.
+Cozy installation finished. Now, enjoy!
+
+Done.
+```
 Congratulations! You have installed Cozy on your server.
