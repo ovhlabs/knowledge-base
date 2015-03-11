@@ -31,8 +31,6 @@ Use the Fabric script from your local machine to launch the Cozy installation :
 $ fab -H user@ip install
 ```
 
-"User" is a sudo user and "ip" your server IP. Enter your settings (such as domain name) when prompted by the installer.
-
-Be patient; some commands or app deployments can take some time. It depends on your network and hardware. Once the installation is done, you can access with ```https://IP``` to create your Cozy main account.
+"User" is a sudo user and "ip" your server IP. Enter your settings (such as domain name) when prompted by the installer. Be patient, some commands or app deployments can take some time. It depends on your network and hardware. Once the installation is done, you can access with ```https://IP``` to create your Cozy main account.
 
 Congratulations! You have installed Cozy on your server.
