@@ -12,7 +12,7 @@ author: ageng
 1. Installation
 -----
 
-You need installed [fabric](http://www.fabfile.org/) and [fabtools](https://pypi.python.org/pypi/fabtools/0.19.0) on your VM and Install with [pip](https://pypi.python.org/pypi/pip).
+You need installed [fabric](http://www.fabfile.org/) and [fabtools](https://pypi.python.org/pypi/fabtools/0.19.0) on your server and Install with [pip](https://pypi.python.org/pypi/pip).
 
 ```bash
 $ sudo apt-get install python python-pip python-dev software-properties-common 
@@ -33,9 +33,6 @@ $ fab -H user@ip install
 
 "User" is a sudo user and "ip" your server IP. Enter your settings (such as domain name) when prompted by the installer.
 
-Be patient; some commands or app deployments can take some time. It depends on your network and hardware.
+Be patient; some commands or app deployments can take some time. It depends on your network and hardware. Once the installation is done, you can access with ```https://IP``` to create your Cozy main account.
 
-2. Test
------
-
-Once the installation is done, you can access with ```https://IP``` to create your Cozy main account.
+Congratulations! You have installed Cozy on your server.
