@@ -48,7 +48,7 @@ In return to this request, you will get the consumer key and a url. In this url,
 # How to call the API?
 
 Now that you have the  application's credentials and consumer key validated, by user login, you can call our API. For example to get a list of your instances.
-To do this, you need to send a request to  [https://api.runabove.com/1.0/instance](https://api.runabove.com/1.0/instance) with the the following.
+To do this, you need to send a request to  [https://api.runabove.com/1.0/instance](https://api.runabove.com/1.0/instance) with the following.
 
 ```bash
 $ curl  -XGET
@@ -71,7 +71,7 @@ With this information, you can calculate the difference between timestamps and a
 Signature is a sha1, in hexadecimal format, composed by a string with some information separated by _+_ character: your application secret, the consumer key, HTTP verb, query, body of the request and timestamp.
 
 ```bash
-$ echo -n "your_application_secret_key+application_consumer_key+GET+https://api.runabove.com/1.0/instance/++1400000000" | openssl dgst -sha1
+$ echo -n "your_application_secret_key+application_consumer_key+GET+https://api.runabove.com/1.0/instance++1400000000" | openssl dgst -sha1 | awk '{print $2}'
 d33fced42c337a8dfc15d6b7a8e0c588d3a0f62f
 ```
 
