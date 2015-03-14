@@ -136,7 +136,7 @@ Now that this is saved as index.html, lets upload it to Object Storage.
 swift upload redirect index.html
 ```
 
-#Domain and DNS [[2]](https://community.runabove.com/kb/en/object-storage/how-to-put-object-storage-behind-your-domain-name.html)
+#Domain and DNS [[2]](https://community.runabove.com/kb/en/object-storage/how-to-put-object-storage-behind-your-domain-name.html).
 .
 
 We want to put our static website on a domain (example.com), now we're going to assume that you can already manage your domains DNS-zone and that all that is left to be done is getting your domain to use the Runabove Object Storage as origin.
@@ -298,7 +298,7 @@ You have entered a bunch of commands and so far you have little to show for exem
 
 You could of course run `jekyll build` in your `example_com` folder, or you could write a bash script to do it for you.
 
-{% highlight sh %}
+```bash
 #! /bin/bash
 
 # _sync.sh
@@ -311,7 +311,7 @@ echo "Deploying to Object Storage."
 rclone -v sync example_com/_site/ runabove:example_com
 echo "Deploy complete!"
 
-{% endhighlight %}
+```
 
 Place `sync.sh` below the `example_com` folder and make it executable `chmod +x sync.sh`.
 
