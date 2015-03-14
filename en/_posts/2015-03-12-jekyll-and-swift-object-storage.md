@@ -57,7 +57,7 @@ Log in on runabove, select OpenStack Horizon, go into Access & Security panel, t
 
 ##It should look something like this:
 
-[runabove-openstack-rc]:/images/2015-03-12-jekyll-and-swift-object-storage/runabove-openstack-rc.png "openstack.rc" 
+[runabove-openstack-rc]:/kb/images/2015-03-12-jekyll-and-swift-object-storage/runabove-openstack-rc.png "openstack.rc" 
 
 ```bash
 source *-openrc.sh
@@ -112,7 +112,7 @@ The merit of using Meta Refresh for redirections with regards to SEO have long b
 
 Create an `index.html` file with containing:
 
-{% highlight html %}
+```
 <!DOCTYPE HTML>
 <html lang="en-US">
     <head>
@@ -128,7 +128,7 @@ Create an `index.html` file with containing:
         If you are not redirected automatically, follow the link to: <a href='http://example.com'>Example.com</a>.
     </body>
 </html>
-{% endhighlight %}
+````
 
 Now that this is saved as index.html, lets upload it to Object Storage.
 
