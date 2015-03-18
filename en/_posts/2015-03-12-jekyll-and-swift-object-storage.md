@@ -1,32 +1,30 @@
 ---
 layout: post
-title: "Jekyll and Runabove Swift Object Storage"
+title: "Jekyll and RunAbove Swift Object Storage"
 categories: Object Storage
 author: e-ravel
 lang: en
 ---
 
-#Jekyll and Runabove Swift Object Storage.
-
 Generally when it comes to maintaining an online presence your options are: Fast, Good, and Cheap. The caveat being that you can only pick any two.
 
 By moving away from dynamically generated content one can benefit from blazing fast delivery, highly available replicated storage, at minimal cost.
 
-##Services and Tools.
+##Services and Tools
 
-- [Runabove](https://www.runabove.com/) Swift Object Storage
+- [RunAbove](https://www.runabove.com/) Swift Object Storage
 - [Jekyll](http://jekyllrb.com/) Simple Static Blog-aware Static Sites
 - [Rclone](http://rclone.org/) Rsync for Cloud Storage
 
-##Prerequisites.
+##Prerequisites
 
 Things you will need:
 
 - a clean (Ubuntu) Linux installation.
 - a domain name.
-- a Runabove account.
+- a RunAbove account.
 
-##Local Setup.
+##Local Setup
 
 To install the packages and the dependencies you will need:
 
@@ -46,16 +44,15 @@ If you fancy using Sass CSS preprocessing (optional):
 sudo gem install sass
 ```
 
-#Runabove Object Storage.
+#RunAbove Object Storage
 
-The easiest way to communicate with the Swift Object Storage on Runabove (GUI asside) is with the swiftclient. To export the information you need to authenticate with the Swift API you can run tenantid-openrc.sh.
+The easiest way to communicate with the Swift Object Storage on RunAbove (GUI asside) is with the swiftclient. To export the information you need to authenticate with the Swift API you can run tenantid-openrc.sh.
 
-##To get this file [[1]](https://community.runabove.com/kb/en/object-storage/upload-your-first-object-inside-swift.html):
+To get this file [[1]](https://community.runabove.com/kb/en/object-storage/upload-your-first-object-inside-swift.html):
 
 Log in on runabove, select OpenStack Horizon, go into Access & Security panel, then into API Access tab. Once there you can click on: Download OpenStack RC File.
 
-
-##It should look something like this:
+It should look something like this:
 
 [runabove-openstack-rc]:/kb/images/2015-03-12-jekyll-and-swift-object-storage/runabove-openstack-rc.png "openstack.rc" 
 
@@ -64,7 +61,7 @@ source *-openrc.sh
 export OS_REGION_NAME="SBG-1"
 ```
 
-##Runabove Object Storage Container Setup.
+##RunAbove Object Storage Container Setup
 
 First we want to check if swiftclient can communicate with the Object Storage.
 
@@ -89,7 +86,7 @@ $ swift stat
 
 Please make a note of the Account: AUTH_, you will need it later.
 
-##Creating Object Storage Containers.
+##Creating Object Storage Containers
 
 Why create one container when you can have two? You will want to have one container to redirect your (www.example.com) subdomain to your (example.com) main domain.
 
@@ -106,7 +103,7 @@ swift post --header "X-Container-Read: .r:*" example_com
 ```
 
 
-#Setting up a redirect.
+#Setting up a redirect
 
 The merit of using Meta Refresh for redirections with regards to SEO have long been debated, it is by all means not the most optimal or elegant of solutions, however since we can't return HTTP 301 using static pages the below will have to do.
 
@@ -136,10 +133,10 @@ Now that this is saved as index.html, lets upload it to Object Storage.
 swift upload redirect index.html
 ```
 
-#Domain and DNS [[2]](https://community.runabove.com/kb/en/object-storage/how-to-put-object-storage-behind-your-domain-name.html).
+#Domain and DNS [[2]](https://community.runabove.com/kb/en/object-storage/how-to-put-object-storage-behind-your-domain-name.html)
 .
 
-We want to put our static website on a domain (example.com), now we're going to assume that you can already manage your domains DNS-zone and that all that is left to be done is getting your domain to use the Runabove Object Storage as origin.
+We want to put our static website on a domain (example.com), now we're going to assume that you can already manage your domains DNS-zone and that all that is left to be done is getting your domain to use the RunAbove Object Storage as origin.
 
 You will want to have the following records:
 
@@ -153,11 +150,11 @@ TXT: _swift-remap.www redirect.AUTH-111111111111.storage.sbg-1.runabove.io.
 
 Where @ represents your domain root.
 
-#Jekyll.
+#Jekyll
 
 Jekyll is a simple, blog-aware, static site generator. It takes a template directory containing raw text files in various formats, runs it through a converter (like Markdown) and its Liquid renderer, and spits out a complete, ready-to-publish static website suitable for serving with your favourite web server.
 
-#Setting up a Jekyll Site.
+#Setting up a Jekyll Site
 
 We want to create a simple site with Jekyll, all it takes is the following:
 
@@ -171,13 +168,13 @@ Using your favourite browser and navigating to `http://localhost:4000` will now 
 
 We're going to skip customizing the Jekyll pages itself, if you're curious on how to go about this the [Jekyll Documentation](http://jekyllrb.com/docs/home/) is extensive and contains all you will need to know.
 
-#Rclone.
+#Rclone
 
 Rclone is a command line program to sync files and directories to and from cloudstorage solutions.
 
-We want to use Rclone as it offers an easy way to sync our Jekyll _site to Runabove Object Storage. Whilst the same could be achieved with swiftclient, Rclone shines in being able to list the files on the Object Storage and only upload the files that have either been modified or newly created. To top it off, it will take care of removing files that are no longer there, saving us from the headache of manually removing these files with the swiftclient.
+We want to use Rclone as it offers an easy way to sync our Jekyll _site to RunAbove Object Storage. Whilst the same could be achieved with swiftclient, Rclone shines in being able to list the files on the Object Storage and only upload the files that have either been modified or newly created. To top it off, it will take care of removing files that are no longer there, saving us from the headache of manually removing these files with the swiftclient.
 
-##Setting up Rclone.
+##Setting up Rclone
 
 Rclone is written in Golang, which means we need to tell GO where to download and build packages.
 
@@ -198,17 +195,17 @@ cd $GOPATH/bin
 sudo cp rclone /usr/bin/
 ```
 
-##Rclone Configuration.
+##Rclone Configuration
 
-Rclone will do us no good if not configured for use with Runabove Object Storage.
+Rclone will do us no good if not configured for use with RunAbove Object Storage.
 
 You will need the following information:
 
-- your Runabove account (email address)
-- your Runabove key (password)
-- your Runabove tenant name (1234568)
-- the Runabove AUTH url (https://auth.runabove.io/v2.0)
-- the Runabove Region you're using (we have used SBG-1)
+- your RunAbove account (email address)
+- your RunAbove key (password)
+- your RunAbove tenant name (1234568)
+- the RunAbove AUTH url (https://auth.runabove.io/v2.0)
+- the RunAbove Region you're using (we have used SBG-1)
 
 Lets run:
 
@@ -292,7 +289,7 @@ tenant = 12345678
 region = SBG-1
 ```
 
-#Sync a Jekyll Site to Runabove Object Storage.
+#Sync a Jekyll Site to RunAbove Object Storage
 
 You have entered a bunch of commands and so far you have little to show for exempt a blank page on your domain. It is time to build the Jekyll Site and get it online.
 
@@ -323,7 +320,7 @@ Launch `./sync.sh` and Jekyll will build your site and place the static document
 -----
 Sources:
 
-*1 [Upload your first object inside Openstack Swift - Runabove](https://community.runabove.com/kb/en/object-storage/upload-your-first-object-inside-swift.html)
+*1 [Upload your first object inside Openstack Swift - RunAbove](https://community.runabove.com/kb/en/object-storage/upload-your-first-object-inside-swift.html)
 
-*2 [How to put Object Storage behind your domain name? - Runabove](https://community.runabove.com/kb/en/object-storage/how-to-put-object-storage-behind-your-domain-name.html)
+*2 [How to put Object Storage behind your domain name? - RunAbove](https://community.runabove.com/kb/en/object-storage/how-to-put-object-storage-behind-your-domain-name.html)
 
