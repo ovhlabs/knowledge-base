@@ -3,7 +3,7 @@
 
 	<head>
 		{% include head.html %}
-		<meta name="description" content="{{ page.excerpt | strip_html }}..." />
+		<meta name="description" content="{{ page.content | markdownify | strip_html | truncatewords: 50 }}..." />
 	</head>
 
 	<body>
