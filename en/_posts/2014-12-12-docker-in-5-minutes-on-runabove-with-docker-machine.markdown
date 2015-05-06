@@ -11,12 +11,11 @@ applications. Docker Inc. recently introduced a new project,
 that allows you to easily setup multiple Docker hosts across multiple cloud providers,
 and use them with your local Docker client.
 
-In this guide you'll discover how to use Docker Machine on RunAbove. This is **an
-experiment**: Docker machine uses a [development branch](https://github.com/docker/docker/pull/8265)
-of Docker implementing a TLS encryption and a identity-based authentication
-(planned for Docker 1.5).
+In this guide you'll discover how to get started with Docker Machine and boot
+quickly your first Docker Instance on RunAbove ready to host your first
+containers.
 
-# Install Docker Machine command line
+# Install Docker Machine and Docker client
 
 <div style="float:right; margin-left: 15px;">
 	<a href="https://github.com/docker/machine">
@@ -24,33 +23,20 @@ of Docker implementing a TLS encryption and a identity-based authentication
 	</a>
 </div>
 
-Since the OpenStack driver will only be included in the next release of Docker
-Machine, we provide you built binaries of [Docker Machine](https://github.com/docker/machine)
-including the [OpenStack Driver (commit a2268491)](https://github.com/docker/machine/commit/a226849168af8b04f0fcb6488af77c1eb110dd8b).
 
-* [Linux amd64](https://storage.sbg-1.runabove.io/v1/AUTH_d186206b24cd46b1a842bbd76ee11f8e/docker-machine/machine_linux_amd64)
-* [Linux i386](https://storage.sbg-1.runabove.io/v1/AUTH_d186206b24cd46b1a842bbd76ee11f8e/docker-machine/machine_linux_386)
-* [Linux arm](https://storage.sbg-1.runabove.io/v1/AUTH_d186206b24cd46b1a842bbd76ee11f8e/docker-machine/machine_linux_arm)
-* [Windows i386](https://storage.sbg-1.runabove.io/v1/AUTH_d186206b24cd46b1a842bbd76ee11f8e/docker-machine/machine_windows_386.exe)
-* [Windows amd64](https://storage.sbg-1.runabove.io/v1/AUTH_d186206b24cd46b1a842bbd76ee11f8e/docker-machine/machine_windows_amd64.exe)
-* [Mac OSX i386](https://storage.sbg-1.runabove.io/v1/AUTH_d186206b24cd46b1a842bbd76ee11f8e/docker-machine/machine_darwin_386)
-* [Mac OSX amd64](https://storage.sbg-1.runabove.io/v1/AUTH_d186206b24cd46b1a842bbd76ee11f8e/docker-machine/machine_darwin_amd64)
+You can find the installation details in the
+[Docker documentation website](https://docs.docker.com/machine/#osx-and-linux).
+You'll need the two following binaries for this tutoral:
 
-If you want to build Docker Machine with the [OpenStack driver](https://github.com/docker/machine/pull/73)
-by yourself, the details are available in the [README of the project](https://github.com/docker/machine/blob/master/README.md).
+* `docker-machine`: The Docker Machine component that includes the provisioning
+support of an OpenStack instance with the Docker engine.
+* `docker`: The Docker client that will be used to remotely control the Docker
+host we'll setup in this guide.
 
-# Install Docker client with identity authentication support
-
-Your Docker client will use an identity-based authentication to communicate with
-the Docker daemon that will be installed on your instance. Builds by
-[Evan Hazlett](https://github.com/ehazlett) of Docker Inc. are available here:
-
-* [Mac OS X](https://ejhazlett.s3.amazonaws.com/public/docker/darwin/docker-1.4.1-136b351e-identity)
-* [Linux](https://ejhazlett.s3.amazonaws.com/public/docker/linux/docker-1.4.1-136b351e-identity)
-
-If you want to build Docker on this branch, the build instructions are available
-[here](https://docs.docker.com/contributing/devenvironment/) and the
-[pull request #8265 here](https://github.com/docker/docker/pull/8265).
+If you are already using Docker Machine in a older version than 0.2, please
+upgrade your client since the provisioning of the OpenStack instances was
+re-introduced in this version
+(added in [12bed9e](https://github.com/docker/machine/commit/12bed9eafcb445df166721ee273dca18b2495a7d)).
 
 # Getting started with Docker Machine on RunAbove
 
@@ -75,7 +61,7 @@ $ export OS_REGION_NAME=SBG-1
 Deploying a new instance with a Docker daemon is now as simple as a simple command:
 
 ```bash
-$ machine create \
+$ docker-machine create \
   -d openstack \
   --openstack-flavor-name="ra.intel.ha.s" \
   --openstack-image-name="Ubuntu 14.04" \
@@ -93,31 +79,33 @@ Once deployed, you just need to declare to your Docker client that you'll use
 your fresh installed Docker daemon on your RunAbove instance:
 
 ```bash
-$ export DOCKER_HOST=$(machine url) DOCKER_AUTH=identity
+$ eval "$(docker-machine env my-docker-host)"
 ```
 
 Your Docker client and the server will establish a TCP connection on port 2276.
-Do not forget to add a rule for that on your security group. That's all, you
-can now use your Docker Machine with your local Docker client:
+Do not forget to add a rule for that in
+[your security group](https://manager.runabove.com/horizon/project/access_and_security/).
+That's all, you can now use your Docker Machine with your local Docker client:
 
 ```bash
 $ docker info
-The authenticity of host "1.2.3.4:2376" can't be established.
-Remote key ID 6D2O:BGXV:I3AE:WH7W:OIRG:JPVU:EJET:UD7H:TASU:EFAU:CIJG:HEIP
-Are you sure you want to continue connecting (yes/no)? yes
 Containers: 0
-Images: 3
+Images: 0
 Storage Driver: aufs
  Root Dir: /var/lib/docker/aufs
- Dirs: 3
+ Backing Filesystem: extfs
+ Dirs: 0
+ Dirperm1 Supported: false
 Execution Driver: native-0.2
-Kernel Version: 3.13.0-37-generic
+Kernel Version: 3.13.0-44-generic
 Operating System: Ubuntu 14.04.1 LTS
 CPUs: 1
 Total Memory: 1.955 GiB
-Name: vm
-ID: 6D2O:BGXV:I3AE:WH7W:OIRG:JPVU:EJET:UD7H:TASU:EFAU:CIJG:HEIP
+Name: my-docker-host
+ID: GIQ3:CKU3:4NDF:UTS3:RIYC:XGKV:CJCV:VPRY:333J:KHT6:T42M:YW43
 WARNING: No swap limit support
+Labels:
+ provider=openstack
 ```
 
 ```bash
