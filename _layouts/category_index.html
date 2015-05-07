@@ -37,7 +37,7 @@ layout: default
             </span>
           </p>
           <p class="content">
-            {{ post.excerpt | strip_html }}
+            {{ post.content | markdownify | strip_html | truncatewords: 50 }}
           </p>
           <a href="{{ post.url | prepend: site.baseurl }}" class="link">
             read the tutorial

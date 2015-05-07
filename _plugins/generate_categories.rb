@@ -138,7 +138,7 @@ module Jekyll
     end
 
   end
-  
+
   # The CategoryJson class creates an JSON for the specified category.
   class CategoryJson < CategoryPage
 
@@ -249,7 +249,7 @@ module Jekyll
     # back on the default if no dir is provided.
     def self.category_dir(base_dir, category)
       base_dir = (base_dir || CATEGORY_DIR).gsub(/^\/*(.*)\/*$/, '\1')
-      category = category.gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-').downcase
+      category = category.gsub(/_|\P{Word}\//, '-').gsub(/-{2,}/, '-').downcase
       File.join(base_dir, category)
     end
 

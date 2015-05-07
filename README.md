@@ -86,11 +86,14 @@ With markdown syntax.
 To deploy tutorials on runabove, we use a ruby tool called
 [Jekyll](http://jekyllrb.com/). You can find more informations about Jekyll
 installation inside the [official
-documentation](http://jekyllrb.com/docs/installation/). For example on Debian
-7, installation instructions are:
+documentation](http://jekyllrb.com/docs/installation/). The easiest way to get it up and running is:
 
 ```bash
-apt-get install ruby1.9.3 rubygems nodejs
+curl -sSL https://get.rvm.io | bash -s stable --ruby=1.9.3 --autolibs=fail
+curl https://raw.githubusercontent.com/creationix/nvm/v0.25.1/install.sh | bash
+nvm install 0.10
+nvm use 0.10
+source ~/.bashrc
 gem install jekyll
 ```
 
