@@ -70,8 +70,12 @@ a:not(.ico-twitter), a.staff-photo img{ text-decoration : none; outline : none;
     -ms-transition: all 0.15s ease;
     -o-transition: all 0.15s ease;
     transition: all 0.15s ease;
-
 }
+
+.post-content a {
+    color: #EE7A1D;
+}
+
 a.ico-github, .ico-github {
     -webkit-transition: none;
     -moz-transition: none;
