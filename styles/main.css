@@ -216,6 +216,14 @@ a{
 	color: inherit;
 }
 
+/* Anchor offsets */
+:target:before {
+    content:"";
+    display:block;
+    height:90px;
+    margin:-90px 0 0;
+}
+
 /* new test */
 
 div.dropdown-box{
