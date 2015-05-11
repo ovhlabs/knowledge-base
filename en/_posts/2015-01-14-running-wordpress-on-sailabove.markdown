@@ -109,5 +109,20 @@ That's all. Your Wordpress is ready, you can now configure its option by
 browsing your own domain url or
 ```http://wordpress.<application>.app.sailabove.io```.
 
+# Getting help
 
+- Get started: [Getting started quide][8]
+- Documentation: [Reference documentation][9], [Guides][10]
+- Join OVH Docker mailing list: [docker-subscribe@ml.ovh.net][5]
+- Visit our Community: [https://community.runabove.com/][6]
+- Drop us an e-mail: [sailabove@ovh.net][1]
+- Create your account: [Sailabove.com][7]
+
+  [1]: mailto:sailabove@ovh.net
+  [5]: mailto:docker-subscribe@ml.ovh.net
+  [6]: https://community.runabove.com/
+  [7]: https://sailabove.com/
+  [8]: /kb/en/docker/getting-started-with-sailabove-docker.html
+  [9]: /kb/en/docker/documentation
+  [10]: /kb/en/docker/
 

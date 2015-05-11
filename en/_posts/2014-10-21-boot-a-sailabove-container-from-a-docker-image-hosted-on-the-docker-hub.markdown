@@ -13,7 +13,7 @@ to host your private docker images.
 But you might want to boot a new hosted Docker container using an image hosted
 on an external registry, for example, the [Docker Hub](https://registry.hub.docker.com).
 To simplify the usage of these external repositores, you can add them as a
-*bookmark* in your SailAbove application. 
+*bookmark* in your SailAbove application.
 
 Before diving in, make sure to read the [Getting Started guide](getting-started-with-sailabove-docker.html).
 
@@ -58,3 +58,20 @@ with any hosted repository:
 ```bash
 sail services add <application>/memcached --user nobody --network private cache
 ```
+
+## Getting help
+
+- Get started: [Getting started quide][8]
+- Documentation: [Reference documentation][9], [Guides][10]
+- Join OVH Docker mailing list: [docker-subscribe@ml.ovh.net][5]
+- Visit our Community: [https://community.runabove.com/][6]
+- Drop us an e-mail: [sailabove@ovh.net][1]
+- Create your account: [Sailabove.com][7]
+
+  [1]: mailto:sailabove@ovh.net
+  [5]: mailto:docker-subscribe@ml.ovh.net
+  [6]: https://community.runabove.com/
+  [7]: https://sailabove.com/
+  [8]: /kb/en/docker/getting-started-with-sailabove-docker.html
+  [9]: /kb/en/docker/documentation
+  [10]: /kb/en/docker/
