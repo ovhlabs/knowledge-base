@@ -357,6 +357,32 @@ hello-python-1:5.196.2.30 - - [2015-04-24 16:31:12] "GET /favicon.ico HTTP/1.1" 
 ^C
 ```
 
+## logs
+
+Fetch the last logs archived from service's ``stdout`` and ``stderr``. Each output line is prefixed with ``<service-name>-<seq id>:`` like in ``docker-compose``. The log lines can be prefixed with a timestamp using `-t / --timestamps` in a similar way as `docker logs`, which is extremely usefull when the output of the containers is not timestamped. By default the last 1000 log lines are fetched, this value can be customized using ``--tail=<count>``.
+
+```bash
+usage: sail services logs [-h] [-t] [--tail TAIL] service
+
+positional arguments:
+  service           [namespace/]service name
+
+optional arguments:
+  -h, --help        show this help message and exit
+  -t, --timestamps  Show timestamps (default: false)
+  --tail TAIL       Output the specified number of lines at the end of logs
+                    (defaults to 1000)
+```
+
+### Example
+
+```
+$ sail services logs demo/hello-python
+hello-python-1:127.0.0.1 - - [2015-05-13 12:20:05] "GET /hello/monitoring HTTP/1.1" 200 140 0.000287
+hello-python-1:127.0.0.1 - - [2015-05-13 12:25:04] "GET /hello/monitoring HTTP/1.1" 200 140 0.000356
+hello-python-1:127.0.0.1 - - [2015-05-13 12:30:04] "GET /hello/monitoring HTTP/1.1" 200 140 0.000315
+```
+
 ## inspect
 
 Get detailed services and service's container status. It includes low level networking and image information. This call is mostly intended for debugging.
@@ -680,6 +706,33 @@ sail containers attach demo/c60ecff0-53ec-4267-9891-5ee7f845a6d2
 5.196.2.30 - - [24/Apr/2015:18:27:12 +0000] "GET /hello/world HTTP/1.1" 304 - "-" "Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0"
 
 ^C
+```
+
+## logs
+
+Fetch the last logs archived from containers's ``stdout`` and ``stderr``. The log lines can be prefixed with a timestamp using `-t / --timestamps` in a similar way as `docker logs`, which is extremely usefull when the output of the containers is not timestamped. By default the last 1000 log lines are fetched, this value can be customized using ``--tail=<count>``.
+
+
+```bash
+usage: sail containers logs [-h] [-t] [--tail TAIL] container
+
+positional arguments:
+  container         [namespace/]container name
+
+optional arguments:
+  -h, --help        show this help message and exit
+  -t, --timestamps  Show timestamps (default: false)
+  --tail TAIL       Output the specified number of lines at the end of logs
+                    (defaults to 1000)
+```
+
+### Example
+
+```
+$ sail containers logs demo/hello-python-1
+hello-python-1:127.0.0.1 - - [2015-05-13 12:20:05] "GET /hello/monitoring HTTP/1.1" 200 140 0.000287
+hello-python-1:127.0.0.1 - - [2015-05-13 12:25:04] "GET /hello/monitoring HTTP/1.1" 200 140 0.000356
+hello-python-1:127.0.0.1 - - [2015-05-13 12:30:04] "GET /hello/monitoring HTTP/1.1" 200 140 0.000315
 ```
 
 # <a name="applications"></a> apps
