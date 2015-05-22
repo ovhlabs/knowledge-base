@@ -263,6 +263,7 @@ optional arguments:
                         will create a 42GB persistent volume and mount it in
                         the /data directory. This directory must exist in the
                         Docker image or be a VOLUME.
+  --redeploy            if the service already exists, redeploy it
   --batch               do not attach console on start
 ```
 
@@ -290,6 +291,8 @@ By default, containers are created with both a public IP and a private IP with a
 - ``--gateway`` to declare a container as gateway from a network to another. Of the form ``source/private net:destination/public network``. This is especially useful when building secured multi-tiered applications.
 
 To link multiple Docker services together, use ``--link <source service>[:<alias>]``. For example, to link a frontal container to a MySQL server powered by MariaDB, use an argument of the form ``--link username/mariadb:mysql``. Links will automatically use the most secured and isolated common network available. generally, the application's default private network.
+
+For scripting convenience, one could use a combination of ``--redeploy`` to trigger a redeploy if the service already existed (like SQL "UPSERT") and ``--batch`` to skip attaching to the containers console.
 
 For more information regarding networks, please see below.
 
