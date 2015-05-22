@@ -67,6 +67,7 @@ If needed, install the official Docker client. An exhaustive documentation for a
 Fire up a terminal, (Application > Utilities > Terminal on Mac OS X; Usually <Ctrl>+<Alt>+T on Linux). Windows is not officially supported (yet).
 
 Then login, using the credentials you just created (email address is not required):
+
 ```bash
 docker login sailabove.io
 ```

@@ -473,7 +473,7 @@ $ sail services start demo/redis
 
 ## <a name="service-scale"></a> scale
 
-Increase or decrease the pool of containers in the service. Uses includes load balancing and high availability. Automatocally attaches to the console of the containers unless in ``--batch`` mode.
+Increase or decrease the pool of containers in the service. Uses includes load balancing and high availability. Automatically attaches to the console of the containers unless in ``--batch`` mode.
 
 ```
 usage: sail services scale [-h] [--number NUMBER] [--batch] service

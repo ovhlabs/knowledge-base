@@ -25,6 +25,7 @@ For this example, we'll use the excellent [Bottle](http://bottlepy.org/docs/dev/
 Here is the full ``server.py`` source code:
 
 ```python
+{% raw %}
 # -*- coding: utf-8 -*-
 from bottle import route, run, template
 
@@ -33,6 +34,7 @@ def index(name='World'):
     return template('Hello <b>{{name}}</b>!', name=name)
 
 run(host='0.0.0.0', port=80)
+{% endraw %}
 ```
 
 We now need to declare our dependencies using a ``requirements.txt`` file. In this case, only ``bottle``:

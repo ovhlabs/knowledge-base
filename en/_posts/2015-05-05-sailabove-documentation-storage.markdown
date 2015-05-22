@@ -44,7 +44,7 @@ See https://github.com/docker-library/mariadb/blob/master/Dockerfile.template fo
 
 ```
  Create a 50GB Volume on /var/lib/mysql
-sail services add library/mysql exampleuser/mysql --volume /var/lib/mysql:50
+sail services add library/mysql-template exampleuser/mysql-instance --volume /var/lib/mysql:50
 ```
 
 See the command line reference for detailed informations.
