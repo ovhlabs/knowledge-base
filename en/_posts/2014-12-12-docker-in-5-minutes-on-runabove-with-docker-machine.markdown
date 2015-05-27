@@ -82,7 +82,7 @@ your fresh installed Docker daemon on your RunAbove instance:
 $ eval "$(docker-machine env my-docker-host)"
 ```
 
-Your Docker client and the server will establish a TCP connection on port 2276.
+Your Docker client and the server will establish a TCP connection on port 2376.
 Do not forget to add a rule for that in
 [your security group](https://manager.runabove.com/horizon/project/access_and_security/).
 That's all, you can now use your Docker Machine with your local Docker client:
