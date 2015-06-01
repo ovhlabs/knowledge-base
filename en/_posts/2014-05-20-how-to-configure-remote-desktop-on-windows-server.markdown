@@ -30,6 +30,8 @@ Launch your Windows instance and open a console. To configure the RDP access, op
 
 Choose _Allow remote connections to this computer_. If your RDP client doesn't use Network Level Authentication, or if this feature is not available on your network, be sure the field _Allow connections only from computers running Remote Desktop with Network Level Authentication_, is not selected.
 
+If your RDP connection timeout, maybe your Windows Firewall is blocking connections. To allow RDP connections to your server, go to _Server Manager_ > _Local Server_. Click on _Windows Firewall_, then _advanced settings_ and finally on _Inbound Rules_. Search line _Remote Desktop - User Mode (TCP-In) / Profile: Public_, select it, and click on _Allow Rule_ in the menu at the right. __Be warn__: this action open your RDP connection on the Internet. Be sure your password is strengh.
+
 # Open an RDP client
 
 You can now open your favorite RDP client. On Linux, you could use rdesktop.
