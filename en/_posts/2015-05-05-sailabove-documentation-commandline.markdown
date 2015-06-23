@@ -617,9 +617,10 @@ optional arguments:
 
 ### Fields definitions
 
-- **``Name``**: Container name of the form ``<application name>/<container internal name>``.
-- **``Repository``**: Source Docker image for this container of the form ``<username>/<image name>``.
-- **``Image Id``**: Docker image id corresponding to ``Repository``.
+
+- **``App``**: Name of the application this container belongs to
+- **``Service``**: Name of the service this container belongs to
+- **``Container``**: Container internal uuid
 - **``State``**: Container state. [See ``List of possible states`` below](#container-state).
 - **``Deployed``**: UTC time of container creation.
 
@@ -638,13 +639,13 @@ optional arguments:
 ### Example
 ```
 $ sail containers ps
-NAME                                          REPOSITORY                IMAGE ID      STATE       DEPLOYED
-demo/165db267-0a99-4724-832c-eaa8853a4d0f     demo/hello-go@latest      a5271b9c46f8  Running     2015-01-13 18:32:38.683153
-demo/c60ecff0-53ec-4267-9891-5ee7f845a6d2     demo/hello-node@latest    041080e59d02  Running     2015-04-24 13:25:43.671898
-demo/50eebcbb-a90b-44b5-b1ad-dfe33b865939     demo/hello-python@latest  d267cca5bde3  Running     2015-01-12 10:37:19.678810
-demo/926e171c-a5a8-4754-b98c-704d19de65cc     demo/hello-ruby@latest    15288e3cbb83  Running     2015-01-20 10:28:16.558364
-demo/a62602b6-83ca-445c-8679-9bf6c92f1c90     demo/www@latest           fa54d52952de  Running     2015-03-10 14:44:32.594185
-demo/a81fffaf-5f53-4257-ae36-5faa89647078     demo/hello-go@latest      f01a3faf0b4a  Running     2015-03-13 13:11:57.104247
+APP      SERVICE          CONTAINER                             STATE    DEPLOYED
+demo     hello-python     50eebcbb-a90b-44b5-b1ad-dfe33b865939  Running  2015-01-12 10:37:19
+demo     www              a62602b6-83ca-445c-8679-9bf6c92f1c90  Running  2015-03-10 14:44:32
+demo     hello-1click     165db267-0a99-4724-832c-eaa8853a4d0f  Running  2015-05-12 15:37:54
+demo     hello-node       c60ecff0-53ec-4267-9891-5ee7f845a6d2  Running  2015-04-24 13:25:43
+demo     hello-go         a81fffaf-5f53-4257-ae36-5faa89647078  Running  2015-03-13 13:11:57
+demo     hello-ruby       926e171c-a5a8-4754-b98c-704d19de65cc  Running  2015-01-20 10:28:16
 ```
 
 ## inspect
@@ -683,6 +684,7 @@ network:
 repository: demo/hello-go
 repository_tag: latest
 restart_policy:
+service: hello-go
 state: running
 user: root
 workdir: /go/src/app
