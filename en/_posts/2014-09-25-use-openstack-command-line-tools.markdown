@@ -56,7 +56,7 @@ virtualenv and install the OpenStack clients in it, but this is not mandatory.
 
 OpenStack provides a [list of
 clients](https://wiki.openstack.org/wiki/OpenStackClients) you can install.
-Just enter the command bellow with the name of the client, for example:
+Just enter the command below with the name of the client, for example:
 
     sudo pip install python-novaclient
 
