@@ -236,6 +236,7 @@ positional arguments:
 optional arguments:
   -h, --help            show this help message and exit
   --model MODEL         the containers model. Currently only 'xs'
+  --pool POOL           use dedicated pool
   --number NUMBER       number of containers to launch
   --user USER           override docker user
   --entrypoint ENTRYPOINT
@@ -291,6 +292,8 @@ By default, containers are created with both a public IP and a private IP with a
 - ``--gateway`` to declare a container as gateway from a network to another. Of the form ``source/private net:destination/public network``. This is especially useful when building secured multi-tiered applications.
 
 To link multiple Docker services together, use ``--link <source service>[:<alias>]``. For example, to link a frontal container to a MySQL server powered by MariaDB, use an argument of the form ``--link username/mariadb:mysql``. Links will automatically use the most secured and isolated common network available. generally, the application's default private network.
+
+By default all the containers are launched on a shared "pool" of machines. A pool of machines is simply a group of Sailabove's workers wich are fully dedicated to a customer. To select the pool to use, use ``--pool`` option. The default pool is called "public". The default dedicated pool is called "private". It is possible to have services services attached to a dedicated pool and others attached to the public pool under the same account. To migrate a service between pools, see ``sail services redeploy`` below. If your project requires a public pool, please contact us.
 
 For scripting convenience, one could use a combination of ``--redeploy`` to trigger a redeploy if the service already existed (like SQL "UPSERT") and ``--batch`` to skip attaching to the containers console.
 
@@ -427,6 +430,7 @@ image: d267cca5bde38c0f0f87d752c27673828919d4ea74c7f5db535ab521a41fb836
 linked_from_service: {}
 linked_to_service: {}
 name: hello-python
+pool: public
 repository: demo/hello-python
 repository_tag: latest
 restart_policy: no
@@ -512,6 +516,7 @@ optional arguments:
   -h, --help            show this help message and exit
   --model MODEL         the containers model
   --user USER           override docker user
+  --pool POOL           use dedicated pool
   --entrypoint ENTRYPOINT
                         override docker entrypoint
   --command COMMAND     override docker run command
