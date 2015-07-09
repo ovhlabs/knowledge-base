@@ -293,7 +293,7 @@ By default, containers are created with both a public IP and a private IP with a
 
 To link multiple Docker services together, use ``--link <source service>[:<alias>]``. For example, to link a frontal container to a MySQL server powered by MariaDB, use an argument of the form ``--link username/mariadb:mysql``. Links will automatically use the most secured and isolated common network available. generally, the application's default private network.
 
-By default all the containers are launched on a shared "pool" of machines. A pool of machines is simply a group of Sailabove's workers wich are fully dedicated to a customer. To select the pool to use, use ``--pool`` option. The default pool is called "public". The default dedicated pool is called "private". It is possible to have services services attached to a dedicated pool and others attached to the public pool under the same account. To migrate a service between pools, see ``sail services redeploy`` below. If your project requires a public pool, please contact us.
+By default all the containers are launched on a shared "pool" of machines. A pool of machines is simply a group of Sailabove's workers wich are fully dedicated to a customer. To select the pool to use, use ``--pool`` option. The default pool is called "public". The default dedicated pool is called "private". It is possible to have services services attached to a dedicated pool and others attached to the public pool under the same account. To migrate a service between pools, see [See ``redeploy`` section below for more information](#service-redeploy). If your project requires a public pool, please contact us.
 
 For scripting convenience, one could use a combination of ``--redeploy`` to trigger a redeploy if the service already existed (like SQL "UPSERT") and ``--batch`` to skip attaching to the containers console.
 
@@ -407,7 +407,8 @@ optional arguments:
 
 ```
 $ sail services inspect demo/hello-python
-attached_domains: []
+attached_domains:
+  - hi.example.com/hello/*$
 container_command:
 container_entrypoint:
 container_environment: []
@@ -494,7 +495,7 @@ optional arguments:
   --batch          do not attach console on start
 ```
 
-## redeploy
+## <a name="service-redeploy"></a> redeploy
 
 Perform a rolling re-deploy of all service's container with a new image, network, environment, ... This method has primarily been created to deploy a new version of a Docker image from the repository. It will automatically rollback if boot fails for any reason.
 
@@ -558,9 +559,55 @@ sail services redeploy remote-access-service -p 22
 
 > **Warning:** Network and links related options are experimental and may lead to unexpected side effects. Nonetheless, they have been designed to address specific real-world problems. If you meet any of this issues, please, feel free to [contact us][1].
 
-## domain-attach
+## domain-list
 
-Register a domain on the predictor load balancer for the service. The service *must* have been started with ``--network predictor``. Once registered on the predictor, any traffic received on the predictor targeting this domain will be directed to this service.
+Lists all domains and routes attached to a given service.
+
+```
+usage: sail services domain-list [-h] service
+
+positional arguments:
+  service     [namespace/]service name
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+### Fields definitions
+
+- **``DOMAIN``**: Domain name attached to this application
+- **``PATTERN``**: URLs to match when directing traffic to this service. [See ``sail services domain-attach`` bellow](#service-domain-attach).
+
+### Example
+
+```
+$ sail services domain-list yadutaf/sms-send
+DOMAIN            PATTERN
+www.hello-go.com  /hello/*
+```
+
+## <a name="service-domain-attach"></a>domain-attach
+
+Register a domain on the predictor load balancer for the service. The service *must* have been started with ``--network predictor``. Once registered on the predictor, any traffic received on the predictor targeting this domain will be directed to this service. A domain can only be attached to a single application at any given time.
+
+To redirect only traffic hitting a specific URI pattern, use ``--pattern`` option. When using this option, a single domain may be attached simultaneously to multiple services of the same application. This is usefull when building micro-service based applications where each route may be handled by a dedicated service.
+
+Patterns are very simple regular expressions. They are regular URLs, extended with 2 special characters. ``*`` matches any character until the next ``/`` and ``$`` at the end of the patern makes it an exact match. Without ``$`` a pattern is treated as a prefix. When multiple patterns matches, the most precize will be used. The default pattern is ``/`` and will match any URL if no other pattern matches.
+
+For example, if we define the following patterns:
+
+```
+/sms
+/sms/*
+/sms/*/send$
+```
+
+ - ``/sms`` will match ``/sms``
+ - ``/sms/01-02-03-04-05`` will match ``/sms/*``
+ - ``/sms/01-02-03-04-05/send`` will match ``/sms/*/send$``
+ - ``/sms/01-02-03-04-05/send/test`` will not match any rule because of the trailling '$'
+
+For more informations about patterns, please [see the predictor documentation][11]
 
 ```
 usage: sail services domain-attach [-h] service domain
@@ -571,18 +618,22 @@ positional arguments:
 
 optional arguments:
   -h, --help  show this help message and exit
+  -p PATTERN, --pattern PATTERN
+                        attach for URIs matching pattern
 ```
 
 ### Example
 
 ```
-$ sail services domain-attach demo/hello-go www.hello-go.com
+$ sail services domain-attach demo/hello-go www.hello-go.com --pattern '/hello/*'
 domain: www.hello-go.com
+method: "*"
+pattern: /hello/*
 ```
 
 ## domain-detach
 
-Detach a domain previously registered on the predictor load balancer.
+Detach a domain or pattern previously registered on the predictor load balancer. The domain will still be attached to the the application so that it will still be reserved for this application.
 
 ```
 usage: sail services domain-detach [-h] service domain
@@ -593,6 +644,7 @@ positional arguments:
 
 optional arguments:
   -h, --help  show this help message and exit
+  -p PATTERN, --pattern PATTERN
 ```
 
 ### Example
@@ -803,6 +855,73 @@ max_repositories: 5
 max_volumes_size: 10
 name: exampleuser
 offer: free
+```
+
+## domain-list
+
+Lists all domains and routes attached to a given application
+
+```
+usage: sail apps domain-list [-h] app
+
+positional arguments:
+  app         application
+
+optional arguments:
+  -h, --help  show this help message and exi
+```
+
+### Fields definitions
+
+- **``DOMAIN``**: Domain name attached to this application
+- **``SERVICE``**: Service attached to this domain
+- **``PATTERN``**: URLs to match when directing traffic to this service. [See ``sail services domain-attach`` above](#service-domain-attach).
+
+### Example
+
+```
+$ sail apps domain-list yadutaf
+DOMAIN                        SERVICE            PATTERN
+demo.yadutaf.ovh              yadutaf/sms-dests  /sms$
+demo.yadutaf.ovh              yadutaf/sms-list   /sms/*/list$
+demo.yadutaf.ovh              yadutaf/sms-send   /sms/*/send$
+```
+
+## <a name="service-domain-attach"></a>domain-attach
+
+Attach a domain to an application. A domain may only be attached to a single application at any given time. Please note that domains still need to be attached to a service to be able to receive traffic. [See ``sail services domain-attach``](#service-domain-attach) to attach a domain a service.
+
+```
+usage: sail apps domain-attach [-h] app domain
+
+positional arguments:
+  app         application
+  domain      domain to attach to this application
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+### Example
+
+```
+$ sail apps domain-attach demo www.hello-go.com
+domain: www.hello-go.com
+```
+
+## domain-detach
+
+Fully detaches a domain from an application and all its services.
+
+```
+usage: sail apps domain-detach [-h] app domain
+
+positional arguments:
+  app         application
+  domain      domain to detach from this application
+
+optional arguments:
+  -h, --help  show this help message and exit
 ```
 
 # compose
@@ -1114,3 +1233,4 @@ true
   [8]: /kb/en/docker/getting-started-with-sailabove-docker.html
   [9]: /kb/en/docker/documentation
   [10]: /kb/en/docker/
+  [11]: /kb/en/docker/documentation/sailabove-documentation-predictor.html
