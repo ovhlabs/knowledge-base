@@ -576,14 +576,15 @@ optional arguments:
 ### Fields definitions
 
 - **``DOMAIN``**: Domain name attached to this application
+- **``METHOD``**: HTTP method to match. [See ``sail services domain-attach`` bellow](#service-domain-attach).
 - **``PATTERN``**: URLs to match when directing traffic to this service. [See ``sail services domain-attach`` bellow](#service-domain-attach).
 
 ### Example
 
 ```
 $ sail services domain-list yadutaf/sms-send
-DOMAIN            PATTERN
-www.hello-go.com  /hello/*
+DOMAIN            METHOD  PATTERN
+www.hello-go.com  GET     /hello/*
 ```
 
 ## <a name="service-domain-attach"></a>domain-attach
@@ -592,7 +593,7 @@ Register a domain on the predictor load balancer for the service. The service *m
 
 To redirect only traffic hitting a specific URI pattern, use ``--pattern`` option. When using this option, a single domain may be attached simultaneously to multiple services of the same application. This is usefull when building micro-service based applications where each route may be handled by a dedicated service.
 
-Patterns are very simple regular expressions. They are regular URLs, extended with 2 special characters. ``*`` matches any character until the next ``/`` and ``$`` at the end of the patern makes it an exact match. Without ``$`` a pattern is treated as a prefix. When multiple patterns matches, the most precize will be used. The default pattern is ``/`` and will match any URL if no other pattern matches.
+Patterns are very simple regular expressions. They are regular URLs, extended with 2 special characters. ``*`` matches any character until the next ``/`` and ``$`` at the end of the patern makes it an exact match. Without ``$`` a pattern is treated as a prefix. When multiple patterns matches, the most precize will be used. The default pattern is ``/`` and will match any URL if no other pattern matches. Patterns may also be restrict to match only for specific HTTP methods like GET or POST. Special method ``*`` is the default and will match any method.
 
 For example, if we define the following patterns:
 
@@ -617,17 +618,17 @@ positional arguments:
   domain
 
 optional arguments:
-  -h, --help  show this help message and exit
-  -p PATTERN, --pattern PATTERN
-                        attach for URIs matching pattern
+  -h, --help                     show this help message and exit
+  -p PATTERN, --pattern PATTERN  attach for URIs matching pattern
+  -m METHOD,  --method METHOD    attach for METHOD requests
 ```
 
 ### Example
 
 ```
-$ sail services domain-attach demo/hello-go www.hello-go.com --pattern '/hello/*'
+$ sail services domain-attach demo/hello-go www.hello-go.com --pattern '/hello/*' --method GET
 domain: www.hello-go.com
-method: "*"
+method: "GET"
 pattern: /hello/*
 ```
 
@@ -645,6 +646,7 @@ positional arguments:
 optional arguments:
   -h, --help  show this help message and exit
   -p PATTERN, --pattern PATTERN
+  -m METHOD,  --method METHOD
 ```
 
 ### Example
