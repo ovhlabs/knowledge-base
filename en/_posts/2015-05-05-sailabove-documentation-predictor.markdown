@@ -22,13 +22,13 @@ Technically, the predictor is built on top of the proven Nginx reverse proxy. It
 All services using ``--network predictor`` will automatically use the load balancer. For example, to start a hello world application on the predictor:
 
 ```
-sail services add demo/hello-python <user name>/hello-python --network predictor
+$ sail services add demo/hello-python <user name>/hello-python --network predictor
 ```
 
 As saying "hello" is quite popular, our "Hello as a Service" application is now handling thousands of requests per second. We need to scale:
 
 ```
-sail services scale <user name>/hello-python --number 3
+$ sail services scale <user name>/hello-python --number 3
 ```
 
 That's all. All 3 containers are now handling their share of the requests on domain ``http://hello-python.<user name>.app.sailabove.io/``
@@ -38,14 +38,71 @@ That's all. All 3 containers are now handling their share of the requests on dom
 Now that you have a scalable, load-balanced application, you will most probably want to publish it with an appealing domain. Let's say ``www.sayhello.com``. All you need to do is:
 
 ```
-sail services domain-attach <user name>/hello-python www.sayhello.com
+$ sail services domain-attach <user name>/hello-python www.sayhello.com
 ```
 
 It can be detached at any time with:
 
 ```
-sail services domain-detach <user name>/hello-python www.sayhello.com
+$ sail services domain-detach <user name>/hello-python www.sayhello.com
 ```
+
+# Routing specific URLs to dedicated services
+
+URI based routing allows requests matching a specific pattern to be redirected to a dedicated service. For different applications, this allows to share a single domain under multiple prefixes. For micro-service oriented applications, this allows to deploy, monitor and scale each service endpoint independentely.
+
+For example, let's say we have both a blog and a redmine application and that they both should be accessible from a single, trusted domain. One could attached domains like:
+
+```
+$ sail services attach-domain <my-app>/wordpress private.example.com --pattern /blog
+$ sail services attach-domain <my-app>/redmine   private.example.com --pattern /redmine
+$ sail apps domain-list <my-app>
+DOMAIN               SERVICE             METHOD  PATTERN
+private.example.com  <my-app>/wordpress  *       /blog
+private.example.com  <my-app>/redmine    *       /redmine
+```
+
+In this case, the predictor will route by prefix. In other words, all URLs starting by '/blog/' will go to wordpress and all requests starting with ''. Method ``*`` means that all HTTP methods (GET, POST, DELETE, ...) will be directed to this backend.
+
+When building a micro-service oriented application, finer grained prefix matching may be needed. For this use case, patterns may be defined as simple regular expressions. ``*`` wildcard will match until the next ``/``. ``$`` at the end of the pattern behaves like its counter part in perl regular expressions meaning that the pattern must match until the end of the URL. Requests may also be routed based on the HTTP verb. For example, one may want to direct all GET requests to a ligntning fast code while POST requests would go to a slower but robust processing service. The default method is ``*``. It matches asny HTTP method if no more specific rul has been defined.
+
+For example, let's build a trivial sms sending application to french cell phones:
+
+```
+GET /sms$
+GET /sms/+33-6-*
+GET /sms/+33-7-*
+POST /sms/+33-6-*$
+POST /sms/+33-7-*$
+```
+
+We'll attach the routes, like the blog+redmine example:
+
+```
+$ sail services attach-domain <my-app>/sms-dests api.sms.com --method GET --pattern '/sms$'
+$ sail services attach-domain <my-app>/sms-list  api.sms.com --method GET --pattern '/sms/+33-6-*'
+$ sail services attach-domain <my-app>/sms-list  api.sms.com --method GET --pattern '/sms/+33-7-*'
+$ sail services attach-domain <my-app>/sms-send  api.sms.com --method POST --pattern '/sms/+33-6-*$'
+$ sail services attach-domain <my-app>/sms-send  api.sms.com --method POST --pattern '/sms/+33-7-*$'
+
+$ sail apps domain-list <my-app>
+DOMAIN       SERVICE             METHOD  PATTERN
+api.sms.com  <my-app>/sms-dests  GET     /sms$
+api.sms.com  <my-app>/sms-list   GET     /sms/+33-6-*
+api.sms.com  <my-app>/sms-list   GET     /sms/+33-7-*
+api.sms.com  <my-app>/sms-send   POST    /sms/+33-6-*$
+api.sms.com  <my-app>/sms-send   POST    /sms/+33-7-*$
+```
+
+ - ``GET /sms`` will match ``/sms$``
+ - ``GET /sms/+33-6-02-03-04-05`` will match ``/sms/+33-6-*``
+ - ``POST /sms/+33-6-02-03-04-05`` will match ``/sms/+33-6-*/send$``
+ - ``DELETE /sms/+33-6-02-03-04-05`` will not match any rule because there is not ``DELETE`` route
+ - ``POST /sms/+44-6-02-03-04-05`` will not match any rule because it does not start with the French indicator
+ - ``POST /sms/+33-6-02-03-04-05/test`` will not match any rule because of the trailling '$'
+
+
+> **Note:** Rules behaves as prefixes by default. For example, if we had omitted the trailing ``$`` in rule ``/sms$``, URLs like ``/sms-premium`` or ``/sms/admin`` would have matched too.
 
 # Load balancing policy
 
