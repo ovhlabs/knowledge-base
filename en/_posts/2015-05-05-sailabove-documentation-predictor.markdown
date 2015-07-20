@@ -54,8 +54,8 @@ URI based routing allows requests matching a specific pattern to be redirected t
 For example, let's say we have both a blog and a redmine application and that they both should be accessible from a single, trusted domain. One could attached domains like:
 
 ```
-$ sail services attach-domain <my-app>/wordpress private.example.com --pattern /blog
-$ sail services attach-domain <my-app>/redmine   private.example.com --pattern /redmine
+$ sail services domain-attach <my-app>/wordpress private.example.com --pattern /blog
+$ sail services domain-attach <my-app>/redmine   private.example.com --pattern /redmine
 $ sail apps domain-list <my-app>
 DOMAIN               SERVICE             METHOD  PATTERN
 private.example.com  <my-app>/wordpress  *       /blog
@@ -79,11 +79,11 @@ POST /sms/+33-7-*$
 We'll attach the routes, like the blog+redmine example:
 
 ```
-$ sail services attach-domain <my-app>/sms-dests api.sms.com --method GET --pattern '/sms$'
-$ sail services attach-domain <my-app>/sms-list  api.sms.com --method GET --pattern '/sms/+33-6-*'
-$ sail services attach-domain <my-app>/sms-list  api.sms.com --method GET --pattern '/sms/+33-7-*'
-$ sail services attach-domain <my-app>/sms-send  api.sms.com --method POST --pattern '/sms/+33-6-*$'
-$ sail services attach-domain <my-app>/sms-send  api.sms.com --method POST --pattern '/sms/+33-7-*$'
+$ sail services domain-attach <my-app>/sms-dests api.sms.com --method GET --pattern '/sms$'
+$ sail services domain-attach <my-app>/sms-list  api.sms.com --method GET --pattern '/sms/+33-6-*'
+$ sail services domain-attach <my-app>/sms-list  api.sms.com --method GET --pattern '/sms/+33-7-*'
+$ sail services domain-attach <my-app>/sms-send  api.sms.com --method POST --pattern '/sms/+33-6-*$'
+$ sail services domain-attach <my-app>/sms-send  api.sms.com --method POST --pattern '/sms/+33-7-*$'
 
 $ sail apps domain-list <my-app>
 DOMAIN       SERVICE             METHOD  PATTERN
