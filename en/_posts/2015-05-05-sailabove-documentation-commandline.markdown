@@ -522,6 +522,7 @@ optional arguments:
                         override docker entrypoint
   --command COMMAND     override docker run command
   --workdir WORKDIR     override docker workdir
+  --tag TAG             deploy from new image version
   --restart RESTART     Docker like restart policy (no, always[:max], on-
                         failure[:max])
   -e ENV, --env ENV     override docker environment
@@ -542,6 +543,8 @@ optional arguments:
                         for the "private" network to the "public" network.
   --batch               do not attach console on start
 ```
+
+When used in conjunction with ``redeploy``, ``--tag`` is very powerful. It switches the docker image tag the service is deployed from. For instance, let's say your production service is currently deployed on docker tag ``sailabove.io/my-user/my-image:v1`` and a new ``v2`` tag has just been pushed. You'll just need to redeploy using ``--tag v2`` to upgrade or ``--tag v1`` to downgrade.
 
 When altering the environment variables, make sure to explicitely specify the full list of environment variables, including existing ones. Missing variables will be removed.
 
