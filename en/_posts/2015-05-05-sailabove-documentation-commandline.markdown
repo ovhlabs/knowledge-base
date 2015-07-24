@@ -1025,13 +1025,15 @@ optional arguments:
 
 ```
 $ sail repositories list -n demo
-NAME               TYPE      PRIVACY    SOURCE
-demo/hello-python  hosted    public     -
-demo/hello-node    hosted    public     -
-demo/hello-ruby    hosted    private    -
-demo/hello-go      hosted    private    -
-demo/www           hosted    private    -
-demo/redis         external  private    https://registry.hub.docker.com/redis
+NAME               TAG    TYPE      PRIVACY    SOURCE
+demo/hello-python  latest hosted    public     -
+demo/hello-python  v1     hosted    public     -
+demo/hello-python  v2     hosted    public     -
+demo/hello-node    latest hosted    public     -
+demo/hello-ruby    latest hosted    private    -
+demo/hello-go      latest hosted    private    -
+demo/www           latest hosted    private    -
+demo/redis         latest external  private    https://registry.hub.docker.com/redis
 ```
 
 In this example, the redis image used by one of the demo actually resides in the Docker hub official images pool. This avoids manually syncing already existing images.
@@ -1039,6 +1041,7 @@ In this example, the redis image used by one of the demo actually resides in the
 ### Fields definitions
 
 - **``Name``**: Repository name of the form ``<application name>/<image name>``.
+- **``Tag``**: Image tag. This is the portion after the ``:`` when a Docker image is tagged.
 - **``Type``**: ``hosted`` for private repositories hosted by Sailabove, ``external`` when refering to an external repository.
 - **``Privacy``**: Either ``private`` or ``public``. If the image is public, it will be accessible by anybody.
 - **``Source``**: ``external`` image real location.
