@@ -501,14 +501,14 @@ Perform a rolling re-deploy of all service's container with a new image, network
 
 This method's arguments are [the same as ``sail services add``](#service-add).
 
-```
-usage: sail services redeploy [-h] [--model MODEL] [--user USER]
+usage: sail services redeploy [-h] [--model MODEL] [--pool POOL] [--user USER]
                               [--entrypoint ENTRYPOINT] [--command COMMAND]
-                              [--workdir WORKDIR] [--restart RESTART] [-e ENV]
-                              [--link LINK] [-p PUBLISH] [--network NETWORK]
+                              [--workdir WORKDIR] [--tag TAG]
+                              [--restart RESTART] [-e ENV] [--link LINK]
+                              [-p PUBLISH] [--network NETWORK]
                               [--network-allow NETWORK_ALLOW]
-                              [--gateway GATEWAY] [--batch]
-                              service
+                              [--gateway GATEWAY] [--volume VOLUME] [--batch]
+                              service```
 
 positional arguments:
   service               [namespace/]service name
@@ -541,14 +541,18 @@ optional arguments:
   --gateway GATEWAY     Use service as gateway for a network. e.g.
                         "private:public", will use the service as a gateway
                         for the "private" network to the "public" network.
+  --volume VOLUME       Add a persistent volume and mount it, e.g. "/data:42"
+                        will create a 42GB persistent volume and mount it in
+                        the /data directory. This directory must exist in the
+                        Docker image or be a VOLUME.
   --batch               do not attach console on start
 ```
 
 When used in conjunction with ``redeploy``, ``--tag`` is very powerful. It switches the docker image tag the service is deployed from. For instance, let's say your production service is currently deployed on docker tag ``sailabove.io/my-user/my-image:v1`` and a new ``v2`` tag has just been pushed. You'll just need to redeploy using ``--tag v2`` to upgrade or ``--tag v1`` to downgrade.
 
-When altering the environment variables, make sure to explicitely specify the full list of environment variables, including existing ones. Missing variables will be removed.
+When altering the environment variables, make sure to explicitely specify the full list of environment variables, including existing ones. Missing variables will be removed. Links, volumes and published ports follow the same mechanism.
 
-Links and published ports follow the same mechanism.
+Changing volumes on redeploy is experimental. It may be used to declare new volumes. It currently does not support altering nor removing existing volumes. Hence, when at least one ``--volume`` is specified in redeploy, all existing volumes must be re-defined.
 
 ### Example
 
