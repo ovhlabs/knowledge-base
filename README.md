@@ -72,6 +72,7 @@ Add a file inside __posts__ directory with this template:
 layout: post
 title:  "My first tutorial"
 categories: Instances
+lab: the_lab_name_you_write_about
 author: your_github_username
 lang: en
 ---
