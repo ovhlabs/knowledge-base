@@ -10,6 +10,9 @@ lang: en
 # Introduction
 
 In this tutorial we assume you already have a Runabove Account and have subscribed to the IOT lab.
+To continue, use your favorite browser to access the [Runabove console](https://api.runabove.com/console/).
+                    
+![console-main-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/main-page.png)
  
 ## What is a solution?
  
@@ -20,17 +23,13 @@ You can also create a solution named 'Cellar' that will contain one token for hu
  
 ## What is a token?
  
-Tokens is the authentication part of the solution they belong. 
-You can use their read and write keys to respectively access and store data on the solution.
+Tokens are used for authentication and authorization. 
+They have a write key (used to push data) and a read key (used to retrieve data). 
+Each token belong to a specific solution.
 
 # How to create a new solution
 
-First use your favorite browser to access the [Runabove console](https://api.runabove.com/console/).
-
-![console-main-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/main-page.png)
-
-Click on the iot section.
-Select the 'POST /iot/app' section
+Select iot -> 'POST /iot/app'
 
 ![console-solution-creation-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/solution-creation-page.png)
 
@@ -46,12 +45,7 @@ Click on the "Execute" button to create your new solution.
 
 # How to modify a solution
 
-First use your favorite browser to access the [Runabove console](https://api.runabove.com/console/).
-
-![console-main-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/main-page.png)
-
-Select the iot section.
-Select the 'PUT /iot/app/{app}' section
+Select iot -> 'PUT /iot/app/{app}'
 
 ![token-creation-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/token-creation-page.png)
 
@@ -67,8 +61,7 @@ First use your favorite browser to access the [Runabove console](https://api.run
 
 ![console-main-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/main-page.png)
 
-Select the iot section.
-Select the 'DELETE /iot/app/{app}' section
+Select iot -> 'DELETE /iot/app/{app}'
 
 ![solution-delete-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/solution-remove-page.png)
 
@@ -78,12 +71,7 @@ Select the "Execute" button to modify your solution.
 
 # How to create a new token
 
-First use your favorite browser to access the [Runabove console](https://api.runabove.com/console/).
-
-![console-main-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/console-main-page.png)
-
-Select the iot section.
-Select the 'POST /iot/app/{app}' section
+Select iot -> 'POST /iot/app/{app}'
 
 ![console-main-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/token-creation-page.png)
 
@@ -96,12 +84,7 @@ Select "Execute"
 
 # How to modify a token
 
-First use your favorite browser to access the [Runabove console](https://api.runabove.com/console/).
-
-![console-main-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/console-main-page.png)
-
-Select the iot section.
-Select the 'PUT /iot/app/{app}/token/{token}' section
+Select iot -> 'PUT /iot/app/{app}/token/{token}'
 
 ![console-main-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/token-modification-page.png)
 
@@ -115,12 +98,7 @@ You cannot modify the expiration date so you must enter the actual unix timestam
   
 # How to delete a token
 
-First use your favorite browser to access the [Runabove console](https://api.runabove.com/console/).
-
-![console-main-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/main-page.png)
-
-Select the iot section.
-Select the 'DELETE /iot/app/{app}/token/{token}' section
+Select iot -> 'DELETE /iot/app/{app}/token/{token}'
 
 ![solution-delete-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/token-remove-page.png)
 
@@ -130,10 +108,6 @@ Select the 'DELETE /iot/app/{app}/token/{token}' section
 Select the "Execute" button to permanently delete your token.
 
 # How to retrieve my tokens
-
-First use your favorite browser to access the [Runabove console](https://api.runabove.com/console/).
-
-![console-main-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/main-page.png)
 
 Select the iot section.
 Select the 'GET /iot/app/{app}/token' section.

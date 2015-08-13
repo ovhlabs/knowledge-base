@@ -23,12 +23,11 @@ You can also create a solution named 'Cellar' that will contain one token for hu
  
 ## What is a token?
  
- Tokens is the authentication part of the solution they belong. 
- You can use their read and write keys to respectively access and store data on the solution.
+Tokens are used for authentication and authorization. 
+They have a write key (used to push data) and a read key (used to retrieve data). 
+Each token belong to a specific solution.
 
 # How to create a new solution
- 
-Call the API like described in the tutorial.
  
 ```bash
 $ curl  -X POST
@@ -48,8 +47,6 @@ $ curl  -X POST
   
 # How to modify a solution
 
-Call the API like described in the tutorial.
-
 ```bash
 $ curl  -X PUT
         -H 'X-Ra-Application:your_application_key' \
@@ -65,8 +62,6 @@ $ curl  -X PUT
   
 # How to delete a solution
 
-Call the API like described in the tutorial.
-
 ```bash
 $ curl  -X DELETE
         -H 'X-Ra-Application:your_application_key' \
@@ -80,8 +75,6 @@ $ curl  -X DELETE
 
 
 # How to create a new Token
- 
-Call the API like described in the tutorial.
  
 ```bash
 $ curl  -X POST
@@ -118,8 +111,6 @@ $ curl  -X PUT
   
 # How to delete a token
 
-Call the API like described in the tutorial.
-
 ```bash
 $ curl  -X DELETE
         -H 'X-Ra-Application:your_application_key' \
@@ -133,8 +124,6 @@ $ curl  -X DELETE
   * your token name: the name of the token you want to modify.
   
 # How to retrieve my tokens
-
-Call the API like described in the tutorial.
 
 ```bash
 $ curl  -X GET
