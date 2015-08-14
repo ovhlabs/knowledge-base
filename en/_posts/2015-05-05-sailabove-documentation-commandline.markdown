@@ -501,14 +501,14 @@ Perform a rolling re-deploy of all service's container with a new image, network
 
 This method's arguments are [the same as ``sail services add``](#service-add).
 
-```
-usage: sail services redeploy [-h] [--model MODEL] [--user USER]
+usage: sail services redeploy [-h] [--model MODEL] [--pool POOL] [--user USER]
                               [--entrypoint ENTRYPOINT] [--command COMMAND]
-                              [--workdir WORKDIR] [--restart RESTART] [-e ENV]
-                              [--link LINK] [-p PUBLISH] [--network NETWORK]
+                              [--workdir WORKDIR] [--tag TAG]
+                              [--restart RESTART] [-e ENV] [--link LINK]
+                              [-p PUBLISH] [--network NETWORK]
                               [--network-allow NETWORK_ALLOW]
-                              [--gateway GATEWAY] [--batch]
-                              service
+                              [--gateway GATEWAY] [--volume VOLUME] [--batch]
+                              service```
 
 positional arguments:
   service               [namespace/]service name
@@ -522,6 +522,7 @@ optional arguments:
                         override docker entrypoint
   --command COMMAND     override docker run command
   --workdir WORKDIR     override docker workdir
+  --tag TAG             deploy from new image version
   --restart RESTART     Docker like restart policy (no, always[:max], on-
                         failure[:max])
   -e ENV, --env ENV     override docker environment
@@ -540,12 +541,18 @@ optional arguments:
   --gateway GATEWAY     Use service as gateway for a network. e.g.
                         "private:public", will use the service as a gateway
                         for the "private" network to the "public" network.
+  --volume VOLUME       Add a persistent volume and mount it, e.g. "/data:42"
+                        will create a 42GB persistent volume and mount it in
+                        the /data directory. This directory must exist in the
+                        Docker image or be a VOLUME.
   --batch               do not attach console on start
 ```
 
-When altering the environment variables, make sure to explicitely specify the full list of environment variables, including existing ones. Missing variables will be removed.
+When used in conjunction with ``redeploy``, ``--tag`` is very powerful. It switches the docker image tag the service is deployed from. For instance, let's say your production service is currently deployed on docker tag ``sailabove.io/my-user/my-image:v1`` and a new ``v2`` tag has just been pushed. You'll just need to redeploy using ``--tag v2`` to upgrade or ``--tag v1`` to downgrade.
 
-Links and published ports follow the same mechanism.
+When altering the environment variables, make sure to explicitely specify the full list of environment variables, including existing ones. Missing variables will be removed. Links, volumes and published ports follow the same mechanism.
+
+Changing volumes on redeploy is experimental. It may be used to declare new volumes. It currently does not support altering nor removing existing volumes. Hence, when at least one ``--volume`` is specified in redeploy, all existing volumes must be re-defined.
 
 ### Example
 
@@ -1022,13 +1029,15 @@ optional arguments:
 
 ```
 $ sail repositories list -n demo
-NAME               TYPE      PRIVACY    SOURCE
-demo/hello-python  hosted    public     -
-demo/hello-node    hosted    public     -
-demo/hello-ruby    hosted    private    -
-demo/hello-go      hosted    private    -
-demo/www           hosted    private    -
-demo/redis         external  private    https://registry.hub.docker.com/redis
+NAME               TAG    TYPE      PRIVACY    SOURCE
+demo/hello-python  latest hosted    public     -
+demo/hello-python  v1     hosted    public     -
+demo/hello-python  v2     hosted    public     -
+demo/hello-node    latest hosted    public     -
+demo/hello-ruby    latest hosted    private    -
+demo/hello-go      latest hosted    private    -
+demo/www           latest hosted    private    -
+demo/redis         latest external  private    https://registry.hub.docker.com/redis
 ```
 
 In this example, the redis image used by one of the demo actually resides in the Docker hub official images pool. This avoids manually syncing already existing images.
@@ -1036,6 +1045,7 @@ In this example, the redis image used by one of the demo actually resides in the
 ### Fields definitions
 
 - **``Name``**: Repository name of the form ``<application name>/<image name>``.
+- **``Tag``**: Image tag. This is the portion after the ``:`` when a Docker image is tagged.
 - **``Type``**: ``hosted`` for private repositories hosted by Sailabove, ``external`` when refering to an external repository.
 - **``Privacy``**: Either ``private`` or ``public``. If the image is public, it will be accessible by anybody.
 - **``Source``**: ``external`` image real location.
