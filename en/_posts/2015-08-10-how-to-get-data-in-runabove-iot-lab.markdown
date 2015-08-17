@@ -57,7 +57,7 @@ A subquery implements (but not only) the following parameters:
 - metric: string, the name of the metric stored (required)
 - aggregator: string, the name of the [aggregator function][5] to use (required)
 
-The authentication method is a HTTP Auth using `'x'` as username and your READ token as password.
+The authentication method is a HTTP Basic Auth using `<solutionName>` as username and your READ token as password.
 
 On success, the body response has the following format:
 

@@ -58,6 +58,8 @@ The endpoint to push data via the webservice is the following: [https://opentsdb
 
 The webservice uses the verb POST and the data in the http body is in json format.
 
+The authentication method is a HTTP Basic Auth using `<solutionName>` as username and your WRITE token as password.
+
 A valid example body has the following form:
 
 ```json
@@ -68,7 +70,6 @@ A valid example body has the following form:
 	"tags":{
 		"key1":"value1",
 		"key2":"value0",
-		"ovh.auth":"xyv123xyv123xyv123xyz123"
 	}
 },{
 	"metric":"app.test",
@@ -77,7 +78,6 @@ A valid example body has the following form:
 	"tags":{
 		"key1":"value1",
 		"key2":"value2",
-		"ovh.auth":"xyv123xyv123xyv123xyz123"
 	}
 }]
 ```
@@ -87,9 +87,9 @@ In this example, the parameters are the following:
 - metric: string, the metric used to name the data type (required)
 - timestamp: numeric, the timestamp associated with the value in Unix Epoch format in seconds (required)
 - value: numeric, the valu itself (required)
-- tags: object, a set of additional tags for the data (optional, except for the tag ovh.auth)
+- tags: object, a set of additional tags for the data
 
-The parameters are fully described in the [OpenTSDB documentation][2]. A tag ovh.auth is mandatory and must contain your WRITE token as value.
+The parameters are fully described in the [OpenTSDB documentation][2].
 
 On success, the response is a 2xx HTTP Response code. On error, the response code and the response body will explain the issue.
 
