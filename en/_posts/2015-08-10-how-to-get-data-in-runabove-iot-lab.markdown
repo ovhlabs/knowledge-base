@@ -2,7 +2,6 @@
 layout: post
 title: "How to get data in Runabove IOT Lab"
 categories: iot opentsdb
-lab: iot
 tags: iot opentsdb reference
 lang: en
 author: babelouest

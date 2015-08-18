@@ -2,7 +2,6 @@
 layout: post
 title:  "How to manage solutions using Runabove console"
 categories: iot
-lab: iot
 author: DavidTONeill
 lang: en
 ---
@@ -12,7 +11,7 @@ lang: en
 In this tutorial we assume you already have a Runabove Account and have subscribed to the IOT lab.
 To continue, use your favorite browser to access the [Runabove console](https://api.runabove.com/console/).
                     
-![console-main-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/main-page.png)
+![console-main-page][1]
  
 ## What is a solution?
  
@@ -31,7 +30,7 @@ Each token belong to a specific solution.
 
 Select iot -> 'POST /iot/app'
 
-![console-solution-creation-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/solution-creation-page.png)
+![console-solution-creation-page][2]
 
 You can enter the name, description and cluster of your new solution.
 
@@ -47,7 +46,7 @@ Click on the "Execute" button to create your new solution.
 
 Select iot -> 'PUT /iot/app/{app}'
 
-![token-creation-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/token-creation-page.png)
+![token-creation-page][3]
 
   * app: the name of the solution you want to update.
   * cluster: you cannot modify the cluster so ignore this field.
@@ -59,11 +58,11 @@ Select the "Execute" button to modify your solution.
 
 First use your favorite browser to access the [Runabove console](https://api.runabove.com/console/).
 
-![console-main-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/main-page.png)
+![console-main-page][1]
 
 Select iot -> 'DELETE /iot/app/{app}'
 
-![solution-delete-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/solution-remove-page.png)
+![solution-delete-page][4]
 
 Enter the name of the solution you want to delete.
 
@@ -73,7 +72,7 @@ Select the "Execute" button to modify your solution.
 
 Select iot -> 'POST /iot/app/{app}'
 
-![console-main-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/token-creation-page.png)
+![console-token-new-page][5]
 
   * App: the solution name which will reside the token.
   * description: the description of the token.
@@ -86,7 +85,7 @@ Select "Execute"
 
 Select iot -> 'PUT /iot/app/{app}/token/{token}'
 
-![console-main-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/token-modification-page.png)
+![console-modify-token-page][6]
 
 You cannot modify the expiration date so you must enter the actual unix timestamp of the token in the endDate section.
 
@@ -100,7 +99,7 @@ You cannot modify the expiration date so you must enter the actual unix timestam
 
 Select iot -> 'DELETE /iot/app/{app}/token/{token}'
 
-![solution-delete-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/token-remove-page.png)
+![solution-delete-page][7]
 
   * App: the solution name which reside the token.
   * token: the name of the token you want to delete.
@@ -116,3 +115,11 @@ Enter the name of the solution you want to get tokens.
 Select "Execute".
 
 The tokens will be displayed in the above section in json.
+
+  [1]: /kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/main-page.png
+  [2]: /kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/solution-creation-page.png
+  [3]: /kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/solution-modification-page.png
+  [4]: /kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/solution-remove-page.png
+  [5]: /kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/token-creation-page.png
+  [6]: /kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/token-modification-page.png
+  [7]: /kb/images/2015-08-10-how-to-manage-solutions-using-runabove-console/token-remove-page.png

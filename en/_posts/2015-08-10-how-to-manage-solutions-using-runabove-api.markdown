@@ -2,7 +2,6 @@
 layout: post
 title:  "How to manage solutions using Runabove API"
 categories: iot
-lab: iot
 author: DavidTONeill
 lang: en
 ---

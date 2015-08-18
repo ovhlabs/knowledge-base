@@ -2,7 +2,6 @@
 layout: post
 title:  "How to manage solutions using manager"
 categories: iot
-lab: iot
 author: DavidTONeill
 lang: en
 ---
@@ -28,16 +27,16 @@ Each token belong to a specific solution.
 
 First you must use your favorite browser to access the [Runabove Manager](https://cloud.runabove.com).
 
-![main-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-manager/main-page.png)
+![main-page][1]
 
 In the left menu, click on "Internet of Things"
 
-![main-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-manager/empty-solution-page.png)
+![main-page][2]
 
 After creating a solution, it will be displayed in this page.
 Select the upper right button named "Add a new solution".
 
-![solution-creation-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-manager/solution-creation-page.png)
+![solution-creation-page][3]
 
 Enter the name, description and cluster of your new solution.
 
@@ -46,17 +45,17 @@ Enter the name, description and cluster of your new solution.
 
 Select ok
 
-![solution-creation-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-manager/solution-page.png)
+![solution-creation-page][4]
 
 # How to modify a solution
 
 On the IOT solutions page click on the cog icon on the right side of the table.
 
-![main-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-manager/solution-row.png)
+![main-page][5]
 
 You cannot modify the name or cluster of a solution after its creation.
   
-![solution-modification-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-manager/solution-modification-page.png)
+![solution-modification-page][6]
 
 Select OK
 
@@ -64,7 +63,7 @@ Select OK
 
 On the IOT solutions page click on the trash icon on the right of the table.
 
-![solution-row](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-manager/solution-row.png)
+![solution-row][5]
 
 You can click OK to permanently delete the solution.
 
@@ -72,15 +71,15 @@ You can click OK to permanently delete the solution.
 
 First you must use your favorite browser to access the [Runabove Manager](https://cloud.runabove.com).
 
-![main-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-manager/main-page.png)
+![main-page][1]
 
 Select the name of your already created solution to access his token list.
 
-![token-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-manager/token-page.png)
+![token-page][7]
 
 Select the "Create token" top right button
 
-![token-creation-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-manager/token-creation-page.png)
+![token-creation-page][8]
 
 - The expiration date is the date which your token will expire and become unusable, it must be in the future.
 - A tag is a pair of key/value that will be included as metadata. It is useful to retrieve specific data.
@@ -93,11 +92,11 @@ Select ok
 
 On the IOT token list page select the cog icon on the right of the table.
 
-![token-row](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-manager/token-row.png)
+![token-row][9]
 
 You can modify the token name and his tags
 
-![token-modification-page](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-manager/token-modification-page.png)
+![token-modification-page][10]
 
 Select OK
 
@@ -105,6 +104,17 @@ Select OK
 
 On the IOT solutions page click on the trash icon on the right of the table.
 
-![token-row](/kb/images/2015-08-10-how-to-manage-solutions-using-runabove-manager/token-row.png)
+![token-row][9]
 
 Select OK to permanently delete the token.
+
+  [1]: /kb/images/2015-08-10-how-to-manage-solutions-using-runabove-manager/main-page.png
+  [2]: /kb/images/2015-08-10-how-to-manage-solutions-using-runabove-manager/empty-solution-page.png
+  [3]: /kb/images/2015-08-10-how-to-manage-solutions-using-runabove-manager/solution-creation-page.png
+  [4]: /kb/images/2015-08-10-how-to-manage-solutions-using-runabove-manager/solution-page.png
+  [5]: /kb/images/2015-08-10-how-to-manage-solutions-using-runabove-manager/solution-row.png
+  [6]: /kb/images/2015-08-10-how-to-manage-solutions-using-runabove-manager/solution-modification-page.png
+  [7]: /kb/images/2015-08-10-how-to-manage-solutions-using-runabove-manager/token-page.png
+  [8]: /kb/images/2015-08-10-how-to-manage-solutions-using-runabove-manager/token-creation-page.png
+  [9]: /kb/images/2015-08-10-how-to-manage-solutions-using-runabove-manager/token-row.png
+  [10]: /kb/images/2015-08-10-how-to-manage-solutions-using-runabove-manager/token-modification-page.png
