@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How to manage solutions using Runabove API"
+title:  "How to manage solutions using RunAbove API"
 categories: iot
 lab: iot
 author: DavidTONeill
@@ -9,9 +9,9 @@ lang: en
 
 # Introduction
 
-In this tutorial we assume you already have a Runabove Account and have subscribed to the IOT lab.
+In this tutorial we assume you already have a RunAbove Account and have subscribed to the IoT lab.
 We use the curl command to illustrate examples.
-To use the Runabove API, your application must be authenticated with it. To do so you can read the 
+To use the RunAbove API, your application must be authenticated with it. To do so you can read the 
  [How to use RunAbove API?](https://community.runabove.com/kb/en/instances/how-to-use-runabove-api.html) tutorial.
  
 ## What is a solution?
