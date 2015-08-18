@@ -8,7 +8,7 @@ lang: en
 
 # Introduction
 
-In this tutorial we assume you already have a Runabove Account and have subscribed to the IOT lab.
+In this tutorial we assume you already have a RunAbove Account and have subscribed to the IoT lab.
  
 ## What is a solution?
  
@@ -25,7 +25,7 @@ Each token belong to a specific solution.
 
 # How to create a new solution
 
-First you must use your favorite browser to access the [Runabove Manager](https://cloud.runabove.com).
+First you must use your favorite browser to access the [RunAbove Manager](https://cloud.runabove.com).
 
 ![main-page][1]
 
@@ -49,7 +49,7 @@ Select ok
 
 # How to modify a solution
 
-On the IOT solutions page click on the cog icon on the right side of the table.
+On the IoT solutions page click on the cog icon on the right side of the table.
 
 ![main-page][5]
 
@@ -61,7 +61,7 @@ Select OK
 
 # How to delete a solution
 
-On the IOT solutions page click on the trash icon on the right of the table.
+On the IoT solutions page click on the trash icon on the right of the table.
 
 ![solution-row][5]
 
@@ -69,7 +69,7 @@ You can click OK to permanently delete the solution.
 
 # How to create a new token
 
-First you must use your favorite browser to access the [Runabove Manager](https://cloud.runabove.com).
+First you must use your favorite browser to access the [RunAbove Manager](https://cloud.runabove.com).
 
 ![main-page][1]
 
@@ -90,7 +90,7 @@ Select ok
 
 # How to modify a token
 
-On the IOT token list page select the cog icon on the right of the table.
+On the IoT token list page select the cog icon on the right of the table.
 
 ![token-row][9]
 
@@ -102,7 +102,7 @@ Select OK
 
 # How to delete a token
 
-On the IOT solutions page click on the trash icon on the right of the table.
+On the IoT solutions page click on the trash icon on the right of the table.
 
 ![token-row][9]
 

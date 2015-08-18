@@ -1,49 +1,49 @@
 ---
 layout: post
-title: "How to push data in Runabove IOT Lab"
+title: "How to push data in RunAbove IoT Lab"
 categories: iot opentsdb
 tags: iot opentsdb reference
 lang: en
 author: babelouest
 ---
 
-Runabove is a lab platform for new projects and new technology. Through this platform you can test labs and new features and connect them with your own environment.
+RunAbove is a lab platform for new projects and new technology. Through this platform you can test labs and new features and connect them with your own environment.
 
-[IOT Labs][1] is an IOT Platform designed to store and retrieve numeric data, and furthermore, automatically compute and process the data.
+[IoT Labs][1] is an IoT Platform designed to store and retrieve numeric data, and furthermore, automatically compute and process the data.
 
-This documentation is about how to push data into the Runabove IOT Lab. It will explain the architecture including the token management and how to transfer your data to the service via an https webservice or a pseudo secured telnet session.
+This documentation is about how to push data into the RunAbove IoT Lab. It will explain the architecture including the token management and how to transfer your data to the service via an https webservice or a pseudo secured telnet session.
 
-We assume you have a valid Runabove account and have subscribed to the IOT Lab. This documentation will explain how to use the lab but it needs you to already have complete those steps.
+We assume you have a valid RunAbove account and have subscribed to the IoT Lab. This documentation will explain how to use the lab but it needs you to already have complete those steps.
 
 # Solution and Token management
 
-In order to push and get data from IOT Lab, a token generator is provided as authentification factor to send data streams. In this case, a token system is more flexible and optimized than a user/password system. A lab user can create, modify and revoke different sets of tokens independently very easily.
+In order to push and get data from IoT Lab, a token generator is provided as authentification factor to send data streams. In this case, a token system is more flexible and optimized than a user/password system. A lab user can create, modify and revoke different sets of tokens independently very easily.
 
 A user can create, modify and remove solutions, and in each of them, the user can generate, modify and revoke tokens sets. A pair of token is composed of a READ and a WRITE token.
 
-In this documentation, we will simply describe solution and token management through Runabove UI. A more complete documentation for solutions and token management can be found in the following Runabove Documentations: [Solution management][7], [Token management][8].
+In this documentation, we will simply describe solution and token management through RunAbove UI. A more complete documentation for solutions and token management can be found in the following RunAbove Documentations: [Solution management][7], [Token management][8].
 
 ## Solution management
 
-In Runabove IOT Lab, you can add, modify and delete solutions. A solution is dedicated to a cluster where the data is stored. A solution has a name (alphanumeric and dash characters only), a description and a cluster. The cluster represent where the data will be stored, so after creation, a solution can't be moved to another cluster.
+In RunAbove IoT Lab, you can add, modify and delete solutions. A solution is dedicated to a cluster where the data is stored. A solution has a name (alphanumeric and dash characters only), a description and a cluster. The cluster represent where the data will be stored, so after creation, a solution can't be moved to another cluster.
 
 ## Token management
 
-When you have created a solution, you can generate and manage pairs of tokens in this solution. Each token pair is characterized with a description, an expiration date, a tag list with keys and a value for each key, and 2 token strings: READ and WRITE. In the chapter below, you will learn how to use the WRITE token to push data in your IOT Lab.
+When you have created a solution, you can generate and manage pairs of tokens in this solution. Each token pair is characterized with a description, an expiration date, a tag list with keys and a value for each key, and 2 token strings: READ and WRITE. In the chapter below, you will learn how to use the WRITE token to push data in your IoT Lab.
 
-When you have generated a pair of token, you are ready to push your own data in the IOT Lab.
+When you have generated a pair of token, you are ready to push your own data in the IoT Lab.
 
-# IOT Data push
+# IoT Data push
 
 ## Warning
 
-In Runabove IOT Lab, when you generate a pair of tokens for a solution, the READ token allows you to read all data pushed in the same solution. You must be aware of that in the use of your solutions, tokens and data stored.
+In RunAbove IoT Lab, when you generate a pair of tokens for a solution, the READ token allows you to read all data pushed in the same solution. You must be aware of that in the use of your solutions, tokens and data stored.
 
 ## Before you start
 
-In IOT Lab, each data must be provided with a metric and a timestamp value. You can also improve the metadata with an additional set of tags. Each tag is a pair of key and value.
+In IoT Lab, each data must be provided with a metric and a timestamp value. You can also improve the metadata with an additional set of tags. Each tag is a pair of key and value.
 
-When you push data in IOT Lab, you have to use a valid WRITE Token provided by the token management. The data will be authenticated with the token provided, as metadata, you will also have its solution and the token tags. You can also provide additional tags for any purpose (identification, grouping, filter, geolocalisation, etc.).
+When you push data in IoT Lab, you have to use a valid WRITE Token provided by the token management. The data will be authenticated with the token provided, as metadata, you will also have its solution and the token tags. You can also provide additional tags for any purpose (identification, grouping, filter, geolocalisation, etc.).
 
 The metric metadata will represent the type of data you send such as `"cpu.temp"` or `"network.packets.in"`. Characters allowed are letters, numbers, dash and points ([a-zA-Z0-9-.]). The timestamp is in Epoch Unix format (in seconds).
 
@@ -108,7 +108,7 @@ If the data is properly stored, no answer will be sent from the server. On the c
 
 # Conclusion
 
-When your data is properly sent into the Runabove IOT Lab platform, you can start managing the data for your needs. This will be explained in the documentation [How to get data in Runabove IOT Lab][3]
+When your data is properly sent into the RunAbove IoT Lab platform, you can start managing the data for your needs. This will be explained in the documentation [How to get data in RunAbove IoT Lab][3]
 
   [1]: https://runabove.com/iot/
   [2]: http://opentsdb.net/docs/build/html/api_http/put.html

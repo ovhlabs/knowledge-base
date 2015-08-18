@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How to manage solutions using Runabove console"
+title:  "How to manage solutions using RunAbove console"
 categories: iot
 author: DavidTONeill
 lang: en
@@ -8,8 +8,8 @@ lang: en
 
 # Introduction
 
-In this tutorial we assume you already have a Runabove Account and have subscribed to the IOT lab.
-To continue, use your favorite browser to access the [Runabove console](https://api.runabove.com/console/).
+In this tutorial we assume you already have a RunAbove Account and have subscribed to the IoT lab.
+To continue, use your favorite browser to access the [RunAbove console](https://api.runabove.com/console/).
                     
 ![console-main-page][1]
  
@@ -56,7 +56,7 @@ Select the "Execute" button to modify your solution.
 
 # How to delete a solution
 
-First use your favorite browser to access the [Runabove console](https://api.runabove.com/console/).
+First use your favorite browser to access the [RunAbove console](https://api.runabove.com/console/).
 
 ![console-main-page][1]
 

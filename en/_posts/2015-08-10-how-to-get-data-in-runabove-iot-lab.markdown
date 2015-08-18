@@ -1,25 +1,25 @@
 ---
 layout: post
-title: "How to get data in Runabove IOT Lab"
+title: "How to get data in RunAbove IoT Lab"
 categories: iot opentsdb
 tags: iot opentsdb reference
 lang: en
 author: babelouest
 ---
 
-Runabove is a lab platform for new projects and new technology. Through this platform you can test labs and new features and connect them with your own environment.
+RunAbove is a lab platform for new projects and new technology. Through this platform you can test labs and new features and connect them with your own environment.
 
-[IOT Labs][6] is an IOT Platform designed to store and retrieve numeric data, and furthermore, automatically compute and process the data.
+[IoT Labs][6] is an IoT Platform designed to store and retrieve numeric data, and furthermore, automatically compute and process the data.
 
-This documentation is about how to get data from the Runabove IOT Lab. It will explain how to transfer your data from the service via an https REST API.
+This documentation is about how to get data from the RunAbove IoT Lab. It will explain how to transfer your data from the service via an https REST API.
 
-We assume you have a valid READ token from the solution you're working with. Solutions and token management is explained in the doucmentation [How to push data in Runabove IOT Lab][1]
+We assume you have a valid READ token from the solution you're working with. Solutions and token management is explained in the doucmentation [How to push data in RunAbove IoT Lab][1]
 
-# Get IOT Data
+# Get IoT Data
 
 ## Warning
 
-In Runabove IOT Lab, when you generate a pair of tokens for a solution, the READ token allows you to read all data pushed in the same solution. You must be aware of that in the use of your solutions, tokens and data stored.
+In RunAbove IoT Lab, when you generate a pair of tokens for a solution, the READ token allows you to read all data pushed in the same solution. You must be aware of that in the use of your solutions, tokens and data stored.
 
 ## Query data from OpenTSDB HTTPS REST API
 
@@ -43,7 +43,7 @@ A valid example body has the following form:
 }
 ```
 
-Please note that Runabove IOT Lab does not implement TSUIDs, so a query filter using TSUID will be ignored.
+Please note that RunAbove IoT Lab does not implement TSUIDs, so a query filter using TSUID will be ignored.
 
 The other most common parameters are the following:
 
