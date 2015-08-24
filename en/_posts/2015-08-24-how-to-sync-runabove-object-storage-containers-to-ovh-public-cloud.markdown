@@ -63,7 +63,7 @@ On the destiantion:
 
 On the source:
 
-```curl -i https://storage.gra1.cloud.ovh.net/v1/AUTH_XXXXXXX/myContainer 
+```curl -i https://https://storage.bhs-1.runabove.io/v1/AUTH_XXXXXXX/myContainer 
         -X POST -H "X-Container-Sync-Key: $sharedKey" -H "Content-Length: 0" 
         -H "X-Auth-Token: abcd1234" 
         -H "X-Container-Sync-To: https://storage.sbg1.cloud.ovh.net/v1/AUTH_YYYYYYYYY/myContainer"
