@@ -6,7 +6,7 @@ author: pilgrimstack
 lang: en
 ---
 
-Swift provides a very simple way to synchronise different containers even if the source and the destination are not in the same infrastructure. That is our case here with RunAbove Object Storage and OVH Public Cloud.
+Swift provides a very simple way to synchronize different containers even if the source and the destination are not in the same infrastructure. That is our case here with RunAbove Object Storage and OVH Public Cloud.
 
 A job runs on the RunAbove Swift server every 5 minutes. It will push all objects in the container on RunAbove to an other on OVH Public Cloud, moreover Swift will check modifications and will synchronise objects with a different date of modification and different md5sum. 
 
@@ -54,7 +54,7 @@ Start by sourcing the RunAbove credentials, then:
 
 # With cURL :
 
-On the destiantion:
+On the destination:
 
 ```curl -i https://storage.sbg1.cloud.ovh.net/v1/AUTH_YYYYYYYYY/myContainer
         -X POST -H "X-Container-Sync-Key: $sharedKey" -H "Content-Length: 0" 
@@ -68,3 +68,7 @@ On the source:
         -H "X-Auth-Token: abcd1234" 
         -H "X-Container-Sync-To: https://storage.sbg1.cloud.ovh.net/v1/AUTH_YYYYYYYYY/myContainer"
 ```
+
+# Conclusion :
+
+This synchronization between two containers is a very good way to migrate data from one infrastructure to another without any service interruption. If you want, you can use it for any others reasons : share objects between openstack users, replicate your data between two geographical and separate infras...
