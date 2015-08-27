@@ -8,7 +8,7 @@ lang: en
 
 Swift provides a very simple way to synchronize different containers even if the source and the destination are not in the same infrastructure. That is our case here with RunAbove Object Storage and OVH Public Cloud.
 
-A job runs on the RunAbove Swift server every 5 minutes. It will push all objects in the container on RunAbove to an other on OVH Public Cloud, moreover Swift will check modifications and will synchronise objects with a different date of modification and different md5sum. 
+A job runs on the RunAbove Swift server. It will replicate all write transactions in the container on RunAbove to an other on OVH Public Cloud. 
 
 # Prerequistes :
 
