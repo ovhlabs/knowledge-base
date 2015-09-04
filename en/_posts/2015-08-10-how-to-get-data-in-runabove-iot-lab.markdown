@@ -13,13 +13,13 @@ RunAbove is a lab platform for new projects and new technology. Through this pla
 
 This documentation is about how to get data from the RunAbove IoT Lab. It will explain how to transfer your data from the service via an https REST API.
 
-We assume you have a valid READ token from the solution you're working with. Solutions and token management is explained in the doucmentation [How to push data in RunAbove IoT Lab][1]
+We assume you have a valid READ token from the application you're working with. Applications and token management is explained in the doucmentation [How to push data in RunAbove IoT Lab][1]
 
 # Get IoT Data
 
 ## Warning
 
-In RunAbove IoT Lab, when you generate a pair of tokens for a solution, the READ token allows you to read all data pushed in the same solution. You must be aware of that in the use of your solutions, tokens and data stored.
+In RunAbove IoT Lab, when you generate a pair of tokens for an application, the READ token allows you to read all data pushed in the same application. You must be aware of that in the use of your applications, tokens and data stored.
 
 ## Query data from OpenTSDB HTTPS REST API
 
@@ -56,7 +56,7 @@ A subquery implements (but not only) the following parameters:
 - metric: string, the name of the metric stored (required)
 - aggregator: string, the name of the [aggregator function][5] to use (required)
 
-The authentication method is a HTTP Basic Auth using `<solutionName>` as username and your READ token as password.
+The authentication method is a HTTP Basic Auth using `<applicationName>` as username and your READ token as password.
 
 On success, the body response has the following format:
 
