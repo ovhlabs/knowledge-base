@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How to manage applications using RunAbove API"
+title:  "How to manage applications using the RunAbove API"
 categories: iot
 author: DavidTONeill
 lang: en
@@ -9,8 +9,9 @@ lang: en
 # Introduction
 
 In this tutorial we assume you already have a RunAbove Account and have subscribed to the IoT lab.
-We also assume that you have read the first documentation [How to manage applications using manager](how-to-manage-applications-using-runabove-manager.html).
+We also assume that you have read the first documentation [How to manage applications using the manager][1].
 We use the curl command to illustrate examples.
+
 To use the RunAbove API, your application must be authenticated with it. To do so you can read the
  [How to use RunAbove API?](https://community.runabove.com/kb/en/instances/how-to-use-runabove-api.html) tutorial.
 
@@ -29,9 +30,9 @@ $ curl  -X POST
         https://api.runabove.com/1.0/iot/app
 ```
 
-  * cluster: The cluster is the location where your data is stored, please note that you cannot change the cluster after creation.
-  * description: the description you want to assign to your application.
-  * name: the name you want to assign to your new application. It can contain letters, numbers and dash '-' characters only.
+* cluster: The cluster is the location where your data is stored, please note that you cannot change the cluster after creation.
+* description: the description you want to assign to your application.
+* name: the name you want to assign to your new application. It can contain letters, numbers and dash '-' characters only.
 
 # How to modify an application
 
@@ -46,8 +47,8 @@ $ curl  -X PUT
         https://api.runabove.com/1.0/iot/app/application_name
 ```
 
-  * description: the description you want to assign to your application.
-  * application_name: the name you want to assign to your new application. It can contain letters, numbers and dash '-' characters only.
+* description: the description you want to assign to your application.
+* application_name: the name you want to assign to your new application. It can contain letters, numbers and dash '-' characters only.
 
 # How to delete an application
 
@@ -60,7 +61,7 @@ $ curl  -X DELETE
         https://api.runabove.com/1.0/iot/app/application_name
 ```
 
-  * application_name: the name of the application you want to delete.
+* application_name: the name of the application you want to delete.
 
 
 # How to create a new Token
@@ -71,14 +72,14 @@ $ curl  -X POST
         -H 'X-Ra-Timestamp:current_timestamp' \
         -H 'X-Ra-Signature:generated_signature' \
         -H 'X-Ra-Consumer:the_consumer_key' \
-        -d '{"description":"a description","endDate":"the expiration date"}' \
+        -d '{"description":"a description"}' \
         https://api.runabove.com/1.0/iot/app/your_application_name/token
 ```
 
-  * your_application_name: application_name in which will reside the token.
-  * description: the description of the token.
-  * endDate: endDate format is a unix timestamp based on seconds since standard epoch of 01/01/1970.
-  * tagList: the tags of your token.
+* your_application_name: application_name in which will reside the token.
+* description: the description of the token.
+* endDate: endDate format is a unix timestamp based on seconds since standard epoch of 01/01/1970.
+* tagList: the tags of your token.
 
 # How to modify a token
 
@@ -94,10 +95,10 @@ $ curl  -X PUT
         https://api.runabove.com/1.0/iot/app/application_name/token/token_name
 ```
 
-  * application_name: the name of the application hosting the token. This value cannot be changed
-  * token_name: the name of the token you want to modify.
-  * description: the description of the token.
-  * tagList: the tags of your token. If you don't enter old tags they will be dropped during the update. IT is an array on name/value pair.
+* application_name: the name of the application hosting the token. This value cannot be changed
+* token_name: the name of the token you want to modify.
+* description: the description of the token.
+* tagList: the tags of your token, that will replace the existing tags. This is an array of name/value pairs.
 
 # How to delete a token
 
@@ -110,8 +111,8 @@ $ curl  -X DELETE
         https://api.runabove.com/1.0/iot/app/your_application_name/token/your_token_name
 ```
 
-  * your_application_name: the name of the application you want to delete.
-  * your_token_name: the name of the token you want to modify.
+* your_application_name: the name of the application you want to delete.
+* your_token_name: the name of the token you want to modify.
 
 # How to retrieve my tokens
 
@@ -125,3 +126,5 @@ $ curl  -X GET
 ```
 
 * your_application_name: application_name in which resides the tokens you want to retrieve.
+
+[1]: how-to-manage-iot-applications-using-runabove-manager.html
