@@ -44,7 +44,7 @@ Sample programs are available for different languages (C, Java, Python, Go) as e
 
 The IoT Lab metric storage uses the [OpenTSDB](http://opentsdb.net/) API to push data. Authentication is handled using HTTP Basic authentication, using the WRITE token id as user name, and the token key as password.
 
-The endpoint to push data via the webservice is `https://opentsdb.iot.runabove.io/api/put/`. It uses the POST method with metric values in a JSON request body.
+The endpoint to push data via the webservice is `https://opentsdb.iot.runabove.io/api/put`. It uses the POST method with metric values in a JSON request body.
 
 A valid request body has the following form:
 
