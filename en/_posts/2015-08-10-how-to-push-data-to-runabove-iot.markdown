@@ -38,7 +38,7 @@ The metric metadata will represent the type of data you send such as `"cpu.temp"
 
 ## Sample programs
 
-Sample programs are available and written in different languages (C, Java, Python, Go) as examples to help you write your own programs to push data. The source code of the sample is available [here][5]. You can also find [Unix shell scripts][6] using command-line tools to push data.
+Sample programs are available for different languages (C, Java, Python, Go) as examples to help you write your own programs to push data. The source code of the samples is [available here][5].
 
 ## Pushing data via a HTTPS
 
@@ -105,6 +105,5 @@ When your data is properly sent into the RunAbove IoT Lab platform, you can sta
   [1]: https://runabove.com/iot/
   [2]: http://opentsdb.net/docs/build/html/api_http/put.html
   [3]: how-to-get-data-from-runabove-iot.html
-  [5]: http://url.to.sample.code.source/
-  [6]: http://url.to.sample.shell.scripts/
+  [5]: https://github.com/runabove/iot-push-examples
   [7]: how-to-manage-applications-using-runabove-manager.html
