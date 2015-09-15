@@ -106,4 +106,4 @@ When your data is properly sent into the RunAbove IoT Lab platform, you can sta
   [2]: http://opentsdb.net/docs/build/html/api_http/put.html
   [3]: how-to-get-data-from-runabove-iot.html
   [5]: https://github.com/runabove/iot-push-examples
-  [7]: how-to-manage-applications-using-runabove-manager.html
+  [7]: how-to-manage-iot-applications-using-runabove-manager.html
