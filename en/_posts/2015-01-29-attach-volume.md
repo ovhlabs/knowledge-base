@@ -47,6 +47,8 @@ instances.
 
 ### GNU/Linux
 
+> Before doing the following, please be sure that modules *acpiphp* and *pci_hotplug* are loaded (*modprobe acpiphp* && *modprobe pci_hotplug*)
+
 From a shell issue the `lsblk` command, this will list the block devices you 
 can use:
 
