@@ -26,9 +26,9 @@ Either sign up (create new account) or sign in (use existing account)
 
 ## Step 3
 
-Important: SSH Keys; once logged in, you fall back on the classical runabove interface to manage your cloud objects. 
-It is even more critical for Arm since there is currently no serial console access yet (to be coming some day). 
-So make sure that you have registered a public key in region **`HZ-1`** to be used to access your machine once deployed
+Important: SSH Keys. Once logged in, you fall back on the classical runabove interface to manage your cloud objects. 
+Please make sure that you have registered a public key in region **`HZ-1`** to be used to access your machine once deployed.
+SSH keys are even more critical for Arm since there is currently no serial console access yet (to be coming some day). 
 
 ![SSH](/kb/images/2015-10-13-how-to-use-arm-lab/step9.png)
     
@@ -59,7 +59,10 @@ Create a new instance. Important: take care of choosing the correct region, flav
 
  * If you are using the 3.18 kernel image, you may entcounter some unstabilities concerning your instances, please forgive us for the disturbance
 
- * Suspend/resume -> currently not working, if your machine falls in ERROR, just shut it down and start it again
+ * Suspend/resume -> currently not working, if your machine falls in ERROR, just shut it down and start it again. 
+
+ * Note that as a consequence of the suspend/resume limitation above, live snapshots are not working either. please shutdown your instance before taking any snapshot (actually, under kernel 3.18, the live snapshot will work, but the machine will never resume, so you may as well shut down your instance directly...)
 
  * No serial console access
 
+ * When subscribing to the lab you are also presented the vps-hdd flavors (vps-hdd-\*) and images, as if you had subscribed to the vps-hdd lab. You can use them as well but this is not arm :). See [here](https://community.runabove.com/kb/en/labs/how-to-use-vps-hdd-lab.html) for more details.
