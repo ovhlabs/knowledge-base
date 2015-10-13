@@ -6,7 +6,7 @@ author: xXraphXx
 lang: en
 ---
 
-Quick tutorial about the way to subscribe to the arm lab and spawn you very first aarch64 virtual machine! List of known issues.
+Quick tutorial about the way to subscribe to the arm lab and spawn your very first aarch64 virtual machine! List of known issues with arm instances at the end.
 
 # Spawn a virtual machine on arm
 
