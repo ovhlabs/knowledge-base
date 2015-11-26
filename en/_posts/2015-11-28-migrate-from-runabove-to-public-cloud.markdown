@@ -40,8 +40,8 @@ There are guides explaining how to transfer instance backups and additional volu
 
 Since they're compatible with RunAbove, you can use them as a support tool for the migration your project:
 
- * **Migrating instances:** [Tranfer instance backup from one datacentre to another]()
- * **Migrating additional volumes:** [Transfer volume backup from one datacentre to another]()
+ * **Migrating instances:** [Tranfer instance backup from one datacentre to another](https://community.runabove.com/kb/en/instances/transfer-instance-backup-from-one-datacenter-to-another.html)
+ * **Migrating additional volumes:** [Transfer volume backup from one datacentre to another](https://community.runabove.com/kb/en/instances/transfer-volume-backup-from-one-datacenter-to-another.html)
  * **Migrating object storage:** When it comes to migrating an Object Storage, it is possible to download and send your data to your new project. It is also possible to synchronize two containers between each other [Synchronise object containers](https://community.runabove.com/kb/en/object-storage/how-to-sync-runabove-object-storage-containers-to-ovh-public-cloud.html)
 
 # Differences between RunAbove and Public Cloud
