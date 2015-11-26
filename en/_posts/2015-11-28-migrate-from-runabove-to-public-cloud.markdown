@@ -23,8 +23,10 @@ First, you need to retrieve the RC file containing all the information necessary
 
  * Login to your RunAbove account
  * Click on your name in the upper right corner and select OpenStack Horizon
+![](/kb/images/2015-11-28-migrate-from-runabove-to-public-cloud/runabove_menu.jpg)
  * Select the region on the left-hand side;
  * Go to the Access & Security menu and then to the API Access tab; 
+![](/kb/images/2015-11-28-migrate-from-runabove-to-public-cloud/horizon_security_panel.jpg)
  * Click on Download OpenStack RC File; 
  * Load the OpenStack environment variables for RunAbove by using the RC file;
 
