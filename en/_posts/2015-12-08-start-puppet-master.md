@@ -42,6 +42,8 @@ Go to `Masters` tab and create your master. A straightforward form will ask you 
 - `Deploy key`: If your Git repository is accessed by SSH you can select your key pair here.
 - `Type`: The size of your master. A bigger master will be able to handle more agents concurrently.
 
+You may use our example repository: `https://github.com/runabove/puppet-nginx-example.git`, in that case you won't need a deployment key. The puppet module installs _nginx_ and runs a web server (obviously do not run it on a production host!).
+
 Connect an agent to your master
 ===============================
 
@@ -50,6 +52,8 @@ On the page with the details of your master you will find the command used for c
 ![Sign agent certificate](/kb/images/2015-12-08-start-puppet-master/certificate.png)
 
 Sign the certificate and your agent will be able to fetch its configuration during the next run.
+
+In the case you used the example repository you can now browse the web page served by your agent to check it is working properly.
 
 For more explanations, see the [dedicated guide][5] about connecting an agent to your Puppet master.
 
