@@ -89,13 +89,13 @@ Confirm your action :
 
 [programs-client]: http://dev.mysql.com/doc/refman/5.7/en/programs-client.html
 [runabove]:https://www.runabove.com/index.xml
-[Start Lab]: https://cdn.rawgit.com/cyrbil/knowledge-base/master/images/2015-12-10-create-mysql-managed-stack/start.png
-[Sign up]: https://cdn.rawgit.com/cyrbil/knowledge-base/master/images/2015-12-10-create-mysql-managed-stack/signup.png
-[Activate]: https://cdn.rawgit.com/cyrbil/knowledge-base/master/images/2015-12-10-create-mysql-managed-stack/activate.png
-[Managed Stacks]: https://cdn.rawgit.com/cyrbil/knowledge-base/master/images/2015-12-10-create-mysql-managed-stack/menu_managed.png
-[New Stack]: https://cdn.rawgit.com/cyrbil/knowledge-base/master/images/2015-12-10-create-mysql-managed-stack/new_stack.png
-[status_active]: https://cdn.rawgit.com/cyrbil/knowledge-base/master/images/2015-12-10-create-mysql-managed-stack/status_active.png
-[stack_details]: https://cdn.rawgit.com/cyrbil/knowledge-base/master/images/2015-12-10-create-mysql-managed-stack/stack_details.png
-[cluster_status]: https://cdn.rawgit.com/cyrbil/knowledge-base/master/images/2015-12-10-create-mysql-managed-stack/cluster_status.png
-[delete_stack1]: https://cdn.rawgit.com/cyrbil/knowledge-base/master/images/2015-12-10-create-mysql-managed-stack/delete_stack1.png
-[delete_stack2]: https://cdn.rawgit.com/cyrbil/knowledge-base/master/images/2015-12-10-create-mysql-managed-stack/delete_stack2.png
+[Start Lab]: https://cdn.rawgit.com/runabove/knowledge-base/master/images/2015-12-10-create-mysql-managed-stack/start.png
+[Sign up]: https://cdn.rawgit.com/runabove/knowledge-base/master/images/2015-12-10-create-mysql-managed-stack/signup.png
+[Activate]: https://cdn.rawgit.com/runabove/knowledge-base/master/images/2015-12-10-create-mysql-managed-stack/activate.png
+[Managed Stacks]: https://cdn.rawgit.com/runabove/knowledge-base/master/images/2015-12-10-create-mysql-managed-stack/menu_managed.png
+[New Stack]: https://cdn.rawgit.com/runabove/knowledge-base/master/images/2015-12-10-create-mysql-managed-stack/new_stack.png
+[status_active]: https://cdn.rawgit.com/runabove/knowledge-base/master/images/2015-12-10-create-mysql-managed-stack/status_active.png
+[stack_details]: https://cdn.rawgit.com/runabove/knowledge-base/master/images/2015-12-10-create-mysql-managed-stack/stack_details.png
+[cluster_status]: https://cdn.rawgit.com/runabove/knowledge-base/master/images/2015-12-10-create-mysql-managed-stack/cluster_status.png
+[delete_stack1]: https://cdn.rawgit.com/runabove/knowledge-base/master/images/2015-12-10-create-mysql-managed-stack/delete_stack1.png
+[delete_stack2]: https://cdn.rawgit.com/runabove/knowledge-base/master/images/2015-12-10-create-mysql-managed-stack/delete_stack2.png
