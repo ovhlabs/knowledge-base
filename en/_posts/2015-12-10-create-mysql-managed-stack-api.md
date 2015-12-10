@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "How to create a MySQL Managed Stack using the API"
-categories: Labs
+categories: ManagedStacks
 author: popawu
 lang: en
 ---

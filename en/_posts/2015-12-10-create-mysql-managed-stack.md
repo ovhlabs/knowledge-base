@@ -1,12 +1,24 @@
 ---
 layout: post
 title:  "How to create a MySQL Managed Stack"
-categories: Labs
+categories: ManagedStacks
 author: popawu
 lang: en
 ---
 
+Deploy your database stack, we take care of it !
+
 In this guide you will learn how to subscribe to the Managed Stacks lab and create your MySQL cluster.
+
+Now available with your cluster :
+
+- MySQL High availability : 2 MySQL nodes with SSL master/master replication
+- Real-time resources visualization : Monitoring probes to check MySQL status, server load and disk space on each node
+- Managed stack : 24/7 hardware/software monitoring and system security management
+
+New features will be added soon and this guide will be updated accordingly.
+Enjoy !
+
 
 Requirements
 ============
