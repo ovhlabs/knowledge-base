@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "How to create a SQL Server instance"
-categories: SQLServer As A Service
+categories: Sqlserver
 author: clabman
 lang: en
 ---
