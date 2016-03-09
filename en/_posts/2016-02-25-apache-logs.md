@@ -40,7 +40,7 @@ Please create the file /etc/httpd/conf.d/laas.conf or /etc/apache2/conf.d/laas.c
 
 Ensure that the full path of openssl is correct for your system or it won't work.
 Ensure also that your X-OVH-TOKEN is properly written.
-This tutorial covers only how to send your access logs to PaaS Logs. to send your Error logs, you should configure your syslog template to send logs to PaaS Logs.
+This tutorial covers only how to send your access logs to PaaS Logs. to send your Error logs, [you should configure your syslog template to send logs to PaaS Logs](kb/en/logs/how-to-log-your-linux.html).
 
 ## 2.1 Additional VirtualHost configuration
 If you have already a CustomLog definition in your VirtualHost configuration, add a second one to send logs to OVH:
