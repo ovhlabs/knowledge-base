@@ -288,3 +288,13 @@ Conditions).
 
 Tutorial is done, have a good monitoring :-)
 
+
+
+#Getting Help
+
+- Getting Started : [Quick Start](/kb/en/logs/quick-start.html)
+- Documentation : [Guides](/kb/en/logs)
+- Mailing List : [paas.logs-subscribe@ml.ovh.net](mailto:paas.logs-subscribe@ml.ovh.net)
+- Visit our community: [community.runabove.com](https://community.runabove.com)
+- Create an account: [PaaS Logs Beta](https://cloud.runabove.com/signup/?launch=paas-logs)
+
