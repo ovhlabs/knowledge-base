@@ -87,3 +87,12 @@ Choose timestamp for Time-field name then click on Discover tab to read your log
 
 If you want to know what you can do with Kibana, you can fly to the [very good Elastic documentation](https://www.elastic.co/guide/en/kibana/4.1/index.html) 
 
+
+#Getting Help
+
+- Getting Started : [Quick Start](/kb/en/logs/quick-start.html)
+- Documentation : [Guides](/kb/en/logs)
+- Mailing List : [paas.logs-subscribe@ml.ovh.net](mailto:paas.logs-subscribe@ml.ovh.net)
+- Visit our community: [community.runabove.com](https://community.runabove.com)
+- Create an account: [PaaS Logs Beta](https://cloud.runabove.com/signup/?launch=paas-logs)
+
