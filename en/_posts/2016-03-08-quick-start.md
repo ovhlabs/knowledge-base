@@ -112,7 +112,7 @@ You can also mix different widgets representing differents informations, In this
 We have only scratched the surface of what PaaS Logs can do for you. you will find soon enough how to : 
 
   - [Send correctly formatted logs to use custom types as numbers, booleans and other stuffs](/kb/en/logs/field-naming-conventions.html)
-  - [Configure your syslog-ng to send your Linux logs to PaaS Logs](kb/en/logs/how-to-log-your-linux.html)
+  - [Configure your syslog-ng to send your Linux logs to PaaS Logs](/kb/en/logs/how-to-log-your-linux.html)
   - Using roles to allow other users of the lab to let them see yours beautiful Dashboards or let them digg in your Streams instead of doing it for them.  
   - Using Alerts to be woken up at 3 AM by an e-mail when your world collapse. 
   - [Using Kibana and aliases to unleash the power of elasticsearch](/kb/en/logs/using-kibana-with-laas.html)
