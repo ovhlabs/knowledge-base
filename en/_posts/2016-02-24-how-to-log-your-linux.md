@@ -100,7 +100,7 @@ to modify the token by yours
 
 
 ```
-@version: 3.3
+@version: 3.5
 @include "scl.conf"
 @include "`scl-root`/system/tty10.conf"
 
@@ -122,13 +122,10 @@ options { chain_hostnames(off); flush_lines(0); use_dns(no); use_fqdn(no);
 # This is the default behavior of sysklogd package
 # Logs may come from unix stream, but not from another machine.
 #
-source s_src {
-       system();
-       internal();
-       file("/var/lib/plexmediaserver/Library/Application Support/Plex
-Media Server/Logs/Plex Media Server.log" follow-freq(1) flags());
-
+source s_src { unix-dgram("/dev/log"); internal();
+             file("/proc/kmsg" program_override("kernel"));
 };
+
 
 
 
@@ -141,13 +138,10 @@ template ovhTemplate {
     ## sid_id (exampleSDID@32473), flowgger need an id for stcrutured data.
     ## change X-OVH-TOKEN=\"xxxxxxxxxxxxxx\" by your X-OVH-TOKEN
     #flowgger RFC5424 example:
-    #<23>1 2015-08-05T15:53:45.637824Z hostname appname 69 42 [origin@123
-software="test script" swVersion="0.0.1"] test message
-    #pri timestap hostname appname pid msgid [sd_id sd_field=sd_value]
-message
-    template("<${LEVEL_NUM}>1 ${ISODATE} ${HOST} ${PROGRAM} ${PID} -
-[exampleSDID@32473 X-OVH-TOKEN=\"xxxxxxxx-xxxx-xxxx-xxxxxxx-xxxxxx\"
-pid=\"${PID}\" facility=\"${FACILITY}\" priority=\"${PRIORITY}$
+    #<23>1 2015-08-05T15:53:45.637824Z hostname appname 69 42 [origin@123 software="test script" swVersion="0.0.1"] test message
+    #pri timestap hostname appname pid msgid [sd_id sd_field=sd_value] message
+
+    template("<${LEVEL_NUM}>1 ${ISODATE} ${HOST} ${PROGRAM} ${PID} - [sdid@32473 X-OVH-TOKEN=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\" pid=\"${PID}\" facility=\"${FACILITY}\" priority=\"${PRIORITY}\"] ${MSG}\n");
     template_escape(no);
 };
 
@@ -157,7 +151,7 @@ pid=\"${PID}\" facility=\"${FACILITY}\" priority=\"${PRIORITY}$
 ########################
 # First some standard logfile
 #
-destination runabove {
+destination ovhPaaSLogs {
     tcp("laas.runabove.com"
         port(6514),
         template(ovhTemplate),
@@ -178,7 +172,7 @@ destination localfile {
 
 log {
     source(s_src);
-    destination(runabove);
+    destination(ovhPaaSLogs);
 };
 
 log {
