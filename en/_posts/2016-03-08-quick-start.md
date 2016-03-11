@@ -74,7 +74,7 @@ echo -e 'X-OVH-TOKEN:d93eee2a-697f-4bac-a452-705416b98a04\thost:example.org\ttim
 _RFC 5424_:
 
  ```bash
-echo -e '<6>1 2016-03-08T14:44:01+01:00 149.202.165.20 example.org -- [exampleSDID@8485 user_id="9001"  some_info="foo" some_metric_num="42.0" X-OVH-TOKEN="d93eee2a-697f-4bac-a452-705416b98a04"] A short message that helps you identify what is going on'\n | openssl s_client -connect laas.runabove.com:6514
+echo -e '<6>1 2016-03-08T14:44:01+01:00 149.202.165.20 example.org - - [exampleSDID@8485 user_id="9001"  some_info="foo" some_metric_num="42.0" X-OVH-TOKEN="d93eee2a-697f-4bac-a452-705416b98a04"] A short message that helps you identify what is going on\n' | openssl s_client -connect laas.runabove.com:6514
 ```
 
  - Click on the Graylog access link in the console to display your logs. You will be redirected to this page : 
