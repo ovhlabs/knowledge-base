@@ -74,7 +74,7 @@ echo -e 'X-OVH-TOKEN:d93eee2a-697f-4bac-a452-705416b98a04\thost:example.org\ttim
 _RFC 5424_:
 
  ```bash
-echo -e '<6>1 2016-03-08T14:44:01+01:00 149.202.165.20 example.org -- [exampleSDID@8485 user_id="9001"  some_info="foo" some_metric_num="42.0" X-OVH-TOKEN="d93eee2a-697f-4bac-a452-705416b98a04"] A short message that helps you identify what is going on'\n | openssl s_client -connect laas.runabove.com:6514
+echo -e '<6>1 2016-03-08T14:44:01+01:00 149.202.165.20 example.org - - [exampleSDID@8485 user_id="9001"  some_info="foo" some_metric_num="42.0" X-OVH-TOKEN="d93eee2a-697f-4bac-a452-705416b98a04"] A short message that helps you identify what is going on\n' | openssl s_client -connect laas.runabove.com:6514
 ```
 
  - Click on the Graylog access link in the console to display your logs. You will be redirected to this page : 
@@ -112,7 +112,7 @@ You can also mix different widgets representing differents informations, In this
 We have only scratched the surface of what PaaS Logs can do for you. you will find soon enough how to : 
 
   - [Send correctly formatted logs to use custom types as numbers, booleans and other stuffs](/kb/en/logs/field-naming-conventions.html)
-  - [Configure your syslog-ng to send your Linux logs to PaaS Logs](kb/en/logs/how-to-log-your-linux.html)
+  - [Configure your syslog-ng to send your Linux logs to PaaS Logs](/kb/en/logs/how-to-log-your-linux.html)
   - Using roles to allow other users of the lab to let them see yours beautiful Dashboards or let them digg in your Streams instead of doing it for them.  
   - Using Alerts to be woken up at 3 AM by an e-mail when your world collapse. 
   - [Using Kibana and aliases to unleash the power of elasticsearch](/kb/en/logs/using-kibana-with-laas.html)
