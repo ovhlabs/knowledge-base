@@ -15,7 +15,7 @@ If you have already setup a lab, this procedure should be easy for you.
 
  - Log into runabove.com and on the console click on the `PaaS Logs` button.   
  - the main interface of PaaS Logs will then appear. 
- - On this page, you have only one action available : `Create user`. You will then have a username in the following form : ra-logs-XXXXX. this username will be the one you will have to use on Graylog and with Kibana later (you will know soon enough how to do it). 
+ - On this page, you have only one action available : `Create user`. You will then have a username in the following form : ra-logs-XXXXX and the password associated. `NOTE THEM CAREFULLY`, theses credentials will be the one you will have to use on `Graylog` and with Kibana later (you will know soon enough how to do it). 
 
 ![Create User](/kb/images/2016-03-08-quick-start/start.png)
 
@@ -51,35 +51,64 @@ PaaS Logs supports several logs formats, each one of them has its own advantages
 
 ![inputs-ports](/kb/images/2016-03-08-quick-start/inputs-ports.png)
 
- - Gelf : This is the native format of logs used by Graylog. This JSON format will allow you to send logs really easily. See: http://docs.graylog.org/en/latest/pages/gelf.html. Use the port `12202` for this format. The Gelf input only accept a nul ('\0') delimiter. 
+ - Gelf : This is the native format of logs used by Graylog. This JSON format will allow you to send logs really easily. See: [http://docs.graylog.org/en/latest/pages/gelf.html](http://docs.graylog.org/en/latest/pages/gelf.html). Use the port `12202` for this format. The Gelf input only accept a nul ('\0') delimiter. 
+
  - LTSV: this simple format is very efficient and is still human readable. you can learn more about it [here](ltsv.org). Use the port `12200` with a nul ('\0') delimiter or the port `12201` for the line delimiter
+
  - RFC 5424: This format is one of the most commonly used by logs utility like syslog. It is extensible enough to allow you to send all your datas. More information about it can be found at this link : [RFC 5424](https://tools.ietf.org/html/rfc5424). Use the port `6514` to use this format. 
- - Capn'Proto : The most efficient log format. this is a binary format that will allows you to maintain a low footprint and high speed performance. If you want to know more about it, check the official website : [Cap'n'Proto](https://capnproto.org/). Use the port `12204` to use this format. 
+
+ - Cap'n'Proto : The most efficient log format. this is a binary format that will allows you to maintain a low footprint and high speed performance. If you want to know more about it, check the official website : [Cap'n'Proto](https://capnproto.org/). Use the port `12204` to use this format. 
 
 To send your logs to PaaS Logs we can, for example, use echo and openssl. Here is 3 examples, choose the format you like the most with your preffered terminal : 
 
 _Gelf_ : 
 
  ```bash
-echo -e '{"version":"1.1", "host": "example.org", "short_message": "A short message that helps you identify what is going on", "full_message": "Backtrace here\n\nmore stuff", "timestamp": 1385053862.3072, "level": 1, "_user_id": 9001, "_some_info": "foo", "some_metric_num": 42.0, "_X-OVH-TOKEN":"d93eee2a-697f-4bac-a452-705416b98a04"}\0' | openssl s_client -connect laas.runabove.com:12202
+echo -e '{"version":"1.1",  "_X-OVH-TOKEN":"d93eee2a-697f-4bac-a452-705416b98a04", "host": "example.org", "short_message": "A short message that helps you identify what is going on", "full_message": "Backtrace here\n\nmore stuff", "timestamp": 1385053862.3072, "level": 1, "_user_id": 9001, "_some_info": "foo", "some_metric_num": 42.0 }\0' | \
+openssl s_client -quiet -no_ign_eof -connect laas.runabove.com:12202
 ```
 
  
 _LTSV_:
 
  ```bash
-echo -e 'X-OVH-TOKEN:d93eee2a-697f-4bac-a452-705416b98a04\thost:example.org\ttime:2016-03-08T14:44:01+01:00\tmessage:A short message that helps you identify what is going on\tfull_message:Backtrace here\n\nmore stuff\tlevel:1\tuser_id:9001\tsome_info:foo\tsome_metric_num:42.0\0'|openssl s_client -connect laas.runabove.com:12200
+echo -e 'X-OVH-TOKEN:d93eee2a-697f-4bac-a452-705416b98a04\thost:example.org\ttime:2016-03-08T14:44:01+01:00\tmessage:A short message that helps you identify what is going on\tfull_message:Backtrace here\n\nmore stuff\tlevel:1\tuser_id:9001\tsome_info:foo\tsome_metric_num:42.0\0'| \
+openssl s_client -quiet -no_ign_eof -connect laas.runabove.com:12200
 ```
 
 _RFC 5424_:
 
  ```bash
-echo -e '<6>1 2016-03-08T14:44:01+01:00 149.202.165.20 example.org - - [exampleSDID@8485 user_id="9001"  some_info="foo" some_metric_num="42.0" X-OVH-TOKEN="d93eee2a-697f-4bac-a452-705416b98a04"] A short message that helps you identify what is going on\n' | openssl s_client -connect laas.runabove.com:6514
+echo -e '<6>1 2016-03-08T14:44:01+01:00 149.202.165.20 example.org - - [exampleSDID@8485  X-OVH-TOKEN="d93eee2a-697f-4bac-a452-705416b98a04" user_id="9001"  some_info="foo" some_metric_num="42.0" ] A short message that helps you identify what is going on\n' | \
+ openssl s_client -quiet -no_ign_eof -connect laas.runabove.com:6514
 ```
 
- - Click on the Graylog access link in the console to display your logs. You will be redirected to this page : 
+
+ - To see your logs, get back to the RunAbove Console and look for the `Graylog access` link just under your token. Click on the link to jump straight to Graylog. You have to use the Paas Logs credentials that were first given when you have created your user at the first step in the form of `ra-logs-XXXXX/yourpassword`. If you have not written them, you can click `reset password` in the PaaS Logs Manager (at top right) to obtain a new one. The Graylog login page looks like this :
+
+
+![login Graylog](/kb/images/2016-03-08-quick-start/login.png)
+
+
+Once loggued, you will be redirected to this page : 
+
+
 ![Graylog Stream](/kb/images/2016-03-08-quick-start/graylog-stream.png)
- 
+
+
+On this page you can already search for the differents values present in the logs by using the search bar (at the top of the page). You can also select the time range of your search by playing with time picker at the top left of the page. 
+
+For example to search in the Last 5 Minutes, all the logs that contain 42 for the value some\_metric\_num you can enter in the search bar: 
+
+`some_metric_num:42`
+
+Press Enter or click on the Green button to launch the search and wait for your results.
+
+You can also search some part of your message by entering : 
+`helps going`. It ill give you all the messages that contains the terms 'help' and 'going'
+
+Graylog allows you to extensively search through your logs without compromising usability. If you want to know more about how to craft relevant searches on Grayloh, head to [Graylog Search Documentaton](http://docs.graylog.org/en/1.3/pages/queries.html). 
+
 Send different logs with differents value for user\_id for example. At the left of the page you will see the fields present in your stream, you can click on the user\_id checkbox to display all the values for this field along the logs.
 
 #3 Lets create a Dashboard. 
@@ -92,7 +121,7 @@ Let's say you want all the user Id for which the value some\_metric is above 30,
  - in the search bar, enter this :
  `some_metric_num:>30`
  
- - select above the search bar, the relative range of time you want to use in your widgets. If you want your widget to display the value on the last hour, select "Search in the last Hour".  
+ - select above the search bar, the relative range of time you want to use in your widgets. If you want your widget to display the value for the last hour, select "Search in the last Hour".  
  - On the left panel, unroll the user\_id menu (by clicking on the blue triangle at the left) and select Quick Values. It will then display a nice widget with the distribution of the most frequent user\_ids. 
 ![Quick Values](/kb/images/2016-03-08-quick-start/quick-values.png)
 

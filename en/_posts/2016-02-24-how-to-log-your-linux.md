@@ -8,14 +8,15 @@ lang: en
 
 
 You have a server, a raspberry pi, a cloud instance or something else
-running on linux and you want to follow your Logs, the easy way ?
-You never installed a log collector and you're new with Graylog ?
+running on `Linux` and you want to follow your Logs, the easy way ?
+You have never installed a log collector and you're new with Graylog ?
 
 
 This tutorial is for you then !
 
 
-In this tutorial you will be able to Logs your linux instance from A to Z.
+In this tutorial you will learn from A to Z how to send Logs from your linux instance to PaaS Logs. 
+Don't be afraid, it will be easier than you think. 
 
 
 
@@ -32,7 +33,7 @@ able to sort logs and create fancy dashboards.
 
 
 # 3. What is logs ? (baby don't hurt me, no more)
-Here's some logs example from my OVH Public Cloud instance on Debian 8 :
+Here's some logs example from my OVH Public Cloud instance on `Debian 8` :
 
 
 ```
@@ -53,8 +54,8 @@ to follow.
 
 
 # 2. What do you need ?
- - a Linux based instance (server, VPS, Cloud instance, Raspberry Pi,
-...). Commandes lines will be for DEBIAN 8 in this tutorial
+ - a `Linux` based instance (server, VPS, Cloud instance, Raspberry Pi,
+...). Commandes lines will be for `DEBIAN 8` in this tutorial
  - root access to this instance
  - activate the PaaS Logs Lab on runabove.com and get your token
 
@@ -64,7 +65,7 @@ to follow.
 # 3. Configure your Lab
 First thing to do is to configure the Runabove PaaS Logs Lab : activate the lab,
 create your user, a stream and a dashboard.
-We writed an independant tutorial fot this, please read it and come back
+We writed an independant tutorial for this, please read it and come back
 here after : [Quick start](/kb/en/logs/quick-start.html)
 Good ? let's go to step #4 then !
 
@@ -72,7 +73,10 @@ Good ? let's go to step #4 then !
 
 
 # 4. Install and configure a log collector
-So let's assume you have your linux.
+So let's assume you have your linux. This tutorial `DOES NOT` fully cover how to configure other flavors of syslog nor other OSes.
+Please refer to their own documentation to know how to setup a template and a external destination for the logs. You can still read this entire document to have a grasp on how the template is builded. 
+However this configuration should work on any syslog-ng version above 3.5.  
+
 We will install a log collector. What's this ? It's a tool who collect
 logs from any source, process them and deliver them to various
 destinations, like the runabove PaaS Logs lab.
@@ -95,7 +99,7 @@ them to the Lab
 ```
 nano /etc/syslog-ng/syslog-ng.conf
 ```
- - Remove the text in it, and copy-paste this configuration. Don' forget
+ - Remove the text in it, and copy-paste this configuration. Don't forget
 to modify the token by yours
 
 
@@ -135,7 +139,7 @@ source s_src { unix-dgram("/dev/log"); internal();
 template ovhTemplate {
     # important:
     ## Bracket [] no spare between inside (opening/closing), space outside.
-    ## sid_id (exampleSDID@32473), flowgger need an id for stcrutured data.
+    ## sid_id (exampleSDID@32473), flowgger need an id for stcrutured data as specified by the RFC 5424.
     ## change X-OVH-TOKEN=\"xxxxxxxxxxxxxx\" by your X-OVH-TOKEN
     #flowgger RFC5424 example:
     #<23>1 2015-08-05T15:53:45.637824Z hostname appname 69 42 [origin@123 software="test script" swVersion="0.0.1"] test message
@@ -191,15 +195,15 @@ log {
 Let's review this configuration.
 
 
-SOURCES : this is the logs sources to collect. So here, we collect System
+`SOURCES` : this is the logs sources to collect. So here, we collect System
 and Internal. More sources can be added of course !
 
 
-TEMPLATE : we will deliver logs to the Lab based on this template, it will
+`TEMPLATE` : we will deliver logs to the Lab based on this template, it will
 bring more comprehension for Graylog
 
 
-DESTINATION : This is were we will deliver logs in nearly real time. Here,
+`DESTINATION` : This is were we will deliver logs in nearly real time. Here,
 we have to destinations : The first is the remote Lab, the second one is
 local. I create a new log file locally in order to check if you i $
 
@@ -226,7 +230,8 @@ sudo syslog-ng
 ```
 nano /var/log/temporaryfiletochecklogs.log
 ```
-If he's empty, that's not normal. check your syslog configuration again.
+
+If It's empty, that's not normal. check your syslog configuration again.
 In the best case, we should have something like this :
 
 
@@ -238,7 +243,7 @@ Jan 27 12:21:15 bastiengraphana syslog-ng[29512]: Syslog connection
 established; fd='10', server='AF_INET(5.196.84.225:6514)',
 local='AF_INET(0.0.0.0:0)'
 ```
-It mean syslog-ng has started up, and connection to remote Lab is fine.
+It means syslog-ng has started up, and connection to remote Lab is fine.
 
 
 # 5. Let's play with Graylog Dashboards
@@ -250,16 +255,16 @@ We send 2 flows : internal() and system()
 The last step is to create a dashboard displaying the result :
 
 
-- Connect to the lab manager, ensure you that you have a Stream and a
+- Connect to the lab manager, ensure you that you have a Stream and that the token in the syslog configuration file is OK. Ensure that you have a
 Dashboard created.
 - Connect to https://laas.runabove.com
-- Go in stream, click on your stream. In the Left top corner, chose a 1
+- Go in Stream Tab, click on your stream. In the Left top corner, chose a 1
 Day range and click on the green button to search.
-- You should find a result like this : 
+- You should have some results like this : 
 
 ![Graylog search view](/kb/images/2016-02-24-how-to-log-your-linux/search.png)
 
-- On the top righ corner of the histogram, click on "Add to dashboard".
+- On the top right corner of the histogram, click on "Add to dashboard".
 
 
 Alright, you just created the first Widget in you dashboard.
