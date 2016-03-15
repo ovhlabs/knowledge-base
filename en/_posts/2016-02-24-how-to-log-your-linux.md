@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How to log your Linux with syslog-ng, Debian 8 way"
+title:  "How to log your Linux with syslog-ng 3.0+"
 categories: Logs
 author: baaastijn
 lang: en
@@ -75,7 +75,7 @@ Good ? let's go to step #4 then !
 # 4. Install and configure a log collector
 So let's assume you have your linux. This tutorial `DOES NOT` fully cover how to configure other flavors of syslog nor other OSes.
 Please refer to their own documentation to know how to setup a template and a external destination for the logs. You can still read this entire document to have a grasp on how the template is builded. 
-However this configuration should work on any syslog-ng version above 3.5.  
+However this configuration should work on any syslog-ng version above 3.0.
 
 We will install a log collector. What's this ? It's a tool who collect
 logs from any source, process them and deliver them to various
@@ -87,7 +87,7 @@ In this tutorial we will install Syslog-ng :
 
  -  Log in your linux
  -  Install syslog-ng
-
+ -  Check that your syslog-ng version is above 3.0 (use `syslog-ng --version`) for that. 
 ```
 sudo apt-get install syslog-ng
 ```
@@ -138,7 +138,7 @@ source s_src { unix-dgram("/dev/log"); internal();
 ########################
 template ovhTemplate {
     # important:
-    ## Bracket [] no spare between inside (opening/closing), space outside.
+    ## Bracket [] no space between inside (opening/closing), space outside.
     ## sid_id (exampleSDID@32473), flowgger need an id for stcrutured data as specified by the RFC 5424.
     ## change X-OVH-TOKEN=\"xxxxxxxxxxxxxx\" by your X-OVH-TOKEN
     #flowgger RFC5424 example:
