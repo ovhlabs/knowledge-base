@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How to log your Linux with syslog-ng, Noob way"
+title:  "How to log your Linux with syslog-ng, Debian 8 way"
 categories: Logs
 author: baaastijn
 lang: en
@@ -160,7 +160,7 @@ destination ovhPaaSLogs {
         port(6514),
         template(ovhTemplate),
         ts_format("iso"),
-        tls(peer-verify("optional-untrusted")),
+        tls(peer-verify("require-trusted") ca_dir("/etc/ssl/certs/")),
         keep-alive(yes),
         so_keepalive(yes),
     );
@@ -205,10 +205,8 @@ bring more comprehension for Graylog
 
 `DESTINATION` : This is were we will deliver logs in nearly real time. Here,
 we have to destinations : The first is the remote Lab, the second one is
-local. I create a new log file locally in order to check if you i $
-
-
-It's optional of course, and you should remove it once everything is fine.
+local. I create a new log file locally in order to check if the logs are properly sent.
+It's optional of course, and you can safely remove it once everything is fine.
 as you can see, the remote destination will use the template, the local
 destination will not.
 
