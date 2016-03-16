@@ -54,10 +54,11 @@ to follow.
 
 
 # 2. What do you need ?
- - a `Linux` based instance (server, VPS, Cloud instance, Raspberry Pi,
+ - A `Linux` based instance (server, VPS, Cloud instance, Raspberry Pi,
 ...). Commandes lines will be for `DEBIAN 8` in this tutorial
- - root access to this instance
- - activate the PaaS Logs Lab on runabove.com and get your token
+ - A root access to this instance
+ - [Activate the PaaS Logs Lab on runabove.com and create an account](/kb/en/logs/quick-start.html#account)
+ - [Create a Stream and get your token](/kb/en/logs/quick-start.html#streams)
 
 
 
@@ -65,6 +66,7 @@ to follow.
 # 3. Configure your Lab
 First thing to do is to configure the Runabove PaaS Logs Lab : activate the lab,
 create your user, a stream and a dashboard.
+Verify that everything works already perfectly. 
 We writed an independant tutorial for this, please read it and come back
 here after : [Quick start](/kb/en/logs/quick-start.html)
 Good ? let's go to step #4 then !

@@ -9,11 +9,12 @@ lang: en
 Welcome to the quick start tutorial of the PaaS Logs. This Quick start guide will help you to understand the core concepts behind the PaaS Logs and how to send your first logs to the engine. 
 
 
-#1 Welcome to PaaS Logs. 
+#1 Welcome to PaaS Logs. <a name="account">&nbsp;</a>
 
 If you have already setup a lab, this procedure should be easy for you. 
 
- - Log into runabove.com and on the console click on the `PaaS Logs` button.   
+ - Log into runabove.com and in the console, activate the Labs by clicking on `more Labs...` and then click on the `PaaS Logs` button.
+ - Once Activated a new entry will appear in the navigation sidebar, click on the `Paas Logs` button there to jump to the main interface.  
  - the main interface of PaaS Logs will then appear. 
  - On this page, you have only one action available : `Create user`. You will then have a username in the following form : ra-logs-XXXXX and the password associated. `NOTE THEM CAREFULLY`, theses credentials will be the one you will have to use on `Graylog` and with Kibana later (you will know soon enough how to do it). 
 
@@ -35,7 +36,7 @@ On this interface you can see 4 items :
 4. The Aliases will allow you to access directly your datas from your Kibana or using an Elasticsearch query. 
 
 
-#2 Let's send some logs  ! 
+#2 Let's send some logs  ! <a name="streams">&nbsp;</a>
 
  - The first step to do in order to use the PaaS Logs is to create a stream and to get your token. 
 To create a stream it is really simple : click on the blue "+" button in the stream panel.  It will ask you for a name and a description for your stream : 
@@ -51,7 +52,7 @@ PaaS Logs supports several logs formats, each one of them has its own advantages
 
 ![inputs-ports](/kb/images/2016-03-08-quick-start/inputs-ports.png)
 
- - Gelf : This is the native format of logs used by Graylog. This JSON format will allow you to send logs really easily. See: [http://docs.graylog.org/en/latest/pages/gelf.html](http://docs.graylog.org/en/latest/pages/gelf.html). Use the port `12202` for this format. The Gelf input only accept a nul ('\0') delimiter. 
+ - GELF : This is the native format of logs used by Graylog. This JSON format will allow you to send logs really easily. See: [http://docs.graylog.org/en/latest/pages/gelf.html](http://docs.graylog.org/en/latest/pages/gelf.html). Use the port `12202` for this format. The GELF input only accept a nul ('\0') delimiter. 
 
  - LTSV: this simple format is very efficient and is still human readable. you can learn more about it [here](ltsv.org). Use the port `12200` with a nul ('\0') delimiter or the port `12201` for the line delimiter
 
@@ -59,14 +60,16 @@ PaaS Logs supports several logs formats, each one of them has its own advantages
 
  - Cap'n'Proto : The most efficient log format. this is a binary format that will allows you to maintain a low footprint and high speed performance. If you want to know more about it, check the official website : [Cap'n'Proto](https://capnproto.org/). Use the port `12204` to use this format. 
 
-To send your logs to PaaS Logs we can, for example, use echo and openssl. Here is 3 examples, choose the format you like the most with your preffered terminal : 
+To send your logs to PaaS Logs we can, for example, use echo and openssl. Here is 3 examples, choose the format you like the most with your preffered terminal. Note that each format has its own timestamp format : GELF uses [seconds from epoch](https://en.wikipedia.org/wiki/Unix_time), RFC 5424 and LTSV use the [RFC 3339](https://tools.ietf.org/html/rfc3339). 
 
-_Gelf_ : 
+_GELF_ : 
 
  ```bash
 echo -e '{"version":"1.1",  "_X-OVH-TOKEN":"d93eee2a-697f-4bac-a452-705416b98a04", "host": "example.org", "short_message": "A short message that helps you identify what is going on", "full_message": "Backtrace here\n\nmore stuff", "timestamp": 1385053862.3072, "level": 1, "_user_id": 9001, "_some_info": "foo", "some_metric_num": 42.0 }\0' | \
 openssl s_client -quiet -no_ign_eof -connect laas.runabove.com:12202
 ```
+For this format, the time is in seconds, with optional milliseconds as decimals. 
+
 
  
 _LTSV_:
@@ -76,12 +79,17 @@ echo -e 'X-OVH-TOKEN:d93eee2a-697f-4bac-a452-705416b98a04\thost:example.org\ttim
 openssl s_client -quiet -no_ign_eof -connect laas.runabove.com:12200
 ```
 
+For this format the time is in the RFC 3339 format. 
+
+
 _RFC 5424_:
 
  ```bash
-echo -e '<6>1 2016-03-08T14:44:01+01:00 149.202.165.20 example.org - - [exampleSDID@8485  X-OVH-TOKEN="d93eee2a-697f-4bac-a452-705416b98a04" user_id="9001"  some_info="foo" some_metric_num="42.0" ] A short message that helps you identify what is going on\n' | \
+echo -e '<6>1 2016-03-08T14:44:01+01:00 149.202.165.20 example.org - - [exampleSDID@8485 X-OVH-TOKEN="d93eee2a-697f-4bac-a452-705416b98a04" user_id="9001"  some_info="foo" some_metric_num="42.0" ] A short message that helps you identify what is going on\n' | \
  openssl s_client -quiet -no_ign_eof -connect laas.runabove.com:6514
 ```
+
+For this format the time is in the RFC 3339 format. 
 
 
  - To see your logs, get back to the RunAbove Console and look for the `Graylog access` link just under your token. Click on the link to jump straight to Graylog. You have to use the Paas Logs credentials that were first given when you have created your user at the first step in the form of `ra-logs-XXXXX/yourpassword`. If you have not written them, you can click `reset password` in the PaaS Logs Manager (at top right) to obtain a new one. The Graylog login page looks like this :
