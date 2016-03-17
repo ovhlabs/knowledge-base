@@ -48,13 +48,39 @@ By expanding your stream infromation, you will see your X-OVH-TOKEN. This key is
 
 PaaS Logs supports several logs formats, each one of them has its own advantages and incovenients. Here are the differents ports you have to use on `laas.runabove.com` for the differents formats available
 
+<table border="0" class="homepage-table">
+<tr>
+	<th></th>
+	<th>Syslog&nbsp;<small>RFC5424</small></th>
+	<th>Gelf</th>
+	<th>LTSV&nbsp;<small>line</small></th>
+	<th>LTSV&nbsp;<small>nul</small></th>
+	<th>Cap'n'Proto</th>
+</tr>
+<tr>
+	<td><strong>TCP/TLS</strong>
+	<td>6514</td>
+	<td>12202</td>
+	<td>12201</td>
+	<td>12200</td>
+	<td>12204</td>
+</tr>
+<tr>
+	<td><strong>TCP</strong></td>
+	<td>514</td>
+	<td>2202</td>
+	<td>2201</td>
+	<td>2200</td>
+	<td>2204</td>
+</tr>
+</table>
+<br/><br/>
 
-![inputs-ports](/kb/images/2016-03-08-quick-start/inputs-ports.png)
 
- - Gelf : This is the native format of logs used by Graylog. This JSON format will allow you to send logs really easily. See: http://docs.graylog.org/en/latest/pages/gelf.html. Use the port `12202` for this format. The Gelf input only accept a nul ('\0') delimiter. 
- - LTSV: this simple format is very efficient and is still human readable. you can learn more about it [here](ltsv.org). Use the port `12200` with a nul ('\0') delimiter or the port `12201` for the line delimiter
- - RFC 5424: This format is one of the most commonly used by logs utility like syslog. It is extensible enough to allow you to send all your datas. More information about it can be found at this link : [RFC 5424](https://tools.ietf.org/html/rfc5424). Use the port `6514` to use this format. 
- - Capn'Proto : The most efficient log format. this is a binary format that will allows you to maintain a low footprint and high speed performance. If you want to know more about it, check the official website : [Cap'n'Proto](https://capnproto.org/). Use the port `12204` to use this format. 
+ - <strong>Gelf</strong> : This is the native format of logs used by Graylog. This JSON format will allow you to send logs really easily. See: http://docs.graylog.org/en/latest/pages/gelf.html. Use the port `12202` (TLS) or `2202` (wTLS) for this format. The Gelf input only accept a nul ('\0') delimiter. 
+ - <strong>LTSV</strong>: this simple format is very efficient and is still human readable. you can learn more about it [here](ltsv.org). Use the port `12200` (TLS) / `2200` (wTLS) with a nul ('\0') delimiter or the port `12201` (TLS) / `2201` (wTLS) for the line delimiter
+ - <strong>RFC 5424</strong>: This format is one of the most commonly used by logs utility like syslog. It is extensible enough to allow you to send all your datas. More information about it can be found at this link : [RFC 5424](https://tools.ietf.org/html/rfc5424). Use the port `6514` (TLS) / `514` (wTLS) to use this format. 
+ - <strong>Capn'Proto</strong> : The most efficient log format. this is a binary format that will allows you to maintain a low footprint and high speed performance. If you want to know more about it, check the official website : [Cap'n'Proto](https://capnproto.org/). Use the port `12204` (TLS) / `2204` (wTLS) to use this format. 
 
 To send your logs to PaaS Logs we can, for example, use echo and openssl. Here is 3 examples, choose the format you like the most with your preffered terminal : 
 
