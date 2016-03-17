@@ -47,20 +47,50 @@ To create a stream it is really simple : click on the blue "+" button in the str
 By expanding your stream infromation, you will see your X-OVH-TOKEN. This key is the only one you will need to address your stream. Under this token, you will have a direct link to your stream in Graylog. 
 ![stream Created](/kb/images/2016-03-08-quick-start/newStream_2.png)
 
-PaaS Logs supports several logs formats, each one of them has its own advantages and incovenients. Here are the differents ports you have to use on `laas.runabove.com` for the differents formats available
+PaaS Logs supports several logs formats, each one of them has its own advantages and incovenients. Here are the differents formats available
 
 
-![inputs-ports](/kb/images/2016-03-08-quick-start/inputs-ports.png)
+ - GELF : This is the native format of logs used by Graylog. This JSON format will allow you to send logs really easily. See: [http://docs.graylog.org/en/latest/pages/gelf.html](http://docs.graylog.org/en/latest/pages/gelf.html). The GELF input only accept a nul ('\0') delimiter. 
 
- - GELF : This is the native format of logs used by Graylog. This JSON format will allow you to send logs really easily. See: [http://docs.graylog.org/en/latest/pages/gelf.html](http://docs.graylog.org/en/latest/pages/gelf.html). Use the port `12202` for this format. The GELF input only accept a nul ('\0') delimiter. 
-
- - LTSV: this simple format is very efficient and is still human readable. you can learn more about it [here](ltsv.org). Use the port `12200` with a nul ('\0') delimiter or the port `12201` for the line delimiter
+ - LTSV: this simple format is very efficient and is still human readable. you can learn more about it [here](ltsv.org). LTSV has two inputs that accept a line delimiter or a nul delimiter.
 
  - RFC 5424: This format is one of the most commonly used by logs utility like syslog. It is extensible enough to allow you to send all your datas. More information about it can be found at this link : [RFC 5424](https://tools.ietf.org/html/rfc5424). Use the port `6514` to use this format. 
 
  - Cap'n'Proto : The most efficient log format. this is a binary format that will allows you to maintain a low footprint and high speed performance. If you want to know more about it, check the official website : [Cap'n'Proto](https://capnproto.org/). Use the port `12204` to use this format. 
 
-To send your logs to PaaS Logs we can, for example, use echo and openssl. Here is 3 examples, choose the format you like the most with your preffered terminal. Note that each format has its own timestamp format : GELF uses [seconds from epoch](https://en.wikipedia.org/wiki/Unix_time), RFC 5424 and LTSV use the [RFC 3339](https://tools.ietf.org/html/rfc3339). 
+
+Here are the ports you can use on `laas.runabove.com` to send your logs. You can either use the secured ones with SSL Enabled (TLS 1.2) or use the plain unsecured ones if you can't use a SSL transport.
+
+
+<table border="0" class="homepage-table">
+<tr>
+        <th></th>
+        <th>Syslog&nbsp;<small>RFC5424</small></th>
+        <th>Gelf</th>
+        <th>LTSV&nbsp;<small>line</small></th>
+        <th>LTSV&nbsp;<small>nul</small></th>
+        <th>Cap'n'Proto</th>
+</tr>
+<tr>
+        <td><strong>TCP/TLS</strong>
+        <td>6514</td>
+        <td>12202</td>
+        <td>12201</td>
+        <td>12200</td>
+        <td>12204</td>
+</tr>
+<tr>
+        <td><strong>TCP</strong></td>
+        <td>514</td>
+        <td>2202</td>
+        <td>2201</td>
+        <td>2200</td>
+        <td>2204</td>
+</tr>
+</table>
+
+
+To send your logs to PaaS Logs we can and test your stream, for example, use echo and openssl. Here are 3 examples, choose the format you like the most with your preffered terminal. Note that each format has its own timestamp format : GELF uses [seconds from epoch](https://en.wikipedia.org/wiki/Unix_time), RFC 5424 and LTSV use the [RFC 3339](https://tools.ietf.org/html/rfc3339). Don't forget to change the timestamp to your current time to see your logs (By Default Graylog only display recent logs, you can change the scope of the search by using the top left time picker in the Graylog web interface). Don't forget to change the token to put the right one too. 
 
 _GELF_ : 
 
@@ -104,7 +134,7 @@ Once loggued, you will be redirected to this page :
 ![Graylog Stream](/kb/images/2016-03-08-quick-start/graylog-stream.png)
 
 
-On this page you can already search for the differents values present in the logs by using the search bar (at the top of the page). You can also select the time range of your search by playing with time picker at the top left of the page. 
+On this page you can already search for the differents values present in the logs by using the search bar (at the top of the page). You can also select the time range of your search by playing with time picker at the top left of the page. NOTE : By default, the
 
 For example to search in the Last 5 Minutes, all the logs that contain 42 for the value some\_metric\_num you can enter in the search bar: 
 
