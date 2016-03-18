@@ -14,6 +14,7 @@ Now that you can send logs, you are maybe wondering how to tell PaaS Logs what k
 A well formated log for PaaS Logs is a [GELF](http://docs.graylog.org/en/latest/pages/gelf.html) formatted log. What is GELF ? A standardized JSON way to send logs. 
 GELF stands for Graylog Extended Log Format. Using this format gives us two advantages, It is directly compatible with Graylog and it is still extensible enough to enrich your logs as you would like to.   
 This format impose a few conventions that if you don't follow can have many consequences : 
+
  - PaaS Logs will rewrite your field as an incorrect one (with a _fixit suffix). 
  - Your log will be rejected and lost in space (not kidding here).
  - We will send Liam Neeson to your house (not kidding either).
@@ -43,7 +44,6 @@ Specifying correct numeric suffixes types is the only way to generate numeric Wi
 ![Numeric widget](/kb/images/2016-02-28-field-naming-conventions/bytes.png)
 
 
-Note that if you use the LTSV format to send logs to our inputs, these suffixes will tell our engine in what format you intended to send your  datas and thus make the right conversion.   
 So this is everything you need to know to send valid messages format  and not shoot yourself in the foot. 
 If you have any question you can always reach us by using the mailing list. 
 

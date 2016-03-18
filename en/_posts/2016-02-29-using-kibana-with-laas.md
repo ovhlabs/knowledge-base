@@ -8,8 +8,9 @@ lang: en
 
 You want to unleash the full power of Kibana and be able to craft some beautiful Dashboards from your logs. Rest assured, you have come to the right place. 
 Kibana is a powerful weapon, the knowledge you are about to read needs you to have reached a certain level (but way below 9000) in the understanding of PaaS Logs. This is what you need to know to get you started :  
-- you already sending logs on a stream you own (see the quick start tutorial)
-- your web server can reach https://laas.runabove.com:9200. 
+
+ - you already sending logs on a stream you own [see the quick start tutorial](/kb/en/logs/quick-start.html)
+ - your web server can reach https://laas.runabove.com:9200. 
 
 After some training you will be able to do this kind of Dashboard : 
 ![Kibana Dashboard](/kb/images/2016-02-29-using-kibana-with-laas/kibana.png)
@@ -42,15 +43,15 @@ To access your logs from Kibana, you will need to setup an Elasticsearch Alias a
 So here you have, now PaaS Logs knows what is the streams you wnat to browse. Now let's configure Kibana and see if it works ! 
 
 #3 Setup your own kibana
-Get last Kibana **4.1.X** for **Elasticsearch 1.x** here (do NOT try to use 4.2 and 4.3 since they are made for newer version of Elaticsearch)  https://www.elastic.co/downloads/kibana (4.1.5 at the time of writing). Here are some direct links for your convenience. 
+Get last Kibana **4.1.X** for **Elasticsearch 1.x** here (do NOT try to use 4.2 and 4.3 since they are made for incompatible version of Elaticsearch)  https://www.elastic.co/downloads/kibana (4.1.6 at the time of writing). Here are some direct links for your convenience. 
 
- - [WINDOWS](https://download.elastic.co/kibana/kibana/kibana-4.1.5-windows.zip)
+ - [WINDOWS](https://download.elastic.co/kibana/kibana/kibana-4.1.6-windows.zip)
 
- - [MAC](https://download.elastic.co/kibana/kibana/kibana-4.1.5-darwin-x64.tar.gz)
+ - [MAC](https://download.elastic.co/kibana/kibana/kibana-4.1.6-darwin-x64.tar.gz)
 
- - [LINUX 64-BIT](https://download.elastic.co/kibana/kibana/kibana-4.1.5-linux-x64.tar.gz)
+ - [LINUX 64-BIT](https://download.elastic.co/kibana/kibana/kibana-4.1.6-linux-x64.tar.gz)
 
- - [LINUX 32-BIT](https://download.elastic.co/kibana/kibana/kibana-4.1.5-linux-x86.tar.gz)
+ - [LINUX 32-BIT](https://download.elastic.co/kibana/kibana/kibana-4.1.6-linux-x86.tar.gz)
 
 
 Unzip the archive anywhere on your machine.
