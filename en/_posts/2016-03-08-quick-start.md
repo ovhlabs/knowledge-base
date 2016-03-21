@@ -93,9 +93,9 @@ Here are the ports you can use on `laas.runabove.com` to send your logs. You can
         <td><strong>UDP</strong></td>
         <td>514</td>
         <td>2202</td>
-        <td>2201</td>
-        <td>2200</td>
-        <td>2204</td>
+        <td> Not Supported </td>
+        <td> Not Supported </td>
+        <td> Not Supported </td>
 </tr>
 </table>
 

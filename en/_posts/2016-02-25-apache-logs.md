@@ -30,8 +30,8 @@ In order to achieve this amazing task, we still need to review our check list. F
 #2 Apache configuration
 We will configure one virtual Host to send all of its logs to your stream, you will have to repeat this configuration to every stream in order to make it work. 
 
-We use CustomLog format directive to transform Apache logs in LTSV format and ship it to LaaS with the proper OVH token.
-Please create the file /etc/httpd/conf.d/laas.conf or /etc/apache2/conf.d/laas.conf (it depends of your ditribution) and insert the following
+We use CustomLog format directive to transform Apache logs in LTSV format and ship it to LaaS with the proper OVH token. Note that 3 fields are mandatory with the LTSV format : `host`, `message` and `time` (in the RFC 3339 format). Refer to the exemples below to have exemples on how to fill these fields.
+Please create the file /etc/httpd/conf.d/laas.conf or /etc/apache2/conf.d/laas.conf (it depends of your ditribution) and insert the following :
 
 ```apache
  LogFormat "X-OVH-TOKEN:0d50bffc-xxxx-xxxx-xxxx-a3413f96762b\tdomain:%V\thost:%h\tserver:%A\tident:%l\tuser:%u\ttime:%{{"{%"}}d/%b/%Y:%H:%M:%S%z}t\tmethod:%m\tpath:%U%q\tprotocol:%H\tstatus_int:%>s\tsize_int:%b\treferer:%{Referer}i\tagent:%{User-Agent}i\tresponse_time_int:%D\tcookie:%{cookie}i\tset_cookie:%{Set-Cookie}o\tmessage:%h %l %u %t \"%r\" %>s %b\n" combined_ltsv 
@@ -60,7 +60,7 @@ If you have already a CustomLog definition in your VirtualHost configuration, ad
      </VirtualHost>
 ```
 
-This is what you got on Graylog when you send your logs to PaaS Logs. The logs are already nicely parsed and you can immediately do specific search among them: 
+This is what you got on Graylog when you send your logs. The logs are already nicely parsed and you can immediately launch specifics searches on them: 
 
 ![apache Logs](/kb/images/2016-02-25-apache-logs/apache-logs.png)
 
