@@ -30,7 +30,7 @@ In order to achieve this amazing task, we still need to review our check list. F
 #2 Apache configuration
 We will configure one virtual Host to send all of its logs to your stream, you will have to repeat this configuration to every stream in order to make it work. 
 
-We use CustomLog format directive to transform Apache logs in LTSV format and ship it to LaaS with the proper OVH token. Not taht 3 fields are mandatory with the LTSV format : `host`, `message` and `time` (in the RFC 3339 format). Refer to the exemples below to have exemples on how to fill these fields
+We use CustomLog format directive to transform Apache logs in LTSV format and ship it to LaaS with the proper OVH token. Note that 3 fields are mandatory with the LTSV format : `host`, `message` and `time` (in the RFC 3339 format). Refer to the exemples below to have exemples on how to fill these fields.
 Please create the file /etc/httpd/conf.d/laas.conf or /etc/apache2/conf.d/laas.conf (it depends of your ditribution) and insert the following
 
 ```apache
