@@ -6,6 +6,13 @@ author: Babacar Diassé
 lang: en
 ---
 
+<div class="notice--warning" style="border: 1px #CE6D00 solid;padding: 10px;">
+  <h4 style="margin-top:0;">DISCLAIMER</h4>
+  <p>Following procedure have the advantage to be setup very quickly but is NOT recommended at all in production as it can block Apache process in case of heavy traffic.</p>
+  <p>
+        In production, please use non blocking solution as this one: <a href="https://community.runabove.com/kb/en/logs/filebeat-logs.html">Shipping logs to PaaS Logs with Filebeat</a>
+  </p>
+</div>
 
 Apache access logs are very valuable. They show the activity of your visitors, the page delivery time, the code results, the user agent that accessed your websites.
 The default log line looks like this
