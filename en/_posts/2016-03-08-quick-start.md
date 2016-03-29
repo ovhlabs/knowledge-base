@@ -54,7 +54,7 @@ PaaS Logs supports several logs formats, each one of them has its own advantages
 
  - GELF: This is the native format of logs used by Graylog. This JSON format will allow you to send logs really easily. See: [http://docs.graylog.org/en/latest/pages/gelf.html](http://docs.graylog.org/en/latest/pages/gelf.html). The GELF input only accept a nul ('\0') delimiter. 
 
- - LTSV: this simple format is very efficient and is still human readable. you can learn more about it [here](ltsv.org). LTSV has two inputs that accept a line delimiter or a nul delimiter.
+ - LTSV: this simple format is very efficient and is still human readable. you can learn more about it [here](http://ltsv.org). LTSV has two inputs that accept a line delimiter or a nul delimiter.
 
  - RFC 5424: This format is one of the most commonly used by logs utility like syslog. It is extensible enough to allow you to send all your datas. More information about it can be found at this link: [RFC 5424](https://tools.ietf.org/html/rfc5424).
 

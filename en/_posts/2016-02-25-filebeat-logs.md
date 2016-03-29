@@ -183,6 +183,7 @@ Note the type value (apache or syslog or apache-error) that indicate the source 
 
 It's cool we have our logs but we can make them even more useful. By specifying the right configuration in Logstash, we can parse it and enrich the log messages with custom fields. 
 For this you have to tweak two items:
+
   - the filter configuration in Logstash
   - the Grokpatterns configuration in Logstash
 
@@ -195,7 +196,7 @@ OVHCOMMONAPACHELOG %{IPORHOST:clientip} %{USER:ident} %{USER:auth} \[%{HTTPDATE:
 OVHCOMBINEDAPACHELOG %{OVHCOMMONAPACHELOG} %{QS:referrer} %{QS:agent}
 ```
 
-a Grok pattern is a pattern in the following form %{SYNTAX:SEMANTIC}. This pattern will allow you to specify the fields in a log of line in the order in which they appear. Note that we customize the fields by specifying the actual type of number types and by suffixing them with '\_num' or '\_int' as explained in the [PaaS Logs fields convention tutorial](/kb/logs/2016-02-28-field-naming-conventions.md). 
+a Grok pattern is a pattern in the following form %{SYNTAX:SEMANTIC}. This pattern will allow you to specify the fields in a log of line in the order in which they appear. Note that we customize the fields by specifying the actual type of number types and by suffixing them with '\_num' or '\_int' as explained in the [PaaS Logs fields convention tutorial](/kb/en/logs/field-naming-conventions.html). 
 Now that the Grok are defined, you can use them freely in your Logstash filter configuration. 
 
 ####Logstash Filter Configuration
@@ -204,7 +205,7 @@ Now that the Grok are defined, you can use them freely in your Logstash filter c
 ```
 filter {
      if [type] == "apache" {  
-       Grok {
+       grok {
            match => { "message" => "%{OVHCOMMONAPACHELOG}" }
            patterns_dir => "/opt/logstash/patterns"
        }
@@ -212,7 +213,7 @@ filter {
            mutate {
               remove_tag => [ "_grokparsefailure" ]
             }
-           Grok {
+           grok {
               match => [ "message", "%{OVHCOMBINEDAPACHELOG}" ]
               patterns_dir => "/opt/logstash/patterns"
               named_captures_only => true
@@ -220,7 +221,7 @@ filter {
       }
    }
    if [type] == "syslog" {
-      Grok {
+      grok {
            match => { "message" => "%{SYSLOGBASE}" }
        }
    }
