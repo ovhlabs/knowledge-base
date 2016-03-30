@@ -34,7 +34,7 @@ In order to achieve this amazing task, we still need to review our check list. F
   - [To create at least one Stream and get its token.](/kb/en/logs/quick-start.html#streams)
   - Have enough will to copy and paste 3 lines and change 32 characters (your token ;-).
 
-#2 Apache configuration
+# 2.1 Global Apache configuration
 We will configure one virtual Host to send all of its logs to your stream, you will have to repeat this configuration to every stream in order to make it work. 
 
 We use CustomLog format directive to transform Apache logs in LTSV format and ship it to LaaS with the proper OVH token. Note that 3 fields are mandatory with the LTSV format : `host`, `message` and `time` (in the RFC 3339 format). Refer to the exemples below to have exemples on how to fill these fields.
@@ -50,8 +50,8 @@ Ensure that the full path of openssl is correct for your system or it won't work
 Ensure also that your X-OVH-TOKEN is properly written.
 This tutorial covers only how to send your access logs to PaaS Logs. to send your Error logs, [you should configure your syslog template to send logs to PaaS Logs](/kb/en/logs/how-to-log-your-linux.html).
 
-## 2.1 Additional VirtualHost configuration
-If you have already a CustomLog definition in your VirtualHost configuration, add a second one to send logs to OVH:
+## 2.2 VirtualHost configuration
+If you want to only send logs from a specific VirtualHost, or send specific informations about one VirtualHost, use this configuration to send logs to PaaS Logs:
 
 ```apache
     <VirtualHost *:80>
