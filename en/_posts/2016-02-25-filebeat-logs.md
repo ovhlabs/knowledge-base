@@ -8,9 +8,9 @@ lang: en
 
 Filebeat is an [open source](https://github.com/elastic/beats/tree/master/filebeat) file harvester, mostly used to fetch logs files and feed them into logstash. Together with Logstash, Filebeat is a really powerful tool that allows you to parse and send your logs to PaaS logs in a elegant and non intrusive way (except installing filebeat of course ;-). 
 
-This guide will describe how to ask OVH to host your own dedicated Logstash on PaaS Logs and how to setup Filebeat on your system to forward your logs to it. It will also present you with some configuration setup you can use on Logstash to further structure your logs. Note that in order to complete this tutorial, you should have at least : 
+This guide will describe how to ask OVH to host your own dedicated Logstash on PaaS Logs and how to setup Filebeat on your system to forward your logs to it. It will also present you with some configuration setup you can use on Logstash to further structure your logs. Note that in order to complete this tutorial, you should have at least: 
 
-  - [Activated the Paas Logs lab and created an account.](/kb/en/logs/quick-start.html#account)
+  - [Activated the PaaS Logs lab and created an account.](/kb/en/logs/quick-start.html#account)
   - [created at least one Stream and get its token.](/kb/en/logs/quick-start.html#streams)
 
 Once you have done theses two steps, you can dig into this one. Be prepared. 
@@ -49,22 +49,21 @@ Once configured, You can launch your logstash by clicking on "Start" button. At 
 #2 Setup Filebeat in your system
 
 Filebeat supports <b>many platforms</b>  as listed here [https://www.elastic.co/downloads/beats/filebeat](https://www.elastic.co/downloads/beats/filebeat)
-Following section will give the Debian one as an example.
 
-you can decide to setup Filebeats from package or to compile it from source (you will need the latest [go compiler](https://golang.org/) to compile it) or just download the generic Linux binary to start immediately.
+You can decide to setup Filebeat from package or to compile it from source (you will need the latest [go compiler](https://golang.org/) to compile it) or just download the generic Linux binary to start immediately.
 
 For this part head to [Filebeat download website](https://www.elastic.co/downloads/beats/filebeat) to download the best version for your distribution. Just choose the Linux 64 bit if you don't know which one to choose. 
 
-The following configuration files have been tested on the latest version of Filebeat available at the time of writing (1.1.2). 
-The Debian installation package will install the config file in the following directory : /etc/filebeat/filebeat.yml
+The following configuration files have been tested on the latest version of Filebeat available at the time of writing (1.1.2).
 
+The Debian installation package will install the config file in the following directory: /etc/filebeat/filebeat.yml
 
 
 #3 Configure Filebeat on your system
 
 Filebeat expect a configuration file named **filebeat.yml** . 
 
-Following example will be for Apache logs and syslog files but you can easily prospect anything else. The trick is to attach a type to any file you parse so that in Logstash, you will be able to select the correct Grok for your file. You will see in the next chapter how to parse your logs depending on the type you send. For the configuration to work, the important part is to replace *hosts: ["c002-my-paas-logs-hostname.in.laas.runabove.com:5044"]* with the hostname given by PaaS Logs. You should also put the SSL Certificate authority of the dedicated inputs in a file, (ex : /usr/local/etc/filebeat/laas-ca.crt). The input SSL CA is exposed below.  
+Following example will be for Apache logs and syslog files but you can easily prospect anything else. The trick is to attach a type to any file you parse so that in Logstash, you will be able to select the correct Grok for your file. You will see in the next chapter how to parse your logs depending on the type you send. For the configuration to work, the important part is to replace *hosts: ["c002-my-paas-logs-hostname.in.laas.runabove.com:5044"]* with the hostname given by PaaS Logs. You should also put the SSL Certificate authority of the dedicated inputs in a file, (ex: /usr/local/etc/filebeat/laas-ca.crt). The input SSL CA is exposed below.  
 
 ####Filebeat configuration:
 
@@ -171,7 +170,7 @@ r4IOeC764Hsupu2IjaLkyp+WBb6mRIS4B3ubDM8Vuc8tc7GC0B+5jXhOQRu9ZNfO
 ###Launch Filebeat
 
 Launch the Filebeat binary or service to test your config file and head to your apache website for exemple to send some logs. 
-you will see this kind of logs in Graylog : 
+you will see this kind of logs in Graylog: 
 
 ![beat_graylog](/kb/images/2016-02-25-filebeat-logs/beats_graylog.png)
 
@@ -185,9 +184,9 @@ It's cool we have our logs but we can make them even more useful. By specifying 
 For this you have to tweak two items:
 
   - the filter configuration in Logstash
-  - the Grokpatterns configuration in Logstash
+  - the Grok patterns configuration in Logstash
 
-The main idea is to define custom fields in Grok patterns  and to use these Groks in the Filter Section of Logstash. Head to the Logstash Configuration interface in the Paas Logs Manager by clicking on `Configuration` in your input panel.  Here are some valid custom Grok you can use for Apache and Syslog : 
+The main idea is to define custom fields in Grok patterns  and to use these Groks in the Filter Section of Logstash. Head to the Logstash Configuration interface in the PaaS Logs Manager by clicking on `Configuration` in your input panel.  Here are some valid custom Grok you can use for Apache and Syslog: 
 
 ####Grok Pattern configuration 
 
@@ -232,36 +231,36 @@ In this configuration you can see how Logstash will parse your logs. It will use
 
 Note also how the syslog part of the filter use the default Grok Pattern SYSLOGBASE provided by Logstash to parse the syslog lines sent by Filebeat. There is a lot of Grok Patterns already available in Logstash, check the links at the end to know how you can effortlessly parse any kind of log source. 
 
-Once the configuration is done, click on 'Update Configuration' at the bottom of the page. You can really easily test your Configuration afterwards by using the button `Test` on the Input Panel. This will launch a task that will check if the Input and Filter part of the configuration are valid. You will see the following output if it is : 
+Once the configuration is done, click on 'Update Configuration' at the bottom of the page. You can really easily test your Configuration afterwards by using the button `Test` on the Input Panel. This will launch a task that will check if the Input and Filter part of the configuration are valid. You will see the following output if it is: 
 ```
 Configuration OK
 ```
 
 Once done, restart the input and wait for it to be active. Don't worry you won't lose any logs in the meantime, Filebeat tracks automatically the offset of the last log sent in the log file. Get to your stream to watch your brand new and shiny parsed logs lines. 
-This is what you can have in Graylog when you use these filters : 
+This is what you can have in Graylog when you use these filters: 
 
 ![filter_graylog](/kb/images/2016-02-25-filebeat-logs/filter_graylog.png)
 
 
-As you can see, response code got its own field, as the bytes transmitted that you can already use in a graph to monitor the global traffic going through one particular page or website. you can also see all the traffic requested by a particular IP, and easily find the kind of content or webpage requested.  
+As you can see, response code got its own field, as the bytes transmitted that you can already use in a graph to monitor the global traffic going through one particular page or website. you can also see all the traffic requested by a particular IP, and easily find the kind of content or web page requested.
 
 #5 Conclusion and useful resources
 
 Filebeat is a really useful tool to send the content of your current log files to PaaS Logs. Combined with the filter in Logstash, it offers a clean and easy way to send your logs without changing the configuration of your software. There is a lot you can do with Logstash and Filebeat. Don't hesitate to check the links below to master these tools. 
 
 
- - Configuration's details :  [https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-configuration-details.html](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-configuration-details.html)
- - Getting started :  [https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-getting-started.html](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-getting-started.html)
- - Grok Patterns Documentation : [https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html](https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html)
- - Current Grok Pattern reference  : [https://github.com/logstash-plugins/logstash-patterns-core/tree/master/patterns](https://github.com/logstash-plugins/logstash-patterns-core/tree/master/patterns)
- - Even a logstash_forwarder to filebeat tutorial : [https://www.elastic.co/guide/en/beats/filebeat/current/migrating-from-logstash-forwarder.html](https://www.elastic.co/guide/en/beats/filebeat/current/migrating-from-logstash-forwarder.html)
+ - Configuration's details:  [https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-configuration-details.html](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-configuration-details.html)
+ - Getting started:  [https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-getting-started.html](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-getting-started.html)
+ - Grok Patterns Documentation: [https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html](https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html)
+ - Current Grok Pattern reference: [https://github.com/logstash-plugins/logstash-patterns-core/tree/master/patterns](https://github.com/logstash-plugins/logstash-patterns-core/tree/master/patterns)
+ - Even a logstash_forwarder to filebeat tutorial: [https://www.elastic.co/guide/en/beats/filebeat/current/migrating-from-logstash-forwarder.html](https://www.elastic.co/guide/en/beats/filebeat/current/migrating-from-logstash-forwarder.html)
 
 
 #Getting Help
 
-- Getting Started : [Quick Start](/kb/en/logs/quick-start.html)
-- Documentation : [Guides](/kb/en/logs)
-- Mailing List : [paas.logs-subscribe@ml.ovh.net](mailto:paas.logs-subscribe@ml.ovh.net)
+- Getting Started: [Quick Start](/kb/en/logs/quick-start.html)
+- Documentation: [Guides](/kb/en/logs)
+- Mailing List: [paas.logs-subscribe@ml.ovh.net](mailto:paas.logs-subscribe@ml.ovh.net)
 - Visit our community: [community.runabove.com](https://community.runabove.com)
 - Create an account: [PaaS Logs Beta](https://cloud.runabove.com/signup/?launch=paas-logs)
 

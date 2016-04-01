@@ -14,7 +14,7 @@ Welcome to the quick start tutorial of the PaaS Logs. This Quick start guide wil
 If you have already setup a lab, this procedure should be easy for you. 
 
  - Log into runabove.com and in the console, activate the Labs by clicking on `more Labs...` and then click on the `PaaS Logs` button.
- - Once Activated a new entry will appear in the navigation sidebar, click on the `Paas Logs` button there to jump to the main interface.  
+ - Once Activated a new entry will appear in the navigation sidebar, click on the `PaaS Logs` button there to jump to the main interface.
  - The main interface of PaaS Logs will then appear. 
  - On this page, you have only one action available: `Create user`. You will then have a username in the following form: ra-logs-XXXXX and the password associated. `NOTE THEM CAREFULLY`, theses credentials will be the one you will have to use on `Graylog` and with Kibana later (you will know soon enough how to do it). 
 
@@ -29,13 +29,13 @@ On this interface you can see 5 items:
 
 1. The `Streams` are the recipient of your logs. When you send a log with the right stream token, it arrives automatically to your stream in a awesome software named Graylog. When you access your stream in Graylog you will be able to search your logs and immediately analyze them. 
 
-2. The `Dashboard` is the global view of your logs, A Dashboard is an efficient way to exploit your logs and to view global information like metrics and trends about your datas without being overwhelmed by the logs details. 
+2. The `Dashboard` is the global view of your logs, A Dashboard is an efficient way to exploit your logs and to view global information like metrics and trends about your data without being overwhelmed by the logs details.
 
 3. The `Roles` will give you the control over who can read and access your streams or dashboard.
 
 4. The `Inputs` will allow you to ask OVH to host your own dedicated collector like Logstash or Flowgger.
 
-5. The `Aliases` will allow you to access directly your datas from your Kibana or using an Elasticsearch query. 
+5. The `Aliases` will allow you to access directly your data from your Kibana or using an Elasticsearch query.
 
 
 #2 Let's send some logs  ! <a name="streams">&nbsp;</a>
@@ -49,14 +49,14 @@ To create a stream it is really simple: click on the blue "+" button in the stre
 By expanding your stream information, you will see your X-OVH-TOKEN. This key is the only one you will need to address your stream. Under this token, you will have a direct link to your stream in Graylog. 
 ![stream Created](/kb/images/2016-03-08-quick-start/newStream_2.png)
 
-PaaS Logs supports several logs formats, each one of them has its own advantages and incovenients. Here are the differents formats available
+PaaS Logs supports several logs formats, each one of them has its own advantages and weaknesses. Here are the different formats available
 
 
  - GELF: This is the native format of logs used by Graylog. This JSON format will allow you to send logs really easily. See: [http://docs.graylog.org/en/latest/pages/gelf.html](http://docs.graylog.org/en/latest/pages/gelf.html). The GELF input only accept a nul ('\0') delimiter. 
 
  - LTSV: this simple format is very efficient and is still human readable. you can learn more about it [here](http://ltsv.org). LTSV has two inputs that accept a line delimiter or a nul delimiter.
 
- - RFC 5424: This format is one of the most commonly used by logs utility like syslog. It is extensible enough to allow you to send all your datas. More information about it can be found at this link: [RFC 5424](https://tools.ietf.org/html/rfc5424).
+ - RFC 5424: This format is one of the most commonly used by logs utility like syslog. It is extensible enough to allow you to send all your data. More information about it can be found at this link: [RFC 5424](https://tools.ietf.org/html/rfc5424).
 
  - Cap'n'Proto: The most efficient log format. this is a binary format that will allows you to maintain a low footprint and high speed performance. If you want to know more about it, check the official website: [Cap'n'Proto](https://capnproto.org/).
 
@@ -100,7 +100,7 @@ Here are the ports you can use on `laas.runabove.com` to send your logs. You can
 </table>
 
 
-To send your logs to PaaS Logs you can easily test your stream, by doing for example, a simple `echo` or `openssl` command. Here are 3 examples, choose the format you like the most with your preffered terminal. Note that each format has its own timestamp format: GELF uses [seconds from epoch](https://en.wikipedia.org/wiki/Unix_time), RFC 5424 and LTSV use the [RFC 3339](https://tools.ietf.org/html/rfc3339). Don't forget to change the timestamp to your current time to see your logs (By Default Graylog only display recent logs, you can change the scope of the search by using the top left time picker in the Graylog web interface). Don't forget to change the token to put the right one too. 
+To send your logs to PaaS Logs you can easily test your stream, by doing for example, a simple `echo` or `openssl` command. Here are 3 examples, choose the format you like the most with your preferred terminal. Note that each format has its own timestamp format: GELF uses [seconds from epoch](https://en.wikipedia.org/wiki/Unix_time), RFC 5424 and LTSV use the [RFC 3339](https://tools.ietf.org/html/rfc3339). Don't forget to change the timestamp to your current time to see your logs (By Default Graylog only display recent logs, you can change the scope of the search by using the top left time picker in the Graylog web interface). Don't forget to change the token to put the right one too.
 
 _GELF_: 
 
@@ -132,7 +132,7 @@ echo -e '<6>1 2016-03-08T14:44:01+01:00 149.202.165.20 example.org - - [exampleS
 For this format the time is in the RFC 3339 format. 
 
 
- - To see your logs, get back to the Lab Manager and look for the `Graylog access` link just under your token. Click on the link to jump straight to Graylog. You have to use the Paas Logs credentials that were first given when you have created your user at the first step in the form of `ra-logs-XXXXX/yourpassword`. If you have not written them, you can click `reset password` in the PaaS Logs Manager (at top right) to obtain a new one. The Graylog login page looks like this:
+ - To see your logs, get back to the Lab Manager and look for the `Graylog access` link just under your token. Click on the link to jump straight to Graylog. You have to use the PaaS Logs credentials that were first given when you have created your user at the first step in the form of `ra-logs-XXXXX/your_password`. If you have not written them, you can click `reset password` in the PaaS Logs Manager (at top right) to obtain a new one. The Graylog login page looks like this:
 
 
 ![login Graylog](/kb/images/2016-03-08-quick-start/login.png)
@@ -155,9 +155,9 @@ Press Enter or click on the Green button to launch the search and wait for your 
 You can also search some part of your message by entering: 
 `helps going`. It will give you all the messages that contains the terms 'help' and 'going'.
 
-Graylog allows you to extensively search through your logs without compromising usability. If you want to know more about how to craft relevant searches on Graylog, head to [Graylog Search Documentaton](http://docs.graylog.org/en/1.3/pages/queries.html). 
+Graylog allows you to extensively search through your logs without compromising usability. If you want to know more about how to craft relevant searches on Graylog, head to [Graylog Search Documentation](http://docs.graylog.org/en/1.3/pages/queries.html).
 
-Send different logs with differents value for user\_id for example. At the left of the page you will see the fields present in your stream, you can click on the user\_id checkbox to display all the values for this field along the logs.
+Send several logs with different value for user\_id for example. At the left of the page you will see the fields present in your stream, you can click on the user\_id checkbox to display all the values for this field along the logs.
 
 #3 Lets create a Dashboard. 
 
@@ -188,9 +188,9 @@ Mixing various widgets on the same dashboard give to this feature all its sense.
 
 We have only scratched the surface of what PaaS Logs can do for you. you will find soon enough how to: 
 
-  - [Send correctly formatted logs to use custom types as numbers, booleans and other stuffs](/kb/en/logs/field-naming-conventions.html)
+  - [Send correctly formatted logs to use custom types as number, boolean and other stuffs](/kb/en/logs/field-naming-conventions.html)
   - [Configure your syslog-ng to send your Linux logs to PaaS Logs](/kb/en/logs/how-to-log-your-linux.html)
-  - Using roles to allow other users of the lab to let them see yours beautiful Dashboards or let them digg in your Streams instead of doing it for them.  
+  - Using roles to allow other users of the lab to let them see yours beautiful Dashboards or let them dig in your Streams instead of doing it for them.
   - Using Alerts to be woken up at 3 AM by an e-mail when your world collapse. 
   - [Using Kibana and aliases to unleash the power of elasticsearch](/kb/en/logs/using-kibana-with-laas.html)
   - If you want to master Graylog, this is the place to go: [Graylog documentation](http://docs.graylog.org/en/1.3/pages/queries.html)
