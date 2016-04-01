@@ -55,7 +55,7 @@ to follow.
 
 # 2. What do you need ?
  - A `Linux` based instance (server, VPS, Cloud instance, Raspberry Pi,
-...). Commandes lines will be for `DEBIAN 8` in this tutorial
+...). Command lines will be for `DEBIAN 8` in this tutorial
  - A root access to this instance
  - [Activate the PaaS Logs Lab on runabove.com and create an account](/kb/en/logs/quick-start.html#account)
  - [Create a Stream and get your token](/kb/en/logs/quick-start.html#streams)
@@ -67,7 +67,7 @@ to follow.
 First thing to do is to configure the Runabove PaaS Logs Lab : activate the lab,
 create your user, a stream and a dashboard.
 Verify that everything works already perfectly. 
-We writed an independant tutorial for this, please read it and come back
+We wrote an independent tutorial for this, please read it and come back
 here after : [Quick start](/kb/en/logs/quick-start.html)
 Good ? let's go to step #4 then !
 
@@ -76,7 +76,7 @@ Good ? let's go to step #4 then !
 
 # 4. Install and configure a log collector
 So let's assume you have your linux. This tutorial `DOES NOT` fully cover how to configure other flavors of syslog nor other OSes.
-Please refer to their own documentation to know how to setup a template and a external destination for the logs. You can still read this entire document to have a grasp on how the template is builded. 
+Please refer to their own documentation to know how to setup a template and a external destination for the logs. You can still read this entire document to have a grasp on how the template is built.
 However this configuration should work on any syslog-ng version above 3.0.
 
 We will install a log collector. What's this ? It's a tool who collect
@@ -125,7 +125,7 @@ options { chain_hostnames(off); flush_lines(0); use_dns(no); use_fqdn(no);
 ########################
 # Sources
 ########################
-# This is the default behavior of sysklogd package
+# This is the default behavior of syslogd package
 # Logs may come from unix stream, but not from another machine.
 #
 source s_src { unix-dgram("/dev/log"); internal();
@@ -141,11 +141,11 @@ source s_src { unix-dgram("/dev/log"); internal();
 template ovhTemplate {
     # important:
     ## Bracket [] no space between inside (opening/closing), space outside.
-    ## sid_id (exampleSDID@32473), flowgger need an id for stcrutured data as specified by the RFC 5424.
+    ## sid_id (exampleSDID@32473), flowgger need an id for structured data as specified by the RFC 5424.
     ## change X-OVH-TOKEN=\"xxxxxxxxxxxxxx\" by your X-OVH-TOKEN
     #flowgger RFC5424 example:
     #<23>1 2015-08-05T15:53:45.637824Z hostname appname 69 42 [origin@123 software="test script" swVersion="0.0.1"] test message
-    #pri timestap hostname appname pid msgid [sd_id sd_field=sd_value] message
+    #pri timestamp hostname appname pid msgid [sd_id sd_field=sd_value] message
 
     template("<${LEVEL_NUM}>1 ${ISODATE} ${HOST} ${PROGRAM} ${PID} - [sdid@32473 X-OVH-TOKEN=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\" pid=\"${PID}\" facility=\"${FACILITY}\" priority=\"${PRIORITY}\"] ${MSG}\n");
     template_escape(no);
@@ -279,7 +279,7 @@ Now, let's create a PIE chart :
 Well done, second Widget added !
 
 
-The best feature is to mix criterias, based on what is important to you :
+The best feature is to mix criteria, based on what is important to you :
 for example ```facility:auth AND level:6```
 Also you can create Alerts in Runabove Lab manager (Stream / Alerts /
 Conditions).

@@ -30,15 +30,15 @@ This tutorial will present you the less intrusive way to log to PaaS Logs : ask 
 In order to achieve this amazing task, we still need to review our check list. For this tutorial you will need:
   
   - The openssl package: as we are using it to send the logs in a secured manner.
-  - [Activate the Paas Logs lab and create an account.](/kb/en/logs/quick-start.html#account)
+  - [Activate the PaaS Logs lab and create an account.](/kb/en/logs/quick-start.html#account)
   - [To create at least one Stream and get its token.](/kb/en/logs/quick-start.html#streams)
   - Have enough will to copy and paste 3 lines and change 32 characters (your token ;-).
 
 # 2.1 Global Apache configuration
 We will configure one virtual Host to send all of its logs to your stream, you will have to repeat this configuration to every stream in order to make it work. 
 
-We use CustomLog format directive to transform Apache logs in LTSV format and ship it to LaaS with the proper OVH token. Note that 3 fields are mandatory with the LTSV format : `host`, `message` and `time` (in the RFC 3339 format). Refer to the exemples below to have exemples on how to fill these fields.
-Please create the file /etc/httpd/conf.d/laas.conf or /etc/apache2/conf.d/laas.conf (it depends of your ditribution) and insert the following :
+We use CustomLog format directive to transform Apache logs in LTSV format and ship it to LaaS with the proper OVH token. Note that 3 fields are mandatory with the LTSV format : `host`, `message` and `time` (in the RFC 3339 format). Refer to the examples below to learn how to fill these fields.
+Please create the file /etc/httpd/conf.d/laas.conf or /etc/apache2/conf.d/laas.conf (it depends of your distribution) and insert the following :
 
 ```apache
  LogFormat "X-OVH-TOKEN:0d50bffc-xxxx-xxxx-xxxx-a3413f96762b\tdomain:%V\thost:%h\tserver:%A\tident:%l\tuser:%u\ttime:%{{"{%"}}d/%b/%Y:%H:%M:%S%z}t\tmethod:%m\tpath:%U%q\tprotocol:%H\tstatus_int:%>s\tsize_int:%b\treferer:%{Referer}i\tagent:%{User-Agent}i\tresponse_time_int:%D\tcookie:%{cookie}i\tset_cookie:%{Set-Cookie}o\tmessage:%h %l %u %t \"%r\" %>s %b\n" combined_ltsv 
@@ -51,7 +51,7 @@ Ensure also that your X-OVH-TOKEN is properly written.
 This tutorial covers only how to send your access logs to PaaS Logs. to send your Error logs, [you should configure your syslog template to send logs to PaaS Logs](/kb/en/logs/how-to-log-your-linux.html).
 
 ## 2.2 VirtualHost configuration
-If you want to only send logs from a specific VirtualHost, or send specific informations about one VirtualHost, use this configuration to send logs to PaaS Logs:
+If you want to only send logs from a specific VirtualHost, or send specific information about one VirtualHost, use this configuration to send logs to PaaS Logs:
 
 ```apache
     <VirtualHost *:80>
@@ -73,7 +73,7 @@ This is what you got on Graylog when you send your logs. The logs are already ni
 
 #3 Apache logs format
 
-If you want to use your own log format and include some useful informations here is a cheat sheet for you: 
+If you want to use your own log format and include some useful information here is a cheat sheet for you:
 
 ![Cheat Sheet](/kb/images/2016-02-25-apache-logs/cheatsheet.png)
 
