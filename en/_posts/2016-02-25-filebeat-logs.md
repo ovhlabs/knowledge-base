@@ -42,8 +42,15 @@ On input section, add:
 On filter section, add:
 
     filter {
+      mutate {
+          rename => {
+              "source" => "filename"
+          }
+      }
     }
 
+This simple filter allows you to keep the original filename under the filename field. If you do not configure this filter, the filename which is at first written in the "source" field would be overwritten by our Output codec with the hostname of the filebeat host. By using this filter, you preserve the filename under the `filename` field. 
+  
 Once configured, You can launch your logstash by clicking on "Start" button. At the end the procedure, a hostname will appear in green meaning your input is started. You will need this hostname for Filebeat configuration. 
 
 #2 Setup Filebeat in your system
@@ -63,7 +70,7 @@ The Debian installation package will install the config file in the following di
 
 Filebeat expect a configuration file named **filebeat.yml** . 
 
-Following example will be for Apache logs and syslog files but you can easily prospect anything else. The trick is to attach a type to any file you parse so that in Logstash, you will be able to select the correct Grok for your file. You will see in the next chapter how to parse your logs depending on the type you send. For the configuration to work, the important part is to replace *hosts: ["c002-my-paas-logs-hostname.in.laas.runabove.com:5044"]* with the hostname given by PaaS Logs. You should also put the SSL Certificate authority of the dedicated inputs in a file, (ex: /usr/local/etc/filebeat/laas-ca.crt). The input SSL CA is exposed below.  
+Following example will be for Apache logs and syslog files but you can easily prospect anything else. The trick is to attach a type to any file you parse so that in Logstash, you will be able to select the correct Grok for your file. Note that you can for each file (aka prospector) define any additionals static fields allowing you to further classify your logs. This is done by using the `fields` configuration option. You will see in the next chapter how to parse your logs depending on the type you send. For the configuration to work, the important part is to replace *hosts: ["c002-my-paas-logs-hostname.in.laas.runabove.com:5044"]* with the hostname given by PaaS Logs. You should also put the SSL Certificate authority of the dedicated inputs in a file, (ex: /usr/local/etc/filebeat/laas-ca.crt). The input SSL CA is exposed below.  
 
 ####Filebeat configuration:
 
@@ -78,24 +85,33 @@ filebeat:
   # /var/log/*/*.log can be used.
   # For each file found under this path, a harvester is started.
   # Make sure not file is defined twice as this can lead to unexpected behaviour.
-    - 
-        paths:
-        - /var/log/apache2/access.log
+    -
+         paths:
+         - /var/log/apache2/access.log
         input_type: log
         document_type: apache
+        fields:
+            apache_version: 2.2.9
         fields_under_root: true
+
     -
         paths:
         - /var/log/apache2/error.log
-        input_type: log
-        document_type: apache-error
-        fields_under_root: true
+         input_type: log
+         document_type: apache-error
+         fields:
+             apache_version: 2.2.9
+         fields_under_root: true
+
     -
-        paths:
-        - /var/log/syslog
-        input_type: log
-        document_type: syslog
-        fields_under_root: true
+         paths:
+         - /var/log/syslog
+         input_type: log
+         document_type: syslog
+         fields:
+             syslog_format: legacy
+             syslog_version: 3.5
+         fields_under_root: true
     
   # Name of the registry file. Per default it is put in the current working
   # directory. In case the working directory is changed after when running
@@ -203,6 +219,11 @@ Now that the Grok are defined, you can use them freely in your Logstash filter c
 
 ```
 filter {
+      mutate {
+          rename => {
+              "source" => "filename"
+          }
+      }
      if [type] == "apache" {  
        grok {
            match => { "message" => "%{OVHCOMMONAPACHELOG}" }
