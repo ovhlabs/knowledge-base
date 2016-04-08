@@ -316,6 +316,7 @@ logstash-filter-ruby
 ####SSL CA certificate 
 
 Here is the CA certificate you can use to verify the certificate presented by our hosted inputs.
+You can also download it directly from this link (Right-Click then `Save As`): [SSL CA cert](https://laas.runabove.com/certs/dedicated-ca.crt).
 
 ```
 -----BEGIN CERTIFICATE-----
