@@ -19,8 +19,8 @@ After some training you will be able to do this kind of Dashboard :
 #1 Setup your Kibana index
 Kibana requires an index where to store your dashboards and other settings. To create it in our Elasticsearch cluster:
  
- 1. Sign in on https://www.runabove.com
- 2. On PaaS Log lab section, click on link Enable Kibana indice
+ 1. Sign in on [https://www.runabove.com](https://www.runabove.com)
+ 2. On PaaS Logs lab section, click on link Enable Kibana indice
 
 ![Enable indice](/kb/images/2016-02-29-using-kibana-with-laas/indice.png)
 
@@ -30,7 +30,7 @@ That was easy right ? If you are not too tired, proceed with the next section.
 
 To access your logs from Kibana, you will need to setup an Elasticsearch Alias and link them to your Graylog streams, so here we go again : 
 
- 1. Sign in on https://www.runabove.com, PaaS Log lab section (skip this step if you are already in ;-)
+ 1. Sign in on [https://www.runabove.com](https://www.runabove.com), PaaS Logs lab section (skip this step if you are already in ;-)
  2. On alias zone, click on blue + button
  3. Choose a name, define a description
  4. Save the entry
@@ -43,14 +43,11 @@ To access your logs from Kibana, you will need to setup an Elasticsearch Alias a
 So here you have, now PaaS Logs knows what is the streams you wnat to browse. Now let's configure Kibana and see if it works ! 
 
 #3 Setup your own kibana
-Get last Kibana **4.1.X** for **Elasticsearch 1.x** here (do NOT try to use 4.2 and 4.3 since they are made for incompatible version of Elasticsearch)  https://www.elastic.co/downloads/kibana (4.1.6 at the time of writing). Here are some direct links for your convenience.
+Get last Kibana **4.1.X** for **Elasticsearch 1.x** here (do NOT try to use 4.2 and 4.3 since they are made for incompatible version of Elasticsearch) [https://www.elastic.co/downloads/kibana](https://www.elastic.co/downloads/kibana) (4.1.6 at the time of writing). Here are some direct links for your convenience.
 
  - [WINDOWS](https://download.elastic.co/kibana/kibana/kibana-4.1.6-windows.zip)
-
  - [MAC](https://download.elastic.co/kibana/kibana/kibana-4.1.6-darwin-x64.tar.gz)
-
  - [LINUX 64-BIT](https://download.elastic.co/kibana/kibana/kibana-4.1.6-linux-x64.tar.gz)
-
  - [LINUX 32-BIT](https://download.elastic.co/kibana/kibana/kibana-4.1.6-linux-x86.tar.gz)
 
 
@@ -82,7 +79,7 @@ To configure the Kibana, edit config/kibana.yml and set the following properties
 
 #4 Launch it ! 
 
-If everything is setup properly, you should be able to launch it by launching bin/kibana. Launch your favorite browser, and point it to **http://localhost:5601**
+If everything is setup properly, you should be able to start it by calling bin/kibana. Launch your favorite browser, and point it to **http://localhost:5601**
 On first page, for Index name or pattern give the name of your alias.
 Choose timestamp for Time-field name then click on Discover tab to read your log entries.
 
