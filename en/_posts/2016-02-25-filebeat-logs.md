@@ -157,7 +157,11 @@ logging:
 level: info
 ``` 
 
-####SSL CA Certificate 
+####SSL CA Certificate
+
+Here is the CA certificate you can use to verify the certificate presented by our hosted inputs.
+You can also download it directly from this link (Right-Click then `Save As`): [SSL CA cert](https://laas.runabove.com/certs/dedicated-ca.crt).
+ 
 ```bash
 -----BEGIN CERTIFICATE-----
 MIIDozCCAougAwIBAgIJALxR4fTZlzQMMA0GCSqGSIb3DQEBCwUAMGgxCzAJBgNV
