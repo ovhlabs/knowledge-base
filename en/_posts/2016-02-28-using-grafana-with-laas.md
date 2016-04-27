@@ -69,7 +69,7 @@ Register your data source and test it.
 
 Now let's add a simple counter of your logs to a new dashboard.
 
-  1. On dasshboard page, click on the green left button and select Add panel => Singlestat
+  1. On dashboard page, click on the green left button and select Add panel => Singlestat
   2. On the bottom right, select your datasource.
   3. That's it :)
 
