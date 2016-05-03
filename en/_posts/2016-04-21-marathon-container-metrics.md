@@ -6,17 +6,17 @@ author: devatoria
 lang: en
 ---
 
-With the [PaaS Timeseries lab](https://www.runabove.com/iot-paas-timeseries.xml), you are able to push metrics about your containers and make some graphs using Grafana, such as:
+We integrated the Docker PaaS with the [Timeseries PaaS lab](https://www.runabove.com/iot-paas-timeseries.xml), to allow you to graph your application metrics about your containers in a Grafana dashboard. We automatically send metrics for:
 
 - CPU usage
 - memory usage
 - network I/O
 - disk I/O
-- out of memory kill count (soon)
+- out of memory kill count (coming soon!)
 
-#Inject my token
+#Configure your token
 
-From the RunAbove manager, join the PaaS Timeseries lab and generate a new credentials pair (read/write). Next, inject the write credentials into your container using `USER_IOT_ID` and `USER_IOT_KEY` labels.
+From the RunAbove manager, join the PaaS Timeseries lab and generate a new credentials pair (read/write). Next, inject the write credentials into your applications using `USER_IOT_ID` and `USER_IOT_KEY` labels.
 
 ![Main interface](/kb/images/2016-04-21-marathon-metrics/metrics.png)
 
@@ -25,7 +25,7 @@ Metrics are aggregated, averaged and pushed every minute.
 #Analyse my data
 ##Create graphs
 
-Once you have some data, you can create some graphs to easily watch how your applications live and adapt your stack according to your needs. Available metrics for graphs are:
+Once your applications metrics are sent to the PaaS Timeseries, you can create some graphs to easily watch how your applications behave, and adapt your stack according to your needs. Available metrics for graphs are:
 
 - cpu
 - memory.usage
@@ -43,13 +43,13 @@ On each metrics, you can filter on the following tags:
 
 - frameworkID: your marathon ID (useful if you have multiple stack logging metrics with the same credentials)
 - appID: your application ID (useful if you want to graph multiple applications instead of the full stack)
-- taskID: your task ID (different from container ID)
+- taskID: your task ID (identifying a single container)
 
 ###CPU data
 
 The CPU data are not dependent of the host capacity, but on the limit you are setting in your application. For example, if you create an application with 2 cpus, and if it consumes only one, your CPU usage will be 50%
 
-But, be careful. If you create an application with a cpu limit less than one, let's say 0.5, the application could be able to consume one cpu if needed resources are available. Your CPU usage will be 200%.
+Be careful though, if you create an application with a cpu limit less than one, let's say 0.5, the application could be able to consume one cpu if needed resources are available. Your CPU usage will be 200%.
 
 To interpret your data in Grafana, you have multiple ways. We have two interesting use cases:
 
