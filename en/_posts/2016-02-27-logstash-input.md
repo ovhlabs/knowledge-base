@@ -112,7 +112,7 @@ The Logstash Input comes with many advantages :
 This certificate and its associated key can be found at the following paths :  `/etc/ssl/private/server.crt` for the cert and  `/etc/ssl/private/server.key` for the key. The CA used to create these inputs is at the following location `/etc/ssl/private/ca.crt`. You will find this SSL CA for reference at the end of this document. 
  - And finally, we ensure that your input is always up and running 24/7.
 
-To host this input in the PaaS Logs, you will need to configure it in the PaaS Logs manager. Check the `Inputs` panel next to the Stream one and click on the '+' button. The Manager will then ask you to select your Engine : Select `Logstash 2.2` and put a elegant name and a wonderful description. Click on the blue floppy disk button and TA-DA, your input is created. 
+To host this input in the PaaS Logs, you will need to configure it in the PaaS Logs manager. Check the `Inputs` panel next to the Stream one and click on the '+' button. The Manager will then ask you to select your Engine : Select `Logstash 2.3` and put a elegant name and a wonderful description. Click on the blue floppy disk button and TA-DA, your input is created. 
 
 
 ![logstash_creation](/kb/images/2016-02-27-logstash-input/logstash_creation.png)
@@ -135,6 +135,20 @@ There is 3 section in this pop-up :
 
 If we take the configuration example above and if we enable the SSL encryption, we have that configuration for the Input Section : 
 
+
+```
+input {
+     tcp {
+        port => 4000
+        type => syslog
+        ssl_enable => true
+        ssl_cert => "/etc/ssl/private/server.crt"
+        ssl_key => "/etc/ssl/private/server.key"
+        ssl_extra_chain_certs => ["/etc/ssl/private/ca.crt"]
+    }
+}
+```
+
 ![logstash_creation](/kb/images/2016-02-27-logstash-input/input_section.png)
 
 
@@ -145,8 +159,8 @@ As you can see, this is roughly the same configuration that before. The SSL conf
  - `ssl_key`: the location of the associated key. 
  - `ssl_extra_chain_certs` : the array contains the path to the CA certificate.
 
-
-And for the filter part, you just have to copy and paste.  
+All the inputs have preconfigured ssl certificates at the fixed locations used in the configuration above.
+And for the filter part, you just have to copy and paste the previous configuration.  
 
 ![logstash_creation](/kb/images/2016-02-27-logstash-input/filter_section.png)
 
@@ -188,7 +202,15 @@ So now you can click on `Start` and deploy your input on PaaS Logs.
 
 ![input_start](/kb/images/2016-02-27-logstash-input/input_start.png)
 
-If you head to Graylog, you will find your Logs in the attached Stream as before. 
+
+##Input Hostname
+
+Once your input is started, you will see in the panel an adress in the following format : 
+
+`c002-XXXXXXXXXXXXXXXXXXXXXXX.in.laas.runabove.com`. 
+
+This is the address of your inputs for LaaS. Send your logs to this address to have them processed by your input. Use for example the previous syslog Lines to test your inputs. 
+If you head to Graylog, you will find your Logs in the attached Stream just as before. 
 
 
 ![logs_graylog](/kb/images/2016-02-27-logstash-input/logstash_ssl.png)
@@ -201,7 +223,7 @@ If you head to Graylog, you will find your Logs in the attached Stream as before
 
 ##Logstash Version 
 
-The version hosted by PaaS Logs is the Logstash 2.2. Of course we will try to follow new versions as soon as they become available. 
+The version hosted by PaaS Logs is the Logstash 2.3. Of course we will update to the new versions as soon as they become available. 
 
 ## Logstash Plugins
 
