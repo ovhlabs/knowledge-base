@@ -10,7 +10,7 @@ Welcome to the quick start tutorial of the Docker PaaS lab. This document will h
 
 # First and foremost
 
-If you haven't already read our [introduction to Docker with Mesos and Marathon](/kb/en/introduction-to-docker-with-mesos-marathon.html), you should probably read it before diving in.
+If you haven't already read our [introduction to Docker with Mesos and Marathon](/kb/en/docker/introduction-to-docker-with-mesos-marathon.html), you should probably read it before diving in.
 
 #Access to your Marathon Web UI
 
