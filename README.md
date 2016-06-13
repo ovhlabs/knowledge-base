@@ -83,10 +83,25 @@ With markdown syntax.
 
 ## Test your tutorial
 
+### With Docker (recommended)
+
+The easiest way to test how your guide renders on RunAbove website is to build
+and run the Docker container.
+
+```bash
+docker build --tag runabove-kb .
+docker run --rm -ti -p 4000:4000 runabove-kb
+```
+
+You can now point your browser to http://localhost:4000/kb/ and see how it
+looks.
+
+### Installing Jekyll
+
 To deploy tutorials on runabove, we use a ruby tool called
 [Jekyll](http://jekyllrb.com/). You can find more informations about Jekyll
 installation inside the [official
-documentation](http://jekyllrb.com/docs/installation/). The easiest way to get it up and running is:
+documentation](http://jekyllrb.com/docs/installation/). Get it up and running:
 
 ```bash
 curl -sSL https://get.rvm.io | bash -s stable --ruby=1.9.3 --autolibs=fail
