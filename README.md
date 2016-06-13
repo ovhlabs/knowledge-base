@@ -94,17 +94,24 @@ curl https://raw.githubusercontent.com/creationix/nvm/v0.25.1/install.sh | bash
 nvm install 0.10
 nvm use 0.10
 source ~/.bashrc
-gem install jekyll
+gem install bundler
+bundle
 ```
 
 Inside root directory of the project, you can run this command to generate the
 website and see your guide:
 
 ```bash
-jekyll build
+bundle exec jekyll build
 ```
 
 You website is now inside `_site` directory.
+
+You can also run this command to have jekyll serve your static pages :
+
+```bash
+bundle exec jekyll serve
+```
 
 When your tutorial is ready, create a pull request on GitHub. Then we will
 review your tutorial. If that's your first tutorial, to benefit of your
