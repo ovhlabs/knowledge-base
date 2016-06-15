@@ -27,6 +27,8 @@ All messages are persisted on disk and replicated within the cluster to prevent 
 
 ## What is a producer and a consumer ?
 
+![prod_consumer_description](/kb/images/2016-06-15-getting-started-with-queue-as-a-service/queue_description.png)
+
 Kafka maintains feeds of messages in topics. Producers write data to topics and
 consumers read from topics. Since Kafka is a distributed system, topics are partitioned
 and replicated across multiple nodes.
