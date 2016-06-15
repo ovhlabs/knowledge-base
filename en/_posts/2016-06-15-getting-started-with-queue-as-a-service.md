@@ -38,7 +38,7 @@ to remember the messages read.
 # Getting started
 
 The OVH Queue PaaS has been built so that you can connect painlessly to it.
-Topics are automatically created at the first request and a partitionning strategy is applied by default.
+Topics are automatically created at the first request and a partitioning strategy (3 partitionis per topic) is applied by default.
 
 ## Joining the lab
 
