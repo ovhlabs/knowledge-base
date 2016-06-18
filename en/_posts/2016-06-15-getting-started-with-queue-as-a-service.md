@@ -1,16 +1,16 @@
 ---
 layout: post
-title:  "Getting started with OVH Queue PaaS"
+title:  "Getting started with OVH Queue DBaaS"
 categories: queue
 author: guillaumebreton
 lang: en
 ---
-# OVH Queue PaaS and Kafka 101
+# OVH Queue DBaaS and Kafka 101
 
-Welcome to the getting started guide of the OVH Queue PaaS. This guide will help you to understand the core concepts behind the OVH Queue PaaS
+Welcome to the getting started guide of the OVH Queue DBaaS. This guide will help you to understand the core concepts behind the OVH Queue DBaaS
 and how to produce your first message to the platform and consume it.
 
-## What is the OVH Queue PaaS ?
+## What is the OVH Queue DBaaS ?
 
 It provides you a shared queuing system based on [Apache Kafka](http://kafka.apache.org/).
 
@@ -37,12 +37,12 @@ to remember the messages read.
 
 # Getting started
 
-The OVH Queue PaaS has been built so that you can connect painlessly to it.
+The OVH Queue DBaaS has been built so that you can connect painlessly to it.
 Topics are automatically created at the first request and a partitioning strategy (3 partitionis per topic) is applied by default.
 
 ## Joining the lab
 
-Before starting to use the [Queue PaaS lab](https://www.runabove.com/paas-queue.xml) you need to make sure that you have
+Before starting to use the [Queue DBaaS lab](https://www.runabove.com/dbaas-queue.xml) you need to make sure that you have
 an OVH.com account.
 
 Go to [ovh.com](https://www.ovh.com/manager/web/login/) and
@@ -50,9 +50,9 @@ select "Create Account".
 
 ## Create an application
 
-The first step to use OVH Queue PaaS is to create an application.
+The first step to use OVH Queue DBaaS is to create an application.
 
-1. Go to the [Queue PaaS lab page](https://www.runabove.com/paas-queue.xml) and click on the
+1. Go to the [Queue DBaaS lab page](https://www.runabove.com/dbaas-queue.xml) and click on the
 **Start Now** button.
 
 2. Follow the order steps. You will receive an email as soon as your application is ready.
@@ -61,7 +61,7 @@ The first step to use OVH Queue PaaS is to create an application.
 
     ![Sunrise](/kb/images/2016-06-15-getting-started-with-queue-as-a-service/queue_sunrise.png)
 
-4. In the Sunrise manager, a new 'Not configured app' is available under the Queue PaaS section.
+4. In the Sunrise manager, a new 'Not configured app' is available under the Queue DBaaS section.
 
     ![Sunrise](/kb/images/2016-06-15-getting-started-with-queue-as-a-service/queue_not_configure_app_menu.png)
 
@@ -87,7 +87,7 @@ Once your application is created and configured, you will need a key to be able 
 
 ## Produce and consume
 
-**Important**: to be authenticated to the Queue PaaS, you must:
+**Important**: to be authenticated to the Queue DBaaS, you must:
 
 - Set a key as the `client id` of your Kafka client.
 - Use a human application id to prefix all your topics (the id can be found in the [OVH Manager](https://www.ovh.com/manager/sunrise/index.html))
@@ -111,7 +111,7 @@ Once your application is created and configured, you will need a key to be able 
 
 # Supported Languages
 
-The OVH Queue PaaS supports any [Kafka standard client](https://cwiki.apache.org/confluence/display/KAFKA/Clients).
+The OVH Queue DBaaS supports any [Kafka standard client](https://cwiki.apache.org/confluence/display/KAFKA/Clients).
 
 In the [queue examples repository](https://github.com/runabove/queue-examples), you can find examples for:
 
