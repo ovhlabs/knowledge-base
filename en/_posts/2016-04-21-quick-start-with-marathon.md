@@ -71,6 +71,6 @@ Now, your container is going to be deployed on a valid host which is able to han
 
 # Accessing your app
 
-You now have access to your nginx server via the URL https://username.lb.sbg-1.containers.ovh.net:10080, where "username" is the login you received by email.
+You now have access to your nginx server via the URL `https://<username>.lb.sbg-1.containers.ovh.net:10080`, where `<username>` is the login you received by email (for example, `docker-abcdef-1`).
 
 However, if you think that this URL is not elegant enough, fear not and read our [next tutorial](/kb/en/docker/marathon-load-balancer.html)!
