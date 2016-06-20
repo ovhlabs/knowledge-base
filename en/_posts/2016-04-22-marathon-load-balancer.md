@@ -15,7 +15,7 @@ This tutorial assumes you have an nginx container up and running. If that's not 
 
 ## Architecture
 
-Inside the `[marathon-lb](https://github.com/mesosphere/marathon-lb` container, the marathon-lb.py script connects to the Marathon API to retrieve all running apps, generates a HAProxy config and reloads HAProxy. By default, marathon-lb binds to the service port of every application and sends incoming requests to the application instances.
+Inside the `[marathon-lb](https://github.com/mesosphere/marathon-lb)` container, the marathon-lb.py script connects to the Marathon API to retrieve all running apps, generates a HAProxy config and reloads HAProxy. By default, marathon-lb binds to the service port of every application and sends incoming requests to the application instances.
 
 ![Marathon-lb architecture](/kb/images/2016-04-21-marathon-load-balancer/architecture.png)
 
@@ -49,10 +49,10 @@ frontend marathon_http_in
 frontend marathon_https_in
   bind *:443 ssl crt /etc/ssl/mesosphere.com.pem
   mode http
-  use_backend test-balto_nginx_10000 if { ssl_fc_sni myapp.info }
+  use_backend nginx_10080 if { ssl_fc_sni myapp.info }
 
 frontend nginx_10080
-  bind *:10000
+  bind *:10080
   mode http
   use_backend nginx_10080
 
