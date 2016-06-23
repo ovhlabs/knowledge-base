@@ -31,7 +31,9 @@ The application code is available on [Github](https://github.com/brouberol/ovh-d
 
 We've chosen (for simplicity's sake) to use redis for both the broker and result backend, and deploying it as a single instance. As it turns out, deploying it is quite simple!
 
-You need to create a Marathon application using the `redis` official [Docker image](https://hub.docker.com/_/redis/). The container must expose its TCP port 6379 to the load balancer: to do this, either set a service port (here set to 10000), or leave it empty and marathon will take care of it for you.
+You need to create a Marathon application using the `redis` official [Docker image](https://hub.docker.com/_/redis/). We'll use the custom command `redis-server --appendonly yes --protected-mode no --requirepass SECRETPASSWORD` to make sure the redis server is password protected, as it will be exposed on a public IP. The container must expose its TCP port 6379 to the load balancer: to do this, either set a service port (here set to 10000), or leave it empty and marathon will take care of it for you.
+
+Then, mount `/data` as a read-write docker volume. This will ensure data persistence, even after the container is redeployed.
 
 ![redis configuration 1/2](/kb/images/2016-06-17-marathon-api-worker-queue/redis.png)
 
@@ -49,12 +51,18 @@ $ telnet <username>.lb.<cluster>.containers.ovh.net 10000
 Trying 167.114.235.114...
 Connected to <username>.lb.<cluster>.containers.ovh.net.
 Escape character is '^]'.
+AUTH SECRETPASSWORD
++OK
 PING
 +PONG
 ```
 
 **Note**: you can derive the value of both `username` and `cluster` from the address of your marathon web ui. For example, if your UI URL is `http://lb.sbg-1.containers.ovh.net/marathon/docker-abcdef-1/`, the value of `cluster` and `username` are respectively `sbg-1` and `docker-abcdef-1`.
 
+The only thing left to do is to make sure the redis instance is alway restarted on the same host, as for now, we only support **local** storage of Docker volumes. To do this, we'll use Marathon constraints. Inspect your application, and copy the name of the slave it has been deployed on, then add the followinf Marathon constraint:
+ `hostname:LIKE:<hostname>`.
+
+![constraint](/kb/images/2016-06-17-marathon-api-worker-queue/redis3.png)
 
 # Deploy the HTTP REST API
 
@@ -68,8 +76,8 @@ As explained in the [Docker image README](https://hub.docker.com/r/brouberol/ovh
 
 We define these environment variables:
 
-* ``CELERY_BROKER_URI``: ``redis://<username>.lb.<cluster>.containers.ovh.net:10000/0``
-* ``CELERY_RESULT_BACKEND``: ``redis://<username>.lb.<cluster>.containers.ovh.net:10000/1``
+* ``CELERY_BROKER_URI``: ``redis://:SECRETPASSWORD@<username>.lb.<cluster>.containers.ovh.net:10000/0``
+* ``CELERY_RESULT_BACKEND``: ``redis://:SECRETPASSWORD@<username>.lb.<cluster>.containers.ovh.net:10000/1``
 
 To make sure the load balancer configures the api HAProxy frontend in http mode, we must add the following Marathon labels to the application:
 
@@ -98,8 +106,8 @@ The final part of the infrastructure left to deploy is the workers. We'll deploy
 
 We define these environment variables:
 
-* ``CELERY_BROKER_URI``: ``redis://<username>.lb.<cluster>.containers.ovh.net:10000/0``
-* ``CELERY_RESULT_BACKEND``: ``redis://<username>.lb.<cluster>.containers.ovh.net:10000/1``
+* ``CELERY_BROKER_URI``: ``redis://:SECRETPASSWORD@<username>.lb.<cluster>.containers.ovh.net:10000/0``
+* ``CELERY_RESULT_BACKEND``: ``redis://:SECRETPASSWORD@<username>.lb.<cluster>.containers.ovh.net:10000/1``
 
 ![worker configuration](/kb/images/2016-06-17-marathon-api-worker-queue/worker.png)
 
@@ -135,7 +143,3 @@ $ curl -X GET api.<username>.lb.<cluster>.containers.ovh.net/tasks/b8c96395-0cc5
 ```
 
 That's it!
-
-# Notes
-
-The redis here is quite a SPOF (single point of failure): it's neither clusterised, nor using any docker volumes for persistent storage. Stateful containers are not yet available in our beta, but they quickly will!
