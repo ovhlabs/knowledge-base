@@ -21,4 +21,4 @@ In the [previous tutorial](/kb/en/docker/quick-start-with-marathon.html), we ran
 
 ##Configure the port to check
 
-There are two ways to configure the port to check: by port *index* or by port *number*. By default, the port is passed by index: 0 is the first port you passed in the port mapping configuration, 1 is the second one, etc. You can also specify a port by simpply choosing the **port number** type.
+There are two ways to configure the port to check: by port *index* or by port *number*. By default, the port is passed by index: 0 is the first port you passed in the port mapping configuration, 1 is the second one, etc. You can also specify a port by simply choosing the **port number** type.
