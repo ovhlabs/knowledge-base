@@ -155,7 +155,7 @@ Press Enter or click on the Green button to launch the search and wait for your 
 You can also search some part of your message by entering: 
 `helps going`. It will give you all the messages that contains the terms 'help' and 'going'.
 
-Graylog allows you to extensively search through your logs without compromising usability. If you want to know more about how to craft relevant searches on Graylog, head to [Graylog Search Documentation](http://docs.graylog.org/en/1.3/pages/queries.html).
+Graylog allows you to extensively search through your logs without compromising usability. If you want to know more about how to craft relevant searches on Graylog, head to [Graylog Search Documentation](http://docs.graylog.org/en/2.0/pages/queries.html).
 
 Send several logs with different value for user\_id for example. At the left of the page you will see the fields present in your stream, you can click on the user\_id checkbox to display all the values for this field along the logs.
 
@@ -193,7 +193,7 @@ We have only scratched the surface of what PaaS Logs can do for you. you will fi
   - Using roles to allow other users of the lab to let them see yours beautiful Dashboards or let them dig in your Streams instead of doing it for them.
   - Using Alerts to be woken up at 3 AM by an e-mail when your world collapse. 
   - [Using Kibana and aliases to unleash the power of elasticsearch](/kb/en/logs/using-kibana-with-laas.html)
-  - If you want to master Graylog, this is the place to go: [Graylog documentation](http://docs.graylog.org/en/1.3/pages/queries.html)
+  - If you want to master Graylog, this is the place to go: [Graylog documentation](http://docs.graylog.org/en/2.0/pages/queries.html)
 
 
 #Getting Help

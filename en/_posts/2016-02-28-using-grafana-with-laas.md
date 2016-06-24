@@ -35,12 +35,12 @@ So here you have, now PaaS Logs knows what is the streams you wnat to browse. No
 
 #2 Setup your own grafana
 
-Get last Grafana release here: [http://grafana.org/download/](http://grafana.org/download/) (v3.0.0-beta2 - 2016-04-04 at the time of writing). Here are some direct links for your convenience. 
+Get last Grafana release here: [http://grafana.org/download/](http://grafana.org/download/) (v3.1.0-beta1 2016-06-23 at the time of writing). Here are some direct links for your convenience. 
 
- - [DEB (Ubuntu / Debian 64 bit)](https://grafanarel.s3.amazonaws.com/builds/grafana_3.0.0-beta21459801392_amd64.deb)
- - [RPM (Fedora / RHEL 64 bit)](https://grafanarel.s3.amazonaws.com/builds/grafana-3.0.0-beta21459801392.x86_64.rpm)
- - [Binary TAR (Linux 64 bit)](https://grafanarel.s3.amazonaws.com/builds/grafana-3.0.0-beta21459801392.linux-x64.tar.gz)
- - [Binary ZIP (Windows 64 bit)](https://grafanarel.s3.amazonaws.com/winbuilds/dist/grafana-3.0.0-beta2.windows-x64.zip)
+ - [DEB (Ubuntu / Debian 64 bit)](https://grafanarel.s3.amazonaws.com/builds/grafana_3.1.0-1466666977beta1_amd64.deb)
+ - [RPM (Fedora / RHEL 64 bit)](https://grafanarel.s3.amazonaws.com/builds/grafana-3.1.0-1466666977beta1.x86_64.rpm)
+ - [Binary TAR (Linux 64 bit)](https://grafanarel.s3.amazonaws.com/builds/grafana-3.1.0-1466666977beta1.linux-x64.tar.gz)
+ - [Binary ZIP (Windows 64 bit)](https://grafanarel.s3.amazonaws.com/winbuilds/dist/grafana-3.1.0-beta1.windows-x64.zip)
 
 Then follow the Grafana installation guide according your platform: [http://docs.grafana.org/installation/](http://docs.grafana.org/installation/)
 
@@ -59,7 +59,7 @@ Once logged in with your grafana credentials, reach data sources panel to setup 
 	<li>Set your PaaS Logs credentials for Basic auth values</li>
 	<li>Set your PaaS Logs alias name as Grafana Index name value</li>
 	<li>Change default Time field name to timestamp</li>
-	<li>Set 1.x as Elasticsearch version</li>
+	<li>Set 2.x as Elasticsearch version</li>
   </ul>
 </div>
 
