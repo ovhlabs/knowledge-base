@@ -115,7 +115,7 @@ This certificate and its associated key can be found at the following paths :  `
 To host this input in the PaaS Logs, you will need to configure it in the PaaS Logs manager. Check the `Inputs` panel next to the Stream one and click on the '+' button. The Manager will then ask you to select your Engine : Select `Logstash 2.3` and put a elegant name and a wonderful description. Click on the blue floppy disk button and TA-DA, your input is created. 
 
 
-![logstash_creation](/kb/images/2016-02-27-logstash-input/logstash_creation.png)
+![logstash_creation](/kb/images/2016-02-27-logstash-input/logstash_created.png)
 
 
 The Engine won't allow you to start it if you do not configure it properly. So let's do it !

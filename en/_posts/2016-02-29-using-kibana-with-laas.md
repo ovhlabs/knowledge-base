@@ -43,12 +43,12 @@ To access your logs from Kibana, you will need to setup an Elasticsearch Alias a
 So here you have, now PaaS Logs knows what is the streams you wnat to browse. Now let's configure Kibana and see if it works ! 
 
 #3 Setup your own kibana
-Get last Kibana **4.1.X** for **Elasticsearch 1.x** here (do NOT try to use 4.2 and 4.3 since they are made for incompatible version of Elasticsearch) [https://www.elastic.co/downloads/kibana](https://www.elastic.co/downloads/kibana) (4.1.6 at the time of writing). Here are some direct links for your convenience.
+Get last Kibana **4.5.X** for **Elasticsearch 2.x** here [https://www.elastic.co/downloads/kibana](https://www.elastic.co/downloads/kibana) (4.5.1 at the time of writing). Here are some direct links for your convenience.
 
- - [WINDOWS](https://download.elastic.co/kibana/kibana/kibana-4.1.6-windows.zip)
- - [MAC](https://download.elastic.co/kibana/kibana/kibana-4.1.6-darwin-x64.tar.gz)
- - [LINUX 64-BIT](https://download.elastic.co/kibana/kibana/kibana-4.1.6-linux-x64.tar.gz)
- - [LINUX 32-BIT](https://download.elastic.co/kibana/kibana/kibana-4.1.6-linux-x86.tar.gz)
+ - [WINDOWS](https://download.elastic.co/kibana/kibana/kibana-4.5.1-windows.zip)
+ - [MAC](https://download.elastic.co/kibana/kibana/kibana-4.5.1-darwin-x64.tar.gz)
+ - [LINUX 64-BIT](https://download.elastic.co/kibana/kibana/kibana-4.5.1-linux-x64.tar.gz)
+ - [LINUX 32-BIT](https://download.elastic.co/kibana/kibana/kibana-4.5.1-linux-x86.tar.gz)
 
 
 Unzip the archive anywhere on your machine.
