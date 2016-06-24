@@ -43,7 +43,7 @@ Finally, configure a TCP health check on container port 6379. By doing so, marat
 
 ![redis configuration 2/2](/kb/images/2016-06-17-marathon-api-worker-queue/redis2.png)
 
-You can now connect to your redis instance by connecting to the port 10000 (or whatever service port Marathon assigned to your redis application), at the address `redis.<username>.lb.<cluster>.containers.ovh.net`.
+You can now connect to your redis instance by connecting to the port 10000 (or whatever service port Marathon assigned to your redis application), at the address `<username>.lb.<cluster>.containers.ovh.net`.
 
 
 ```bash
