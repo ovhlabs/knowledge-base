@@ -26,15 +26,15 @@ Kibana requires an index where to store your dashboards and other settings. To c
 
 That was easy right ? If you are not too tired, proceed with the next section. 
 
-#2 Select your Stream Alias
+#2 Select your Stream Alias <a name="alias">&nbsp;</a>
 
 To access your logs from Kibana, you will need to setup an Elasticsearch Alias and link them to your Graylog streams, so here we go again : 
 
- 1. Sign in on [https://www.runabove.com](https://www.runabove.com), PaaS Logs lab section (skip this step if you are already in ;-)
- 2. On alias zone, click on blue + button
- 3. Choose a name, define a description
- 4. Save the entry
- 5. Once status marked as OK (refresh page if necessary) click on Associate link
+ 1. Login to your account at [https://www.runabove.com](https://www.runabove.com) then go to the PaaS Logs lab section (skip this step if you are already in ;-)
+ 2. In the alias panel, click on the blue '+' button
+ 3. Choose a name and define a description for your alias
+ 4. Save the entry by clicking the floppy disk button.
+ 5. Once the status is marked as OK (refresh page if necessary), click on the `Associate` link
  6. Define there the graylog streams you want to associate to your alias
  7. That's it.
 
@@ -56,26 +56,26 @@ To configure the Kibana, edit config/kibana.yml and set the following properties
 
     port: 5601
     # The host to bind the server to.
-    host: "0.0.0.0"
+     host: "0.0.0.0"
 
      
     # The Elasticsearch instance to use for all your queries.
-    elasticsearch_url: https://laas.runabove.com:9200
+     elasticsearch.url: "https://laas.runabove.com:9200"
      
     # preserve_elasticsearch_host true will send the hostname specified in `elasticsearch`. If you set it to false,
     # then the host you use to connect to *this* Kibana instance will be sent.
-    elasticsearch_preserve_host: true
+     elasticsearch.preserveHost: true
      
     # Kibana uses an index in Elasticsearch to store saved searches, visualizations
     # and dashboards. It will create a new index if it doesn't already exist.
-    kibana_index: kibana-ra-logs-XXXXX
+     kibana.index: "kibana-ra-logs-XXXXX"
      
     # If your Elasticsearch is protected with basic auth, this is the user credentials
     # used by the Kibana server to perform maintenance on the kibana_index at startup. Your Kibana
     # users will still need to authenticate with Elasticsearch (which is proxyfied through
     # the Kibana server)
-    kibana_elasticsearch_username: ra-logs-XXXXX
-    kibana_elasticsearch_password: YOUR_PAAS_LOGS_PASSWORD
+     elasticsearch.username: "ra-logs-XXXXX"
+     elasticsearch.password: "YOUR_PAAS_LOGS_PASSWORD"
 
 #4 Launch it ! 
 
