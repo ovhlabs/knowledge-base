@@ -26,7 +26,7 @@ Queue DBaaS platform implements a simple HTTP layer that allows you to:
 - Produce one or many messages to your topic with a POST request
 - Consume one or many messages from your topic with a GET request
 
-Plus, it comes with HTTPS support, for free.
+Moreover, it comes with HTTPS support, for free.
 
 ## Usage
 
