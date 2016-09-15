@@ -37,7 +37,7 @@ Then, mount `/data` as a read-write docker volume. This will ensure data persist
 
 ![redis configuration 1/2](/kb/images/2016-06-17-marathon-api-worker-queue/redis.png)
 
-Then, you can add your [PaaS Logs](https://www.runabove.com/paas-logs.xml) token and [PaaS Timeseries](https://www.runabove.com/iot-paas-timeseries.xml) token to the app labels, to [redirect your logs](https://community.runabove.com/kb/en/docker/marathon-container-logs.html) [and container metrics](https://community.runabove.com/kb/en/docker/marathon-container-metrics.html) to these infrastructures.
+Then, you can add your [PaaS Logs](https://www.runabove.com/paas-logs.xml) token and [DBaaS Time Series](https://www.ovh.com/fr/dbaas/timeseries/) token to the app labels, to [redirect your logs](https://community.runabove.com/kb/en/docker/marathon-container-logs.html) [and container metrics](https://community.runabove.com/kb/en/docker/marathon-container-metrics.html) to these infrastructures.
 
 Finally, configure a TCP health check on container port 6379. By doing so, marathon will check if a TCP connection can be established with redis, and will restart the container if that's not the case.
 
@@ -111,7 +111,7 @@ We define these environment variables:
 
 ![worker configuration](/kb/images/2016-06-17-marathon-api-worker-queue/worker.png)
 
-We don't define any health check, as the worker does not expose any TCP nor HTTP port. As for the other applications, we can add our PaaS Logs and Timeseries tokens as labels.
+We don't define any health check, as the worker does not expose any TCP nor HTTP port. As for the other applications, we can add our PaaS Logs and Time Series tokens as labels.
 
 # Testing
 

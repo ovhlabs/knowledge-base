@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "Marathon containers metrics in PaaS Timeseries"
+title:  "Marathon containers metrics in DBaaS Time Series"
 categories: Docker
 author: devatoria
 lang: en
 ---
 
-We integrated the Docker PaaS with the [Timeseries PaaS lab](https://www.runabove.com/iot-paas-timeseries.xml), to allow you to graph your application metrics about your containers in a Grafana dashboard. We automatically send metrics for:
+We integrated the Docker PaaS with the [DBaaS Time Series](https://www.ovh.com/fr/dbaas/timeseries/), to allow you to graph your application metrics about your containers in a Grafana dashboard. We automatically send metrics for:
 
 - CPU usage
 - memory usage
@@ -16,7 +16,7 @@ We integrated the Docker PaaS with the [Timeseries PaaS lab](https://www.runabov
 
 #Configure your token
 
-From the RunAbove manager, join the PaaS Timeseries lab and generate a new credentials pair (read/write). Next, inject the write credentials into your applications using `USER_IOT_ID` and `USER_IOT_KEY` labels.
+From the RunAbove manager, join the DBaaS Time Series lab and generate a new credentials pair (read/write). Next, inject the write credentials into your applications using `USER_TIMESERIES_ID` and `USER_TIMESERIES_KEY` labels.
 
 ![Main interface](/kb/images/2016-04-21-marathon-metrics/metrics.png)
 
@@ -25,7 +25,7 @@ Metrics are aggregated, averaged and pushed every minute.
 #Analyse my data
 ##Create graphs
 
-Once your applications metrics are sent to the PaaS Timeseries, you can create some graphs to easily watch how your applications behave, and adapt your stack according to your needs. Available metrics for graphs are:
+Once your applications metrics are sent to the DBaaS Time Series, you can create some graphs to easily watch how your applications behave, and adapt your stack according to your needs. Available metrics for graphs are:
 
 - cpu
 - memory.usage
