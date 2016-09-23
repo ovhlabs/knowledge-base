@@ -12,7 +12,7 @@ In this series of articles, we'll guide you through using our Docker PaaS, expla
 
 ##What is Docker?
 
-Docker is now a standard containerization software. It allows you to build an read-only image of your application and all its dependencies, and run this image in software containers (isolated user-space processes), on any server supporting Docker (bare metal, public/provate cloud, VM, etc).
+Docker is now a standard containerization software. It allows you to build an read-only image of your application and all its dependencies, and run this image in software containers (isolated user-space processes), on any server supporting Docker (bare metal, public/private cloud, VM, etc).
 
 ##What is Apache Mesos?
 
