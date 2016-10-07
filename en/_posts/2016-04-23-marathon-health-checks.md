@@ -6,12 +6,13 @@ author: devatoria
 lang: en
 ---
 
-Health checks are useful to ensure that your containers are running; and even better, are behaving as expected. You can add multiple health checks per application. Marathon supports both high level HTTP and lower level TCP health checks.
+Health checks are useful to ensure that your containers are running; and even better, are behaving as expected. If your container is found to be unhealthy, it will be automatically redeployed. You can add multiple health checks per application. Marathon supports both high level HTTP and lower level TCP health checks.
+
 HTTP checks allow for better, higher level checks on a specific URL like `http://localhost:port/my/health/path`. It automatically ignores informational status codes in the range 100 to 199.
 
 # Configure a health check for a nginx application
 
-In the [previous tutorial](/kb/en/docker/quick-start-with-marathon.html), we ran a simple nginx container. Let's now configure some HTTP health check for this application.
+In one of the [previous tutorials](/kb/en/docker/quick-start-with-marathon.html), we deployed and ran a simple nginx container on Marathon. Let's now configure some HTTP health check for this application.
 
 ![Main interface](/kb/images/2016-04-20-marathon-health-checks/health_check.png)
 

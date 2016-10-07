@@ -25,18 +25,7 @@ You can refer to the [PaaS DB tutorial](https://www.ovh.co.uk/g2216.getting_star
 
 ## Restrict access to the database to your container IPs
 
-In order to make your database accessible from your containers only, you have to specify which IPs are authorised to connect to your instance. You can get your containers IP using our API. For example
-
-```bash
-$ curl -u "<username>:<password>" https://lb.<cluster>.containers.ovh.net/api/v1/slaves/ip
-{
-  "objects": [
-    "165.118.227.114",
-    "165.118.231.44"
-  ]
-}
-```
-**Note**: you can derive the value of both `username` and `cluster` from the address of your marathon web ui. For example, if your UI URL is `http://lb.sbg-1.containers.ovh.net/marathon/docker-abcdef-1/`, the value of `cluster` and `username` are respectively `sbg-1` and `docker-abcdef-1`. The password is the one you use to access the Marathon web UI.
+In order to make your database accessible from your containers only, you have to specify which IPs are authorised to connect to your instance. You can get your containers IP in the [manager](https://www.ovh.com/manager/sunrise/containers/index.html#/containers) (a container IP is the public IP of the slave it is running on).
 
 ![whitelist](/kb/images/2016-06-21-deploying-wordpress-on-marathon/whitelist.png)
 

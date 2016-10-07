@@ -6,7 +6,7 @@ author: devatoria
 lang: en
 ---
 
-Welcome to the quick start tutorial of the Docker PaaS lab. This document will help you launch your first application using the Marathon Web UI.
+Welcome to the quick start tutorial of the Docker PaaS lab. This tutorial will help you launch your first application using the Marathon Web UI.
 
 # First and foremost
 
@@ -14,7 +14,7 @@ If you haven't already read our [introduction to Docker with Mesos and Marathon]
 
 #Access to your Marathon Web UI
 
-Once your Mesos slave has been installed, you'll receive an email containing the URL and credentials of your marathon.
+Once your resource node has been installed, you'll receive an email containing the URL and credentials of your marathon. You can of course change this password in the [manager](https://www.ovh.com/manager/sunrise/containers/index.html#/containers).
 
 
 ![Main interface](/kb/images/2016-04-20-quick-start-with-marathon/marathon.png)
@@ -47,7 +47,6 @@ The docker container settings allow you to use multiple docker options defined i
 - **Image**: the name of the docker image, can be prefixed with the URL of the registry to use
 - **Network**: the network to use *(actually, whatever you choose, the network will be defaulted to Bridged)*
 - **Force Pull Image**: enable it if you want the image to be pulled everytime you launch the container, to make sure your app is always based on the ``latest`` tag.
-- **Privileges**: enable this to launch your container in privileged mode *(actually automatically disabled)*
 
 ![Create interface - Docker settings](/kb/images/2016-04-20-quick-start-with-marathon/create_container_2.png)
 
@@ -71,6 +70,10 @@ Now, your container is going to be deployed on a valid host which is able to han
 
 # Accessing your app
 
-You now have access to your nginx server via the URL `https://<username>.lb.sbg-1.containers.ovh.net:10080`, where `<username>` is the login you received by email (for example, `docker-abcdef-1`).
+You now have access to your nginx server via the URL `https://<username>.lb.<cluster>.containers.ovh.net:10080`.
 
-However, if you think that this URL is not elegant enough, fear not and read our [next tutorial](/kb/en/docker/marathon-load-balancer.html)!
+**Note**: you can derive the value of both `username` and `cluster` from the address of your marathon web ui. For example, if your UI URL is `http://lb.sbg-1.containers.ovh.net/marathon/docker-abcdef-1/`, the value of `cluster` and `username` are respectively `sbg-1` and `docker-abcdef-1`.
+
+# Conclusion
+
+You now have a publicly accessible nginx, running in a Docker container. However, it's access URL is not very elegant. Fear not, and learn how to configure your load balancer by reading our [next tutorial](/kb/en/docker/marathon-load-balancer.html)!
