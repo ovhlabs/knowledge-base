@@ -1,41 +1,13 @@
 This repository contains tutorials of [RunAbove Knowledge
 base](https://community.runabove.com/kb).
 
-# How to write a how-to guide and get $100 in RunAbove credit?
-
-Help the community benefit from all of RunAbove’s power, and earn RunAbove
-credit to take your own project even further! The process is quick, easy, and
-we’re open to your suggestions.
-
-## Who can do this?
-
-Anyone can submit a how-to guide for review via GitHub. If you don’t already
-have a GitHub account, you can create one for free.
-
-## What can you do?
-
-Diversity is at our core and we’re open to a huge range of subjects. Keep in
-mind that that RunAbove users are devs or devops, so a how-to guide on making
-Runabove products work seamlessly with popular technologies/stacks/services
-would be a perfect angle.
-
-## How can you do it?
+# How to write a how-to guide?
 
 Simply fork the runabove/knowledge-base project on our GitHub page. Create a
 new page under [/en/_posts](en/_posts) and using markdown to write your how-to
 guide. Please refer to the metadata in existing guides so that you add adequate
 metadata at the beginning of your guide. Feel free to create a folder for your
 images in [/images](images).
-
-The existing guide categories are development, network, and object storage. If
-you don’t think your guide falls under any of these, don’t hesitate to suggest
-a new one - we’ll take it into consideration.
-
-When you’re done, launch a pull request for your fork. Once we’ve received your
-guide, we will review it against our criteria, and either accept it or reject
-it. You’ll hear back from us as soon as possible, we may ask you to do some
-modifications to your guide. If we merge your fork, we’ll give you a voucher
-for $100 for you to use with RunAbove!
 
 Please note that we may not accept your how-to guide if it doesn’t fit our
 review criteria. Here is a list of some of the main points we’ll take into
@@ -51,9 +23,6 @@ account:
 
 Please also keep in mind that we’re mainly interested in how-to guides on
 open-source tools and integration with popular tier technologies.
-
-If you want to talk to us about your fork, please get in touch with us on our
-IRC channel: `#runabove` on Freenode.
 
 # Quick start your new tutorial:
 
@@ -128,11 +97,8 @@ You can also run this command to have jekyll serve your static pages :
 bundle exec jekyll serve
 ```
 
-When your tutorial is ready, create a pull request on GitHub. Then we will
-review your tutorial. If that's your first tutorial, to benefit of your
-RunAbove credit, we need to get
-[TOS](https://community.runabove.com/kb/en/contracts_tutorials_EN-GB.pdf)
-signed by your hand (picture of the document). After, we merge it and the
-website is automatically updated.
+When you’re done, open a pull request for your fork. We'll review it as soon
+as possible!
 
 # Got a great idea? Fork us now!
+
