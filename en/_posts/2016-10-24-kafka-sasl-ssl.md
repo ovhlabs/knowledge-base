@@ -41,7 +41,7 @@ For all newly created apps, some users and roles are automatically created:
 
   - User `<namespace>.reader` with read-only access on all topics
   - User `<namespace>.writer` with write-only access on all topics
-  - User `<namespace>.readerwriter` with read, write, and auto-create access on all topics
+  - User `<namespace>.admin` with read, write, and auto-create access on all topics
 
 ### Create a role
 
@@ -100,6 +100,8 @@ Each user has an auto generated password, that you can regenerate using the API.
 There is no particular ACL on consumer groups, however you must use a consumer group name that is prefixed by your user name.
 
 Example: if your user is "myApp.Toto", you can use "myApp.Toto.GroupA" as consumer group name.
+
+Exception: any user who is assigned the default "admin" role can access all your users consumer groups.
 
 ## SSL
 
