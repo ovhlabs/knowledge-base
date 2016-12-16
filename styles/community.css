@@ -205,37 +205,6 @@ a.link:before {
     font-weight:300;
 }
 
-
-.banner {
-    background:url(../images/community/hero.png) no-repeat 0 50%;
-    position:relative;
-    width:100%;
-    min-height:110px;
-}
-.banner .bannerText {
-    position:absolute;
-    font-size:24px;
-    font-weight:300;
-    padding-bottom:30px;
-    padding-top:12px;
-    line-height:28px;
-    right:58px;
-}
-.banner .bannerLink {
-    position:absolute;
-    background-color:#3F413C;
-    line-height:30px;
-    font-size:16px;
-    font-weight:400;
-    width:140px;
-    display:inline-block;
-    right:0;
-    bottom:0;
-    margin:0;
-    text-align:center;
-    color:#FFA60E;
-}
-
 .form {
     padding:10px;
 }
