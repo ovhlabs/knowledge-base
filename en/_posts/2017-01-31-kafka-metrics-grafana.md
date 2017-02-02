@@ -15,16 +15,12 @@ If you don't, have a look at our [Getting Started](https://community.runabove.co
 This guide will help you to understand step by step how to display your Kafka applications metrics using [Grafana](https://grafana.tsaas.ovh.com) and the [Metrics Data Platform](https://www.ovh.com/fr/data-platforms/metrics/).
 
 ## Preparation
-### Get your application token to use the Metrics API
-Read the token using this link: [Token OVH API](https://api.ovh.com/console/#/dbaas/queue/%7BserviceName%7D/metrics/account#GET).
+### Get your application credentials to use the Metrics API
+You can find it in your [OVH manager](https://www.ovh.com/manager/sunrise/dbaasQueue/index.html#/dbaasQueue). When you click on the "DBaaS Queue" menu, you can see your applications list:
+![Application ID](/kb/images/2017-01-31-kafka-metrics-grafana/applications_list.png)
 
-![Application Token](/kb/images/2017-01-31-kafka-metrics-grafana/token.png)
-
-The token is composed by 2 parts: the user and the password. Save both somewhere safe.
-
-Note: The `serviceName` required must be your OVH Kafka application ID. You can find it in your [OVH manager](https://www.ovh.com/manager/sunrise/dbaasQueue/index.html#/dbaasQueue) when you click on the "DBaaS Queue" menu. On the left you can see the list of your applications including their IDs:
-
-![Application ID](/kb/images/2017-01-31-kafka-metrics-grafana/application_id.png)
+Click on the application that you want to monitor, you will be by default in the "Topics" tab, click on the "Info" tab and you will see at the bottom of the page your Metrics credentials as below :
+![Application ID](/kb/images/2017-01-31-kafka-metrics-grafana/credentials.png)
 
 ## Grafana configuration
 Open [OVH Grafana](https://grafana.tsaas.ovh.com) and log in with your OVH account.
@@ -84,8 +80,11 @@ Let's fill the "Metrics" tab, which is the most important. Firstly in "Panel dat
 
 Then fill the fields:
 
-  - Metric: kafka.bytes-in-per-sec.m1 or kafka.bytes-in-per-sec.m1 or
-   kafka.bytes-out-per-sec.m1 depending on what you want to visualize.
+  - Available metrics: 
+  	- kafka.messages-in-per-sec.m1 
+  	- kafka.bytes-in-per-sec.m1
+   	- kafka.bytes-out-per-sec.m1 depending 
+   	- consumer.lag
   - Aggregator: You can choose the aggregator that you want, knowing that by default it will be used to aggregate your differents topics.
 
  At this step you should see a graph aggregating all your topics:
