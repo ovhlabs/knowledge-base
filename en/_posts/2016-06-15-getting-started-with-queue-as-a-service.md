@@ -2,7 +2,7 @@
 layout: post
 title:  "Getting started with OVH Queue DBaaS"
 categories: queue
-author: guillaumebreton
+author: sebgl
 lang: en
 ---
 # OVH Queue DBaaS and Kafka 101
@@ -37,9 +37,6 @@ to remember the messages read.
 
 # Getting started
 
-The OVH Queue DBaaS has been built so that you can connect painlessly to it.
-Topics are automatically created at the first request and a partitioning strategy (3 partitionis per topic) is applied by default.
-
 ## Joining the lab
 
 Before starting to use the [Queue DBaaS lab](https://www.runabove.com/dbaas-queue.xml) you need to make sure that you have
@@ -53,44 +50,40 @@ select "Create Account".
 The first step to use OVH Queue DBaaS is to create an application.
 
 1. Go to the [Queue DBaaS lab page](https://www.runabove.com/dbaas-queue.xml) and click on the
-**Start Now** button.
+**Start Now** button. Note that you can also order a new application in the Sunrise Manager section of the OVH Manager.
 
 2. Follow the order steps. You will receive an email as soon as your application is ready.
 
-3. Go to the [OVH Manager](https://www.ovh.com/manager/sunrise/index.html).
+3. Go to the [OVH Manager Sunrise](https://www.ovh.com/manager/sunrise/index.html) and spot the DBaaS Queue section.
 
     ![Sunrise](/kb/images/2016-06-15-getting-started-with-queue-as-a-service/queue_sunrise.png)
 
 4. In the Sunrise manager, a new 'Not configured app' is available under the Queue DBaaS section.
 
-    ![Sunrise](/kb/images/2016-06-15-getting-started-with-queue-as-a-service/queue_not_configure_app_menu.png)
+    ![Sunrise](/kb/images/2016-06-15-getting-started-with-queue-as-a-service/queue_not_configured_app_menu.png)
 
-5. Select the application. Choose its name, select a region and save it.
+5. Select the application. Choose its name, select a region and save it. Pay attention to the name you choose
+since it will be used as a namespace prefix for all your topics and users (eg. `my-app.my-topic`).
 
-    ![Sunrise](/kb/images/2016-06-15-getting-started-with-queue-as-a-service/queue_not_configure_app.png)
+    ![Sunrise](/kb/images/2016-06-15-getting-started-with-queue-as-a-service/queue_not_configured_app.png)
 
-## Create a key
+6. Once your application is configured, 3 users are automatically created along with their generated password.
+Each user is assigned a specific role: `read` for read access on all topics, `write` for write access on all topics, and `admin`
+for read access, write access and topic auto-creation.
 
-Once your application is created and configured, you will need a key to be able to write and read data.
+    ![Sunrise](/kb/images/2016-06-15-getting-started-with-queue-as-a-service/default_users_credentials.png)
 
-1. In the previously created app, click on the **new key** button.
+7. You can retrieve the **Kafka SASL/SSL URL** on the **Info** tab of the Sunrise Manager.
 
-    ![Sunrise](/kb/images/2016-06-15-getting-started-with-queue-as-a-service/queue_configured_app.png)
-
-2. Give it a name.
-
-    ![Sunrise](/kb/images/2016-06-15-getting-started-with-queue-as-a-service/queue_new_key.png)
-
-3. Save the generated key in your secrets (the key is only displayed once. If you forget it you can regenerate it.)
-
-    ![Sunrise](/kb/images/2016-06-15-getting-started-with-queue-as-a-service/queue_created_key.png)
+    ![Sunrise](/kb/images/2016-06-15-getting-started-with-queue-as-a-service/queue_info.png)
 
 ## Produce and consume
 
 **Important**: to be authenticated to the Queue DBaaS, you must:
 
-- Set a key as the `client id` of your Kafka client.
-- Use a human application id to prefix all your topics (the id can be found in the [OVH Manager](https://www.ovh.com/manager/sunrise/index.html))
+- Set the proper username (eg. `my-app.admin`) and password in the `SASL` configuration of your Kafka client.
+- Produce and consume on topics that your user can access, which are correctly prefixed by your namespace (eg. `my-app.my-topic`).
+- Use any consumer group name that is prefixed by your username (eg `my-app.admin.my-consumer-group`).
 
 ## Produce
 
@@ -99,14 +92,27 @@ Once your application is created and configured, you will need a key to be able 
 2. Start a consumer
 
     ```
-    ./qaas-client-$(uname -s)-amd64 consume --kafka $HOST:9092 --key $KEY --topic $PREFIX.$TOPIC --group ${PREFIX}.queue-example
+    ./kafka-client-$(uname -s)-amd64 consume --brokers $HOST:9093 --username $SASL_USERNAME --password $SASL_PASSWORD --topic $TOPIC --consumer-group $CONSUMER_GROUP
     ```
+
+    Example with the application created above:
+
+    ```
+    ./kafka-client-Linux-amd64 consume --brokers kafka.p1.sbg.queue.ovh.net:9093 --username my-app.admin --password aRT3u7R2TuRzhMmnLl --topic my-app.my-topic --consumer-group my-app.admin.my-consumer-group
+    ```
+
 
 3. Start a producer and write something to stdin to produce one message (the topic is automatically created).
 
     ```
-    ./qaas-client-$(uname -s)-amd64 produce --kafka $HOST:9092 --key $KEY --topic $PREFIX.$TOPIC
+    ./kafka-client-$(uname -s)-amd64 produce --brokers $HOST:9093 --username $SASL_USERNAME --password $SASL_PASSWORD --topic $TOPIC
     # Then write to STDIN to send a message
+    ```
+
+    Example with the application created above:
+
+    ```
+    ./kafka-client-Linux-amd64 produce --brokers kafka.p1.sbg.queue.ovh.net:9093 --username my-app.admin --password aRT3u7R2TuRzhMmnLl --topic my-app.my-topic
     ```
 
 # Supported Languages
@@ -115,11 +121,15 @@ The OVH Queue DBaaS supports any [Kafka standard client](https://cwiki.apache.or
 
 In the [queue examples repository](https://github.com/runabove/queue-examples), you can find examples for:
 
-  - [Golang](https://github.com/runabove/queue-examples/tree/master/golang)
+  - [Golang](https://github.com/runabove/queue-examples/tree/master/go)
   - [NodeJS](https://github.com/runabove/queue-examples/tree/master/nodejs)
   - [Python](https://github.com/runabove/queue-examples/tree/master/python)
-  - [Scala](https://github.com/runabove/queue-examples/tree/master/scala)
+  - [Java](https://github.com/runabove/queue-examples/tree/master/java)
 
 # Going further
 
 - [Kafka documentation](http://kafka.apache.org/documentation.html#introduction)
+- [User and roles](https://community.runabove.com/kb/en/queue/kafka-sasl-ssl.html)
+- [Topic management](https://community.runabove.com/kb/en/queue/kafka-topics-management.html)
+- [Kafka over HTTPS](https://community.runabove.com/kb/en/queue/dbaas-queue-https.html)
+- [Metrics](https://community.runabove.com/kb/en/queue/kafka-metrics-grafana.html)
