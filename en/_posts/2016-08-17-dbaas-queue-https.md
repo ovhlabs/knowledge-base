@@ -32,35 +32,33 @@ Moreover, it comes with HTTPS support, for free.
 
 ### Pre-requisite: Know your region
 
-According to how you created your Queue DBaaS app, you chose one of the available region, which can be retrieved on your [Sunrise Manager](https://www.ovh.com/manager/sunrise/dbaasQueue/index.html#/dbaasQueue).
-Example: 
+According to how you created your Queue DBaaS app, you chose one of the available region, which can be retrieved
+on your [Sunrise Manager](https://www.ovh.com/manager/sunrise/dbaasQueue/index.html#/dbaasQueue). Here we are interested
+in the HTTPS URL.
+
+![Sunrise](/kb/images/2016-08-17-dbaas-queue-https/sunrise-info.png)
+
+Example:
 
 ```
-sbg.queue.ovh.net:9092
+https://kafka.p1.sbg.queue.ovh.net
 ```
-
-This corresponds to the "normal" Kafka usage over TCP, required by most Kafka clients.
-If you want to use DBaaS Queue over HTTP, you have to use the associated HTTPS URL:
-
-```
-https://sbg.queue.ovh.net
-```
-
-### Pre-requisite: Know your key and topic prefix
-
-As with traditionnal Queue DBaaS usage with Kafka Clients, you will have to use:
-
-- your key (token)
-- your topic prefix
-
-See our [Getting Started guide](https://community.runabove.com/kb/en/queue/getting-started-with-queue-as-a-service.html) for more information.
 
 ### Authentication
 
-User authentication is made with a custom HTTP header that you must pass in with your requests:
+As with traditionnal Queue DBaaS usage with Kafka Clients, you will have to use:
+
+- an SASL username (eg. `SASL_USERNAME=my-app.admin`)
+- an SASL password (eg. `SASL_PASSWORD=aRT3u7R2TuRzhMmnLl`)
+- a topic that your user is authorized to access (eg. `TOPIC=my-app.my-topic`)
+
+See our [Getting Started](https://community.runabove.com/kb/en/queue/getting-started-with-queue-as-a-service.html)
+and [SASL](https://community.runabove.com/kb/en/queue/kafka-sasl-ssl.html) guides for more information.
+
+User authentication is made with a standard HTTP basic auth in which you must provide your SASL username and password:
 
 ```
-"X-Ovh-Queue-Token: <your-key>"
+$SASL_USERNAME:$SASL_PASSWORD
 ```
 
 ### POST messages
@@ -68,8 +66,8 @@ User authentication is made with a custom HTTP header that you must pass in with
 You can post one or multiple messages, using _curl_ or HTTP clients in any language:
 
 ```
-curl -H "X-Ovh-Queue-Token: <your-key>"
-  -XPOST https://sbg.queue.ovh.net/topic/<topic-prefix.topic-name> 
+curl -u $SASL_USERNAME:$SASL_PASSWORD
+  -XPOST https://kafka.p1.sbg.queue.ovh.net/topic/$TOPIC
   -d '[{"Value": "first message"},
        {"Value":"second message"}]'
 ``` 
@@ -79,8 +77,8 @@ curl -H "X-Ovh-Queue-Token: <your-key>"
 You can retrieve one or multiple messages, using _curl_ or HTTP clients in any language:
 
 ```
-curl -H "X-Ovh-Queue-Token: <your-key>"
-  https://sbg.queue.ovh.net/topic/<topic-prefix.topic-name>[?limit=2]
+curl -u $SASL_USERNAME:$SASL_PASSWORD
+  https://kafka.p1.sbg.queue.ovh.net/topic/$TOPIC[?limit=2]
 ```
 
 The optional _limit_ parameter allows you to specify how many messages you want to retrieve.

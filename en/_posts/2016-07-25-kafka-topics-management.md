@@ -25,7 +25,13 @@ It is possible to attach a key to each message, in which case the producer guara
 
 Replicas are copies of the partitions. Their only purpose is data redundancy. There is a maximum replication factor depending on the region of your application. Increasing replication factor will decrease the throughput of the topic.
 
-## Create a topic
+## Topic operations
+
+All operations on topics are available through the [Sunrise Manager](https://www.ovh.com/manager/sunrise/dbaasQueue/index.html), or by using the [OVH API](OVH API).
+
+![Sunrise](/kb/images/2016-07-25-kafka-topics-management/sunrise-topics.png)
+
+### Create a topic
 
 To create a topic you need to provide 3 arguments:
 
@@ -53,7 +59,8 @@ Response:
 
 This operation may take a few seconds.
 
-## Update a topic
+
+### Update a topic
 
 Only the number of partitions can be increased.
 
@@ -65,7 +72,7 @@ PUT /dbaas/queue/<appID>/topic/qaas.events -d '{
 
 This operation may take a few seconds.
 
-## Delete a topic
+### Delete a topic
 
 A topic can be deleted:
 
@@ -75,7 +82,7 @@ DELETE /dbaas/queue/<appID>/topic/qaas.events
 
 This operation may take a few seconds.
 
-## List your topics
+### List your topics
 
 All topics can be listed:
 
@@ -95,7 +102,7 @@ Response:
 ]
 ```
 
-## Get a topic
+### Get a topic
 
 A topic with its detail can be retrieved:
 
