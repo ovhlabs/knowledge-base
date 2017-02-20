@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Kafka 0.10 with SASL and SSL"
+title:  "Understanding OVH Kafka users and rights"
 categories: queue
 author: thbkrkr
 lang: en
@@ -99,9 +99,16 @@ Each user has an auto generated password, that you can regenerate using the API.
 
 There is no particular ACL on consumer groups, however you must use a consumer group name that is prefixed by your user name.
 
-Example: if your user is "myApp.Toto", you can use "myApp.Toto.GroupA" as consumer group name.
+Example: if your user is `myApp.Toto`, you can use `myApp.Toto.GroupA` as consumer group name.
 
 Exception: any user who is assigned the default "admin" role can access all your users consumer groups.
+
+### Sunrise Manager
+
+Users and roles are now available in the [Sunrise Manager](https://www.ovh.com/manager/sunrise/dbaasQueue/index.html#/dbaasQueue):
+
+![Sunrise users](/kb/images/2016-10-24-kafka-sasl-ssl/sunrise-users.png)
+![Sunrise roles](/kb/images/2016-10-24-kafka-sasl-ssl/sunrise-roles.png)
 
 ## SSL
 
