@@ -70,7 +70,17 @@ curl -u $SASL_USERNAME:$SASL_PASSWORD
   -XPOST https://kafka.p1.sbg.queue.ovh.net/topic/$TOPIC
   -d '[{"Value": "first message"},
        {"Value":"second message"}]'
-``` 
+```
+
+Please note in the example above that your message payload must be a JSON array of objects containing your message as a string in the "Value" field.
+
+If this data model does not suit you, you can also post a message in raw format (accepts JSON, string, arrays, bytes...):
+
+```
+curl -u $SASL_USERNAME:$SASL_PASSWORD
+  -XPOST https://kafka.p1.sbg.queue.ovh.net/topic/$TOPIC?format=raw
+  -d '{"my": {"complex": ["json", "here"]}}'
+```
 
 ### GET messages
 
