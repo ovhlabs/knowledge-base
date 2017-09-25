@@ -47,12 +47,12 @@ HTTP Settings:
 
   - Name: This is up to you
   - Type: OpenTSDB
-  - Url: https://opentsdb-gra1.tsaas.ovh.com
+  - Url: https://opentsdb.gra1.metrics.ovh.net
   - Access: Proxy
   - Http Auth: Basic Auth: true
   - With Credentials: false
-  - User: The first part of the token (before the semi-colon) that you got previously.
-  - Password: The second part of the token (after the semi-colon).
+  - User: Metrics username you got from the "Info" tab.
+  - Password: Password you got from the "Info" tab.
 
 OpenTSDB Settings:
 
